@@ -1,9 +1,25 @@
 import Link from "next/link";
-import { offerSteps, retainers, site, verticals } from "@/lib/site";
+import { CtaBand } from "@/components/CtaBand";
+import { Faq } from "@/components/Faq";
+import { HeyGenBlock } from "@/components/HeyGenBlock";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { pageMeta } from "@/lib/seo";
+import { serviceGroups, servicesByGroup } from "@/lib/services";
+import { faqs, offerSteps, site, verticals } from "@/lib/site";
+
+export const metadata = pageMeta({
+  title: "Orange County AI agency for SMBs",
+  ogTitle: "StorenTech AI — Hire an AI employee after the math",
+  description:
+    "Full-service AI agency in Newport Beach and Corona Del Mar. Paid ROI analysis from $1,000. First AI employee in about 30 days if the numbers work. Call Sarah at 714-613-8557.",
+  path: "/",
+});
 
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }])} />
       <section className="hero">
         <div className="wrap hero-grid">
           <div>
@@ -12,10 +28,11 @@ export default function HomePage() {
             <hr className="rule" />
             <p className="lede">
               StorenTech is {site.founder.name}’s full-service AI agency in Orange
-              County. We sell one thing first: a paid Automation ROI Analysis. If
-              the numbers work, the first AI employee is live in 30 days — usually
-              on the phone and the inbox, because that is where most operators leak
-              money. The firm is built for the work after that.
+              County. We sell one thing first: a paid Automation ROI Analysis,
+              starting at {site.prices.analysisFrom}. If the numbers work, the first
+              AI employee is live in about 30 days — usually on the phone and the
+              site, because that is where most operators leak money. The firm is
+              built for the work after that.
             </p>
             <div className="btn-row">
               <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
@@ -29,7 +46,7 @@ export default function HomePage() {
               Office:{" "}
               <a href={`tel:${site.phones.office.tel}`}>{site.phones.office.display}</a>
               {" · "}
-              <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a>
+              <a href={`mailto:${site.emails.vincent}`}>{site.emails.vincent}</a>
             </p>
           </div>
 
@@ -37,8 +54,8 @@ export default function HomePage() {
             <p className="kicker">Live demo</p>
             <h2>Call Sarah.</h2>
             <p>
-              She is on the phone right now — a Vapi voice agent handling the first
-              jobs an AI employee actually does.
+              She is on the phone right now — a voice agent handling the first jobs
+              an AI employee actually does: missed calls, speed-to-lead, booking.
             </p>
             <a className="demo-number" href={`tel:${site.phones.sarah.tel}`}>
               {site.phones.sarah.display}
@@ -58,14 +75,18 @@ export default function HomePage() {
         <div className="wrap">
           <div className="section-head">
             <div>
-              <p className="kicker">The offer</p>
-              <h2>One path. Named prices. Then a hire.</h2>
+              <p className="kicker">How we work</p>
+              <h2>Paid map. First hire. Then we stay.</h2>
             </div>
             <p className="lede">
-              Chat and voice are the common first job — speed-to-lead, after-hours,
-              booking, the inbox — because almost every SMB has pain there. That is
-              the wedge. Sell a named AI employee and an outcome. The rest of the
-              catalog is ready when the map says so.
+              Chat and voice are the common first job —{" "}
+              <Link href="/work/speed-to-lead">speed-to-lead</Link>, missed-call
+              recovery,{" "}
+              <Link href="/work/website-chat">website chat</Link> — because almost
+              every SMB has pain there. That is the wedge.{" "}
+              <Link href="/work">The catalog</Link> is the rest of the firm.
+              Paid work from day one. If a company cannot fund the analysis, we do
+              not start.
             </p>
           </div>
           <div className="card-grid-3">
@@ -77,39 +98,55 @@ export default function HomePage() {
               </article>
             ))}
           </div>
+          <p className="fine" style={{ marginTop: "1.5rem" }}>
+            The analysis fee may be credited toward implementation. Retainers, when
+            they make sense, run around {site.prices.employee}/mo and{" "}
+            {site.prices.growth}/mo Growth — detail on{" "}
+            <Link href="/how-it-works">How it works</Link>.
+          </p>
         </div>
       </section>
 
-      <section className="section section-tan" id="retainers">
+      <section className="section section-tan" id="catalog">
         <div className="wrap">
           <div className="section-head">
             <div>
-              <p className="kicker">Retainers</p>
-              <h2>Named employees. Named monthly scope.</h2>
+              <p className="kicker">The firm</p>
+              <h2>Full-service. Named jobs. Named outcomes.</h2>
             </div>
             <p className="lede">
-              After the first hire is earning, we stay on as operator. Hours are
-              not the product. The employee and the weekly rhythm are.
+              Front of house, revenue, operations, and growth. Read{" "}
+              <Link href="/work">what each hire includes</Link>, how{" "}
+              <Link href="/technology">the tools actually work</Link>, or{" "}
+              <Link href="/patterns">illustrative patterns</Link> from ordinary weeks
+              — composites, not testimonials.
             </p>
           </div>
           <div className="card-grid-2">
-            {retainers.map((plan) => (
-              <article className="card" key={plan.name}>
-                <p className="kicker">{plan.name}</p>
-                <p className="price">{plan.price}</p>
-                <h3>{plan.summary}</h3>
-                <ul>
-                  {plan.points.map((point) => (
-                    <li key={point}>{point}</li>
+            {serviceGroups.map((group) => (
+              <article className="card" key={group.id}>
+                <p className="kicker">{group.label}</p>
+                <h3>
+                  <Link href={`/work#${group.id}`}>{group.title}</Link>
+                </h3>
+                <p>{group.lede}</p>
+                <p className="fine" style={{ marginTop: "0.9rem" }}>
+                  {servicesByGroup(group.id).map((service, index) => (
+                    <span key={service.slug}>
+                      {index > 0 ? " · " : ""}
+                      <Link href={`/work/${service.slug}`}>{service.title}</Link>
+                    </span>
                   ))}
-                </ul>
+                </p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section">
+      <HeyGenBlock />
+
+      <section className="section section-tan">
         <div className="wrap">
           <div className="section-head">
             <div>
@@ -134,28 +171,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-tan cta-band">
-        <div className="wrap">
-          <p className="kicker">Next</p>
-          <h2>Call Sarah, or start the paid analysis.</h2>
-          <p className="lede" style={{ marginBottom: "1.6rem" }}>
-            The analysis is {site.prices.analysisTypical} typical,{" "}
-            {site.prices.analysisComplex} when complex. It is not a complimentary
-            sales call.
-          </p>
-          <div className="btn-row">
-            <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
-              Call Sarah
-            </a>
-            <Link className="btn" href="/contact">
-              Start analysis
-            </Link>
-            <Link className="btn" href="/work">
-              See the work
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Faq items={faqs} />
+
+      <CtaBand
+        lede={`The analysis starts at ${site.prices.analysisFrom}. More complex work can be higher. It is not a complimentary sales call.`}
+      />
     </>
   );
 }

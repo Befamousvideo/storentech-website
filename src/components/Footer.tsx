@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { nav, site } from "@/lib/site";
+import { footerNav, site } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -17,7 +17,7 @@ export function Footer() {
             </p>
           </div>
           <nav className="footer-nav" aria-label="Footer">
-            {nav.map((item) => (
+            {footerNav.map((item) => (
               <Link key={item.href} href={item.href}>
                 {item.label}
               </Link>
@@ -32,8 +32,8 @@ export function Footer() {
             <a href={`tel:${site.phones.sarah.tel}`}>
               Sarah {site.phones.sarah.display}
             </a>
-            <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a>
             <a href={`mailto:${site.emails.vincent}`}>{site.emails.vincent}</a>
+            <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a>
           </div>
         </div>
         <div className="footer-bottom">

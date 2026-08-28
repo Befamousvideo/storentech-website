@@ -4,7 +4,7 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://storentech.com",
   tagline: "Hire an AI employee after the math, not before.",
   description:
-    "Vincent Jackson’s full-service AI agency in Newport Beach and Corona Del Mar. Start with a paid Automation ROI Analysis. If the numbers work, the first AI employee is live in 30 days.",
+    "Vincent Jackson’s full-service AI agency in Newport Beach and Corona Del Mar. Paid ROI analysis from $1,000, then a first AI employee in about 30 days if the numbers work.",
   founder: {
     name: "Vincent Jackson",
     title: "President",
@@ -35,16 +35,26 @@ export const site = {
     vincent: "vincent@storentech.com",
   },
   prices: {
-    analysisTypical: "$1,000",
+    analysisFrom: "$1,000",
     analysisComplex: "$2,000–$3,000",
     employee: "$5,000",
     growth: "$7,500",
   },
+  vapiAssistantId: "9e0a6184-ccc7-49d2-9ef0-31acfac1cf59",
 } as const;
 
 export const nav = [
   { href: "/work", label: "Work" },
   { href: "/how-it-works", label: "How it works" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+] as const;
+
+export const footerNav = [
+  { href: "/work", label: "Work" },
+  { href: "/how-it-works", label: "How it works" },
+  { href: "/technology", label: "Technology" },
+  { href: "/patterns", label: "Patterns" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;
@@ -63,17 +73,17 @@ export const offerSteps = [
   {
     n: "01",
     title: "Paid ROI analysis",
-    body: `${site.prices.analysisTypical} typical. ${site.prices.analysisComplex} when the operation is complex. A ranked roadmap for the first AI employee and the work around it. Paid. Never complimentary.`,
+    body: `Starts at ${site.prices.analysisFrom}. More complex work can run higher. You get a ranked map for the first AI employee. The fee may be credited toward implementation. Paid from day one.`,
   },
   {
     n: "02",
-    title: "First employee in 30 days",
-    body: "If the numbers work, the first named AI employee goes live in 30 days — usually on the phone, the site, and the calendar, because that is where most operators leak money first.",
+    title: "First employee in about 30 days",
+    body: "If the numbers work, a named AI employee goes live in about 30 days — usually on the phone, the site, and the calendar, because that is where most operators leak money first.",
   },
   {
     n: "03",
     title: "Then a retainer",
-    body: `${site.prices.employee}/mo AI Employee: one bot, one workflow a month, reporting. ${site.prices.growth}/mo Growth: two bots, outbound and inbox, weekly command center.`,
+    body: "Once the hire is earning, we stay on as operator. Around $5,000 a month for one named employee, or $7,500 for Growth. The path is on How it works — this page is not a menu.",
   },
 ] as const;
 
@@ -100,97 +110,37 @@ export const retainers = [
   },
 ] as const;
 
-export type WorkGroup = {
-  id: string;
-  label: string;
-  title: string;
-  lede: string;
-  jobs: { title: string; body: string }[];
-};
-
-export const workGroups: WorkGroup[] = [
+export const faqs = [
   {
-    id: "wedge",
-    label: "Wedge / front of house",
-    title: "The first job is usually the phone and the inbox.",
-    lede: "Almost every SMB leaks money here. That is why chat and voice are the common first hire — the wedge, not the whole firm.",
-    jobs: [
-      {
-        title: "Speed-to-lead + after-hours closer",
-        body: "Every web, call, and chat lead is touched fast, booked or qualified. The practice is closed. The contractor is on a roof. The employee still takes the job.",
-      },
-      {
-        title: "Website chat + voice",
-        body: "The same employee on the number you publish and the site you already have. Sarah is the live demo — 714-613-8557 — handling the first jobs an AI employee actually does.",
-      },
-      {
-        title: "Booking / appointment setting",
-        body: "Holds on the real calendar, with the rules you already use for new versus existing patients or clients.",
-      },
-    ],
+    q: "What does the ROI analysis cost?",
+    a: "It starts at $1,000. More complex operations can run higher, often in the $2,000–$3,000 range. The fee may be credited toward implementation if we proceed. It is paid work, not a complimentary sales call.",
   },
   {
-    id: "revenue",
-    label: "Revenue",
-    title: "Named pipeline work. Booked meetings, not a lead dump.",
-    lede: "Once the front door holds, the next hire works the follow-up that operators never quite staff.",
-    jobs: [
-      {
-        title: "AI SDR / appointment-setter pod",
-        body: "Outbound and inbound setting aimed at booked meetings on the calendar — not a pile of “unlimited leads.”",
-      },
-      {
-        title: "Sales follow-up",
-        body: "Meeting notes into tasks, email, and CRM. Proposal nudges. Pipeline hygiene so stalled deals do not go quiet.",
-      },
-    ],
+    q: "Is there a free audit?",
+    a: "No. If a company cannot fund the analysis, we do not start. Paid work from day one keeps the map honest.",
   },
   {
-    id: "operations",
-    label: "Operations",
-    title: "The work that never makes the highlight reel.",
-    lede: "Inbox, CRM, the Monday brief, hiring, reviews. This is how a small firm stays in the P&L after the demo.",
-    jobs: [
-      {
-        title: "Fractional AI operations team",
-        body: "Inbox triage, CRM hygiene, follow-up drafts, and a weekly ops report. The unglamorous work that always shows up in the numbers.",
-      },
-      {
-        title: "Owner’s weekly command center",
-        body: "A Monday brief: cash, pipeline, stalled deals, reviews, ads, and five actions. The owner walks in knowing what to do.",
-      },
-      {
-        title: "Recruiting / HR screening desk",
-        body: "Role posts, inbound screen, scheduling, scorecards. Screening and coordination — not legal advice.",
-      },
-      {
-        title: "Review + reputation engine",
-        body: "Google and Yelp asks, response drafts, competitor watch. Sold as an add-on or as an entry hire when reputation is the leak.",
-      },
-    ],
+    q: "How fast is the first AI employee live?",
+    a: "About 30 days after the analysis says the numbers work. The first job is often chat or voice — missed-call recovery, speed-to-lead, booking — because that is where most SMBs leak money.",
   },
   {
-    id: "growth",
-    label: "Growth",
-    title: "Available when the first employee is earning.",
-    lede: "These lines are part of the firm. They are not the homepage headline, and they are not year-one-only work — they are ready when the map says so.",
-    jobs: [
-      {
-        title: "AI content + distribution",
-        body: "Site, YouTube, LinkedIn, and email — a planned set of 12–20 assets, written to the offer, not a promise to “post on Instagram.”",
-      },
-      {
-        title: "Grok Bot / AI-employee implementation studio",
-        body: "Design the bots, connect the tools, write the routines, train the owner, and stay on as operator.",
-      },
-      {
-        title: "White-label fulfillment",
-        body: "Other agencies keep the client relationship. We build and run the employee behind their brand.",
-      },
-      {
-        title: "CTV / OTT creative + media",
-        body: "Creative and placement through Brandzooka. A later, available line for the right account — not the hero offer.",
-      },
-    ],
+    q: "Do you only build chatbots?",
+    a: "Chat and voice are the common first job, not the whole firm. The same engagement can take revenue work, operations, reviews, content, and an implementation studio once the first hire is earning.",
+  },
+  {
+    q: "Who is this for?",
+    a: "Operators with a volume of conversations, a calendar that matters, and real numbers. Selective about clients, not locked to one industry — dental and med spa, insurance, contractors, wealth and mortgage, professional services, home services. Manufacturing and larger projects when the fit is right.",
+  },
+  {
+    q: "Can I hear an example before I pay?",
+    a: "Call Sarah at 714-613-8557. She is a live voice agent. If the conversation holds, start the paid analysis.",
   },
 ];
+
+export const heygenScript = `Hi. This is StorenTech AI in Newport Beach and Corona Del Mar. Vincent Jackson runs the firm — an Orange County operator, sixteen-plus years in business and systems, StorenTech since twenty twenty-three.
+
+We are a full-service AI agency for companies that already have work to do. The first job is often the phone and the website: missed calls, slow replies, a calendar that should have been filled. Chat and voice are how we usually start, because that is where most small businesses leak money. After that, the same firm can take revenue, operations, and growth.
+
+We start paid. An ROI analysis from a thousand dollars. If the numbers work, the first AI employee is live in about thirty days. If a company cannot pay, we do not do the work.
+
+You can hear it right now. Call Sarah at seven one four, six one three, eight five five seven. She is on the line. If the conversation holds, book the analysis. We will take it from there.`;

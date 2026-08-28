@@ -5,6 +5,11 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { nav, site } from "@/lib/site";
 
+function isCurrent(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -22,7 +27,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              aria-current={pathname === item.href ? "page" : undefined}
+              aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
             >
               {item.label}
             </Link>
@@ -49,21 +54,24 @@ export function Header() {
         </div>
       </div>
 
-      <div
-        id="mobile-nav"
-        className={`mobile-drawer wrap${open ? " open" : ""}`}
-      >
+      <div id="mobile-nav" className={`mobile-drawer wrap${open ? " open" : ""}`}>
         <nav aria-label="Mobile">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              aria-current={pathname === item.href ? "page" : undefined}
+              aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
               onClick={() => setOpen(false)}
             >
               {item.label}
             </Link>
           ))}
+          <Link href="/technology" onClick={() => setOpen(false)}>
+            Technology
+          </Link>
+          <Link href="/patterns" onClick={() => setOpen(false)}>
+            Patterns
+          </Link>
         </nav>
         <div className="mobile-actions">
           <a className="btn" href={`tel:${site.phones.sarah.tel}`}>
