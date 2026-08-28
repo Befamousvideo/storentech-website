@@ -10,10 +10,14 @@ type PageMetaInput = {
 
 export function pageMeta({ title, description, path, ogTitle }: PageMetaInput): Metadata {
   const url = path === "/" ? site.url : `${site.url}${path}`;
-  const socialTitle = ogTitle ?? title;
+  const socialTitle = ogTitle ?? (path === "/" ? `${title} · ${site.name}` : title);
+  const resolvedTitle =
+    path === "/"
+      ? { absolute: `${title} · ${site.name}` }
+      : title;
 
   return {
-    title,
+    title: resolvedTitle,
     description,
     alternates: { canonical: path },
     openGraph: {
