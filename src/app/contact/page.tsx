@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
@@ -5,9 +6,9 @@ import { pageMeta } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const metadata = pageMeta({
-  title: "Start the paid ROI analysis",
+  title: "Contact the office",
   description:
-    "Start a paid Automation ROI analysis with StorenTech AI in Corona Del Mar from $1,000, or call Sarah at 714-613-8557. No free audit.",
+    "Write StorenTech AI in Corona Del Mar, call the office at +1 714-794-9199, or call Sarah at 714-613-8557. Paid ROI analysis starts on /roi-analysis.",
   path: "/contact",
 });
 
@@ -23,14 +24,13 @@ export default function ContactPage() {
       <header className="page-hero">
         <div className="wrap">
           <p className="kicker">Contact</p>
-          <h1>Start the paid analysis.</h1>
+          <h1>Write the office.</h1>
           <hr className="rule" />
           <p className="lede">
-            Starts at {site.prices.analysisFrom}. More complex work can be higher.
-            The fee may be credited toward implementation. Tell us what is broken.
-            Call Sarah if you want to hear the first employee before you buy the
-            map. Paid from day one — if the company cannot fund the analysis, we do
-            not start.
+            For a paid ROI analysis,{" "}
+            <Link href="/roi-analysis">start the interview</Link> — it starts at{" "}
+            {site.prices.analysisFrom}. This page is for a short note to the office.
+            Call Sarah if you want to hear the first employee.
           </p>
         </div>
       </header>
@@ -60,6 +60,9 @@ export default function ContactPage() {
               <p>
                 {site.founder.name}, {site.founder.title}.
               </p>
+              <Link className="btn btn-gold" href="/roi-analysis">
+                Start the ROI Analysis
+              </Link>
             </div>
           </aside>
         </div>

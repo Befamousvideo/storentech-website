@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
-import { HeyGenBlock } from "@/components/HeyGenBlock";
+import { AvatarVideo } from "@/components/AvatarVideo";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
@@ -35,12 +35,12 @@ export default function HomePage() {
               built for the work after that.
             </p>
             <div className="btn-row">
-              <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
+              <Link className="btn btn-solid" href="/roi-analysis">
+                Start the ROI Analysis
+              </Link>
+              <a className="btn" href={`tel:${site.phones.sarah.tel}`}>
                 Call Sarah now
               </a>
-              <Link className="btn" href="/contact">
-                Start the paid analysis
-              </Link>
             </div>
             <p className="fine hero-contact">
               Office:{" "}
@@ -144,7 +144,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <HeyGenBlock />
+      <AvatarVideo />
 
       <section className="section section-tan">
         <div className="wrap">

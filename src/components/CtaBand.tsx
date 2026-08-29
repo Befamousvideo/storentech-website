@@ -17,11 +17,14 @@ export function CtaBand({
         <h2>{title}</h2>
         {lede ? <p className="lede" style={{ marginBottom: "1.6rem" }}>{lede}</p> : null}
         <div className="btn-row">
-          <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
+          <Link className="btn btn-solid" href="/roi-analysis">
+            Start the ROI Analysis
+          </Link>
+          <a className="btn" href={`tel:${site.phones.sarah.tel}`}>
             Call Sarah {site.phones.sarah.display}
           </a>
-          <Link className="btn" href="/contact">
-            Start the paid analysis
+          <Link className="btn" href="/how-it-works">
+            Get my ROI roadmap
           </Link>
         </div>
       </div>

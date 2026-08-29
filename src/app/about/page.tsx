@@ -1,5 +1,5 @@
 import { CtaBand } from "@/components/CtaBand";
-import { HeyGenBlock } from "@/components/HeyGenBlock";
+import { AvatarVideo } from "@/components/AvatarVideo";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
@@ -35,7 +35,7 @@ export default function AboutPage() {
         </div>
       </header>
 
-      <HeyGenBlock eyebrow="A minute from Vincent" />
+      <AvatarVideo eyebrow="A minute from the office" />
 
       <section className="section section-tan">
         <div className="wrap split">

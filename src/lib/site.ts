@@ -55,6 +55,7 @@ export const footerNav = [
   { href: "/how-it-works", label: "How it works" },
   { href: "/technology", label: "Technology" },
   { href: "/patterns", label: "Patterns" },
+  { href: "/roi-analysis", label: "ROI analysis" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;
@@ -133,14 +134,6 @@ export const faqs = [
   },
   {
     q: "Can I hear an example before I pay?",
-    a: "Call Sarah at 714-613-8557. She is a live voice agent. If the conversation holds, start the paid analysis.",
+    a: "Call Sarah at 714-613-8557. She is a live voice agent. If the conversation holds, start the paid ROI analysis.",
   },
 ];
-
-export const heygenScript = `Hi. This is StorenTech AI in Newport Beach and Corona Del Mar. Vincent Jackson runs the firm — an Orange County operator, sixteen-plus years in business and systems, StorenTech since twenty twenty-three.
-
-We are a full-service AI agency for companies that already have work to do. The first job is often the phone and the website: missed calls, slow replies, a calendar that should have been filled. Chat and voice are how we usually start, because that is where most small businesses leak money. After that, the same firm can take revenue, operations, and growth.
-
-We start paid. An ROI analysis from a thousand dollars. If the numbers work, the first AI employee is live in about thirty days. If a company cannot pay, we do not do the work.
-
-You can hear it right now. Call Sarah at seven one four, six one three, eight five five seven. She is on the line. If the conversation holds, book the analysis. We will take it from there.`;

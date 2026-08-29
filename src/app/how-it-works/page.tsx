@@ -52,8 +52,8 @@ export default function HowItWorksPage() {
             before you buy the map.
           </p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
-            <Link className="btn btn-solid" href="/contact">
-              Start the paid analysis
+            <Link className="btn btn-solid" href="/roi-analysis">
+              Start the ROI Analysis
             </Link>
             <a className="btn" href={`tel:${site.phones.sarah.tel}`}>
               Call Sarah first

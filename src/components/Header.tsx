@@ -38,7 +38,7 @@ export function Header() {
           <a className="btn" href={`tel:${site.phones.sarah.tel}`}>
             Call Sarah
           </a>
-          <Link className="btn btn-solid" href="/contact">
+          <Link className="btn btn-solid" href="/roi-analysis">
             Start analysis
           </Link>
           <button
@@ -77,7 +77,7 @@ export function Header() {
           <a className="btn" href={`tel:${site.phones.sarah.tel}`}>
             Call Sarah
           </a>
-          <Link className="btn btn-solid" href="/contact" onClick={() => setOpen(false)}>
+          <Link className="btn btn-solid" href="/roi-analysis" onClick={() => setOpen(false)}>
             Start analysis
           </Link>
         </div>

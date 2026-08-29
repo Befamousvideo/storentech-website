@@ -2,7 +2,7 @@
 
 Production marketing site for StorenTech AI, Vincent Jackson’s full-service AI agency in Newport Beach / Corona Del Mar.
 
-Stack: Next.js App Router, TypeScript, custom CSS. Contact form posts to `/api/inquiry` and, when set, to `INQUIRY_WEBHOOK_URL`.
+Stack: Next.js App Router, TypeScript, custom CSS. Contact form posts to `/api/inquiry`. The ROI interview posts to `/api/roi-analysis`. Both forward to `INQUIRY_WEBHOOK_URL` when set (handoff to vincent@storentech.com).
 
 ## Local
 
@@ -24,24 +24,28 @@ Open [http://localhost:3000](http://localhost:3000).
 Environment:
 
 - `NEXT_PUBLIC_SITE_URL` — public origin for metadata, sitemap, and Open Graph (default `https://storentech.com`)
-- `INQUIRY_WEBHOOK_URL` — optional. If set, each inquiry is `POST`ed as JSON (`name`, `email`, `company`, `broken`, `submittedAt`, `source`)
+- `INQUIRY_WEBHOOK_URL` — optional. Contact and `/roi-analysis` POST JSON here. If unset, the interview still completes and tells the visitor to email vincent@storentech.com or call the office.
 - `NEXT_PUBLIC_VAPI_PUBLIC_KEY` — optional. **Public key only.** Enables the Sarah web widget (assistant `9e0a6184-ccc7-49d2-9ef0-31acfac1cf59`). Leave blank to keep click-to-call only.
-- `NEXT_PUBLIC_HEYGEN_EMBED_URL` — optional iframe `src` for Vincent’s HeyGen film. Until set, `/` and `/about` show a placeholder plus the spoken script as transcript.
 
 ## Pages
 
-- `/` — hire after the math; Call Sarah; paid ROI → ~30-day employee; catalog groups; HeyGen script; FAQ
+- `/` — hire after the math; YouTube Short site avatar; Call Sarah; Start the ROI Analysis
+- `/roi-analysis` — paid onboarding interview (also `/onboard` → same)
 - `/work` — front of house, revenue, operations, growth
 - `/work/[slug]` — what it includes, who it is for, intake / build / handoff / measurement
 - `/how-it-works` — paid analysis, first hire, retainer (named monthly prices live here)
 - `/technology` — RAG, voice agents, local vs cloud, human handoff, evaluation
 - `/patterns` — illustrative composites, not testimonials
-- `/about` — Vincent Jackson, President; HeyGen script
-- `/contact` — name, email, company, what’s broken
+- `/about` — Vincent Jackson, President; same site avatar
+- `/contact` — office note (name, email, company, what’s broken)
 
-## HeyGen
+## Site avatar
 
-No embed was in the repo. Homepage and About include a placeholder plus the spoken script/transcript so it can be pasted into HeyGen. After the film exists, set `NEXT_PUBLIC_HEYGEN_EMBED_URL` to the player URL.
+The homepage and About play YouTube Short `r_YQ0j4Sg9w` in a portrait player, plus an on-page transcript. It is a site avatar film, not a live session.
+
+## ROI interview
+
+Ported from ONB1’s question flow, client-side only (no FastAPI). Welcome → new vs existing → identity → business → pain → inferred first jobs → optional scheduling → summary. Existing clients get the office line / email, no OTP. Public scheduling windows: Monday–Thursday, 10am–4pm PT. Analysis starts at **$1,000** (never $500, never free).
 
 ## Sarah / Vapi
 
@@ -76,11 +80,11 @@ Use App Hosting for a first-class Next.js backend; use Hosting + frameworks if t
 npx vercel
 ```
 
-Set `NEXT_PUBLIC_SITE_URL`, `INQUIRY_WEBHOOK_URL`, and optional `NEXT_PUBLIC_VAPI_PUBLIC_KEY` / `NEXT_PUBLIC_HEYGEN_EMBED_URL` in the Vercel project environment. Framework preset: Next.js.
+Set `NEXT_PUBLIC_SITE_URL`, `INQUIRY_WEBHOOK_URL`, and optional `NEXT_PUBLIC_VAPI_PUBLIC_KEY` in the Vercel project environment. Framework preset: Next.js.
 
 ## Offer (do not change on a whim)
 
-1. Paid Automation ROI Analysis: from $1,000; more complex work can be higher (often $2,000–$3,000). Fee may be credited toward implementation. Never free.
+1. Paid Automation ROI Analysis: from $1,000; more complex work can be higher (often $2,000–$3,000). Fee may be credited toward implementation. Never free. Never $500.
 2. First AI employee live in about 30 days if the numbers work.
 3. Retainers: around $5,000/mo AI Employee; $7,500/mo Growth. Do not turn the homepage into a price list.
 

@@ -22,7 +22,7 @@ export function Footer() {
                 {item.label}
               </Link>
             ))}
-            <Link href="/contact">Start the paid analysis</Link>
+            <Link href="/roi-analysis">Start the ROI Analysis</Link>
           </nav>
           <div className="footer-contact">
             <div>{site.location.full}</div>
