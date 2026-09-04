@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
 export const metadata = pageMeta({
   title: "Contact the office",
   description:
-    "Write StorenTech AI in Corona Del Mar, call the office at +1 714-794-9199, or call Sarah at 714-613-8557. Paid ROI analysis starts on /roi-analysis.",
+    "Write StorenTech AI in Corona Del Mar. Office +1 714-794-9199, 8:00 AM – 6:00 PM Pacific. Sarah +1 714-613-8557. Paid ROI analysis starts on /roi-analysis.",
   path: "/contact",
 });
 
@@ -30,7 +30,10 @@ export default function ContactPage() {
             For a paid ROI analysis,{" "}
             <Link href="/roi-analysis">start the interview</Link> — it starts at{" "}
             {site.prices.analysisFrom}. This page is for a short note to the office.
-            Call Sarah if you want to hear the first employee.
+            Office hours are {site.hours.office}. Bookable Zoom or in-person
+            appointments are {site.hours.appointments}. {site.hours.appointmentsNote}{" "}
+            Call Sarah at {site.phones.sarah.display} if you want to hear the first
+            employee. The office line is {site.phones.office.display}.
           </p>
         </div>
       </header>
@@ -50,6 +53,14 @@ export default function ContactPage() {
               <div>
                 <div className="kicker">Office</div>
                 <a href={`tel:${site.phones.office.tel}`}>{site.phones.office.display}</a>
+              </div>
+              <div>
+                <div className="kicker">Hours</div>
+                <p>Office {site.hours.office}.</p>
+                <p>
+                  Bookable Zoom or in person: {site.hours.appointments}.{" "}
+                  {site.hours.appointmentsNote}
+                </p>
               </div>
               <div>
                 <div className="kicker">Email</div>

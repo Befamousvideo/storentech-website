@@ -28,6 +28,8 @@ export default function RoiAnalysisPage() {
           <p className="lede">
             Starts at {site.prices.analysisFrom}. More complex work can be higher. The fee may be credited toward
             implementation. If the company cannot pay, we do not do the work. This is not a complimentary audit.
+            Office hours are {site.hours.office}. Bookable Zoom or in-person appointments are{" "}
+            {site.hours.appointments}. {site.hours.appointmentsNote}
           </p>
         </div>
       </header>

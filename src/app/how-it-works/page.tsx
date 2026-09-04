@@ -124,6 +124,14 @@ export default function HowItWorksPage() {
               pay for the map, hire in about 30 days if it earns.
             </p>
             <p>
+              The office is open {site.hours.office}. Bookable Zoom or in-person
+              appointments are {site.hours.appointments}. {site.hours.appointmentsNote}{" "}
+              Call Sarah at{" "}
+              <a href={`tel:${site.phones.sarah.tel}`}>{site.phones.sarah.display}</a>{" "}
+              for the live voice demo. The office line is{" "}
+              <a href={`tel:${site.phones.office.tel}`}>{site.phones.office.display}</a>.
+            </p>
+            <p>
               How we wire it is on <Link href="/technology">Technology</Link>. How it
               shows up in an ordinary week is on{" "}
               <Link href="/patterns">Patterns</Link> — composites, not testimonials.

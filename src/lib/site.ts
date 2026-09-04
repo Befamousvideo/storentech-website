@@ -20,7 +20,7 @@ export const site = {
   },
   phones: {
     sarah: {
-      display: "714-613-8557",
+      display: "+1 714-613-8557",
       tel: "+17146138557",
       label: "Sarah",
     },
@@ -29,6 +29,13 @@ export const site = {
       tel: "+17147949199",
       label: "Office",
     },
+  },
+  hours: {
+    office: "8:00 AM – 6:00 PM Pacific",
+    officeOpens: "08:00",
+    officeCloses: "18:00",
+    appointments: "Monday–Thursday, 10:00 AM – 4:00 PM Pacific",
+    appointmentsNote: "Other times available by special request.",
   },
   emails: {
     support: "support@StorenTech.com",
@@ -134,6 +141,10 @@ export const faqs = [
   },
   {
     q: "Can I hear an example before I pay?",
-    a: "Call Sarah at 714-613-8557. She is a live voice agent. If the conversation holds, start the paid ROI analysis.",
+    a: `Call Sarah at ${site.phones.sarah.display}. She is a live voice agent. If the conversation holds, start the paid ROI analysis.`,
+  },
+  {
+    q: "When is the office open, and when can we book?",
+    a: `Office hours are ${site.hours.office}. Bookable Zoom or in-person appointments are ${site.hours.appointments}. ${site.hours.appointmentsNote} Sarah, the live voice demo, is ${site.phones.sarah.display}. The office line is ${site.phones.office.display}.`,
   },
 ];

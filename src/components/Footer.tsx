@@ -26,6 +26,7 @@ export function Footer() {
           </nav>
           <div className="footer-contact">
             <div>{site.location.full}</div>
+            <div>Office hours {site.hours.office}</div>
             <a href={`tel:${site.phones.office.tel}`}>
               Office {site.phones.office.display}
             </a>

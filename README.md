@@ -45,11 +45,11 @@ The homepage and About play YouTube Short `r_YQ0j4Sg9w` in a portrait player, pl
 
 ## ROI interview
 
-Ported from ONB1’s question flow, client-side only (no FastAPI). Welcome → new vs existing → identity → business → pain → inferred first jobs → optional scheduling → summary. Existing clients get the office line / email, no OTP. Public scheduling windows: Monday–Thursday, 10am–4pm PT. Analysis starts at **$1,000** (never $500, never free).
+Ported from ONB1’s question flow, client-side only (no FastAPI). Welcome → new vs existing → identity → business → pain → inferred first jobs → optional scheduling → summary. Existing clients get the office line / email, no OTP. Office hours: 8:00 AM – 6:00 PM Pacific. Bookable Zoom or in-person: Monday–Thursday, 10:00 AM – 4:00 PM Pacific; other times by special request. Analysis starts at **$1,000** (never $500, never free).
 
 ## Sarah / Vapi
 
-Click-to-call `714-613-8557` is on every page. The floating web widget loads only when `NEXT_PUBLIC_VAPI_PUBLIC_KEY` is set (public key, never a private key). Assistant id is already in code.
+Click-to-call `+1 714-613-8557` is on every page. The floating web widget loads only when `NEXT_PUBLIC_VAPI_PUBLIC_KEY` is set (public key, never a private key). Assistant id is already in code.
 
 ## Firebase App Hosting (recommended on GCP)
 
@@ -88,4 +88,5 @@ Set `NEXT_PUBLIC_SITE_URL`, `INQUIRY_WEBHOOK_URL`, and optional `NEXT_PUBLIC_VAP
 2. First AI employee live in about 30 days if the numbers work.
 3. Retainers: around $5,000/mo AI Employee; $7,500/mo Growth. Do not turn the homepage into a price list.
 
-Sarah (live voice demo): 714-613-8557. Office: +1 714-794-9199.
+Sarah (live voice demo): +1 714-613-8557. Office: +1 714-794-9199.
+Office hours: 8:00 AM – 6:00 PM Pacific. Bookable appointments: Monday–Thursday, 10:00 AM – 4:00 PM Pacific. Other times by special request.

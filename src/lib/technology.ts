@@ -7,7 +7,7 @@ export const technologySections = [
   {
     id: "voice",
     title: "Voice agents — a job on the public number",
-    body: "A voice employee is telephony plus tools: calendar, CRM, SMS, a warm transfer. It has to hear through a truck cab and a noisy lobby. Sarah at 714-613-8557 is the live pattern — not a reel. Your agent gets your greeting, your rules, and a human handoff when the job is out of scope.",
+    body: "A voice employee is telephony plus tools: calendar, CRM, SMS, a warm transfer. It has to hear through a truck cab and a noisy lobby. Sarah at +1 714-613-8557 is the live pattern — not a reel. Your agent gets your greeting, your rules, and a human handoff when the job is out of scope.",
   },
   {
     id: "local-cloud",

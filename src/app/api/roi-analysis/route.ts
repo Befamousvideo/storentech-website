@@ -72,7 +72,8 @@ export async function POST(request: Request) {
       skipped: Boolean(body.skipSchedule),
       method: asString(body.scheduleMethod),
       preferredTimes: asString(body.preferredTimes),
-      windows: "Public site: Monday–Thursday, 10am–4pm PT (Sarah’s hours). OC bias for in-person.",
+      windows:
+        "Office hours: 8:00 AM – 6:00 PM Pacific. Bookable Zoom or in-person: Monday–Thursday, 10:00 AM – 4:00 PM Pacific. Other times by special request. OC bias for in-person.",
     },
     inferred: body.inferred ?? null,
   };

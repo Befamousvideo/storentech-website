@@ -41,9 +41,10 @@ export function organizationJsonLd() {
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "17:00",
+      opens: site.hours.officeOpens,
+      closes: site.hours.officeCloses,
     },
+    openingHours: "Mo-Fr 08:00-18:00",
     knowsAbout: [
       "AI automation for SMBs",
       "AI voice agents",

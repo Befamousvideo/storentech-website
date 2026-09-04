@@ -12,7 +12,7 @@ export const metadata = pageMeta({
   title: "Orange County AI agency for SMBs",
   ogTitle: "StorenTech AI — Hire an AI employee after the math",
   description:
-    "Full-service AI agency in Newport Beach and Corona Del Mar. Paid ROI analysis from $1,000. First AI employee in about 30 days if the numbers work. Call Sarah at 714-613-8557.",
+    "Full-service AI agency in Newport Beach and Corona Del Mar. Paid ROI analysis from $1,000. First AI employee in about 30 days if the numbers work. Call Sarah at +1 714-613-8557.",
   path: "/",
 });
 
@@ -45,6 +45,8 @@ export default function HomePage() {
             <p className="fine hero-contact">
               Office:{" "}
               <a href={`tel:${site.phones.office.tel}`}>{site.phones.office.display}</a>
+              {" · "}
+              {site.hours.office}
               {" · "}
               <a href={`mailto:${site.emails.vincent}`}>{site.emails.vincent}</a>
             </p>

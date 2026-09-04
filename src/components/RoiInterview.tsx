@@ -171,8 +171,9 @@ export function RoiInterview() {
         ) : null}
         {step === "schedule" ? (
           <p className="bubble assistant">
-            Optional: preferred times for the paid analysis. Public windows are Monday–Thursday, 10am–4pm Pacific —
-            Sarah’s hours. Orange County can be in person. Skip if you would rather we propose times.
+            Optional: preferred times for the paid analysis. Bookable Zoom or in-person appointments are{" "}
+            {site.hours.appointments}. {site.hours.appointmentsNote} Orange County can be in person. The office
+            line is {site.hours.office}. Skip if you would rather we propose times.
           </p>
         ) : null}
         {step === "summary" ? (
@@ -436,7 +437,7 @@ export function RoiInterview() {
               <textarea
                 value={answers.preferredTimes}
                 onChange={(e) => patch({ preferredTimes: e.target.value, skipSchedule: false })}
-                placeholder="e.g. Tuesday or Thursday, 11am–2pm PT"
+                placeholder="e.g. Tuesday or Thursday, 11:00 AM–2:00 PM Pacific"
               />
             </label>
             <div className="chips">

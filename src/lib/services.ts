@@ -90,9 +90,9 @@ export const services: Service[] = [
     h1: "An AI voice agent on the number you publish.",
     kicker: "Front of house",
     summary:
-      "Sarah is the live demo: 714-613-8557. Answer, qualify, book — on the phone, including after hours.",
+      "Sarah is the live demo: +1 714-613-8557. Answer, qualify, book — on the phone, including after hours.",
     description:
-      "AI voice agents for Orange County SMBs. Missed-call recovery, after-hours answering, and booking. Call Sarah at 714-613-8557, then a paid ROI analysis.",
+      "AI voice agents for Orange County SMBs. Missed-call recovery, after-hours answering, and booking. Call Sarah at +1 714-613-8557, then a paid ROI analysis.",
     lede: "The published number is still how a lot of work arrives. A voice employee answers it, follows your rules, and books or qualifies instead of sending everyone to voicemail.",
     forWho:
       "Shops that live on inbound calls: home services, dental and med spa, insurance, anyone whose after-hours voicemail is a quiet leak.",
