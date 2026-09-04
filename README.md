@@ -25,7 +25,7 @@ Environment:
 
 - `NEXT_PUBLIC_SITE_URL` — public origin for metadata, sitemap, and Open Graph (default `https://storentech.com`)
 - `INQUIRY_WEBHOOK_URL` — optional. Contact and `/roi-analysis` POST JSON here. If unset, the interview still completes and tells the visitor to email vincent@storentech.com or call the office.
-- `NEXT_PUBLIC_VAPI_PUBLIC_KEY` — optional. **Public key only.** Enables the Sarah web widget (assistant `9e0a6184-ccc7-49d2-9ef0-31acfac1cf59`). Leave blank to keep click-to-call only.
+- `NEXT_PUBLIC_VAPI_PUBLIC_KEY` — optional. **Public key only — never a private/secret key, and never commit the real value.** Enables the Sarah web widget (assistant `9e0a6184-ccc7-49d2-9ef0-31acfac1cf59`). Leave blank to keep click-to-call only. Next.js inlines `NEXT_PUBLIC_*` at **build** time, so changing the env without a redeploy will not turn the widget on.
 
 ## Pages
 
@@ -49,7 +49,13 @@ Ported from ONB1’s question flow, client-side only (no FastAPI). Welcome → n
 
 ## Sarah / Vapi
 
-Click-to-call `+1 714-613-8557` is on every page. The floating web widget loads only when `NEXT_PUBLIC_VAPI_PUBLIC_KEY` is set (public key, never a private key). Assistant id is already in code.
+Click-to-call `+1 714-613-8557` is on every page. The floating web widget is mounted in the root layout and loads only when `NEXT_PUBLIC_VAPI_PUBLIC_KEY` is set at build time (public key, never a private key). Assistant id `9e0a6184-ccc7-49d2-9ef0-31acfac1cf59` is already in `src/lib/site.ts`.
+
+To turn the widget on for preview and production:
+
+1. Copy `.env.example` to `.env.local` for local work. Leave `NEXT_PUBLIC_VAPI_PUBLIC_KEY=` blank in git; put the real public key only in local env or the host.
+2. In **Vercel**, add `NEXT_PUBLIC_VAPI_PUBLIC_KEY` for **Preview** and **Production**, then **redeploy** both. Next.js inlines `NEXT_PUBLIC_*` at build, so a new deploy is required after the env is set.
+3. In the **Vapi dashboard**, lock that public key’s allowed origins to `https://storentech.com` and `https://storentechai.com`. Add the current Vercel preview host if you want the widget on preview. Do this once the site is live so the key cannot be used from random origins.
 
 ## Firebase App Hosting (recommended on GCP)
 
@@ -58,7 +64,7 @@ Region: **us-west1**.
 1. Copy `.firebaserc.example.json` to `.firebaserc` and put in the Firebase project id.
 2. Install the Firebase CLI and log in: `npm i -g firebase-tools && firebase login`
 3. Create an App Hosting backend in us-west1, connected to this repo.
-4. Set secrets in the backend (`INQUIRY_WEBHOOK_URL` if you use the form webhook). `apphosting.yaml` already declares `NEXT_PUBLIC_SITE_URL`.
+4. Set secrets in the backend (`INQUIRY_WEBHOOK_URL` if you use the form webhook; `NEXT_PUBLIC_VAPI_PUBLIC_KEY` to enable the Sarah widget). `apphosting.yaml` already declares `NEXT_PUBLIC_SITE_URL`. `NEXT_PUBLIC_*` is inlined at Next.js build time — add the secret, then rebuild.
 5. Deploy from CI or `firebase deploy --only apphosting`
 
 `apphosting.yaml` is the App Hosting run config. Do not put secrets in that file.
@@ -80,7 +86,7 @@ Use App Hosting for a first-class Next.js backend; use Hosting + frameworks if t
 npx vercel
 ```
 
-Set `NEXT_PUBLIC_SITE_URL`, `INQUIRY_WEBHOOK_URL`, and optional `NEXT_PUBLIC_VAPI_PUBLIC_KEY` in the Vercel project environment. Framework preset: Next.js.
+Set `NEXT_PUBLIC_SITE_URL`, `INQUIRY_WEBHOOK_URL`, and `NEXT_PUBLIC_VAPI_PUBLIC_KEY` in the Vercel project for **Preview** and **Production**, then redeploy. Framework preset: Next.js. Public key only — never paste a private Vapi key into Vercel or into this repo.
 
 ## Offer (do not change on a whim)
 
