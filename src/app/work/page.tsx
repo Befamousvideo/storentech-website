@@ -1,17 +1,27 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { retainers, site, workGroups } from "@/lib/site";
+import { CtaBand } from "@/components/CtaBand";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { pageMeta } from "@/lib/seo";
+import { serviceGroups, servicesByGroup } from "@/lib/services";
+import { retainers, site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Work",
+export const metadata = pageMeta({
+  title: "AI employees for SMBs — chat, voice, ops, and growth",
   description:
-    "The jobs StorenTech hires AI employees to do: front of house, revenue, operations, and growth. Chat and voice are the common first hire — not the whole firm.",
-  alternates: { canonical: "/work" },
-};
+    "StorenTech AI work: website chat, voice agents, speed-to-lead, SDR, fractional ops, command center, HR screening, reviews, content, and CTV. Orange County.",
+  path: "/work",
+});
 
 export default function WorkPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Work", path: "/work" },
+        ])}
+      />
       <header className="page-hero">
         <div className="wrap">
           <p className="kicker">Work</p>
@@ -21,14 +31,16 @@ export default function WorkPage() {
           </h1>
           <hr className="rule" />
           <p className="lede">
-            Chatbots and voice agents are the common first job because almost every
-            SMB has pain there. They are the wedge. The catalog below is the firm:
-            revenue, operations, and growth — named employees, named outcomes.
+            Chat and voice are the common first job because almost every SMB has
+            pain there. They are the wedge. Open any job for what it includes, how
+            it is built, who it is for, and how we measure it. Then{" "}
+            <Link href="/how-it-works">the commercial path</Link>: paid ROI analysis,
+            first employee in about 30 days, retainer.
           </p>
         </div>
       </header>
 
-      {workGroups.map((group, index) => (
+      {serviceGroups.map((group, index) => (
         <section
           key={group.id}
           id={group.id}
@@ -41,11 +53,16 @@ export default function WorkPage() {
                 <h2>{group.title}</h2>
                 <p className="lede">{group.lede}</p>
               </div>
-              <div className={`job-grid${group.jobs.length === 3 ? "" : " two"}`}>
-                {group.jobs.map((job) => (
-                  <article className="card" key={job.title}>
-                    <h3>{job.title}</h3>
-                    <p>{job.body}</p>
+              <div className={`job-grid${servicesByGroup(group.id).length === 3 ? "" : " two"}`}>
+                {servicesByGroup(group.id).map((job) => (
+                  <article className="card" key={job.slug}>
+                    <h3>
+                      <Link href={`/work/${job.slug}`}>{job.title}</Link>
+                    </h3>
+                    <p>{job.summary}</p>
+                    <p className="fine" style={{ marginTop: "0.9rem" }}>
+                      <Link href={`/work/${job.slug}`}>What it includes</Link>
+                    </p>
                   </article>
                 ))}
               </div>
@@ -54,7 +71,7 @@ export default function WorkPage() {
         </section>
       ))}
 
-      <section className="section" id="retainers">
+      <section className="section">
         <div className="wrap">
           <div className="section-head">
             <div>
@@ -62,9 +79,10 @@ export default function WorkPage() {
               <h2>Stay on as operator once it is earning.</h2>
             </div>
             <p className="lede">
-              {site.prices.employee}/mo AI Employee. {site.prices.growth}/mo
-              Growth. The path is the same: paid map, first hire, then a named
-              monthly employee.
+              Around {site.prices.employee}/mo for one named employee.{" "}
+              {site.prices.growth}/mo Growth. Same path: paid map, first hire, then
+              a monthly employee. See{" "}
+              <Link href="/how-it-works">How it works</Link>.
             </p>
           </div>
           <div className="card-grid-2">
@@ -84,20 +102,10 @@ export default function WorkPage() {
         </div>
       </section>
 
-      <section className="section section-tan cta-band">
-        <div className="wrap">
-          <p className="kicker">Start</p>
-          <h2>Hear the first employee. Then pay for the map.</h2>
-          <div className="btn-row" style={{ marginTop: "1.5rem" }}>
-            <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
-              Call Sarah {site.phones.sarah.display}
-            </a>
-            <Link className="btn" href="/contact">
-              Start the paid analysis
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaBand
+        kicker="Start"
+        title="Hear the first employee. Then pay for the map."
+      />
     </>
   );
 }

@@ -19,4 +19,7 @@ env:
     availability:
       - BUILD
       - RUNTIME
-  # Set INQUIRY_WEBHOOK_URL as a secret in the App Hosting backend, not in this file.
+  # Set these as secrets in the App Hosting backend — never commit values:
+  #   INQUIRY_WEBHOOK_URL
+  #   NEXT_PUBLIC_VAPI_PUBLIC_KEY  (public key only; origin-restrict in Vapi)
+  # NEXT_PUBLIC_* is inlined at Next.js build time; add the secret, then rebuild.

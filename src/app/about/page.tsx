@@ -1,16 +1,26 @@
-import type { Metadata } from "next";
+import { CtaBand } from "@/components/CtaBand";
+import { AvatarVideo } from "@/components/AvatarVideo";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { pageMeta } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "About",
+export const metadata = pageMeta({
+  title: "Vincent Jackson — Orange County operator, StorenTech AI",
   description:
-    "Vincent Jackson, President of StorenTech AI — a full-service AI agency in Corona Del Mar. Orange County operator and technical specialist. StorenTech AI since 2023.",
-  alternates: { canonical: "/about" },
-};
+    "Vincent Jackson, President of StorenTech AI in Corona Del Mar. Orange County operator, 16+ years in business and systems, StorenTech AI since 2023.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
       <header className="page-hero">
         <div className="wrap">
           <p className="kicker">About</p>
@@ -19,14 +29,15 @@ export default function AboutPage() {
           </h1>
           <hr className="rule" />
           <p className="lede">
-            Orange County operator and technical specialist. Sixteen-plus years
-            solving messy business-tech for people who have a company to run.
-            StorenTech AI since 2023.
+            Orange County operator. Sixteen-plus years in business and systems for
+            people who have a company to run. StorenTech AI since 2023.
           </p>
         </div>
       </header>
 
-      <section className="section">
+      <AvatarVideo eyebrow="A minute from the office" />
+
+      <section className="section section-tan">
         <div className="wrap split">
           <div>
             <p className="kicker">The firm</p>
@@ -55,7 +66,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section section-tan">
+      <section className="section">
         <div className="wrap split">
           <div>
             <p className="kicker">How we choose</p>
@@ -74,12 +85,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section-tan">
         <div className="wrap">
           <div className="stats">
             <div className="stat">
               <strong>16+</strong>
-              <span>Years on messy business-tech</span>
+              <span>Years in business and systems</span>
             </div>
             <div className="stat">
               <strong>2023</strong>
@@ -92,6 +103,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <CtaBand />
     </>
   );
 }

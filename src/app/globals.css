@@ -771,6 +771,278 @@ select {
   margin: 0.2rem 0 1.1rem;
 }
 
+.faq-title {
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  margin: 0.7rem 0 2.2rem;
+}
+
+.faq-list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line-strong);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--line-strong);
+  padding: 1.15rem 0;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item p {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  max-width: 46rem;
+}
+
+.notice {
+  border: 1px solid var(--line-strong);
+  padding: 1rem 1.15rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  max-width: 46rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.copy-wide {
+  max-width: 42rem;
+}
+
+.copy-wide h2 {
+  font-size: 1.85rem;
+  margin: 2.1rem 0 0.7rem;
+}
+
+.copy-wide p {
+  color: var(--muted);
+}
+
+.avatar-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 2.4rem;
+}
+
+.avatar-frame {
+  width: min(100%, 280px);
+  aspect-ratio: 9 / 16;
+  background: var(--navy);
+  justify-self: end;
+}
+
+.avatar-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.interview {
+  padding-bottom: 3rem;
+}
+
+.interview-progress {
+  height: 2px;
+  background: var(--line-strong);
+  margin-bottom: 0.55rem;
+}
+
+.interview-progress span {
+  display: block;
+  height: 100%;
+  background: var(--gold);
+}
+
+.interview-meta {
+  margin-bottom: 1.4rem;
+}
+
+.bubbles {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1.4rem;
+}
+
+.bubble {
+  max-width: 36rem;
+  padding: 0.95rem 1.05rem;
+  font-size: 1rem;
+}
+
+.bubble.assistant {
+  background: var(--cream-card);
+  border: 1px solid var(--line-strong);
+  justify-self: start;
+}
+
+.bubble.user {
+  background: var(--navy);
+  color: var(--cream);
+  justify-self: end;
+}
+
+.infer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.infer-list li {
+  border: 1px solid var(--line-strong);
+  padding: 0.85rem 1rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.infer-list span {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.composer {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--navy);
+  background: transparent;
+  color: var(--navy);
+  padding: 0.7rem 0.95rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.chip-solid,
+.chip-on {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.step-form {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.step-form label,
+.step-form legend {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.step-form label {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.step-form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.step-form input,
+.step-form textarea {
+  width: 100%;
+  background: var(--cream-card);
+  border: 1px solid var(--line-strong);
+  color: var(--navy);
+  padding: 0.85rem 0.9rem;
+  border-radius: 0;
+}
+
+.step-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.optional {
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-size: 0.65rem;
+}
+
+.brief {
+  margin: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.brief dt {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.brief dd {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+}
+
+.end-now {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--gold);
+  cursor: pointer;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  justify-self: start;
+}
+
+.transcript {
+  margin: 0;
+  padding: 2rem 0 0;
+  max-width: 46rem;
+}
+
+.transcript .kicker {
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.transcript p + p {
+  margin-top: 1rem;
+}
+
+.transcript p {
+  color: var(--muted);
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -839,9 +1111,15 @@ select {
   .section-head,
   .split,
   .contact-grid,
-  .footer-grid {
+  .footer-grid,
+  .avatar-grid,
+  .detail-grid {
     grid-template-columns: 1fr;
     gap: 28px;
+  }
+
+  .avatar-frame {
+    justify-self: start;
   }
 
   .card-grid-3,

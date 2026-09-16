@@ -41,7 +41,7 @@ export function ContactForm() {
       }
 
       setStatus("ok");
-      setMessage("Received. We will reply from the office — this is the start of a paid analysis, not a complimentary audit.");
+      setMessage("Received. We will reply from the office.");
       form.reset();
     } catch {
       setStatus("error");
@@ -80,7 +80,7 @@ export function ContactForm() {
         />
       </div>
       <button className="btn btn-solid" type="submit" disabled={status === "sending"}>
-        {status === "sending" ? "Sending" : "Start the paid analysis"}
+        {status === "sending" ? "Sending" : "Send to the office"}
       </button>
       {message ? (
         <p className={`form-status${status === "ok" ? " ok" : ""}`} role="status">
