@@ -676,6 +676,32 @@ select {
   margin-top: 1.4rem;
 }
 
+.pay-card h2 {
+  font-size: 2rem;
+  margin: 0.55rem 0 0.85rem;
+}
+
+.pay-card > p {
+  color: var(--muted);
+  max-width: 38rem;
+}
+
+.stripe-checkout {
+  display: grid;
+  justify-items: start;
+  gap: 1.1rem;
+  margin-top: 1.6rem;
+}
+
+.stripe-checkout stripe-buy-button {
+  display: block;
+  min-height: 48px;
+}
+
+.stripe-fallback {
+  max-width: 38rem;
+}
+
 /* Footer */
 .site-footer {
   background: var(--navy);

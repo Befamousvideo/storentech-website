@@ -42,7 +42,7 @@ export default function HowItWorksPage() {
             work before you buy the map.
           </p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
-            <Link className="btn btn-solid" href="/contact">
+            <Link className="btn btn-solid" href="/pay">
               Start the paid analysis
             </Link>
             <a className="btn" href={`tel:${site.phones.sarah.tel}`}>

@@ -52,6 +52,11 @@ export const site = {
     employee: "$5,000",
     growth: "$7,500",
   },
+  stripe: {
+    paymentLink: "https://buy.stripe.com/6oU14ngeE5w1a8wd7RdjO00",
+    buyButtonId: "buy_btn_1UHuTeEoNpFJRrn2Vj3FqSGh",
+    publishableKey: "pk_live_Voqdkb8zF0gMerJrULt7cyH9",
+  },
 } as const;
 
 export const nav = [

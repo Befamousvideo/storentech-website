@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/lib/site";
 
@@ -19,9 +20,18 @@ export default function ContactPage() {
           <hr className="rule" />
           <p className="lede">
             Typical fee {site.prices.analysisTypical}. {site.prices.analysisComplex}{" "}
-            when the operation is complex. Tell us what is broken. Call Sarah if
-            you want to hear the first employee before you buy the map.
+            when the operation is complex. Pay the typical analysis, or send a
+            brief here if the operation is complex. Call Sarah if you want to
+            hear the first employee before you buy the map.
           </p>
+          <div className="btn-row" style={{ marginTop: "1.7rem" }}>
+            <Link className="btn btn-solid" href="/pay">
+              Pay {site.prices.analysisTypical}
+            </Link>
+            <a className="btn" href={`tel:${site.phones.sarah.tel}`}>
+              Call Sarah first
+            </a>
+          </div>
         </div>
       </header>
 
