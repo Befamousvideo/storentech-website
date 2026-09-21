@@ -1,8 +1,9 @@
+import type { ReactNode } from "react";
 import { site } from "@/lib/site";
 
 type IntakeLinkProps = {
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   onClick?: () => void;
 };
 
