@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { IntakeLink } from "@/components/IntakeLink";
+import { SarahPhoneImage } from "@/components/SarahContact";
 import { site } from "@/lib/site";
 import type { BlogPost } from "@/lib/blog";
-
-function CallSarah({ className }: { className?: string }) {
-  return <span className={className}>Call Sarah</span>;
-}
 
 export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
   return (
@@ -219,7 +216,7 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
         <ol>
           <li>
             <strong>Hear the work live</strong> — call <strong>Sarah</strong>{" "}
-            (voice demo): <CallSarah />
+            (voice demo): <SarahPhoneImage />
           </li>
           <li>
             <IntakeLink>
@@ -248,7 +245,7 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
             <IntakeLink className="btn btn-solid">
               Start the paid analysis
             </IntakeLink>
-            <CallSarah className="btn" />
+            <SarahPhoneImage className="sarah-phone" />
             <Link className="btn" href="/how-it-works">
               How it works
             </Link>
