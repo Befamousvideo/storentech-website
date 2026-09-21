@@ -28,6 +28,10 @@ export const site = {
       "After the map, we build what pays — may include voice, website chat, other ops. Implementation ≠ the $1k product.",
     capacity:
       "Automation here is about 10× what your people can ship — more human touch with customers, humans out front where they shine. Not fewer jobs.",
+    toward:
+      "AI does the grind humans hate; humans do what AI can’t. More touch, 10×, a calmer office.",
+    services:
+      "Map leaks first. Then build what pays — people still in the loop, out front with customers.",
   },
   founder: {
     name: "Vincent Jackson",
@@ -152,7 +156,7 @@ export const workGroups: WorkGroup[] = [
       },
       {
         title: "Website chat + voice",
-        body: "The same coverage on the number you publish and the site you already have. Humans stay out front. AI takes the after-hours grind.",
+        body: "The same coverage on the number you publish and the site you already have. AI does the grind humans hate. Humans stay out front with customers.",
       },
       {
         title: "Booking / appointment setting",
@@ -164,7 +168,7 @@ export const workGroups: WorkGroup[] = [
     id: "revenue",
     label: "Revenue",
     title: "Named pipeline work. Booked meetings, not a lead dump.",
-    lede: "Once the front door holds, the next build works the follow-up that operators never quite staff.",
+    lede: "Once the front door holds, the next build works the follow-up grind that never quite gets finished.",
     jobs: [
       {
         title: "AI SDR / appointment-setter pod",
@@ -212,7 +216,7 @@ export const workGroups: WorkGroup[] = [
       },
       {
         title: "Implementation studio",
-        body: "Design the workflows, connect the tools, write the routines, train the owner, and stay on as operator. Humans in the loop. AI on the grind.",
+        body: "Design the workflows, connect the tools, write the routines, train the owner, and stay on as operator. Humans in the loop. AI does the grind humans hate; humans do what AI can’t.",
       },
       {
         title: "White-label fulfillment",

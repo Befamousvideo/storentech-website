@@ -5,7 +5,7 @@ import { retainers, site, workGroups } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "The grind StorenTech puts AI on: front of house, revenue, operations, and growth. Humans stay in the loop. The door is a paid Automation ROI Analysis.",
+    "Map leaks first. Then build what pays — people still in the loop, out front with customers. Front of house, revenue, operations, and growth.",
   alternates: { canonical: "/work" },
 };
 
@@ -21,8 +21,7 @@ export default function WorkPage() {
           </h1>
           <hr className="rule" />
           <p className="lede">
-            {site.offer.capacity} The catalog below is the firm: revenue,
-            operations, and growth — named outcomes, humans out front.
+            {site.offer.services} {site.offer.capacity}
           </p>
         </div>
       </header>
@@ -62,8 +61,8 @@ export default function WorkPage() {
             </div>
             <p className="lede">
               {site.prices.employee}/mo Capacity. {site.prices.growth}/mo
-              Growth. The path is the same: paid map, then 10× production with
-              humans in the loop.
+              Growth. The path is the same: paid map, then 10× production —
+              humans in the loop, a calmer office.
             </p>
           </div>
           <div className="card-grid-2">

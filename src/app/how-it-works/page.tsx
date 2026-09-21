@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "How it works",
   description:
-    "Paid Automation ROI Analysis first: a written map of time, revenue, and risk leaks. After the map, AI takes the grind and humans stay in the loop.",
+    "Paid Automation ROI Analysis first: a written map of time, revenue, and risk leaks. Map leaks first. Then build what pays — people still in the loop, out front with customers.",
   alternates: { canonical: "/how-it-works" },
 };
 
@@ -18,7 +18,7 @@ const moves = [
   {
     n: "02",
     title: "After the map, build what pays",
-    body: "If the numbers work, we put AI on the grind and keep humans in the loop — more output with the people you have. Implementation is not the $1k product. Voice, website chat, or other ops may come later, when the map says so.",
+    body: "If the numbers work, AI does the grind humans hate and humans stay in the loop — more touch, 10×, a calmer office. Implementation is not the $1k product. Voice, website chat, or other ops may come later, when the map says so.",
   },
   {
     n: "03",
@@ -36,9 +36,9 @@ export default function HowItWorksPage() {
           <h1>Pay for the map. Then we build what pays.</h1>
           <hr className="rule" />
           <p className="lede">
-            The door is a paid Automation ROI Analysis. After the map, AI takes
-            the grind and humans stay out front. {site.offer.capacity} Call
-            Sarah if you want to talk before you buy the map.
+            The door is a paid Automation ROI Analysis. {site.offer.services}{" "}
+            {site.offer.capacity} Call Sarah if you want to talk before you buy
+            the map.
           </p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
             <Link className="btn btn-solid" href="/contact">
@@ -81,8 +81,8 @@ export default function HowItWorksPage() {
             <p>
               The analysis prices the first build against your real numbers —
               conversation volume, close rate, after-hours leakage, owner time.
-              Humans stay in the loop. AI takes the grind. We stay on as
-              operator.
+              Humans stay in the loop. AI does the grind humans hate; humans
+              do what AI can’t. We stay on as operator.
             </p>
             <p>
               Proof is process, not a case-study reel: call Sarah at{" "}

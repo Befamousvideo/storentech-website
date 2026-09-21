@@ -39,8 +39,8 @@ export default function AboutPage() {
             <p>
               StorenTech is a full-service AI agency and a private firm in Corona
               Del Mar. The front door is a paid Automation ROI Analysis. After
-              the map, AI takes the grind and humans stay in the loop — more
-              capacity, not fewer people.
+              the map, AI does the grind humans hate; humans do what AI can’t —
+              more touch, 10×, a calmer office.
             </p>
             <p>
               The office is at {site.location.full}. Call{" "}
