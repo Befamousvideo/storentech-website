@@ -26,11 +26,8 @@ export function Footer() {
           </nav>
           <div className="footer-contact">
             <div>{site.location.full}</div>
-            <a href={`tel:${site.phones.office.tel}`}>
-              Office {site.phones.office.display}
-            </a>
             <a href={`tel:${site.phones.sarah.tel}`}>
-              Sarah {site.phones.sarah.display}
+              {site.phones.sarah.label} {site.phones.sarah.display}
             </a>
             <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a>
             <a href={`mailto:${site.emails.vincent}`}>{site.emails.vincent}</a>

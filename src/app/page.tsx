@@ -26,8 +26,8 @@ export default function HomePage() {
               </Link>
             </div>
             <p className="fine hero-contact">
-              Office:{" "}
-              <a href={`tel:${site.phones.office.tel}`}>{site.phones.office.display}</a>
+              {site.phones.sarah.label}:{" "}
+              <a href={`tel:${site.phones.sarah.tel}`}>{site.phones.sarah.display}</a>
               {" · "}
               <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a>
             </p>

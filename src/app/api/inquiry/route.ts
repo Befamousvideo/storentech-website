@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { site } from "@/lib/site";
 
 type Inquiry = {
   name?: unknown;
@@ -59,13 +60,13 @@ export async function POST(request: Request) {
       });
       if (!response.ok) {
         return NextResponse.json(
-          { ok: false, error: "The office did not receive this. Call +1 714-794-9199." },
+          { ok: false, error: `The office did not receive this. Call ${site.phones.sarah.display}.` },
           { status: 502 },
         );
       }
     } catch {
       return NextResponse.json(
-        { ok: false, error: "The office did not receive this. Call +1 714-794-9199." },
+        { ok: false, error: `The office did not receive this. Call ${site.phones.sarah.display}.` },
         { status: 502 },
       );
     }

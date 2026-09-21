@@ -71,4 +71,4 @@ Set `NEXT_PUBLIC_SITE_URL` and `INQUIRY_WEBHOOK_URL` in the Vercel project envir
 2. First AI employee live in 30 days if the numbers work.
 3. Retainers: $5,000/mo AI Employee; $7,500/mo Growth.
 
-Sarah (live voice demo): 714-613-8557. Office: +1 714-794-9199.
+Public contact / footer phone (Sarah): +1 714-613-8557 (`tel:+17146138557`).

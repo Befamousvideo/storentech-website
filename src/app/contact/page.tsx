@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Start a paid Automation ROI Analysis with StorenTech AI in Corona Del Mar, or call Sarah at 714-613-8557.",
+    "Start a paid Automation ROI Analysis with StorenTech AI in Corona Del Mar, or call Sarah at +1 714-613-8557.",
   alternates: { canonical: "/contact" },
 };
 
@@ -34,12 +34,8 @@ export default function ContactPage() {
             <p>{site.location.full}</p>
             <div className="stack">
               <div>
-                <div className="kicker">Sarah</div>
+                <div className="kicker">{site.phones.sarah.label}</div>
                 <a href={`tel:${site.phones.sarah.tel}`}>{site.phones.sarah.display}</a>
-              </div>
-              <div>
-                <div className="kicker">Office</div>
-                <a href={`tel:${site.phones.office.tel}`}>{site.phones.office.display}</a>
               </div>
               <div>
                 <div className="kicker">Email</div>

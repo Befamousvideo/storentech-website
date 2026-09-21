@@ -32,14 +32,16 @@ export const site = {
   },
   phones: {
     sarah: {
-      display: "714-613-8557",
+      display: "+1 714-613-8557",
       tel: "+17146138557",
       label: "Sarah",
     },
+    // Public contact / footer phone is Sarah (Vapi). Kept as `office`
+    // so older call sites stay pointed at the same published number.
     office: {
-      display: "+1 714-794-9199",
-      tel: "+17147949199",
-      label: "Office",
+      display: "+1 714-613-8557",
+      tel: "+17146138557",
+      label: "Sarah",
     },
   },
   emails: {
@@ -133,7 +135,7 @@ export const workGroups: WorkGroup[] = [
       },
       {
         title: "Website chat + voice",
-        body: "The same employee on the number you publish and the site you already have. Sarah is the live demo — 714-613-8557 — handling the first jobs an AI employee actually does.",
+        body: `The same employee on the number you publish and the site you already have. Sarah is the live demo — ${site.phones.sarah.display} — handling the first jobs an AI employee actually does.`,
       },
       {
         title: "Booking / appointment setting",

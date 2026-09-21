@@ -46,8 +46,9 @@ export default function AboutPage() {
               the problem once the numbers work.
             </p>
             <p>
-              The office is at {site.location.full}. Call the office at{" "}
-              <a href={`tel:${site.phones.office.tel}`}>{site.phones.office.display}</a>
+              The office is at {site.location.full}. Call{" "}
+              {site.phones.sarah.label} at{" "}
+              <a href={`tel:${site.phones.sarah.tel}`}>{site.phones.sarah.display}</a>
               , or write{" "}
               <a href={`mailto:${site.emails.vincent}`}>{site.emails.vincent}</a>.
             </p>

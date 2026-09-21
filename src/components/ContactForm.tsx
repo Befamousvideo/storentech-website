@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { site } from "@/lib/site";
 
 type Status = "idle" | "sending" | "ok" | "error";
 
@@ -46,7 +47,7 @@ export function ContactForm() {
     } catch {
       setStatus("error");
       setMessage(
-        "The form did not send. Call the office at +1 714-794-9199 or write support@StorenTech.com.",
+        `The form did not send. Call ${site.phones.sarah.label} at ${site.phones.sarah.display} or write ${site.emails.support}.`,
       );
     }
   }
