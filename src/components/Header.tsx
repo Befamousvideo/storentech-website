@@ -8,6 +8,10 @@ import { IntakeLink } from "@/components/IntakeLink";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { nav } from "@/lib/site";
 
+function isCurrent(pathname: string, href: string) {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function Header({ slim = false }: { slim?: boolean }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -30,7 +34,7 @@ export function Header({ slim = false }: { slim?: boolean }) {
               <Link
                 key={item.href}
                 href={item.href}
-                aria-current={pathname === item.href ? "page" : undefined}
+                aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
               >
                 {item.label}
               </Link>
@@ -66,7 +70,7 @@ export function Header({ slim = false }: { slim?: boolean }) {
               <Link
                 key={item.href}
                 href={item.href}
-                aria-current={pathname === item.href ? "page" : undefined}
+                aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
                 onClick={() => setOpen(false)}
               >
                 {item.label}

@@ -865,6 +865,140 @@ select {
   border: 0;
 }
 
+/* Blog */
+.blog-hero h1 {
+  max-width: 22ch;
+}
+
+.blog-hero .kicker a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.blog-prose {
+  padding-bottom: 5.5rem;
+}
+
+.blog-prose h2 {
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  margin: 2.8rem 0 1rem;
+}
+
+.blog-prose h3 {
+  font-size: 1.25rem;
+  margin: 0 0 0.55rem;
+}
+
+.blog-prose p,
+.blog-prose li {
+  color: var(--muted);
+}
+
+.blog-prose p + p {
+  margin-top: 1.1rem;
+}
+
+.blog-prose a {
+  color: var(--navy);
+}
+
+.blog-lead {
+  font-size: 1.08rem;
+  margin-bottom: 0.4rem;
+}
+
+.blog-lead p {
+  color: var(--text);
+}
+
+.blog-prose ul,
+.blog-prose ol {
+  margin: 1rem 0 1.2rem;
+  padding-left: 1.2rem;
+}
+
+.blog-prose li + li {
+  margin-top: 0.55rem;
+}
+
+.blog-prose li ul {
+  margin: 0.7rem 0 0;
+}
+
+.blog-table-wrap {
+  overflow-x: auto;
+  margin: 1.4rem 0 1.6rem;
+}
+
+.blog-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.blog-table th,
+.blog-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.85rem 0.9rem 0.85rem 0;
+  border-bottom: 1px solid var(--line-strong);
+  color: var(--muted);
+}
+
+.blog-table th {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.blog-faq {
+  margin-top: 3.2rem;
+}
+
+.faq-item {
+  padding: 1.35rem 0;
+  border-top: 1px solid var(--line-strong);
+}
+
+.faq-item:last-child {
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.blog-cta {
+  margin-top: 3.4rem;
+  padding: 2.2rem 0 0;
+}
+
+.blog-index {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.blog-index-card {
+  background: var(--cream-card);
+  border: 1px solid var(--line-strong);
+  padding: 1.85rem 1.7rem 1.75rem;
+  max-width: 46rem;
+}
+
+.blog-index-card h2 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  margin: 0.7rem 0 0.9rem;
+}
+
+.blog-index-card h2 a {
+  text-decoration: none;
+}
+
+.blog-index-card p {
+  color: var(--muted);
+}
+
+.blog-index-card p + p {
+  margin-top: 1.1rem;
+}
+
 @media (max-width: 980px) {
   :root {
     --header-h: 76px;
