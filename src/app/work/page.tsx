@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IntakeLink } from "@/components/IntakeLink";
+import { SarahPhoneImage } from "@/components/SarahContact";
 import { retainers, site, workGroups } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -87,9 +88,7 @@ export default function WorkPage() {
           <p className="kicker">Start</p>
           <h2>Pay for the map. Then we build what pays.</h2>
           <div className="btn-row" style={{ marginTop: "1.5rem" }}>
-            <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
-              Call Sarah
-            </a>
+            <SarahPhoneImage className="sarah-phone" />
             <IntakeLink className="btn">Start the paid analysis</IntakeLink>
           </div>
         </div>

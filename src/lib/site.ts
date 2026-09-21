@@ -62,16 +62,10 @@ export const site = {
   },
   phones: {
     sarah: {
-      // Visible number is public/sarah-phone.png only. Never render digits.
-      tel: "+17146138557",
+      // Visible number is public/sarah-phone.png only. Never render
+      // digits or contact addresses in marketing DOM or page source.
       label: "Sarah",
       image: "/sarah-phone.png",
-    },
-    // Public contact / footer phone is Sarah. Kept as `office`
-    // so older call sites stay pointed at the same published number.
-    office: {
-      tel: "+17146138557",
-      label: "Sarah",
     },
   },
   contactCopy: {

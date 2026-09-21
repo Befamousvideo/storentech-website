@@ -193,6 +193,10 @@ select {
   gap: 10px;
 }
 
+.header-sarah-phone {
+  width: min(100%, 10.5rem);
+}
+
 .menu-toggle {
   display: none;
   background: transparent;
@@ -879,7 +883,8 @@ select {
     display: none;
   }
 
-  .header-actions .btn {
+  .header-actions .btn,
+  .header-actions .header-sarah-phone {
     display: none;
   }
 

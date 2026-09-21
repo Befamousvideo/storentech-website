@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { IntakeLink } from "@/components/IntakeLink";
-import { nav, site } from "@/lib/site";
+import { SarahPhoneImage } from "@/components/SarahContact";
+import { nav } from "@/lib/site";
 
 export function Header({ slim = false }: { slim?: boolean }) {
   const pathname = usePathname();
@@ -39,9 +40,7 @@ export function Header({ slim = false }: { slim?: boolean }) {
 
         {slim ? null : (
           <div className="header-actions">
-            <a className="btn" href={`tel:${site.phones.sarah.tel}`}>
-              Call Sarah
-            </a>
+            <SarahPhoneImage className="sarah-phone header-sarah-phone" />
             <IntakeLink className="btn btn-solid">Start analysis</IntakeLink>
             <button
               className="menu-toggle"
@@ -75,9 +74,7 @@ export function Header({ slim = false }: { slim?: boolean }) {
             ))}
           </nav>
           <div className="mobile-actions">
-            <a className="btn" href={`tel:${site.phones.sarah.tel}`}>
-              Call Sarah
-            </a>
+            <SarahPhoneImage className="sarah-phone header-sarah-phone" />
             <IntakeLink className="btn btn-solid" onClick={() => setOpen(false)}>
               Start analysis
             </IntakeLink>

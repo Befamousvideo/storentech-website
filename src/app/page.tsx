@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { IntakeLink } from "@/components/IntakeLink";
-import { SarahContact } from "@/components/SarahContact";
+import { SarahContact, SarahPhoneImage } from "@/components/SarahContact";
 import { site, verticals } from "@/lib/site";
 
 export default function HomePage() {
@@ -14,9 +14,7 @@ export default function HomePage() {
             <hr className="rule" />
             <p className="lede">Ask Sarah anything.</p>
             <div className="btn-row">
-              <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
-                Call Sarah
-              </a>
+              <SarahPhoneImage className="sarah-phone" />
               <IntakeLink className="btn">Start the paid analysis</IntakeLink>
             </div>
             <div className="fine hero-contact">
@@ -102,9 +100,7 @@ export default function HomePage() {
             sales call.
           </p>
           <div className="btn-row">
-            <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
-              Call Sarah
-            </a>
+            <SarahPhoneImage className="sarah-phone" />
             <IntakeLink className="btn">Start analysis</IntakeLink>
           </div>
         </div>
