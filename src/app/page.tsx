@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { IntakeLink } from "@/components/IntakeLink";
 import { SarahContact } from "@/components/SarahContact";
 import { site, verticals } from "@/lib/site";

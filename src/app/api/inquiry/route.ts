@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { site } from "@/lib/site";
 
 type Inquiry = {
   name?: unknown;

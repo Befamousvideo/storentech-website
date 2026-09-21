@@ -56,7 +56,7 @@ export const site = {
   },
   phones: {
     sarah: {
-      display: "+1 714-613-8557",
+      // Visible number is public/sarah-phone.png only. Never render digits.
       tel: "+17146138557",
       label: "Sarah",
       image: "/sarah-phone.png",
@@ -64,7 +64,6 @@ export const site = {
     // Public contact / footer phone is Sarah. Kept as `office`
     // so older call sites stay pointed at the same published number.
     office: {
-      display: "+1 714-613-8557",
       tel: "+17146138557",
       label: "Sarah",
     },
@@ -73,10 +72,6 @@ export const site = {
     primary: "Sarah, Operator",
     secondary:
       "Prefer to talk? Call Sarah — leave a message or request a callback.",
-  },
-  emails: {
-    support: "support@StorenTech.com",
-    vincent: "vincent@storentech.com",
   },
   prices: {
     analysisTypical: "$1,000",
