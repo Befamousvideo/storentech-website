@@ -16,7 +16,7 @@ export const site = {
   url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
   tagline: "Hire an AI employee after the math, not before.",
   description:
-    "Vincent Jackson’s full-service AI agency in Newport Beach and Corona Del Mar. Start with a paid Automation ROI Analysis. If the numbers work, the first AI employee is live in 30 days.",
+    "StorenTech AI is a full-service AI agency in Newport Beach and Corona Del Mar. Start with a paid Automation ROI Analysis. If the numbers work, the first AI employee is live in 30 days.",
   founder: {
     name: "Vincent Jackson",
     title: "President",

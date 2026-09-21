@@ -13,8 +13,7 @@ export function Footer() {
               <span className="logo-ai">AI</span>
             </Link>
             <p>
-              Full-service AI agency in {site.location.kicker}.{" "}
-              {site.founder.name}, {site.founder.title}.
+              Full-service AI agency in {site.location.kicker}.
             </p>
           </div>
           <nav className="footer-nav" aria-label="Footer">

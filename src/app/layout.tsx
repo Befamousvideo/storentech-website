@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     "Automation ROI analysis",
     "voice agent",
     "Corona Del Mar",
-    "Vincent Jackson",
+    "StorenTech AI",
   ],
   openGraph: {
     type: "website",

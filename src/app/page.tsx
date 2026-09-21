@@ -12,11 +12,11 @@ export default function HomePage() {
             <h1>Hire an AI employee after the math, not before.</h1>
             <hr className="rule" />
             <p className="lede">
-              StorenTech is {site.founder.name}’s full-service AI agency in Orange
-              County. We sell one thing first: a paid Automation ROI Analysis. If
-              the numbers work, the first AI employee is live in 30 days — usually
-              on the phone and the inbox, because that is where most operators leak
-              money. The firm is built for the work after that.
+              StorenTech AI is a full-service AI agency in Orange County. We sell
+              one thing first: a paid Automation ROI Analysis. If the numbers work,
+              the first AI employee is live in 30 days — usually on the phone and
+              the inbox, because that is where most operators leak money. The firm
+              is built for the work after that.
             </p>
             <div className="btn-row">
               <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
