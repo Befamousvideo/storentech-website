@@ -981,6 +981,13 @@ select {
   padding: 2.2rem 0 0;
 }
 
+.blog-sarah-cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
 .blog-index {
   display: grid;
   gap: 1.4rem;

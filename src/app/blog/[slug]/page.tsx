@@ -1,9 +1,21 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { AiSecurityForAiEmployeesArticle } from "@/components/blog/AiSecurityForAiEmployeesArticle";
 import { AutomationRoiAnalysisArticle } from "@/components/blog/AutomationRoiAnalysisArticle";
 import { StructuredData } from "@/components/StructuredData";
-import { blogPosts, getPost, postPath, postUrl } from "@/lib/blog";
+import { blogPosts, getPost, postPath, postUrl, type BlogPost } from "@/lib/blog";
 import { site } from "@/lib/site";
+
+function BlogArticle({ post }: { post: BlogPost }) {
+  switch (post.slug) {
+    case "what-is-an-automation-roi-analysis":
+      return <AutomationRoiAnalysisArticle post={post} />;
+    case "ai-security-for-ai-employees":
+      return <AiSecurityForAiEmployeesArticle post={post} />;
+    default:
+      notFound();
+  }
+}
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -88,11 +100,7 @@ export default async function BlogPostPage({ params }: Props) {
     <>
       <StructuredData data={articleLd} />
       <StructuredData data={faqLd} />
-      {slug === "what-is-an-automation-roi-analysis" ? (
-        <AutomationRoiAnalysisArticle post={post} />
-      ) : (
-        notFound()
-      )}
+      <BlogArticle post={post} />
     </>
   );
 }

@@ -36,7 +36,9 @@ export default function BlogIndexPage() {
               </h2>
               <p>{post.description}</p>
               <p>
-                <Link href={postPath(post.slug)}>Read the analysis</Link>
+                <Link href={postPath(post.slug)}>
+                  {post.indexCta ?? "Read the analysis"}
+                </Link>
               </p>
             </article>
           ))}
