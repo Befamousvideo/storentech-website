@@ -9,10 +9,7 @@ export default function HomePage() {
         <div className="wrap hero-grid">
           <div>
             <p className="kicker">{site.location.kicker}</p>
-            <h1 className="brand-line">
-              StorenTech AI finds where time or revenue leaks, then fixes what
-              pays — human touch stays.
-            </h1>
+            <h1 className="brand-line">{site.tagline}</h1>
             <hr className="rule" />
             <p className="lede">
               Ask Sarah anything, or call{" "}
@@ -50,14 +47,11 @@ export default function HomePage() {
         <div className="wrap">
           <div className="section-head">
             <div>
-              <p className="kicker">The offer</p>
-              <h2>One path. Named prices. Then a hire.</h2>
+              <p className="kicker">{site.prices.analysisTypical}</p>
+              <h2>{site.offer.primaryTitle}</h2>
             </div>
             <p className="lede">
-              Chat and voice are the common first job — speed-to-lead, after-hours,
-              booking, the inbox — because almost every SMB has pain there. That is
-              the wedge. Sell a named AI employee and an outcome. The rest of the
-              catalog is ready when the map says so.
+              {site.offer.primary} {site.offer.later}
             </p>
           </div>
           <div className="card-grid-3">

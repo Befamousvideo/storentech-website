@@ -14,12 +14,18 @@ export const site = {
   name: "StorenTech AI",
   shortName: "StorenTech",
   url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
-  tagline:
-    "StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays.",
+  tagline: "We find where time or revenue leaks, then fix what pays. Human touch stays.",
   brandLine:
     "StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays. Ask Sarah anything, or call 714-613-8557.",
   description:
-    "StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays. Ask Sarah anything, or call 714-613-8557.",
+    "We find where time or revenue leaks, then fix what pays. Human touch stays. Automation ROI Analysis: a written map of time, revenue, and risk leaks. Ask Sarah anything, or call 714-613-8557.",
+  offer: {
+    primaryTitle: "Automation ROI Analysis",
+    primary:
+      "Automation ROI Analysis — written map of time/revenue/risk leaks vs their software, what to fix first. Clarity before spend.",
+    later:
+      "After the map, we build what pays — may include voice, website chat, other ops. Implementation ≠ the $1k product.",
+  },
   founder: {
     name: "Vincent Jackson",
     title: "President",
@@ -84,13 +90,13 @@ export const verticals = [
 export const offerSteps = [
   {
     n: "01",
-    title: "Paid ROI analysis",
-    body: `${site.prices.analysisTypical} typical. ${site.prices.analysisComplex} when the operation is complex. A ranked roadmap for the first AI employee and the work around it. Paid. Never complimentary.`,
+    title: site.offer.primaryTitle,
+    body: `${site.prices.analysisTypical}. Written map of time/revenue/risk leaks vs their software, what to fix first. Clarity before spend. Paid. Never complimentary.`,
   },
   {
     n: "02",
-    title: "First employee in 30 days",
-    body: "If the numbers work, the first named AI employee goes live in 30 days — usually on the phone, the site, and the calendar, because that is where most operators leak money first.",
+    title: "After the map",
+    body: site.offer.later,
   },
   {
     n: "03",
