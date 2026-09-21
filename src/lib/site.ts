@@ -14,11 +14,12 @@ export const site = {
   name: "StorenTech AI",
   shortName: "StorenTech",
   url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
-  tagline: "We find where time or revenue leaks, then fix what pays. Human touch stays.",
+  tagline:
+    "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays.",
   brandLine:
     "StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays. Ask Sarah anything, or call 714-613-8557.",
   description:
-    "We find where time or revenue leaks, then fix what pays. Human touch stays. Automation ROI Analysis: a written map of time, revenue, and risk leaks. Ask Sarah anything, or call 714-613-8557.",
+    "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays. Automation ROI Analysis: a written map of time, revenue, and risk leaks. Ask Sarah anything, or call 714-613-8557.",
   offer: {
     primaryTitle: "Automation ROI Analysis",
     primary:
