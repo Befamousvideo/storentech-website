@@ -75,7 +75,8 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
               Automation ROI Analysis
             </Link>
             . Security diligence is part of that map — then we move forward
-            with industry-standard security practices.
+            the way careful operators do — with industry security best
+            practices, and humans still holding the stop.
           </p>
           <p>
             This is operator-to-operator. Not fearmongering. Not “labs hacking
@@ -274,7 +275,8 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
 
         <h2>How StorenTech approaches security (concrete practices)</h2>
         <p>
-          We move forward with industry-standard security practices. These are the
+          We move forward the way careful operators do — with industry security
+          best practices, and humans still holding the stop. These are the
           practices we claim — no invented certifications, no SOC 2 theater, no
           fake product badges.
         </p>
