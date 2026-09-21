@@ -71,4 +71,4 @@ Set `NEXT_PUBLIC_SITE_URL` and `INQUIRY_WEBHOOK_URL` in the Vercel project envir
 2. After the map: humans in the loop; AI does the grind humans hate. 10× capacity. Mary’s primary line stays on the site.
 3. Ongoing capacity: $5,000/mo Capacity; $7,500/mo Growth.
 
-Public contact / footer phone (Sarah): +1 714-613-8557 (`tel:+17146138557`).
+Public contact / footer phone (Sarah): image at `public/sarah-phone.png` (`alt="Call Sarah"`), tap target `tel:+17146138557`. Do not render the digits as visible text on home or footer.

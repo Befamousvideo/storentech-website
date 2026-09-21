@@ -17,9 +17,9 @@ export const site = {
   tagline:
     "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays.",
   brandLine:
-    "StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays. Ask Sarah anything, or call 714-613-8557.",
+    "StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays. Ask Sarah anything.",
   description:
-    "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays. Automation ROI Analysis: a written map of time, revenue, and risk leaks. Ask Sarah anything, or call 714-613-8557.",
+    "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays. Automation ROI Analysis: a written map of time, revenue, and risk leaks. Ask Sarah anything.",
   offer: {
     primaryTitle: "Automation ROI Analysis",
     primary:
@@ -51,6 +51,7 @@ export const site = {
       display: "+1 714-613-8557",
       tel: "+17146138557",
       label: "Sarah",
+      image: "/sarah-phone.png",
     },
     // Public contact / footer phone is Sarah. Kept as `office`
     // so older call sites stay pointed at the same published number.
@@ -61,7 +62,7 @@ export const site = {
     },
   },
   contactCopy: {
-    primary: "Sarah, Operator · 714-613-8557",
+    primary: "Sarah, Operator",
     secondary:
       "Prefer to talk? Call Sarah — leave a message or request a callback.",
   },

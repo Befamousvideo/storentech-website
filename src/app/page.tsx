@@ -11,10 +11,7 @@ export default function HomePage() {
             <p className="kicker">{site.name}</p>
             <h1 className="brand-line">{site.tagline}</h1>
             <hr className="rule" />
-            <p className="lede">
-              Ask Sarah anything, or call{" "}
-              <a href={`tel:${site.phones.sarah.tel}`}>714-613-8557</a>.
-            </p>
+            <p className="lede">Ask Sarah anything.</p>
             <div className="btn-row">
               <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
                 Call Sarah
@@ -33,7 +30,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <aside className="demo-card" aria-label={site.contactCopy.primary}>
+          <aside className="demo-card" aria-label="Call Sarah">
             <SarahContact
               className="sarah-contact"
               primaryClassName="sarah-contact-primary"

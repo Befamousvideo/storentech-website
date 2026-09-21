@@ -13,8 +13,19 @@ export function SarahContact({
 }: SarahContactProps) {
   return (
     <div className={className}>
-      <a className={primaryClassName} href={`tel:${site.phones.sarah.tel}`}>
-        {site.contactCopy.primary}
+      <a
+        className={primaryClassName}
+        href={`tel:${site.phones.sarah.tel}`}
+        aria-label="Call Sarah"
+      >
+        <span className="sarah-contact-name">{site.contactCopy.primary}</span>
+        <img
+          className="sarah-phone"
+          src={site.phones.sarah.image}
+          alt="Call Sarah"
+          width={720}
+          height={96}
+        />
       </a>
       <p className={secondaryClassName}>{site.contactCopy.secondary}</p>
     </div>
