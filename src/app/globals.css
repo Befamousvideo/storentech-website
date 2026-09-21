@@ -200,11 +200,12 @@ select {
 }
 
 .header-sarah-phone.sarah-phone {
-  width: auto;
+  flex: 0 0 auto;
+  width: 12.75rem;
   height: var(--header-action-h);
-  max-width: 100%;
-  object-fit: contain;
-  object-position: right center;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
 }
 
 .menu-toggle {
