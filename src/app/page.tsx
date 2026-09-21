@@ -19,7 +19,7 @@ export default function HomePage() {
             </p>
             <div className="btn-row">
               <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
-                Call Sarah now
+                Call Sarah
               </a>
               <Link className="btn" href="/contact">
                 Start the paid analysis
@@ -33,22 +33,17 @@ export default function HomePage() {
             </p>
           </div>
 
-          <aside className="demo-card" aria-label="Live demo">
-            <p className="kicker">Live demo</p>
-            <h2>Call Sarah.</h2>
+          <aside className="demo-card" aria-label="Sarah">
+            <p className="kicker">{site.phones.sarah.label}</p>
+            <h2>The operator.</h2>
             <p>
-              She is on the phone right now — a Vapi voice agent handling the first
-              jobs an AI employee actually does.
+              Call the number we publish. Sarah answers.
             </p>
             <a className="demo-number" href={`tel:${site.phones.sarah.tel}`}>
               {site.phones.sarah.display}
             </a>
-            <p className="proof">
-              Ask her how the firm works. If the conversation holds, start the
-              analysis. That is the proof. Not a reel, not a stock robot.
-            </p>
             <a className="btn btn-gold" href={`tel:${site.phones.sarah.tel}`}>
-              Tap to call Sarah
+              Call {site.phones.sarah.label}
             </a>
           </aside>
         </div>

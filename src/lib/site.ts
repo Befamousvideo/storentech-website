@@ -36,7 +36,7 @@ export const site = {
       tel: "+17146138557",
       label: "Sarah",
     },
-    // Public contact / footer phone is Sarah (Vapi). Kept as `office`
+    // Public contact / footer phone is Sarah. Kept as `office`
     // so older call sites stay pointed at the same published number.
     office: {
       display: "+1 714-613-8557",
