@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { IntakeLink } from "@/components/IntakeLink";
 import { retainers, site, workGroups } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "The jobs StorenTech hires AI employees to do: front of house, revenue, operations, and growth. Chat and voice are the common first hire — not the whole firm.",
+    "Map leaks first. Then build what pays — people still in the loop, out front with customers. Front of house, revenue, operations, and growth.",
   alternates: { canonical: "/work" },
 };
 
@@ -16,14 +16,12 @@ export default function WorkPage() {
         <div className="wrap">
           <p className="kicker">Work</p>
           <h1>
-            <span className="underline-phrase">The jobs</span> we hire AI employees
-            to do.
+            <span className="underline-phrase">The grind</span> we put AI on.
+            Humans stay in the loop.
           </h1>
           <hr className="rule" />
           <p className="lede">
-            Chatbots and voice agents are the common first job because almost every
-            SMB has pain there. They are the wedge. The catalog below is the firm:
-            revenue, operations, and growth — named employees, named outcomes.
+            {site.offer.services} {site.offer.capacity}
           </p>
         </div>
       </header>
@@ -54,17 +52,17 @@ export default function WorkPage() {
         </section>
       ))}
 
-      <section className="section" id="retainers">
+      <section className="section" id="capacity">
         <div className="wrap">
           <div className="section-head">
             <div>
-              <p className="kicker">Retainers</p>
-              <h2>Stay on as operator once it is earning.</h2>
+              <p className="kicker">After the map</p>
+              <h2>Stay on as operator once it is paying.</h2>
             </div>
             <p className="lede">
-              {site.prices.employee}/mo AI Employee. {site.prices.growth}/mo
-              Growth. The path is the same: paid map, first hire, then a named
-              monthly employee.
+              {site.prices.employee}/mo Capacity. {site.prices.growth}/mo
+              Growth. The path is the same: paid map, then 10× production —
+              humans in the loop, a calmer office.
             </p>
           </div>
           <div className="card-grid-2">
@@ -87,14 +85,12 @@ export default function WorkPage() {
       <section className="section section-tan cta-band">
         <div className="wrap">
           <p className="kicker">Start</p>
-          <h2>Hear the first employee. Then pay for the map.</h2>
+          <h2>Pay for the map. Then we build what pays.</h2>
           <div className="btn-row" style={{ marginTop: "1.5rem" }}>
             <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
-              Call Sarah {site.phones.sarah.display}
+              Call Sarah
             </a>
-            <Link className="btn" href="/contact">
-              Start the paid analysis
-            </Link>
+            <IntakeLink className="btn">Start the paid analysis</IntakeLink>
           </div>
         </div>
       </section>

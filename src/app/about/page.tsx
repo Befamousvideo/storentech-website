@@ -3,8 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "Vincent Jackson, President of StorenTech AI — a full-service AI agency in Corona Del Mar. Orange County operator and technical specialist. StorenTech AI since 2023.",
+  description: site.brandLine,
   alternates: { canonical: "/about" },
 };
 
@@ -14,14 +13,11 @@ export default function AboutPage() {
       <header className="page-hero">
         <div className="wrap">
           <p className="kicker">About</p>
-          <h1>
-            {site.founder.name}, {site.founder.title}.
-          </h1>
+          <h1>{site.name}.</h1>
           <hr className="rule" />
           <p className="lede">
-            Orange County operator and technical specialist. Sixteen-plus years
-            solving messy business-tech for people who have a company to run.
-            StorenTech AI since 2023.
+            StorenTech AI finds where time or revenue leaks, then fixes what
+            pays — human touch stays. Ask Sarah anything.
           </p>
         </div>
       </header>
@@ -37,19 +33,17 @@ export default function AboutPage() {
               You work with a principal, not a bench of account coordinators.
               When a project needs a specialist — voice, CRM, a tighter
               integration, creative, media — we bring them in. The standard is
-              the same: the hire has to pay.
+              the same: the work has to pay.
             </p>
             <p>
               StorenTech is a full-service AI agency and a private firm in Corona
-              Del Mar. The front door is a paid Automation ROI Analysis and a
-              named AI employee. The studio behind that door can take the rest of
-              the problem once the numbers work.
+              Del Mar. The front door is a paid Automation ROI Analysis. After
+              the map, AI does the grind humans hate; humans do what AI can’t —
+              more touch, 10×, a calmer office.
             </p>
             <p>
-              The office is at {site.location.full}. Call the office at{" "}
-              <a href={`tel:${site.phones.office.tel}`}>{site.phones.office.display}</a>
-              , or write{" "}
-              <a href={`mailto:${site.emails.vincent}`}>{site.emails.vincent}</a>.
+              The office is at {site.location.full}. Call Sarah, or write us
+              from Contact.
             </p>
           </div>
         </div>

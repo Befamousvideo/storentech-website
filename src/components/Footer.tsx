@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
+import { IntakeLink } from "@/components/IntakeLink";
+import { SarahContact } from "@/components/SarahContact";
 import { nav, site } from "@/lib/site";
 
 export function Footer() {
@@ -7,13 +10,11 @@ export function Footer() {
       <div className="wrap">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Link href="/" className="logo">
-              <span className="logo-word">{site.shortName}</span>
-              <span className="logo-ai">AI</span>
+            <Link href="/" className="logo" aria-label="StorenTech AI">
+              <BrandLogo />
             </Link>
             <p>
-              Full-service AI agency in {site.location.kicker}.{" "}
-              {site.founder.name}, {site.founder.title}.
+              Full-service AI agency in {site.location.kicker}.
             </p>
           </div>
           <nav className="footer-nav" aria-label="Footer">
@@ -22,18 +23,16 @@ export function Footer() {
                 {item.label}
               </Link>
             ))}
-            <Link href="/contact">Start the paid analysis</Link>
+            <IntakeLink>Start the paid analysis</IntakeLink>
           </nav>
           <div className="footer-contact">
             <div>{site.location.full}</div>
-            <a href={`tel:${site.phones.office.tel}`}>
-              Office {site.phones.office.display}
-            </a>
-            <a href={`tel:${site.phones.sarah.tel}`}>
-              Sarah {site.phones.sarah.display}
-            </a>
-            <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a>
-            <a href={`mailto:${site.emails.vincent}`}>{site.emails.vincent}</a>
+            <SarahContact
+              className="sarah-contact"
+              primaryClassName="sarah-contact-primary"
+              secondaryClassName="sarah-contact-secondary"
+            />
+            <Link href="/contact">Write us</Link>
           </div>
         </div>
         <div className="footer-bottom">

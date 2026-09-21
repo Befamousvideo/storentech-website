@@ -1,4 +1,12 @@
 const DEFAULT_SITE_URL = "https://storentech.com";
+const DEFAULT_INTAKE_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScjOa8fFyqRLRAmOyDNtk7oFLlVwGwNdyML7VQNvWIUtlsXRg/viewform";
+const ONB1_INTAKE_URL = "https://onboarding.storentechai.com";
+
+function resolveIntakeUrl(raw: string | undefined) {
+  const candidate = raw?.trim();
+  return candidate || DEFAULT_INTAKE_URL;
+}
 
 function resolveSiteUrl(raw: string | undefined) {
   const candidate = raw?.trim();
@@ -14,9 +22,31 @@ export const site = {
   name: "StorenTech AI",
   shortName: "StorenTech",
   url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
-  tagline: "Hire an AI employee after the math, not before.",
+  // Vince locked brand mark: ORBIT + StorenTech AI lockup. Not hybrid.
+  brand: {
+    mark: "/orbit-mark.png",
+    wordmark: "/storentech-logo-orbit.png",
+    wordmarkDark: "/storentech-logo-orbit-dark.png",
+  },
+  tagline:
+    "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays.",
+  brandLine:
+    "StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays. Ask Sarah anything.",
   description:
-    "Vincent Jackson’s full-service AI agency in Newport Beach and Corona Del Mar. Start with a paid Automation ROI Analysis. If the numbers work, the first AI employee is live in 30 days.",
+    "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays. Automation ROI Analysis: a written map of time, revenue, and risk leaks. Ask Sarah anything.",
+  offer: {
+    primaryTitle: "Automation ROI Analysis",
+    primary:
+      "Automation ROI Analysis — written map of time/revenue/risk leaks vs their software, what to fix first. Clarity before spend.",
+    later:
+      "After the map, we build what pays — may include voice, website chat, other ops. Implementation ≠ the $1k product.",
+    capacity:
+      "Automation here is about 10× what your people can ship — more human touch with customers, humans out front where they shine. Not fewer jobs.",
+    toward:
+      "AI does the grind humans hate; humans do what AI can’t. More touch, 10×, a calmer office.",
+    services:
+      "Map leaks first. Then build what pays — people still in the loop, out front with customers.",
+  },
   founder: {
     name: "Vincent Jackson",
     title: "President",
@@ -32,19 +62,22 @@ export const site = {
   },
   phones: {
     sarah: {
-      display: "714-613-8557",
+      // Visible number is public/sarah-phone.png only. Never render digits.
+      tel: "+17146138557",
+      label: "Sarah",
+      image: "/sarah-phone.png",
+    },
+    // Public contact / footer phone is Sarah. Kept as `office`
+    // so older call sites stay pointed at the same published number.
+    office: {
       tel: "+17146138557",
       label: "Sarah",
     },
-    office: {
-      display: "+1 714-794-9199",
-      tel: "+17147949199",
-      label: "Office",
-    },
   },
-  emails: {
-    support: "support@StorenTech.com",
-    vincent: "vincent@storentech.com",
+  contactCopy: {
+    primary: "Sarah, Operator",
+    secondary:
+      "Prefer to talk? Call Sarah — leave a message or request a callback.",
   },
   prices: {
     analysisTypical: "$1,000",
@@ -52,6 +85,13 @@ export const site = {
     employee: "$5,000",
     growth: "$7,500",
   },
+  // Start analysis CTA. Form now; set NEXT_PUBLIC_INTAKE_URL to ONB1 when gated live.
+  intakeUrl: resolveIntakeUrl(process.env.NEXT_PUBLIC_INTAKE_URL),
+  intakeOnb1Url: ONB1_INTAKE_URL,
+  stripe: {
+    roiPaymentLink: "https://buy.stripe.com/6oU14ngeE5w1a8wd7RdjO00",
+  },
+  payHosts: ["pay.storentechai.com", "www.pay.storentechai.com"],
 } as const;
 
 export const nav = [
@@ -61,6 +101,7 @@ export const nav = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
+// HOLD: Mary is drafting homepage Clients labels. Do not rewrite this list.
 export const verticals = [
   "Dental and med spa",
   "Insurance",
@@ -71,31 +112,32 @@ export const verticals = [
   "Manufacturing, when the project is right",
 ] as const;
 
+// HOLD with How it works: Mary is drafting the engagement steps. Do not rewrite yet.
 export const offerSteps = [
   {
     n: "01",
-    title: "Paid ROI analysis",
-    body: `${site.prices.analysisTypical} typical. ${site.prices.analysisComplex} when the operation is complex. A ranked roadmap for the first AI employee and the work around it. Paid. Never complimentary.`,
+    title: site.offer.primaryTitle,
+    body: `${site.prices.analysisTypical}. Written map of time/revenue/risk leaks vs their software, what to fix first. Clarity before spend. Paid. Never complimentary.`,
   },
   {
     n: "02",
-    title: "First employee in 30 days",
-    body: "If the numbers work, the first named AI employee goes live in 30 days — usually on the phone, the site, and the calendar, because that is where most operators leak money first.",
+    title: "After the map",
+    body: site.offer.later,
   },
   {
     n: "03",
-    title: "Then a retainer",
-    body: `${site.prices.employee}/mo AI Employee: one bot, one workflow a month, reporting. ${site.prices.growth}/mo Growth: two bots, outbound and inbox, weekly command center.`,
+    title: "Stay on the grind",
+    body: `${site.prices.employee}/mo Capacity: one production workflow a month, reporting. ${site.prices.growth}/mo Growth: two workflows, outbound and inbox, weekly command center.`,
   },
 ] as const;
 
 export const retainers = [
   {
-    name: "AI Employee",
+    name: "Capacity",
     price: `${site.prices.employee} / month`,
-    summary: "The working hire, once the analysis says it will pay.",
+    summary: "AI on the grind, once the map says it pays. Humans stay in the loop.",
     points: [
-      "One production bot on a named job",
+      "One production workflow on a named leak",
       "One new workflow each month",
       "Reporting the owner can actually read",
     ],
@@ -103,9 +145,9 @@ export const retainers = [
   {
     name: "Growth",
     price: `${site.prices.growth} / month`,
-    summary: "Two employees and a weekly operating rhythm.",
+    summary: "Two workflows and a weekly operating rhythm.",
     points: [
-      "Two production bots",
+      "Two production workflows",
       "Outbound plus inbox coverage",
       "Weekly command center with the owner",
     ],
@@ -124,16 +166,16 @@ export const workGroups: WorkGroup[] = [
   {
     id: "wedge",
     label: "Wedge / front of house",
-    title: "The first job is usually the phone and the inbox.",
-    lede: "Almost every SMB leaks money here. That is why chat and voice are the common first hire — the wedge, not the whole firm.",
+    title: "The first leak is usually the phone and the inbox.",
+    lede: "Almost every SMB leaks money here. After the map, that grind is a common first build — not the whole firm, and not the $1k product.",
     jobs: [
       {
         title: "Speed-to-lead + after-hours closer",
-        body: "Every web, call, and chat lead is touched fast, booked or qualified. The practice is closed. The contractor is on a roof. The employee still takes the job.",
+        body: "Every web, call, and chat lead is touched fast, booked or qualified. The practice is closed. The contractor is on a roof. The grind still gets covered.",
       },
       {
         title: "Website chat + voice",
-        body: "The same employee on the number you publish and the site you already have. Sarah is the live demo — 714-613-8557 — handling the first jobs an AI employee actually does.",
+        body: "The same coverage on the number you publish and the site you already have. AI does the grind humans hate. Humans stay out front with customers.",
       },
       {
         title: "Booking / appointment setting",
@@ -145,7 +187,7 @@ export const workGroups: WorkGroup[] = [
     id: "revenue",
     label: "Revenue",
     title: "Named pipeline work. Booked meetings, not a lead dump.",
-    lede: "Once the front door holds, the next hire works the follow-up that operators never quite staff.",
+    lede: "Once the front door holds, the next build works the follow-up grind that never quite gets finished.",
     jobs: [
       {
         title: "AI SDR / appointment-setter pod",
@@ -177,14 +219,14 @@ export const workGroups: WorkGroup[] = [
       },
       {
         title: "Review + reputation engine",
-        body: "Google and Yelp asks, response drafts, competitor watch. Sold as an add-on or as an entry hire when reputation is the leak.",
+        body: "Google and Yelp asks, response drafts, competitor watch. Sold as an add-on or as an entry build when reputation is the leak.",
       },
     ],
   },
   {
     id: "growth",
     label: "Growth",
-    title: "Available when the first employee is earning.",
+    title: "Available when the first build is paying.",
     lede: "These lines are part of the firm. They are not the homepage headline, and they are not year-one-only work — they are ready when the map says so.",
     jobs: [
       {
@@ -192,12 +234,12 @@ export const workGroups: WorkGroup[] = [
         body: "Site, YouTube, LinkedIn, and email — a planned set of 12–20 assets, written to the offer, not a promise to “post on Instagram.”",
       },
       {
-        title: "Grok Bot / AI-employee implementation studio",
-        body: "Design the bots, connect the tools, write the routines, train the owner, and stay on as operator.",
+        title: "Implementation studio",
+        body: "Design the workflows, connect the tools, write the routines, train the owner, and stay on as operator. Humans in the loop. AI does the grind humans hate; humans do what AI can’t.",
       },
       {
         title: "White-label fulfillment",
-        body: "Other agencies keep the client relationship. We build and run the employee behind their brand.",
+        body: "Other agencies keep the client relationship. We build and run the grind behind their brand.",
       },
       {
         title: "CTV / OTT creative + media",

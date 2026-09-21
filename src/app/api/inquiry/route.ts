@@ -59,13 +59,13 @@ export async function POST(request: Request) {
       });
       if (!response.ok) {
         return NextResponse.json(
-          { ok: false, error: "The office did not receive this. Call +1 714-794-9199." },
+          { ok: false, error: "The office did not receive this. Call Sarah." },
           { status: 502 },
         );
       }
     } catch {
       return NextResponse.json(
-        { ok: false, error: "The office did not receive this. Call +1 714-794-9199." },
+        { ok: false, error: "The office did not receive this. Call Sarah." },
         { status: 502 },
       );
     }

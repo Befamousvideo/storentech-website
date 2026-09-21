@@ -24,15 +24,17 @@ Open [http://localhost:3000](http://localhost:3000).
 Environment:
 
 - `NEXT_PUBLIC_SITE_URL` — public origin for metadata, sitemap, and Open Graph (default `https://storentech.com`)
+- `NEXT_PUBLIC_INTAKE_URL` — Start analysis CTA. Default is the Workspace Google Form. Set to `https://onboarding.storentechai.com` when ONB1 is live. Not Stripe `/pay`.
 - `INQUIRY_WEBHOOK_URL` — optional. If set, each inquiry is `POST`ed as JSON (`name`, `email`, `company`, `broken`, `submittedAt`, `source`)
 
 ## Pages
 
-- `/` — hire after the math; Call Sarah; paid ROI → 30-day employee → retainer
-- `/work` — service catalog as jobs (wedge, revenue, operations, growth)
-- `/how-it-works` — paid analysis, first hire, retainer
-- `/about` — Vincent Jackson, President
+- `/` — leak-map hero; $1k Automation ROI Analysis; Sarah; humans in the loop. Start analysis → `site.intakeUrl` (Form). No “See the work.”
+- `/work` — services catalog; map first, then build what pays
+- `/how-it-works` — paid analysis, then build what pays
+- `/about` — StorenTech AI; humans in the loop
 - `/contact` — name, email, company, what’s broken
+- `/pay` and `pay.storentechai.com` — 302 to Stripe Payment Link (`site.stripe.roiPaymentLink`). Invoice short URL only. Not the Start analysis CTA.
 
 ## Firebase App Hosting (recommended on GCP)
 
@@ -68,7 +70,7 @@ Set `NEXT_PUBLIC_SITE_URL` and `INQUIRY_WEBHOOK_URL` in the Vercel project envir
 ## Offer (do not change on a whim)
 
 1. Paid Automation ROI Analysis: $1,000 typical; $2,000–$3,000 complex. Never free.
-2. First AI employee live in 30 days if the numbers work.
-3. Retainers: $5,000/mo AI Employee; $7,500/mo Growth.
+2. After the map: humans in the loop; AI does the grind humans hate. 10× capacity. Mary’s primary line stays on the site.
+3. Ongoing capacity: $5,000/mo Capacity; $7,500/mo Growth.
 
-Sarah (live voice demo): 714-613-8557. Office: +1 714-794-9199.
+Public contact: phone is `public/sarah-phone.png` (`alt="Call Sarah"`), tap `tel:+17146138557`. Never render digits or email addresses as HTML text. Write-us goes to `/contact` form only.

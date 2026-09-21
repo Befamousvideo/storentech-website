@@ -130,11 +130,18 @@ select {
 
 .logo {
   display: flex;
-  align-items: baseline;
-  gap: 0.4rem;
+  align-items: center;
+  gap: 0.55rem;
   text-decoration: none;
   color: var(--navy);
   min-width: 0;
+}
+
+.logo-mark {
+  display: block;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
 }
 
 .logo-word {
@@ -356,6 +363,11 @@ select {
   color: var(--navy);
 }
 
+.hero h1.brand-line {
+  max-width: 22ch;
+  font-size: clamp(1.85rem, 4vw, 3.1rem);
+}
+
 .hero .lede {
   font-size: 1.08rem;
   margin-bottom: 1.85rem;
@@ -365,7 +377,49 @@ select {
   margin-top: 1.35rem;
 }
 
-/* Live demo card */
+.sarah-contact {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.sarah-contact-primary {
+  display: grid;
+  gap: 0.45rem;
+  width: fit-content;
+  max-width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.sarah-contact-name {
+  font-weight: 600;
+}
+
+.sarah-phone {
+  display: block;
+  width: min(100%, 15.5rem);
+  height: auto;
+}
+
+.sarah-contact-primary:hover {
+  color: var(--gold);
+}
+
+.sarah-contact-secondary {
+  margin: 0;
+  max-width: 36ch;
+}
+
+.hero-contact .sarah-contact {
+  margin-bottom: 0.65rem;
+}
+
+.hero-contact .sarah-contact-primary {
+  color: var(--navy);
+  font-weight: 600;
+}
+
+/* Sarah contact card */
 .demo-card {
   background: var(--navy);
   color: var(--cream);
@@ -373,34 +427,32 @@ select {
   min-height: 100%;
 }
 
-.demo-card .kicker {
-  color: var(--gold);
+.demo-card .sarah-contact {
+  gap: 1.1rem;
 }
 
-.demo-card h2 {
-  font-size: clamp(2.2rem, 3.4vw, 3.1rem);
-  color: #f7f1e6;
-  margin: 0.85rem 0 1rem;
-}
-
-.demo-card p {
-  color: rgba(244, 239, 230, 0.82);
-}
-
-.demo-number {
-  display: block;
+.demo-card .sarah-contact-primary {
+  display: grid;
+  gap: 1rem;
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 4vw, 3.35rem);
+  font-size: clamp(2rem, 3.2vw, 2.85rem);
   color: #f7f1e6;
-  text-decoration: none;
   letter-spacing: -0.03em;
-  margin: 1.4rem 0 1.1rem;
-  line-height: 1;
+  line-height: 1.15;
 }
 
-.demo-card .proof {
-  margin-bottom: 1.7rem;
-  max-width: 34ch;
+.demo-card .sarah-phone {
+  width: min(100%, 18rem);
+}
+
+.demo-card .sarah-contact-primary:hover {
+  color: var(--gold-soft);
+}
+
+.demo-card .sarah-contact-secondary {
+  color: rgba(244, 239, 230, 0.82);
+  font-size: 1.05rem;
+  max-width: 28ch;
 }
 
 /* Cards */
@@ -727,6 +779,25 @@ select {
   gap: 0.55rem;
 }
 
+.footer-contact .sarah-contact-primary {
+  color: #f7f1e6;
+  font-size: 0.92rem;
+}
+
+.footer-contact .sarah-phone {
+  width: min(100%, 13.5rem);
+}
+
+.footer-contact .sarah-contact-primary:hover {
+  color: var(--gold-soft);
+}
+
+.footer-contact .sarah-contact-secondary {
+  color: rgba(244, 239, 230, 0.72);
+  font-size: 0.88rem;
+  max-width: 28ch;
+}
+
 .footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -785,6 +856,11 @@ select {
 @media (max-width: 980px) {
   :root {
     --header-h: 76px;
+  }
+
+  .logo-mark {
+    width: 34px;
+    height: 34px;
   }
 
   .header-inner {

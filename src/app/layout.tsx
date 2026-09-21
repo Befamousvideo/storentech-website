@@ -23,27 +23,25 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "StorenTech AI — Full-service AI agency, Newport Beach",
+    default: "StorenTech AI — Automation ROI Analysis",
     template: "%s · StorenTech AI",
   },
   description: site.description,
   applicationName: site.name,
-  authors: [{ name: site.founder.name }],
-  creator: site.founder.name,
   keywords: [
     "AI agency Orange County",
-    "AI employee Newport Beach",
+    "10x capacity Orange County",
     "Automation ROI analysis",
     "voice agent",
     "Corona Del Mar",
-    "Vincent Jackson",
+    "StorenTech AI",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: site.url,
     siteName: site.name,
-    title: "StorenTech AI — Hire an AI employee after the math",
+    title: "StorenTech AI",
     description: site.description,
   },
   twitter: {
@@ -54,6 +52,15 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  // Vince locked brand mark: ORBIT (not hybrid).
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   alternates: {
     canonical: "/",

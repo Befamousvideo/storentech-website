@@ -8,14 +8,6 @@ export function JsonLd() {
     url: site.url,
     image: `${site.url}/opengraph-image`,
     description: site.description,
-    telephone: site.phones.office.tel,
-    email: site.emails.support,
-    founder: {
-      "@type": "Person",
-      name: site.founder.name,
-      jobTitle: site.founder.title,
-      email: site.emails.vincent,
-    },
     address: {
       "@type": "PostalAddress",
       streetAddress: site.location.street,

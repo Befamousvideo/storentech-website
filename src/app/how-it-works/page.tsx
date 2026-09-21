@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { IntakeLink } from "@/components/IntakeLink";
 import { site } from "@/lib/site";
+
+// HOLD: Mary is drafting How it works steps. Do not rewrite this page.
+// Expected direction only (not final): Analysis → map → first build; no retainers; humans in the loop.
+// Ship Clients + How it works together when her exact copy arrives.
 
 export const metadata: Metadata = {
   title: "How it works",
   description:
-    "Paid Automation ROI Analysis, then the first AI employee in 30 days if the numbers work, then a named retainer. Never a complimentary audit.",
+    "Paid Automation ROI Analysis first: a written map of time, revenue, and risk leaks. Map leaks first. Then build what pays — people still in the loop, out front with customers.",
   alternates: { canonical: "/how-it-works" },
 };
 
@@ -13,17 +17,17 @@ const moves = [
   {
     n: "01",
     title: "Automation ROI Analysis",
-    body: `Typical fee ${site.prices.analysisTypical}. ${site.prices.analysisComplex} when the operation is complex — multiple locations, a messy stack, or a wider catalog than a single front-of-house hire. You get a ranked roadmap: which named employee to hire first, what it should earn, and what comes after. This is paid work. It is not a complimentary sales call.`,
+    body: `Typical fee ${site.prices.analysisTypical}. ${site.prices.analysisComplex} when the operation is complex — multiple locations, a messy stack, or a wider catalog. You get a ranked map: where time and revenue hide, what to fix first, what can wait. This is paid work. It is not a complimentary sales call.`,
   },
   {
     n: "02",
-    title: "First AI employee in 30 days",
-    body: "If the numbers work, we hire. The first employee is usually voice and chat for speed-to-lead, booking, and CRM — because that is where the leak is. The analysis may put a different job first. Either way, a named employee is live in 30 days, on the calendar and tools you already run.",
+    title: "After the map, build what pays",
+    body: "If the numbers work, AI does the grind humans hate and humans stay in the loop — more touch, 10×, a calmer office. Implementation is not the $1k product. Voice, website chat, or other ops may come later, when the map says so.",
   },
   {
     n: "03",
-    title: "Retainer once it is earning",
-    body: `AI Employee at ${site.prices.employee}/month: one bot, one workflow a month, reporting. Growth at ${site.prices.growth}/month: two bots, outbound and inbox, weekly command center. From there the firm can take revenue work, operations, content, implementation studio, white-label, or CTV when the map calls for it.`,
+    title: "Stay on the grind",
+    body: `Capacity at ${site.prices.employee}/month: one production workflow a month, reporting. Growth at ${site.prices.growth}/month: two workflows, outbound and inbox, weekly command center. From there the firm can take revenue work, operations, content, implementation studio, white-label, or CTV when the map calls for it.`,
   },
 ];
 
@@ -33,18 +37,15 @@ export default function HowItWorksPage() {
       <header className="page-hero">
         <div className="wrap">
           <p className="kicker">How it works</p>
-          <h1>Pay for the map. Then we hire.</h1>
+          <h1>Pay for the map. Then we build what pays.</h1>
           <hr className="rule" />
           <p className="lede">
-            StorenTech is a full-service AI agency. The commercial path is still
-            one sequence: a paid Automation ROI Analysis, a first AI employee if
-            the math holds, then a retainer. Call Sarah if you want to hear the
-            work before you buy the map.
+            The door is a paid Automation ROI Analysis. {site.offer.services}{" "}
+            {site.offer.capacity} Call Sarah if you want to talk before you buy
+            the map.
           </p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
-            <Link className="btn btn-solid" href="/contact">
-              Start the paid analysis
-            </Link>
+            <IntakeLink className="btn btn-solid">Start the paid analysis</IntakeLink>
             <a className="btn" href={`tel:${site.phones.sarah.tel}`}>
               Call Sarah first
             </a>
@@ -76,19 +77,18 @@ export default function HowItWorksPage() {
         <div className="wrap split">
           <div>
             <p className="kicker">What you buy</p>
-            <h2>A named employee and an outcome.</h2>
+            <h2>A map, then 10× capacity.</h2>
           </div>
           <div className="copy">
             <p>
-              The analysis prices the first hire against your real numbers —
+              The analysis prices the first build against your real numbers —
               conversation volume, close rate, after-hours leakage, owner time.
-              The product is a named employee and an outcome. We stay on as
-              operator.
+              Humans stay in the loop. AI does the grind humans hate; humans
+              do what AI can’t. We stay on as operator.
             </p>
             <p>
-              Proof is process, not a case-study reel: call Sarah at{" "}
-              <a href={`tel:${site.phones.sarah.tel}`}>{site.phones.sarah.display}</a>
-              , pay for the map, hire in 30 days if it earns.
+              Proof is process, not a case-study reel: call Sarah, pay for the
+              map, build what pays if it earns.
             </p>
           </div>
         </div>
