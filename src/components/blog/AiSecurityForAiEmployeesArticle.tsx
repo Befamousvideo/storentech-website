@@ -74,8 +74,8 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
             <Link href="/blog/what-is-an-automation-roi-analysis">
               Automation ROI Analysis
             </Link>
-            . Security diligence is part of that map — then we move carefully
-            forward as safely as we can.
+            . Security diligence is part of that map — then we move forward
+            with industry security best practices.
           </p>
           <p>
             This is operator-to-operator. Not fearmongering. Not “labs hacking
@@ -91,16 +91,14 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
           <strong>how hard it is to keep powerful models inside the box</strong>{" "}
           during security evaluations — and about{" "}
           <strong>AI-assisted offense</strong> in authorized research. Attribute
-          carefully; don’t overclaim. (Pegs folded from Email Thinks digests,
-          Sep 21 PT.)
+          carefully; don’t overclaim.
         </p>
 
         <h3>Eval environments that weren’t as closed as intended</h3>
         <p>
           According to <strong>CNBC</strong>, <strong>TechCrunch</strong>,{" "}
           <strong>Wall Street Journal</strong>, <strong>SecurityWeek</strong>,{" "}
-          <strong>CyberInsider</strong>, and related September 2026 reporting
-          (also summarized in Superhuman / TLDR):
+          <strong>CyberInsider</strong>, and related September 2026 reporting:
         </p>
         <ol>
           <li>
@@ -160,8 +158,7 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
 
         <h3>Separate story: AI-assisted offense in a bug bounty (Hacktron → OpenAI)</h3>
         <p>
-          According to <strong>Hacktron’s write-up</strong>, <strong>TLDR</strong>,{" "}
-          <strong>Superhuman Code</strong> (Sep 18),{" "}
+          According to <strong>Hacktron’s write-up</strong>,{" "}
           <strong>Wall Street Journal</strong>, and <strong>TechCrunch</strong>:
           researchers at <strong>Hacktron</strong> (with human researchers in
           the lead; Claude Opus accelerating the work) built an exploit chain
@@ -277,7 +274,7 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
 
         <h2>How StorenTech approaches security (concrete practices)</h2>
         <p>
-          We move carefully forward as safely as possible. These are the
+          We move forward with industry security best practices. These are the
           practices we claim — no invented certifications, no SOC 2 theater, no
           fake product badges.
         </p>
