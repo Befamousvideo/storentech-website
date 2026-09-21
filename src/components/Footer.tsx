@@ -32,8 +32,7 @@ export function Footer() {
               primaryClassName="sarah-contact-primary"
               secondaryClassName="sarah-contact-secondary"
             />
-            <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a>
-            <a href={`mailto:${site.emails.vincent}`}>{site.emails.vincent}</a>
+            <Link href="/contact">Write us</Link>
           </div>
         </div>
         <div className="footer-bottom">

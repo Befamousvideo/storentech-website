@@ -24,7 +24,7 @@ export default function HomePage() {
                 primaryClassName="sarah-contact-primary"
                 secondaryClassName="sarah-contact-secondary"
               />
-              <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a>
+              <Link href="/contact">Write us</Link>
             </div>
           </div>
 

@@ -88,7 +88,7 @@ export default function WorkPage() {
           <h2>Pay for the map. Then we build what pays.</h2>
           <div className="btn-row" style={{ marginTop: "1.5rem" }}>
             <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
-              Call Sarah {site.phones.sarah.display}
+              Call Sarah
             </a>
             <IntakeLink className="btn">Start the paid analysis</IntakeLink>
           </div>

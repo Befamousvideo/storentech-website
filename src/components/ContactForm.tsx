@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { site } from "@/lib/site";
 
 type Status = "idle" | "sending" | "ok" | "error";
 
@@ -47,7 +46,7 @@ export function ContactForm() {
     } catch {
       setStatus("error");
       setMessage(
-        `The form did not send. Call ${site.phones.sarah.label} at ${site.phones.sarah.display} or write ${site.emails.support}.`,
+        "The form did not send. Call Sarah, or try again.",
       );
     }
   }

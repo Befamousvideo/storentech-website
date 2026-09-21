@@ -60,13 +60,13 @@ export async function POST(request: Request) {
       });
       if (!response.ok) {
         return NextResponse.json(
-          { ok: false, error: `The office did not receive this. Call ${site.phones.sarah.display}.` },
+          { ok: false, error: "The office did not receive this. Call Sarah." },
           { status: 502 },
         );
       }
     } catch {
       return NextResponse.json(
-        { ok: false, error: `The office did not receive this. Call ${site.phones.sarah.display}.` },
+        { ok: false, error: "The office did not receive this. Call Sarah." },
         { status: 502 },
       );
     }

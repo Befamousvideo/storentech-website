@@ -87,9 +87,8 @@ export default function HowItWorksPage() {
               do what AI can’t. We stay on as operator.
             </p>
             <p>
-              Proof is process, not a case-study reel: call Sarah at{" "}
-              <a href={`tel:${site.phones.sarah.tel}`}>{site.phones.sarah.display}</a>
-              , pay for the map, build what pays if it earns.
+              Proof is process, not a case-study reel: call Sarah, pay for the
+              map, build what pays if it earns.
             </p>
           </div>
         </div>

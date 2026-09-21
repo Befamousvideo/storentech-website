@@ -17,8 +17,7 @@ export default function AboutPage() {
           <hr className="rule" />
           <p className="lede">
             StorenTech AI finds where time or revenue leaks, then fixes what
-            pays — human touch stays. Ask Sarah anything, or call{" "}
-            <a href={`tel:${site.phones.sarah.tel}`}>714-613-8557</a>.
+            pays — human touch stays. Ask Sarah anything.
           </p>
         </div>
       </header>
@@ -43,11 +42,8 @@ export default function AboutPage() {
               more touch, 10×, a calmer office.
             </p>
             <p>
-              The office is at {site.location.full}. Call{" "}
-              {site.phones.sarah.label} at{" "}
-              <a href={`tel:${site.phones.sarah.tel}`}>{site.phones.sarah.display}</a>
-              , or write{" "}
-              <a href={`mailto:${site.emails.vincent}`}>{site.emails.vincent}</a>.
+              The office is at {site.location.full}. Call Sarah, or write us
+              from Contact.
             </p>
           </div>
         </div>
