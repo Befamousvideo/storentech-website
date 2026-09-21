@@ -34,13 +34,13 @@ export default function AboutPage() {
               You work with a principal, not a bench of account coordinators.
               When a project needs a specialist — voice, CRM, a tighter
               integration, creative, media — we bring them in. The standard is
-              the same: the hire has to pay.
+              the same: the work has to pay.
             </p>
             <p>
               StorenTech is a full-service AI agency and a private firm in Corona
-              Del Mar. The front door is a paid Automation ROI Analysis and a
-              named AI employee. The studio behind that door can take the rest of
-              the problem once the numbers work.
+              Del Mar. The front door is a paid Automation ROI Analysis. After
+              the map, AI takes the grind and humans stay in the loop — more
+              capacity, not fewer people.
             </p>
             <p>
               The office is at {site.location.full}. Call{" "}

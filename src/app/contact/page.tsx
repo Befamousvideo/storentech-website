@@ -20,7 +20,7 @@ export default function ContactPage() {
           <p className="lede">
             Typical fee {site.prices.analysisTypical}. {site.prices.analysisComplex}{" "}
             when the operation is complex. Tell us what is broken. Call Sarah if
-            you want to hear the first employee before you buy the map.
+            you want to talk before you buy the map.
           </p>
         </div>
       </header>

@@ -28,10 +28,10 @@ Environment:
 
 ## Pages
 
-- `/` — hire after the math; Call Sarah; paid ROI → 30-day employee → retainer
-- `/work` — service catalog as jobs (wedge, revenue, operations, growth)
-- `/how-it-works` — paid analysis, first hire, retainer
-- `/about` — Vincent Jackson, President
+- `/` — leak-map hero; $1k Automation ROI Analysis; Sarah; 10× capacity
+- `/work` — grind catalog (wedge, revenue, operations, growth)
+- `/how-it-works` — paid analysis, then build what pays
+- `/about` — StorenTech AI; humans in the loop
 - `/contact` — name, email, company, what’s broken
 
 ## Firebase App Hosting (recommended on GCP)
@@ -68,7 +68,7 @@ Set `NEXT_PUBLIC_SITE_URL` and `INQUIRY_WEBHOOK_URL` in the Vercel project envir
 ## Offer (do not change on a whim)
 
 1. Paid Automation ROI Analysis: $1,000 typical; $2,000–$3,000 complex. Never free.
-2. First AI employee live in 30 days if the numbers work.
-3. Retainers: $5,000/mo AI Employee; $7,500/mo Growth.
+2. After the map, AI on the grind and humans in the loop — 10× capacity, not fewer jobs.
+3. Ongoing capacity: $5,000/mo Capacity; $7,500/mo Growth.
 
 Public contact / footer phone (Sarah): +1 714-613-8557 (`tel:+17146138557`).

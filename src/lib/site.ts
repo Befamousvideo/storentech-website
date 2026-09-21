@@ -103,18 +103,18 @@ export const offerSteps = [
   },
   {
     n: "03",
-    title: "Then a retainer",
-    body: `${site.prices.employee}/mo AI Employee: one bot, one workflow a month, reporting. ${site.prices.growth}/mo Growth: two bots, outbound and inbox, weekly command center.`,
+    title: "Stay on the grind",
+    body: `${site.prices.employee}/mo Capacity: one production workflow a month, reporting. ${site.prices.growth}/mo Growth: two workflows, outbound and inbox, weekly command center.`,
   },
 ] as const;
 
 export const retainers = [
   {
-    name: "AI Employee",
+    name: "Capacity",
     price: `${site.prices.employee} / month`,
-    summary: "The working hire, once the analysis says it will pay.",
+    summary: "AI on the grind, once the map says it pays. Humans stay in the loop.",
     points: [
-      "One production bot on a named job",
+      "One production workflow on a named leak",
       "One new workflow each month",
       "Reporting the owner can actually read",
     ],
@@ -122,9 +122,9 @@ export const retainers = [
   {
     name: "Growth",
     price: `${site.prices.growth} / month`,
-    summary: "Two employees and a weekly operating rhythm.",
+    summary: "Two workflows and a weekly operating rhythm.",
     points: [
-      "Two production bots",
+      "Two production workflows",
       "Outbound plus inbox coverage",
       "Weekly command center with the owner",
     ],
@@ -143,16 +143,16 @@ export const workGroups: WorkGroup[] = [
   {
     id: "wedge",
     label: "Wedge / front of house",
-    title: "The first job is usually the phone and the inbox.",
-    lede: "Almost every SMB leaks money here. That is why chat and voice are the common first hire — the wedge, not the whole firm.",
+    title: "The first leak is usually the phone and the inbox.",
+    lede: "Almost every SMB leaks money here. After the map, that grind is a common first build — not the whole firm, and not the $1k product.",
     jobs: [
       {
         title: "Speed-to-lead + after-hours closer",
-        body: "Every web, call, and chat lead is touched fast, booked or qualified. The practice is closed. The contractor is on a roof. The employee still takes the job.",
+        body: "Every web, call, and chat lead is touched fast, booked or qualified. The practice is closed. The contractor is on a roof. The grind still gets covered.",
       },
       {
         title: "Website chat + voice",
-        body: `The same employee on the number you publish and the site you already have. Sarah is the live demo — ${site.phones.sarah.display} — handling the first jobs an AI employee actually does.`,
+        body: "The same coverage on the number you publish and the site you already have. Humans stay out front. AI takes the after-hours grind.",
       },
       {
         title: "Booking / appointment setting",
@@ -164,7 +164,7 @@ export const workGroups: WorkGroup[] = [
     id: "revenue",
     label: "Revenue",
     title: "Named pipeline work. Booked meetings, not a lead dump.",
-    lede: "Once the front door holds, the next hire works the follow-up that operators never quite staff.",
+    lede: "Once the front door holds, the next build works the follow-up that operators never quite staff.",
     jobs: [
       {
         title: "AI SDR / appointment-setter pod",
@@ -196,14 +196,14 @@ export const workGroups: WorkGroup[] = [
       },
       {
         title: "Review + reputation engine",
-        body: "Google and Yelp asks, response drafts, competitor watch. Sold as an add-on or as an entry hire when reputation is the leak.",
+        body: "Google and Yelp asks, response drafts, competitor watch. Sold as an add-on or as an entry build when reputation is the leak.",
       },
     ],
   },
   {
     id: "growth",
     label: "Growth",
-    title: "Available when the first employee is earning.",
+    title: "Available when the first build is paying.",
     lede: "These lines are part of the firm. They are not the homepage headline, and they are not year-one-only work — they are ready when the map says so.",
     jobs: [
       {
@@ -211,12 +211,12 @@ export const workGroups: WorkGroup[] = [
         body: "Site, YouTube, LinkedIn, and email — a planned set of 12–20 assets, written to the offer, not a promise to “post on Instagram.”",
       },
       {
-        title: "Grok Bot / AI-employee implementation studio",
-        body: "Design the bots, connect the tools, write the routines, train the owner, and stay on as operator.",
+        title: "Implementation studio",
+        body: "Design the workflows, connect the tools, write the routines, train the owner, and stay on as operator. Humans in the loop. AI on the grind.",
       },
       {
         title: "White-label fulfillment",
-        body: "Other agencies keep the client relationship. We build and run the employee behind their brand.",
+        body: "Other agencies keep the client relationship. We build and run the grind behind their brand.",
       },
       {
         title: "CTV / OTT creative + media",

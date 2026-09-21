@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   applicationName: site.name,
   keywords: [
     "AI agency Orange County",
-    "AI employee Newport Beach",
+    "10x capacity Orange County",
     "Automation ROI analysis",
     "voice agent",
     "Corona Del Mar",
