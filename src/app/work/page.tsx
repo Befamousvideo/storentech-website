@@ -92,7 +92,7 @@ export default function WorkPage() {
             <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
               Call Sarah {site.phones.sarah.display}
             </a>
-            <Link className="btn" href="/contact">
+            <Link className="btn" href="/pay">
               Start the paid analysis
             </Link>
           </div>

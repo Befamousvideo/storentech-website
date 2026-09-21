@@ -33,6 +33,7 @@ Environment:
 - `/how-it-works` — paid analysis, first hire, retainer
 - `/about` — Vincent Jackson, President
 - `/contact` — name, email, company, what’s broken
+- `/pay` — Stripe checkout for the $1,000 Automation ROI Analysis (one location + corporate HQ)
 
 ## Firebase App Hosting (recommended on GCP)
 

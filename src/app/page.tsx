@@ -21,7 +21,7 @@ export default function HomePage() {
               <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
                 Call Sarah now
               </a>
-              <Link className="btn" href="/contact">
+              <Link className="btn" href="/pay">
                 Start the paid analysis
               </Link>
             </div>
@@ -147,7 +147,7 @@ export default function HomePage() {
             <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
               Call Sarah
             </a>
-            <Link className="btn" href="/contact">
+            <Link className="btn" href="/pay">
               Start analysis
             </Link>
             <Link className="btn" href="/work">
