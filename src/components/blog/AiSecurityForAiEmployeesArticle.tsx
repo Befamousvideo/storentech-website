@@ -321,6 +321,12 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
           behind a <strong>human approval</strong> gate. Humans stay in the
           loop. That is the product, not a disclaimer.
         </p>
+        <p>
+          Implementations can include <strong>emergency assurance</strong> and a
+          clear <strong>human-in-the-loop</strong> response path when something
+          looks wrong. The full break-glass playbook lives{" "}
+          <strong>inside the ROIA</strong> — not on a public blog.
+        </p>
 
         <h3>5. Sandbox / staging before production AI employees</h3>
         <p>
@@ -367,6 +373,11 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
           <li>
             We are <strong>not</strong> selling a standalone “AI security
             product” beyond the practices above.
+          </li>
+          <li>
+            We are <strong>not</strong> publishing proprietary break-glass
+            severity levels, freeze playbooks, or trigger how-tos — those stay
+            in the ROIA.
           </li>
           <li>
             We are <strong>not</strong> saying frontier labs’ eval incidents
