@@ -34,6 +34,7 @@ Environment:
 - `/how-it-works` — paid analysis, then build what pays
 - `/about` — StorenTech AI; humans in the loop
 - `/contact` — name, email, company, what’s broken
+- `/pay` and `pay.storentechai.com` — 302 to Stripe Payment Link (`site.stripe.roiPaymentLink`). Invoice short URL only. Not the Start analysis CTA.
 
 ## Firebase App Hosting (recommended on GCP)
 

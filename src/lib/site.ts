@@ -87,6 +87,10 @@ export const site = {
   // Start analysis CTA. Form now; set NEXT_PUBLIC_INTAKE_URL to ONB1 when gated live.
   intakeUrl: resolveIntakeUrl(process.env.NEXT_PUBLIC_INTAKE_URL),
   intakeOnb1Url: ONB1_INTAKE_URL,
+  stripe: {
+    roiPaymentLink: "https://buy.stripe.com/6oU14ngeE5w1a8wd7RdjO00",
+  },
+  payHosts: ["pay.storentechai.com", "www.pay.storentechai.com"],
 } as const;
 
 export const nav = [
