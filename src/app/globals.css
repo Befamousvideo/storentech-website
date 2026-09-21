@@ -187,14 +187,24 @@ select {
 }
 
 .header-actions {
+  --header-action-h: calc(0.88rem * 2 + 0.68rem * 1.65 + 2px);
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
 }
 
-.header-sarah-phone {
-  width: min(100%, 10.5rem);
+.header-actions .btn {
+  height: var(--header-action-h);
+  box-sizing: border-box;
+}
+
+.header-sarah-phone.sarah-phone {
+  width: auto;
+  height: var(--header-action-h);
+  max-width: 100%;
+  object-fit: contain;
+  object-position: right center;
 }
 
 .menu-toggle {
@@ -1053,9 +1063,17 @@ select {
   }
 
   .mobile-actions {
+    --header-action-h: calc(0.88rem * 2 + 0.68rem * 1.65 + 2px);
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 10px;
     margin-top: 1rem;
+  }
+
+  .mobile-actions .btn {
+    height: var(--header-action-h);
+    box-sizing: border-box;
   }
 
   .hero-grid,
