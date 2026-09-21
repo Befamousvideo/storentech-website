@@ -22,6 +22,11 @@ export const site = {
   name: "StorenTech AI",
   shortName: "StorenTech",
   url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
+  // Vince locked brand mark: ORBIT. Not the hybrid glow orb.
+  brand: {
+    mark: "/orbit-mark.png",
+    wordmark: "/storentech-logo-orbit.png",
+  },
   tagline:
     "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays.",
   brandLine:

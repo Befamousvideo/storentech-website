@@ -130,11 +130,19 @@ select {
 
 .logo {
   display: flex;
-  align-items: baseline;
-  gap: 0.4rem;
+  align-items: center;
+  gap: 0.55rem;
   text-decoration: none;
   color: var(--navy);
   min-width: 0;
+}
+
+.logo-mark {
+  display: block;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  border-radius: 50%;
 }
 
 .logo-word {
@@ -849,6 +857,11 @@ select {
 @media (max-width: 980px) {
   :root {
     --header-h: 76px;
+  }
+
+  .logo-mark {
+    width: 34px;
+    height: 34px;
   }
 
   .header-inner {

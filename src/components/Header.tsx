@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { BrandLogo } from "@/components/BrandLogo";
 import { IntakeLink } from "@/components/IntakeLink";
 import { nav, site } from "@/lib/site";
 
@@ -13,9 +14,8 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="wrap header-inner">
-        <Link href="/" className="logo" onClick={() => setOpen(false)}>
-          <span className="logo-word">{site.shortName}</span>
-          <span className="logo-ai">AI</span>
+        <Link href="/" className="logo" onClick={() => setOpen(false)} aria-label="StorenTech AI">
+          <BrandLogo />
         </Link>
 
         <nav className="nav-desktop" aria-label="Primary">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import { IntakeLink } from "@/components/IntakeLink";
 import { SarahContact } from "@/components/SarahContact";
 import { nav, site } from "@/lib/site";
@@ -9,9 +10,8 @@ export function Footer() {
       <div className="wrap">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Link href="/" className="logo">
-              <span className="logo-word">{site.shortName}</span>
-              <span className="logo-ai">AI</span>
+            <Link href="/" className="logo" aria-label="StorenTech AI">
+              <BrandLogo />
             </Link>
             <p>
               Full-service AI agency in {site.location.kicker}.
