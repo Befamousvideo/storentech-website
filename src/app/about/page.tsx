@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Vincent Jackson, President of StorenTech AI — a full-service AI agency in Corona Del Mar. Orange County operator and technical specialist. StorenTech AI since 2023.",
+  authors: [{ name: site.founder.name }],
+  creator: site.founder.name,
   alternates: { canonical: "/about" },
 };
 

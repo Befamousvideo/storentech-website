@@ -28,8 +28,6 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: site.name,
-  authors: [{ name: site.founder.name }],
-  creator: site.founder.name,
   keywords: [
     "AI agency Orange County",
     "AI employee Newport Beach",
