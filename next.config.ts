@@ -18,13 +18,13 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
-        source: "/:path*",
+        source: "/",
         has: [{ type: "host", value: "pay.storentechai.com" }],
         destination: stripe,
         permanent: false,
       },
       {
-        source: "/:path*",
+        source: "/",
         has: [{ type: "host", value: "www.pay.storentechai.com" }],
         destination: stripe,
         permanent: false,
