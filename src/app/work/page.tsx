@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { IntakeLink } from "@/components/IntakeLink";
 import { retainers, site, workGroups } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -90,9 +90,7 @@ export default function WorkPage() {
             <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
               Call Sarah {site.phones.sarah.display}
             </a>
-            <Link className="btn" href="/contact">
-              Start the paid analysis
-            </Link>
+            <IntakeLink className="btn">Start the paid analysis</IntakeLink>
           </div>
         </div>
       </section>

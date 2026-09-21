@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { IntakeLink } from "@/components/IntakeLink";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -41,9 +41,7 @@ export default function HowItWorksPage() {
             the map.
           </p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
-            <Link className="btn btn-solid" href="/contact">
-              Start the paid analysis
-            </Link>
+            <IntakeLink className="btn btn-solid">Start the paid analysis</IntakeLink>
             <a className="btn" href={`tel:${site.phones.sarah.tel}`}>
               Call Sarah first
             </a>

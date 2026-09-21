@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { IntakeLink } from "@/components/IntakeLink";
 import { SarahContact } from "@/components/SarahContact";
 import { nav, site } from "@/lib/site";
 
@@ -22,7 +23,7 @@ export function Footer() {
                 {item.label}
               </Link>
             ))}
-            <Link href="/contact">Start the paid analysis</Link>
+            <IntakeLink>Start the paid analysis</IntakeLink>
           </nav>
           <div className="footer-contact">
             <div>{site.location.full}</div>

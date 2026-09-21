@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { IntakeLink } from "@/components/IntakeLink";
 import { SarahContact } from "@/components/SarahContact";
 import { site, verticals } from "@/lib/site";
 
@@ -16,9 +16,7 @@ export default function HomePage() {
               <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
                 Call Sarah
               </a>
-              <Link className="btn" href="/contact">
-                Start the paid analysis
-              </Link>
+              <IntakeLink className="btn">Start the paid analysis</IntakeLink>
             </div>
             <div className="fine hero-contact">
               <SarahContact
@@ -106,12 +104,7 @@ export default function HomePage() {
             <a className="btn btn-solid" href={`tel:${site.phones.sarah.tel}`}>
               Call Sarah
             </a>
-            <Link className="btn" href="/contact">
-              Start analysis
-            </Link>
-            <Link className="btn" href="/work">
-              See the work
-            </Link>
+            <IntakeLink className="btn">Start analysis</IntakeLink>
           </div>
         </div>
       </section>

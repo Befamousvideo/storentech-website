@@ -1,4 +1,12 @@
 const DEFAULT_SITE_URL = "https://storentech.com";
+const DEFAULT_INTAKE_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScjOa8fFyqRLRAmOyDNtk7oFLLVwGwNdyML7VQNwWIUtsXRg/viewform";
+const ONB1_INTAKE_URL = "https://onboarding.storentechai.com";
+
+function resolveIntakeUrl(raw: string | undefined) {
+  const candidate = raw?.trim();
+  return candidate || DEFAULT_INTAKE_URL;
+}
 
 function resolveSiteUrl(raw: string | undefined) {
   const candidate = raw?.trim();
@@ -76,6 +84,9 @@ export const site = {
     employee: "$5,000",
     growth: "$7,500",
   },
+  // Start analysis CTA. Form now; set NEXT_PUBLIC_INTAKE_URL to ONB1 when gated live.
+  intakeUrl: resolveIntakeUrl(process.env.NEXT_PUBLIC_INTAKE_URL),
+  intakeOnb1Url: ONB1_INTAKE_URL,
 } as const;
 
 export const nav = [

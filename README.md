@@ -24,11 +24,12 @@ Open [http://localhost:3000](http://localhost:3000).
 Environment:
 
 - `NEXT_PUBLIC_SITE_URL` — public origin for metadata, sitemap, and Open Graph (default `https://storentech.com`)
+- `NEXT_PUBLIC_INTAKE_URL` — Start analysis CTA. Default is the Workspace Google Form. Set to `https://onboarding.storentechai.com` when ONB1 is live. Not Stripe `/pay`.
 - `INQUIRY_WEBHOOK_URL` — optional. If set, each inquiry is `POST`ed as JSON (`name`, `email`, `company`, `broken`, `submittedAt`, `source`)
 
 ## Pages
 
-- `/` — leak-map hero; $1k Automation ROI Analysis; Sarah; humans in the loop
+- `/` — leak-map hero; $1k Automation ROI Analysis; Sarah; humans in the loop. Start analysis → `site.intakeUrl` (Form). No “See the work.”
 - `/work` — services catalog; map first, then build what pays
 - `/how-it-works` — paid analysis, then build what pays
 - `/about` — StorenTech AI; humans in the loop

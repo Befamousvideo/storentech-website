@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { IntakeLink } from "@/components/IntakeLink";
 import { nav, site } from "@/lib/site";
 
 export function Header() {
@@ -33,9 +34,7 @@ export function Header() {
           <a className="btn" href={`tel:${site.phones.sarah.tel}`}>
             Call Sarah
           </a>
-          <Link className="btn btn-solid" href="/contact">
-            Start analysis
-          </Link>
+          <IntakeLink className="btn btn-solid">Start analysis</IntakeLink>
           <button
             className="menu-toggle"
             type="button"
@@ -69,9 +68,9 @@ export function Header() {
           <a className="btn" href={`tel:${site.phones.sarah.tel}`}>
             Call Sarah
           </a>
-          <Link className="btn btn-solid" href="/contact" onClick={() => setOpen(false)}>
+          <IntakeLink className="btn btn-solid" onClick={() => setOpen(false)}>
             Start analysis
-          </Link>
+          </IntakeLink>
         </div>
       </div>
     </header>
