@@ -96,6 +96,7 @@ export const nav = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
+// HOLD: Mary is drafting homepage Clients labels. Do not rewrite this list.
 export const verticals = [
   "Dental and med spa",
   "Insurance",
