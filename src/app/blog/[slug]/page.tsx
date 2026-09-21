@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AiSecurityForAiEmployeesArticle } from "@/components/blog/AiSecurityForAiEmployeesArticle";
 import { AutomationRoiAnalysisArticle } from "@/components/blog/AutomationRoiAnalysisArticle";
+import { MastermindHybridAiArticle } from "@/components/blog/MastermindHybridAiArticle";
 import { StructuredData } from "@/components/StructuredData";
 import { blogPosts, getPost, postPath, postUrl, type BlogPost } from "@/lib/blog";
 import { site } from "@/lib/site";
@@ -12,6 +13,8 @@ function BlogArticle({ post }: { post: BlogPost }) {
       return <AutomationRoiAnalysisArticle post={post} />;
     case "ai-security-for-ai-employees":
       return <AiSecurityForAiEmployeesArticle post={post} />;
+    case "mastermind-hybrid-ai":
+      return <MastermindHybridAiArticle post={post} />;
     default:
       notFound();
   }
