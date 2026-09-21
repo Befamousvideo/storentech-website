@@ -365,6 +365,34 @@ select {
   margin-top: 1.35rem;
 }
 
+.sarah-contact {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.sarah-contact-primary {
+  color: inherit;
+  text-decoration: none;
+}
+
+.sarah-contact-primary:hover {
+  color: var(--gold);
+}
+
+.sarah-contact-secondary {
+  margin: 0;
+  max-width: 36ch;
+}
+
+.hero-contact .sarah-contact {
+  margin-bottom: 0.65rem;
+}
+
+.hero-contact .sarah-contact-primary {
+  color: var(--navy);
+  font-weight: 600;
+}
+
 /* Sarah contact card */
 .demo-card {
   background: var(--navy);
@@ -373,34 +401,27 @@ select {
   min-height: 100%;
 }
 
-.demo-card .kicker {
-  color: var(--gold);
+.demo-card .sarah-contact {
+  gap: 1.1rem;
 }
 
-.demo-card h2 {
-  font-size: clamp(2.2rem, 3.4vw, 3.1rem);
-  color: #f7f1e6;
-  margin: 0.85rem 0 1rem;
-}
-
-.demo-card p {
-  color: rgba(244, 239, 230, 0.82);
-}
-
-.demo-number {
+.demo-card .sarah-contact-primary {
   display: block;
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 4vw, 3.35rem);
+  font-size: clamp(2rem, 3.2vw, 2.85rem);
   color: #f7f1e6;
-  text-decoration: none;
   letter-spacing: -0.03em;
-  margin: 1.4rem 0 1.1rem;
-  line-height: 1;
+  line-height: 1.15;
 }
 
-.demo-card .proof {
-  margin-bottom: 1.7rem;
-  max-width: 34ch;
+.demo-card .sarah-contact-primary:hover {
+  color: var(--gold-soft);
+}
+
+.demo-card .sarah-contact-secondary {
+  color: rgba(244, 239, 230, 0.82);
+  font-size: 1.05rem;
+  max-width: 28ch;
 }
 
 /* Cards */
@@ -725,6 +746,21 @@ select {
 .footer-contact {
   display: grid;
   gap: 0.55rem;
+}
+
+.footer-contact .sarah-contact-primary {
+  color: #f7f1e6;
+  font-size: 0.92rem;
+}
+
+.footer-contact .sarah-contact-primary:hover {
+  color: var(--gold-soft);
+}
+
+.footer-contact .sarah-contact-secondary {
+  color: rgba(244, 239, 230, 0.72);
+  font-size: 0.88rem;
+  max-width: 28ch;
 }
 
 .footer-bottom {

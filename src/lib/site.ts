@@ -44,6 +44,11 @@ export const site = {
       label: "Sarah",
     },
   },
+  contactCopy: {
+    primary: "Sarah, Operator · 714-613-8557",
+    secondary:
+      "Prefer to talk? Call Sarah — leave a message or request a callback.",
+  },
   emails: {
     support: "support@StorenTech.com",
     vincent: "vincent@storentech.com",

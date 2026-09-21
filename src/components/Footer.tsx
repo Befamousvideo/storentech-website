@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SarahContact } from "@/components/SarahContact";
 import { nav, site } from "@/lib/site";
 
 export function Footer() {
@@ -26,9 +27,11 @@ export function Footer() {
           </nav>
           <div className="footer-contact">
             <div>{site.location.full}</div>
-            <a href={`tel:${site.phones.sarah.tel}`}>
-              {site.phones.sarah.label} {site.phones.sarah.display}
-            </a>
+            <SarahContact
+              className="sarah-contact"
+              primaryClassName="sarah-contact-primary"
+              secondaryClassName="sarah-contact-secondary"
+            />
             <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a>
             <a href={`mailto:${site.emails.vincent}`}>{site.emails.vincent}</a>
           </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SarahContact } from "@/components/SarahContact";
 import { offerSteps, retainers, site, verticals } from "@/lib/site";
 
 export default function HomePage() {
@@ -25,26 +26,22 @@ export default function HomePage() {
                 Start the paid analysis
               </Link>
             </div>
-            <p className="fine hero-contact">
-              {site.phones.sarah.label}:{" "}
-              <a href={`tel:${site.phones.sarah.tel}`}>{site.phones.sarah.display}</a>
-              {" · "}
+            <div className="fine hero-contact">
+              <SarahContact
+                className="sarah-contact"
+                primaryClassName="sarah-contact-primary"
+                secondaryClassName="sarah-contact-secondary"
+              />
               <a href={`mailto:${site.emails.support}`}>{site.emails.support}</a>
-            </p>
+            </div>
           </div>
 
-          <aside className="demo-card" aria-label="Sarah">
-            <p className="kicker">{site.phones.sarah.label}</p>
-            <h2>The operator.</h2>
-            <p>
-              Call the number we publish. Sarah answers.
-            </p>
-            <a className="demo-number" href={`tel:${site.phones.sarah.tel}`}>
-              {site.phones.sarah.display}
-            </a>
-            <a className="btn btn-gold" href={`tel:${site.phones.sarah.tel}`}>
-              Call {site.phones.sarah.label}
-            </a>
+          <aside className="demo-card" aria-label={site.contactCopy.primary}>
+            <SarahContact
+              className="sarah-contact"
+              primaryClassName="sarah-contact-primary"
+              secondaryClassName="sarah-contact-secondary"
+            />
           </aside>
         </div>
       </section>
