@@ -18,7 +18,7 @@ export function StripeBuyButton() {
         Prefer a payment link, or paying an invoice? Use the same Stripe
         checkout:{" "}
         <a href={site.stripe.paymentLink} rel="noopener noreferrer">
-          Pay {site.prices.analysisTypical} for the typical analysis
+          Pay {site.prices.analysisTypical} for one location + corporate HQ
         </a>
         .
       </p>

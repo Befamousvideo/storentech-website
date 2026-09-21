@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Pay for the Automation ROI Analysis",
   description:
-    "Pay $1,000 for the typical Automation ROI Analysis. This is paid work, not a complimentary sales call.",
+    "Pay $1,000 for the Automation ROI Analysis — one location plus corporate HQ. This is paid work, not a complimentary sales call.",
   alternates: { canonical: "/pay" },
 };
 
@@ -19,9 +19,10 @@ export default function PayPage() {
           <h1>Automation ROI Analysis.</h1>
           <hr className="rule" />
           <p className="lede">
-            Typical fee {site.prices.analysisTypical}. This is paid work. It is
-            not a complimentary sales call. Call Sarah if you want to hear the
-            first employee before you buy the map.
+            The {site.prices.analysisTypical} Automation ROI Analysis covers one
+            location plus corporate HQ. This is paid work. It is not a
+            complimentary sales call. Call Sarah if you want to hear the first
+            employee before you buy the map.
           </p>
         </div>
       </header>
@@ -29,14 +30,15 @@ export default function PayPage() {
       <section className="section" style={{ paddingTop: "1.5rem" }}>
         <div className="wrap contact-grid">
           <article className="card pay-card">
-            <p className="kicker">Typical analysis</p>
+            <p className="kicker">One location + HQ</p>
             <p className="price">{site.prices.analysisTypical}</p>
             <h2>Pay for the map.</h2>
             <p>
               A ranked roadmap for the first named AI employee and the work
-              around it. Complex operations — multiple locations, a messy stack,
-              or a wider catalog — are {site.prices.analysisComplex} and start
-              from Contact.
+              around it — one location plus corporate HQ. $2,000 or $3,000 is
+              for a complex or multi-site analysis only when that wider scope is
+              agreed. It is not the base product. If you need that wider scope,
+              start from <Link href="/contact">Contact</Link>.
             </p>
             <StripeBuyButton />
           </article>

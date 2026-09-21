@@ -19,10 +19,11 @@ export default function ContactPage() {
           <h1>Start the paid analysis.</h1>
           <hr className="rule" />
           <p className="lede">
-            Typical fee {site.prices.analysisTypical}. {site.prices.analysisComplex}{" "}
-            when the operation is complex. Pay the typical analysis, or send a
-            brief here if the operation is complex. Call Sarah if you want to
-            hear the first employee before you buy the map.
+            The {site.prices.analysisTypical} analysis is one location plus
+            corporate HQ. $2,000 or $3,000 applies only when a complex or
+            multi-site engagement is scoped. Pay the {site.prices.analysisTypical}{" "}
+            map, or send a brief here if you need that wider scope. Call Sarah
+            if you want to hear the first employee before you buy the map.
           </p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
             <Link className="btn btn-solid" href="/pay">
