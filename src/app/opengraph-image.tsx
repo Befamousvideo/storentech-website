@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "StorenTech AI — Newport Beach / Corona Del Mar";
+export const alt = "StorenTech AI";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -20,7 +20,7 @@ export default function OpenGraphImage() {
         }}
       >
         <div style={{ display: "flex", fontSize: 22, letterSpacing: 6, color: "#9b7a4b", textTransform: "uppercase" }}>
-          Newport Beach / Corona Del Mar
+          StorenTech AI
         </div>
         <div style={{ display: "flex", fontSize: 72, marginTop: 28, lineHeight: 1.05, maxWidth: 900 }}>
           Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays.

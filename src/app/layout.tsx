@@ -23,7 +23,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "StorenTech AI — Full-service AI agency, Newport Beach",
+    default: "StorenTech AI — Automation ROI Analysis",
     template: "%s · StorenTech AI",
   },
   description: site.description,

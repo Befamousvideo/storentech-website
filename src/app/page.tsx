@@ -62,7 +62,7 @@ export default function HomePage() {
           <div className="section-head">
             <div>
               <p className="kicker">Human touch</p>
-              <h2>More output with the people you have.</h2>
+              <h2>Not fewer jobs.</h2>
             </div>
             <p className="lede">{site.offer.capacity}</p>
           </div>
