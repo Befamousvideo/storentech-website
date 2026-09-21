@@ -35,6 +35,7 @@ Environment:
 - `/about` — StorenTech AI; humans in the loop
 - `/contact` — name, email, company, what’s broken
 - `/pay` and `pay.storentechai.com` — 302 to Stripe Payment Link (`site.stripe.roiPaymentLink`). Invoice short URL only. Not the Start analysis CTA.
+- `/redo` — thin Red O pay page. Pay CTA → Stripe Payment Link. Does not redirect. Same page on `pay.storentechai.com/redo`.
 
 ## Firebase App Hosting (recommended on GCP)
 

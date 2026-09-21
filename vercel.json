@@ -11,13 +11,13 @@
       "permanent": false
     },
     {
-      "source": "/:path*",
+      "source": "/",
       "has": [{ "type": "host", "value": "pay.storentechai.com" }],
       "destination": "https://buy.stripe.com/6oU14ngeE5w1a8wd7RdjO00",
       "permanent": false
     },
     {
-      "source": "/:path*",
+      "source": "/",
       "has": [{ "type": "host", "value": "www.pay.storentechai.com" }],
       "destination": "https://buy.stripe.com/6oU14ngeE5w1a8wd7RdjO00",
       "permanent": false

@@ -128,6 +128,10 @@ select {
   gap: 16px;
 }
 
+.header-inner-slim {
+  grid-template-columns: 1fr;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -816,6 +820,10 @@ select {
   max-width: 16ch;
 }
 
+.redo-hero h1 {
+  max-width: 20ch;
+}
+
 .underline-phrase {
   position: relative;
   display: inline-block;
@@ -863,7 +871,7 @@ select {
     height: 34px;
   }
 
-  .header-inner {
+  .header-inner:not(.header-inner-slim) {
     grid-template-columns: 1fr auto;
   }
 
