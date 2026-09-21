@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IntakeLink } from "@/components/IntakeLink";
+import { SarahPhoneImage } from "@/components/SarahContact";
 import { site } from "@/lib/site";
 
 // HOLD: Mary is drafting How it works steps. Do not rewrite this page.
@@ -46,9 +47,7 @@ export default function HowItWorksPage() {
           </p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
             <IntakeLink className="btn btn-solid">Start the paid analysis</IntakeLink>
-            <a className="btn" href={`tel:${site.phones.sarah.tel}`}>
-              Call Sarah first
-            </a>
+            <SarahPhoneImage className="sarah-phone" />
           </div>
         </div>
       </header>
