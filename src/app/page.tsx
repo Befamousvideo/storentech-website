@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SarahContact } from "@/components/SarahContact";
-import { offerSteps, retainers, site, verticals } from "@/lib/site";
+import { site, verticals } from "@/lib/site";
 
 export default function HomePage() {
   return (
@@ -8,7 +8,7 @@ export default function HomePage() {
       <section className="hero">
         <div className="wrap hero-grid">
           <div>
-            <p className="kicker">{site.location.kicker}</p>
+            <p className="kicker">{site.name}</p>
             <h1 className="brand-line">{site.tagline}</h1>
             <hr className="rule" />
             <p className="lede">
@@ -54,43 +54,17 @@ export default function HomePage() {
               {site.offer.primary} {site.offer.later}
             </p>
           </div>
-          <div className="card-grid-3">
-            {offerSteps.map((step) => (
-              <article className="card" key={step.n}>
-                <div className="n">{step.n}</div>
-                <h3>{step.title}</h3>
-                <p>{step.body}</p>
-              </article>
-            ))}
-          </div>
         </div>
       </section>
 
-      <section className="section section-tan" id="retainers">
+      <section className="section section-tan" id="capacity">
         <div className="wrap">
           <div className="section-head">
             <div>
-              <p className="kicker">Retainers</p>
-              <h2>Named employees. Named monthly scope.</h2>
+              <p className="kicker">Human touch</p>
+              <h2>More output with the people you have.</h2>
             </div>
-            <p className="lede">
-              After the first hire is earning, we stay on as operator. Hours are
-              not the product. The employee and the weekly rhythm are.
-            </p>
-          </div>
-          <div className="card-grid-2">
-            {retainers.map((plan) => (
-              <article className="card" key={plan.name}>
-                <p className="kicker">{plan.name}</p>
-                <p className="price">{plan.price}</p>
-                <h3>{plan.summary}</h3>
-                <ul>
-                  {plan.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
+            <p className="lede">{site.offer.capacity}</p>
           </div>
         </div>
       </section>

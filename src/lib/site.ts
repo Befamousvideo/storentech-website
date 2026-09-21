@@ -26,6 +26,8 @@ export const site = {
       "Automation ROI Analysis — written map of time/revenue/risk leaks vs their software, what to fix first. Clarity before spend.",
     later:
       "After the map, we build what pays — may include voice, website chat, other ops. Implementation ≠ the $1k product.",
+    capacity:
+      "We multiply capacity like a 10× staff assist — more output with the people you have. Human touch stays. This is not about cutting jobs.",
   },
   founder: {
     name: "Vincent Jackson",
