@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { IntakeLink } from "@/components/IntakeLink";
 import { site } from "@/lib/site";
 
+// HOLD: Mary is drafting How it works steps. Do not rewrite this page.
+// Expected direction only (not final): Analysis → map → first build; no retainers; humans in the loop.
+// Ship Clients + How it works together when her exact copy arrives.
+
 export const metadata: Metadata = {
   title: "How it works",
   description:

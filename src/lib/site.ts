@@ -107,6 +107,7 @@ export const verticals = [
   "Manufacturing, when the project is right",
 ] as const;
 
+// HOLD with How it works: Mary is drafting the engagement steps. Do not rewrite yet.
 export const offerSteps = [
   {
     n: "01",
