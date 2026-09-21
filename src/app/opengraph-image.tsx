@@ -23,7 +23,7 @@ export default function OpenGraphImage() {
           Newport Beach / Corona Del Mar
         </div>
         <div style={{ display: "flex", fontSize: 72, marginTop: 28, lineHeight: 1.05, maxWidth: 900 }}>
-          Hire an AI employee after the math, not before.
+          StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays.
         </div>
         <div
           style={{

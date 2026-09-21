@@ -356,6 +356,11 @@ select {
   color: var(--navy);
 }
 
+.hero h1.brand-line {
+  max-width: 18ch;
+  font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+}
+
 .hero .lede {
   font-size: 1.08rem;
   margin-bottom: 1.85rem;

@@ -3,10 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "Vincent Jackson, President of StorenTech AI — a full-service AI agency in Corona Del Mar. Orange County operator and technical specialist. StorenTech AI since 2023.",
-  authors: [{ name: site.founder.name }],
-  creator: site.founder.name,
+  description: site.brandLine,
   alternates: { canonical: "/about" },
 };
 
@@ -16,14 +13,12 @@ export default function AboutPage() {
       <header className="page-hero">
         <div className="wrap">
           <p className="kicker">About</p>
-          <h1>
-            {site.founder.name}, {site.founder.title}.
-          </h1>
+          <h1>{site.name}.</h1>
           <hr className="rule" />
           <p className="lede">
-            Orange County operator and technical specialist. Sixteen-plus years
-            solving messy business-tech for people who have a company to run.
-            StorenTech AI since 2023.
+            StorenTech AI finds where time or revenue leaks, then fixes what
+            pays — human touch stays. Ask Sarah anything, or call{" "}
+            <a href={`tel:${site.phones.sarah.tel}`}>714-613-8557</a>.
           </p>
         </div>
       </header>

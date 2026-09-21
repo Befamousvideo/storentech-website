@@ -14,9 +14,12 @@ export const site = {
   name: "StorenTech AI",
   shortName: "StorenTech",
   url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
-  tagline: "Hire an AI employee after the math, not before.",
+  tagline:
+    "StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays.",
+  brandLine:
+    "StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays. Ask Sarah anything, or call 714-613-8557.",
   description:
-    "StorenTech AI is a full-service AI agency in Newport Beach and Corona Del Mar. Start with a paid Automation ROI Analysis. If the numbers work, the first AI employee is live in 30 days.",
+    "StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays. Ask Sarah anything, or call 714-613-8557.",
   founder: {
     name: "Vincent Jackson",
     title: "President",

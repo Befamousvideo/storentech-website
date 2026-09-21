@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: site.url,
     siteName: site.name,
-    title: "StorenTech AI — Hire an AI employee after the math",
+    title: "StorenTech AI",
     description: site.description,
   },
   twitter: {

@@ -43,9 +43,6 @@ export default function ContactPage() {
                 <br />
                 <a href={`mailto:${site.emails.vincent}`}>{site.emails.vincent}</a>
               </div>
-              <p>
-                {site.founder.name}, {site.founder.title}.
-              </p>
             </div>
           </aside>
         </div>
