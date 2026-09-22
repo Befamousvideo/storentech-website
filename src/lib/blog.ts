@@ -46,9 +46,9 @@ export const roiAnalysisFaqs = [
       "Usually voice + chat for speed-to-lead, booking, and CRM — the front-of-house jobs where missed conversations cost the most.",
   },
   {
-    question: "What’s the difference between the $5,000 and $7,500 retainers?",
+    question: "How is ongoing work priced after the analysis?",
     answer:
-      "AI Employee ($5,000/mo): one bot, one workflow per month, reporting. Growth ($7,500/mo): two bots, outbound + inbox, weekly command center.",
+      "Ongoing operator partnership is scoped after the map. We do not name a monthly retainer until ROIA knows the workload and locations.",
   },
 ] as const satisfies readonly BlogFaq[];
 

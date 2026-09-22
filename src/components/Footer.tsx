@@ -13,9 +13,7 @@ export function Footer() {
             <Link href="/" className="logo" aria-label="StorenTech AI">
               <BrandLogo />
             </Link>
-            <p>
-              Full-service AI agency in {site.location.kicker}.
-            </p>
+            <p>Full-service AI agency in {site.location.kicker}.</p>
           </div>
           <nav className="footer-nav" aria-label="Footer">
             {nav.map((item) => (
@@ -26,7 +24,7 @@ export function Footer() {
             <IntakeLink>Start the paid analysis</IntakeLink>
           </nav>
           <div className="footer-contact">
-            <div>{site.location.full}</div>
+            <div>{site.location.kicker}</div>
             <SarahContact
               className="sarah-contact"
               primaryClassName="sarah-contact-primary"

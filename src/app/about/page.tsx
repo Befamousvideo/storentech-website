@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: site.brandLine,
+  description:
+    "StorenTech AI is a principal-led firm in Orange County. The front door is a paid Automation ROI Analysis. After the map, AI does the grind; people stay.",
   alternates: { canonical: "/about" },
 };
 
@@ -16,8 +18,8 @@ export default function AboutPage() {
           <h1>{site.name}.</h1>
           <hr className="rule" />
           <p className="lede">
-            StorenTech AI finds where time or revenue leaks, then fixes what
-            pays — human touch stays. Ask Sarah anything.
+            A principal-led firm in Orange County. We map where time or revenue
+            leaks, then fix what pays. Human touch stays.
           </p>
         </div>
       </header>
@@ -26,24 +28,25 @@ export default function AboutPage() {
         <div className="wrap split">
           <div>
             <p className="kicker">The firm</p>
-            <h2>Small on purpose.</h2>
+            <h2>Principal-led on purpose.</h2>
           </div>
           <div className="copy">
             <p>
               You work with a principal, not a bench of account coordinators.
-              When a project needs a specialist — voice, CRM, a tighter
-              integration, creative, media — we bring them in. The standard is
-              the same: the work has to pay.
+              {site.founder.name} runs the work. When a project needs a
+              specialist — voice, CRM, a tighter integration, creative, media —
+              we bring them in. The standard is the same: the work has to pay.
             </p>
             <p>
-              StorenTech is a full-service AI agency and a private firm in Corona
-              Del Mar. The front door is a paid Automation ROI Analysis. After
-              the map, AI does the grind humans hate; humans do what AI can’t —
-              more touch, 10×, a calmer office.
+              StorenTech AI is a full-service AI agency based in Orange County,
+              California. The front door is a paid Automation ROI Analysis. After
+              the map, AI does the grind humans hate; people stay with the
+              customer and stay accountable. Multiple times human productivity
+              gains is real — more output while human touch stays.
             </p>
             <p>
-              The office is at {site.location.full}. Call Sarah, or write us
-              from Contact.
+              Call Sarah from the header, or write us from{" "}
+              <Link href="/contact">Contact</Link>.
             </p>
           </div>
         </div>
@@ -81,7 +84,7 @@ export default function AboutPage() {
             </div>
             <div className="stat">
               <strong>OC</strong>
-              <span>Newport Beach / Corona Del Mar</span>
+              <span>Orange County, CA</span>
             </div>
           </div>
         </div>

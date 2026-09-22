@@ -61,9 +61,10 @@ export default function WorkPage() {
               <h2>Stay on as operator once it is paying.</h2>
             </div>
             <p className="lede">
-              {site.prices.employee}/mo Capacity. {site.prices.growth}/mo
-              Growth. The path is the same: paid map, then 10× production —
-              humans in the loop, a calmer office.
+              Ongoing operator partnership is scoped after the map. Nobody can
+              price a retainer before ROIA knows the workload and locations.
+              The path is the same: paid map, then more output while human
+              touch stays.
             </p>
           </div>
           <div className="card-grid-2">

@@ -23,12 +23,12 @@ const moves = [
   {
     n: "02",
     title: "After the map, build what pays",
-    body: "If the numbers work, AI does the grind humans hate and humans stay in the loop — more touch, 10×, a calmer office. Implementation is not the $1k product. Voice, website chat, or other ops may come later, when the map says so.",
+    body: "If the numbers work, AI does the grind humans hate and humans stay in the loop — more output while human touch stays, a calmer office. Implementation is not the $1k product. Voice, website chat, or other ops may come later, when the map says so.",
   },
   {
     n: "03",
-    title: "Stay on the grind",
-    body: `Capacity at ${site.prices.employee}/month: one production workflow a month, reporting. Growth at ${site.prices.growth}/month: two workflows, outbound and inbox, weekly command center. From there the firm can take revenue work, operations, content, implementation studio, white-label, or CTV when the map calls for it.`,
+    title: "Stay on as operator",
+    body: "If the map says the work pays, we stay on as the operator partner — AI on the grind, humans in the loop. Ongoing work is scoped after we know the workload and locations. Nobody can price a retainer before that. From there the firm can take revenue work, operations, content, implementation studio, white-label, or CTV when the map calls for it.",
   },
 ];
 
@@ -76,7 +76,7 @@ export default function HowItWorksPage() {
         <div className="wrap split">
           <div>
             <p className="kicker">What you buy</p>
-            <h2>A map, then 10× capacity.</h2>
+            <h2>A map, then more output with human touch.</h2>
           </div>
           <div className="copy">
             <p>
