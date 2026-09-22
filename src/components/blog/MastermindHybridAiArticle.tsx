@@ -393,7 +393,7 @@ export function MastermindHybridAiArticle({ post }: { post: BlogPost }) {
           </Link>
         </p>
         <p>
-          Newport Beach / Corona Del Mar. {site.founder.name}, {site.name}.
+          Orange County, CA. {site.founder.name}, {site.name}.
         </p>
 
         <section className="blog-cta" aria-labelledby="ready-heading">

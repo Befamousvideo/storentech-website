@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: site.brandLine,
+  description:
+    "StorenTech AI is a principal-led automation firm based in Orange County, California. We start with a $1,000 Automation ROI Analysis — a written map of where time or revenue leaks, what to fix first, and how that shows up as lower cost or more revenue.",
   alternates: { canonical: "/about" },
 };
 
@@ -13,39 +13,29 @@ export default function AboutPage() {
       <header className="page-hero">
         <div className="wrap">
           <p className="kicker">About</p>
-          <h1>{site.name}.</h1>
+          <h1 className="about-title">
+            StorenTech AI · Orange County, California
+          </h1>
           <hr className="rule" />
-          <p className="lede">
-            StorenTech AI finds where time or revenue leaks, then fixes what
-            pays — human touch stays. Ask Sarah anything.
-          </p>
         </div>
       </header>
 
-      <section className="section">
-        <div className="wrap split">
-          <div>
-            <p className="kicker">The firm</p>
-            <h2>Small on purpose.</h2>
-          </div>
-          <div className="copy">
-            <p>
-              You work with a principal, not a bench of account coordinators.
-              When a project needs a specialist — voice, CRM, a tighter
-              integration, creative, media — we bring them in. The standard is
-              the same: the work has to pay.
-            </p>
-            <p>
-              StorenTech is a full-service AI agency and a private firm in Corona
-              Del Mar. The front door is a paid Automation ROI Analysis. After
-              the map, AI does the grind humans hate; humans do what AI can’t —
-              more touch, 10×, a calmer office.
-            </p>
-            <p>
-              The office is at {site.location.full}. Call Sarah, or write us
-              from Contact.
-            </p>
-          </div>
+      <section className="section" style={{ paddingTop: "1.5rem" }}>
+        <div className="wrap-narrow copy">
+          <p>
+            StorenTech AI is a principal-led automation firm based in Orange
+            County, California. We start with a $1,000 Automation ROI Analysis
+            — a written map of where time or revenue leaks, what to fix first,
+            and how that shows up as lower cost or more revenue.
+          </p>
+          <p>
+            After the map, we put AI on the grind so your people can stay out
+            front where human touch matters. More output. Human touch stays.
+          </p>
+          <p>
+            We do not publish retainers on this site. Ongoing work is scoped
+            from the evidence in your analysis.
+          </p>
         </div>
       </section>
 
@@ -81,7 +71,7 @@ export default function AboutPage() {
             </div>
             <div className="stat">
               <strong>OC</strong>
-              <span>Newport Beach / Corona Del Mar</span>
+              <span>Orange County, CA</span>
             </div>
           </div>
         </div>

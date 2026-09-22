@@ -110,6 +110,14 @@ select {
   margin-inline: auto;
 }
 
+.wrap-narrow.copy p {
+  color: var(--muted);
+}
+
+.wrap-narrow.copy p + p {
+  margin-top: 1.15rem;
+}
+
 /* Header */
 .site-header {
   position: sticky;
@@ -373,7 +381,7 @@ select {
   display: grid;
   grid-template-columns: 1.12fr 0.88fr;
   gap: 56px;
-  align-items: center;
+  align-items: start;
 }
 
 .hero h1 {
@@ -442,8 +450,11 @@ select {
 .demo-card {
   background: var(--navy);
   color: var(--cream);
-  padding: 2.6rem 2.35rem 2.4rem;
-  min-height: 100%;
+  padding: 2rem 2.1rem 1.9rem;
+  align-self: start;
+  height: fit-content;
+  display: grid;
+  gap: 0.85rem;
 }
 
 .demo-card .sarah-contact {
@@ -472,6 +483,19 @@ select {
   color: rgba(244, 239, 230, 0.82);
   font-size: 1.05rem;
   max-width: 28ch;
+}
+
+.demo-card .kicker {
+  color: var(--gold-soft);
+}
+
+.hero-panel-meta {
+  margin: 0.25rem 0 0;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(244, 239, 230, 0.62);
 }
 
 /* Cards */
@@ -747,6 +771,11 @@ select {
   margin-top: 1.4rem;
 }
 
+.aside-box .sarah-phone {
+  margin-top: 1.2rem;
+  width: min(100%, 16rem);
+}
+
 /* Footer */
 .site-footer {
   background: var(--navy);
@@ -833,6 +862,10 @@ select {
 .page-hero h1 {
   font-size: clamp(2.4rem, 5vw, 3.9rem);
   max-width: 16ch;
+}
+
+.page-hero h1.about-title {
+  max-width: 18ch;
 }
 
 .redo-hero h1 {

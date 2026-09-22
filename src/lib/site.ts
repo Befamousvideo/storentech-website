@@ -41,9 +41,7 @@ export const site = {
     later:
       "After the map, we build what pays — may include voice, website chat, other ops. Implementation ≠ the $1k product.",
     capacity:
-      "Automation here is about 10× what your people can ship — more human touch with customers, humans out front where they shine. Not fewer jobs.",
-    toward:
-      "AI does the grind humans hate; humans do what AI can’t. More touch, 10×, a calmer office.",
+      "When AI takes the grind, teams can unlock multiple times the productive capacity of people who stay human — more output, human touch stays.",
     services:
       "Map leaks first. Then build what pays — people still in the loop, out front with customers.",
   },
@@ -52,13 +50,10 @@ export const site = {
     title: "President",
   },
   location: {
-    kicker: "Newport Beach / Corona Del Mar",
-    street: "401 Orchid St. Suite 372",
-    city: "Corona Del Mar",
+    kicker: "Orange County, CA",
     region: "CA",
-    postal: "92625",
     country: "US",
-    full: "401 Orchid St. Suite 372, Corona Del Mar, CA 92625",
+    full: "Orange County, CA",
   },
   phones: {
     sarah: {
@@ -76,8 +71,6 @@ export const site = {
   prices: {
     analysisTypical: "$1,000",
     analysisComplex: "$2,000–$3,000",
-    employee: "$5,000",
-    growth: "$7,500",
   },
   // Start analysis CTA. Form now; set NEXT_PUBLIC_INTAKE_URL to ONB1 when gated live.
   intakeUrl: resolveIntakeUrl(process.env.NEXT_PUBLIC_INTAKE_URL),
@@ -121,15 +114,15 @@ export const offerSteps = [
   },
   {
     n: "03",
-    title: "Stay on the grind",
-    body: `${site.prices.employee}/mo Capacity: one production workflow a month, reporting. ${site.prices.growth}/mo Growth: two workflows, outbound and inbox, weekly command center.`,
+    title: "Partner after the map",
+    body: "After the written map, we scope an ongoing partnership from the evidence — what to run, what to measure, and when to expand. Terms follow what the analysis shows. No public retainer menu on this site.",
   },
 ] as const;
 
 export const retainers = [
   {
     name: "Capacity",
-    price: `${site.prices.employee} / month`,
+    price: "Scoped after the map",
     summary: "AI on the grind, once the map says it pays. Humans stay in the loop.",
     points: [
       "One production workflow on a named leak",
@@ -139,7 +132,7 @@ export const retainers = [
   },
   {
     name: "Growth",
-    price: `${site.prices.growth} / month`,
+    price: "Scoped after the map",
     summary: "Two workflows and a weekly operating rhythm.",
     points: [
       "Two production workflows",

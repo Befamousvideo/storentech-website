@@ -424,7 +424,7 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
           .
         </p>
         <p>
-          Newport Beach / Corona Del Mar. {site.founder.name}, {site.name}.
+          Orange County, CA. {site.founder.name}, {site.name}.
         </p>
 
         <section className="blog-cta" aria-labelledby="ready-heading">

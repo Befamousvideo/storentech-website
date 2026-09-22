@@ -58,12 +58,13 @@ export default function WorkPage() {
           <div className="section-head">
             <div>
               <p className="kicker">After the map</p>
-              <h2>Stay on as operator once it is paying.</h2>
+              <h2>Partner after the map.</h2>
             </div>
             <p className="lede">
-              {site.prices.employee}/mo Capacity. {site.prices.growth}/mo
-              Growth. The path is the same: paid map, then 10× production —
-              humans in the loop, a calmer office.
+              Ongoing work is scoped from the evidence in your analysis. No
+              public retainer menu on this site. When AI takes the grind, teams
+              can unlock multiple times the productive capacity of people who
+              stay human — more output, human touch stays.
             </p>
           </div>
           <div className="card-grid-2">

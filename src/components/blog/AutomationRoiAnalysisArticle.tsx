@@ -159,18 +159,9 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
             + chat covering speed-to-lead, booking, and CRM updates
           </li>
           <li>
-            <strong>Then a retainer</strong>, so the hire stays staffed and
-            accountable:
-            <ul>
-              <li>
-                <strong>AI Employee — $5,000/mo</strong> — one bot, one workflow
-                per month, reporting
-              </li>
-              <li>
-                <strong>Growth — $7,500/mo</strong> — two bots, outbound + inbox,
-                weekly command center
-              </li>
-            </ul>
+            <strong>Then ongoing operator partnership</strong>, scoped after the
+            map so the hire stays staffed and accountable. Pricing is set once
+            we know the workload and locations — not before.
           </li>
         </ol>
         <p>
@@ -225,7 +216,7 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
           </li>
         </ol>
         <p>
-          Newport Beach / Corona Del Mar. {site.founder.name}, {site.name}.{" "}
+          Orange County, CA. {site.founder.name}, {site.name}.{" "}
           <Link href="/contact">Contact</Link>.
         </p>
 

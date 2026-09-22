@@ -1,6 +1,6 @@
 # StorenTech AI
 
-Production marketing site for StorenTech AI, Vincent Jackson’s full-service AI agency in Newport Beach / Corona Del Mar.
+Production marketing site for StorenTech AI, Vincent Jackson’s full-service AI agency in Orange County, CA.
 
 Stack: Next.js App Router, TypeScript, custom CSS. Contact form posts to `/api/inquiry` and, when set, to `INQUIRY_WEBHOOK_URL`.
 
@@ -71,7 +71,7 @@ Set `NEXT_PUBLIC_SITE_URL` and `INQUIRY_WEBHOOK_URL` in the Vercel project envir
 ## Offer (do not change on a whim)
 
 1. Paid Automation ROI Analysis: $1,000 typical; $2,000–$3,000 complex. Never free.
-2. After the map: humans in the loop; AI does the grind humans hate. 10× capacity. Mary’s primary line stays on the site.
-3. Ongoing capacity: $5,000/mo Capacity; $7,500/mo Growth.
+2. After the map: When AI takes the grind, teams can unlock multiple times the productive capacity of people who stay human — more output, human touch stays. No multiplier or job-cut framing.
+3. We do not publish retainers on this site. Ongoing work is scoped from the evidence in the analysis. $1,000 ROIA is the paid front door, not a retainer.
 
 Public contact: phone is `public/sarah-phone.png` (`alt="Call Sarah"`) as an image only. Never render `tel:`, `mailto:`, digits, or email addresses as HTML text. Write-us goes to `/contact` form only.

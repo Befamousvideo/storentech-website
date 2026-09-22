@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { IntakeLink } from "@/components/IntakeLink";
-import { SarahContact, SarahPhoneImage } from "@/components/SarahContact";
+import { SarahContact } from "@/components/SarahContact";
 import { site, verticals } from "@/lib/site";
 
 export default function HomePage() {
@@ -12,27 +12,27 @@ export default function HomePage() {
             <p className="kicker">{site.name}</p>
             <h1 className="brand-line">{site.tagline}</h1>
             <hr className="rule" />
-            <p className="lede">Ask Sarah anything.</p>
+            <p className="lede">
+              The front door is a paid Automation ROI Analysis — a written map
+              of time, revenue, and risk leaks. Clarity before spend.
+            </p>
             <div className="btn-row">
-              <SarahPhoneImage className="sarah-phone" />
               <IntakeLink className="btn">Start the paid analysis</IntakeLink>
             </div>
             <div className="fine hero-contact">
-              <SarahContact
-                className="sarah-contact"
-                primaryClassName="sarah-contact-primary"
-                secondaryClassName="sarah-contact-secondary"
-              />
               <Link href="/contact">Write us</Link>
             </div>
           </div>
 
-          <aside className="demo-card" aria-label="Call Sarah">
+          <aside className="demo-card" aria-label="Talk to Sarah">
+            <p className="kicker">Talk to Sarah</p>
             <SarahContact
               className="sarah-contact"
               primaryClassName="sarah-contact-primary"
               secondaryClassName="sarah-contact-secondary"
+              secondary="Leave a message or request a callback. We map the work before anyone prices ongoing help."
             />
+            <p className="hero-panel-meta">{site.location.full}</p>
           </aside>
         </div>
       </section>
@@ -58,9 +58,7 @@ export default function HomePage() {
               <p className="kicker">Human touch</p>
               <h2>Humans in the loop.</h2>
             </div>
-            <p className="lede">
-              {site.offer.capacity} {site.offer.toward}
-            </p>
+            <p className="lede">{site.offer.capacity}</p>
           </div>
         </div>
       </section>
@@ -93,15 +91,17 @@ export default function HomePage() {
       <section className="section section-tan cta-band">
         <div className="wrap">
           <p className="kicker">Next</p>
-          <h2>Call Sarah, or start the paid analysis.</h2>
+          <h2>Start the paid analysis, or write us.</h2>
           <p className="lede" style={{ marginBottom: "1.6rem" }}>
             The analysis is {site.prices.analysisTypical} typical,{" "}
             {site.prices.analysisComplex} when complex. It is not a complimentary
-            sales call.
+            sales call. Sarah is in the header if you want to talk first.
           </p>
           <div className="btn-row">
-            <SarahPhoneImage className="sarah-phone" />
             <IntakeLink className="btn">Start analysis</IntakeLink>
+            <Link className="btn" href="/contact">
+              Write us
+            </Link>
           </div>
         </div>
       </section>
