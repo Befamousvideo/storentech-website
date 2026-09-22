@@ -94,6 +94,48 @@ export const aiSecurityFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Do not invent $ savings, payback, or % cheaper. Class 107: no tel:/digits.
+ */
+export const mastermindHybridFaqs = [
+  {
+    question: "What is Mastermind hybrid AI?",
+    answer:
+      "It is StorenTech’s pattern of running local open-source models for volume, private, and already-solved work, and frontier models when judgment or quality earns the token spend — with orchestration (control plane) routing between them. Hardware such as DGX Spark–class local inference is optional and ROIA-driven.",
+  },
+  {
+    question: "Does StorenTech sell NVIDIA DGX Spark to every client?",
+    answer:
+      "No. Not every SMB needs a Spark. We design hybrid automation after a paid Automation ROI Analysis; on-prem compute is in scope only when the workload and privacy case justify it.",
+  },
+  {
+    question: "Will local inference eliminate frontier API costs?",
+    answer:
+      "No — and we do not claim a published % cheaper. Local inference (and the electricity that runs it) defrays what you would otherwise burn on volume frontier tokens. Frontier still earns its keep on hard jobs. Exact economics belong in your ROIA, not a blog table.",
+  },
+  {
+    question: "Is OpenClaw a product you sell off the shelf?",
+    answer:
+      "OpenClaw is part of the orchestration / control-plane approach we use and refine on our own stack (including StorenTechAI26). Client engagements are designed as ops automation — agents, workflows, routing, and governance — not a dump of internal tool names as a SKU list.",
+  },
+  {
+    question: "How does security relate to hybrid Mastermind?",
+    answer:
+      "Keeping more repetitive and sensitive inference local can mean less data leaving the building by default. That is a teaser, not a Class how-to. Practices we claim publicly — retention discipline, least privilege, human approval, staging, diligence inside the ROIA — are covered in AI Security for AI Employees.",
+  },
+  {
+    question: "Is StorenTech a full-service AI agency?",
+    answer:
+      "Yes. StorenTech AI is a full-service AI agency. Every client starts with a paid Automation ROI Analysis — never a complimentary sales call — then hire and retainer if the math holds. See How it works.",
+  },
+  {
+    question: "How do I start?",
+    answer:
+      "1. Start the paid analysis — Contact (primary). 2. Hear the work live — Call Sarah (voice demo). 3. Read the commercial path — How it works.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
   {
     slug: "what-is-an-automation-roi-analysis",
@@ -113,6 +155,17 @@ export const blogPosts: readonly BlogPost[] = [
       "Frontier AI capability + eval containment failures mean SMBs need process, not vibes. How StorenTech hires AI employees after a paid Automation ROI Analysis — with retention, least privilege, human approval, and staging.",
     datePublished: "2026-09-21",
     faqs: aiSecurityFaqs,
+    indexCta: "Read the post",
+  },
+  {
+    slug: "mastermind-hybrid-ai",
+    title:
+      "Mastermind Hybrid AI: Local Models + Frontier Models (When Each Earns Its Keep)",
+    metaTitle: "Mastermind Hybrid AI: Local + Frontier | StorenTech",
+    description:
+      "StorenTech’s Mastermind hybrid runs local open-source models for volume and privacy, frontier models when judgment earns the spend — after a paid Automation ROI Analysis.",
+    datePublished: "2026-09-21",
+    faqs: mastermindHybridFaqs,
     indexCta: "Read the post",
   },
 ];
