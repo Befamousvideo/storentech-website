@@ -3,9 +3,7 @@ import { IntakeLink } from "@/components/IntakeLink";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { site } from "@/lib/site";
 
-// HOLD: Mary is drafting How it works steps. Do not rewrite this page.
-// Expected direction only (not final): Analysis → map → first build; no retainers; humans in the loop.
-// Ship Clients + How it works together when her exact copy arrives.
+// Mary locked Step 03 verbatim (Partner after the map). Do not rewrite that step.
 
 export const metadata: Metadata = {
   title: "How it works",
@@ -23,12 +21,12 @@ const moves = [
   {
     n: "02",
     title: "After the map, build what pays",
-    body: "If the numbers work, AI does the grind humans hate and humans stay in the loop — more output while human touch stays, a calmer office. Implementation is not the $1k product. Voice, website chat, or other ops may come later, when the map says so.",
+    body: "When AI takes the grind, teams can unlock multiple times the productive capacity of people who stay human — more output, human touch stays. Implementation is not the $1k product. Voice, website chat, or other ops may come later, when the map says so.",
   },
   {
     n: "03",
-    title: "Stay on as operator",
-    body: "If the map says the work pays, we stay on as the operator partner — AI on the grind, humans in the loop. Ongoing work is scoped after we know the workload and locations. Nobody can price a retainer before that. From there the firm can take revenue work, operations, content, implementation studio, white-label, or CTV when the map calls for it.",
+    title: "Partner after the map",
+    body: "After the written map, we scope an ongoing partnership from the evidence — what to run, what to measure, and when to expand. Terms follow what the analysis shows. No public retainer menu on this site.",
   },
 ];
 
@@ -76,9 +74,14 @@ export default function HowItWorksPage() {
         <div className="wrap split">
           <div>
             <p className="kicker">What you buy</p>
-            <h2>A map, then more output with human touch.</h2>
+            <h2>Pay for the map. Then we build what pays.</h2>
           </div>
           <div className="copy">
+            <p>
+              When AI takes the grind, teams can unlock multiple times the
+              productive capacity of people who stay human — more output, human
+              touch stays.
+            </p>
             <p>
               The analysis prices the first build against your real numbers —
               conversation volume, close rate, after-hours leakage, owner time.

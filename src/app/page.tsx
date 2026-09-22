@@ -58,9 +58,7 @@ export default function HomePage() {
               <p className="kicker">Human touch</p>
               <h2>Humans in the loop.</h2>
             </div>
-            <p className="lede">
-              {site.offer.capacity} {site.offer.toward}
-            </p>
+            <p className="lede">{site.offer.capacity}</p>
           </div>
         </div>
       </section>

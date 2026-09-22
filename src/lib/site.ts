@@ -41,9 +41,7 @@ export const site = {
     later:
       "After the map, we build what pays — may include voice, website chat, other ops. Implementation ≠ the $1k product.",
     capacity:
-      "Multiple times human productivity gains is real — more output while human touch stays. People stay out front with customers. Not fewer jobs.",
-    toward:
-      "AI does the grind humans hate; humans do what AI can’t. More output, more human touch, a calmer office.",
+      "When AI takes the grind, teams can unlock multiple times the productive capacity of people who stay human — more output, human touch stays.",
     services:
       "Map leaks first. Then build what pays — people still in the loop, out front with customers.",
   },
@@ -116,8 +114,8 @@ export const offerSteps = [
   },
   {
     n: "03",
-    title: "Stay on as operator",
-    body: "If the map says the work pays, we stay on as the operator partner — AI on the grind, humans in the loop. Ongoing work is scoped after we know the workload and locations. Nobody can price a retainer before that.",
+    title: "Partner after the map",
+    body: "After the written map, we scope an ongoing partnership from the evidence — what to run, what to measure, and when to expand. Terms follow what the analysis shows. No public retainer menu on this site.",
   },
 ] as const;
 
