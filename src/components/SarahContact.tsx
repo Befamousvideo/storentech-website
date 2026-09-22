@@ -4,6 +4,7 @@ type SarahContactProps = {
   className?: string;
   primaryClassName?: string;
   secondaryClassName?: string;
+  secondary?: string;
 };
 
 export function SarahPhoneImage({ className }: { className?: string }) {
@@ -22,6 +23,7 @@ export function SarahContact({
   className,
   primaryClassName,
   secondaryClassName,
+  secondary,
 }: SarahContactProps) {
   return (
     <div className={className}>
@@ -29,7 +31,9 @@ export function SarahContact({
         <span className="sarah-contact-name">{site.contactCopy.primary}</span>
         <SarahPhoneImage />
       </div>
-      <p className={secondaryClassName}>{site.contactCopy.secondary}</p>
+      <p className={secondaryClassName}>
+        {secondary ?? site.contactCopy.secondary}
+      </p>
     </div>
   );
 }

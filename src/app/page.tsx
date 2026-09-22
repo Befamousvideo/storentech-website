@@ -30,12 +30,8 @@ export default function HomePage() {
               className="sarah-contact"
               primaryClassName="sarah-contact-primary"
               secondaryClassName="sarah-contact-secondary"
+              secondary="Leave a message or request a callback. We map the work before anyone prices ongoing help."
             />
-            <hr className="rule" />
-            <p>
-              Leave a message or request a callback. We map the work before
-              anyone prices ongoing help.
-            </p>
             <p className="hero-panel-meta">{site.location.full}</p>
           </aside>
         </div>

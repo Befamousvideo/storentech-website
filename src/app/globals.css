@@ -444,6 +444,7 @@ select {
   color: var(--cream);
   padding: 2rem 2.1rem 1.9rem;
   align-self: start;
+  height: fit-content;
   display: grid;
   gap: 0.85rem;
 }
@@ -478,16 +479,6 @@ select {
 
 .demo-card .kicker {
   color: var(--gold-soft);
-}
-
-.demo-card .rule {
-  margin: 0.35rem 0 0.15rem;
-  background: rgba(244, 239, 230, 0.28);
-}
-
-.demo-card > p {
-  color: rgba(244, 239, 230, 0.82);
-  max-width: 34ch;
 }
 
 .hero-panel-meta {
