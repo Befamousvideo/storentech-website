@@ -37,6 +37,9 @@ Environment:
 - `/contact` — name, email, company, what’s broken
 - `/pay` and `pay.storentechai.com` — 302 to Stripe Payment Link (`site.stripe.roiPaymentLink`). Invoice short URL only. Not the Start your map CTA.
 - `/redo` — thin Red O pay page. Pay CTA → Stripe Payment Link. Does not redirect. Same page on `pay.storentechai.com/redo`.
+- `/ceo`, `/cfo`, `/ops` — private interview shells. Noindex, not in the sitemap, no marketing links. Questions and answers are not in this repo; the browser talks to a PC-hosted intake service. See `services/exec-interview/DEPLOY.md`.
+
+`NEXT_PUBLIC_INTERVIEW_API` — public origin of the intake service (Tailscale Funnel). Placeholder only in git. Do not put access keys, questions, or answers in Vercel.
 
 ## Firebase App Hosting (recommended on GCP)
 

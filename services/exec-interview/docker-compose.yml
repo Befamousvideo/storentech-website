@@ -1,0 +1,69 @@
+name: exec-interview
+
+services:
+  interview-api:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:8443:8443"
+    volumes:
+      - ./questions.json:/app/questions.json:ro
+      - ./exports:/app/exports
+    environment:
+      QUESTIONS_PATH: /app/questions.json
+    networks:
+      - interview
+      - postgres
+    depends_on:
+      - whisper
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8443/health', timeout=3)",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  whisper:
+    image: max/whisper-service:local
+    restart: unless-stopped
+    # Dedicated Whisper. Not published to the host. Reachable only on the interview network.
+    expose:
+      - "8000"
+    environment:
+      NVIDIA_VISIBLE_DEVICES: all
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    networks:
+      - interview
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=5)",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 20
+      start_period: 60s
+
+networks:
+  interview:
+    name: exec_interview_net
+  postgres:
+    external: true
+    name: storentech_hardened_storentech_net

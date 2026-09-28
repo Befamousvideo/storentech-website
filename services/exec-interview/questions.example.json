@@ -1,0 +1,77 @@
+{
+  "company_label": "Company 111",
+  "roles": {
+    "ceo": {
+      "role_title": "CEO",
+      "intro": "Thank you for making time. Answer in your own words. Required items are marked. Skip anything labeled if time if you need to wrap up. You can type or use the microphone, then edit the text.",
+      "questions": [
+        {
+          "id": "ceo-q1",
+          "text": "Which weekly meeting takes the most time, and what is it for?",
+          "tag": "must",
+          "follow_ups": true
+        },
+        {
+          "id": "ceo-q2",
+          "text": "What decision do you wish you had better numbers for?",
+          "tag": "must",
+          "follow_ups": false
+        },
+        {
+          "id": "ceo-q3",
+          "text": "If you could add one helper next quarter, what would they take off your plate?",
+          "tag": "if_time",
+          "follow_ups": false
+        }
+      ]
+    },
+    "cfo": {
+      "role_title": "CFO",
+      "intro": "Thank you for making time. We are looking for how numbers move today, not a pitch. Required items are marked. You can type or use the microphone, then edit the text.",
+      "questions": [
+        {
+          "id": "cfo-q1",
+          "text": "Which report do you rebuild most often?",
+          "tag": "must",
+          "follow_ups": true
+        },
+        {
+          "id": "cfo-q2",
+          "text": "Where do numbers arrive late or get retyped by hand?",
+          "tag": "must",
+          "follow_ups": false
+        },
+        {
+          "id": "cfo-q3",
+          "text": "What would you want on a one-page weekly finance snapshot?",
+          "tag": "if_time",
+          "follow_ups": false
+        }
+      ]
+    },
+    "ops": {
+      "role_title": "Ops",
+      "intro": "Thank you for making time. We want a clear picture of handoffs and the work that lives outside the main system. Required items are marked. You can type or use the microphone, then edit the text.",
+      "questions": [
+        {
+          "id": "ops-q1",
+          "text": "Which handoff between people breaks down most often?",
+          "tag": "must",
+          "follow_ups": true
+        },
+        {
+          "id": "ops-q2",
+          "text": "What work is still tracked in a spreadsheet because the system does not fit?",
+          "tag": "must",
+          "follow_ups": false
+        },
+        {
+          "id": "ops-q3",
+          "text": "What is on your wishlist for the next 90 days?",
+          "tag": "if_time",
+          "follow_ups": false
+        }
+      ]
+    }
+  }
+}

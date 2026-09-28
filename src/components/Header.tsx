@@ -20,7 +20,7 @@ export function Header({ slim = false }: { slim?: boolean }) {
     <header className="site-header">
       <div className={`wrap header-inner${slim ? " header-inner-slim" : ""}`}>
         <Link
-          href={slim ? "/redo" : "/"}
+          href={pathname === "/redo" ? "/redo" : "/"}
           className="logo"
           onClick={() => setOpen(false)}
           aria-label="StorenTech AI"
