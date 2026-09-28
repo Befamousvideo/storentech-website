@@ -32,6 +32,12 @@ Replace `questions.json` with the real interview file. Keep the same shape (see 
 - `roles.ceo`, `roles.cfo`, `roles.ops`
 - each question: `id`, `text`, `tag` (`must` or `if_time`), `follow_ups` (boolean)
 
+Wording for that file and any page-facing copy:
+
+- Say **your facility**. Never name a venue type, trade name, or a specific site.
+- No street addresses or place names.
+- The assistant product is always **your AI Chief of Staff**. Do not name any other product, bot, or model brand in questions or UI copy. Whisper is a technical service name only (this runbook and the intake code).
+
 `questions.json` is gitignored. Do not commit it.
 
 ## 3. Create the env file and database user

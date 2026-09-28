@@ -38,7 +38,7 @@ def test_answer_and_submit_round_trip(client):
                     "task_name": "",
                     "how_often": "weekly",
                     "how_long": "90 minutes",
-                    "who_role": "chief of staff",
+                    "who_role": "operations lead",
                 }
             ],
         },

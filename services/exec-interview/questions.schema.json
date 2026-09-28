@@ -9,7 +9,7 @@
     "company_label": {
       "type": "string",
       "minLength": 1,
-      "description": "Display label only. Use a code such as Company 111. Never a client legal name."
+      "description": "Display label only. Use a code such as Company 111. Never a client legal name, place name, or facility trade name."
     },
     "roles": {
       "type": "object",
@@ -43,7 +43,11 @@
       "additionalProperties": false,
       "properties": {
         "id": { "type": "string", "minLength": 1 },
-        "text": { "type": "string", "minLength": 1 },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Facility-neutral wording. Say your facility. Call the assistant product your AI Chief of Staff. No place names or other product brands."
+        },
         "tag": { "type": "string", "enum": ["must", "if_time"] },
         "follow_ups": { "type": "boolean" }
       }

@@ -22,8 +22,8 @@ const session: InterviewSession = {
   status: "in_progress",
   answers: {},
   questions: [
-    { id: "q1", text: "Required one", tag: "must", follow_ups: true },
-    { id: "q2", text: "Required two", tag: "must", follow_ups: false },
+    { id: "q1", text: "Must-answer item A", tag: "must", follow_ups: true },
+    { id: "q2", text: "Must-answer item B", tag: "must", follow_ups: false },
     { id: "q3", text: "Wishlist", tag: "if_time", follow_ups: false },
   ],
 };
@@ -94,10 +94,22 @@ describe("interview helpers", () => {
       "utf8",
     );
     const unique = [
-      "Which weekly meeting takes the most time, and what is it for?",
-      "Which report do you rebuild most often?",
-      "Which handoff between people breaks down most often?",
+      "Which weekly meeting at your facility takes the most time, and what is it for?",
+      "Which report for your facility do you rebuild most often?",
+      "Which handoff between people at your facility breaks down most often?",
     ];
+    expect(example).toContain("your AI Chief of Staff");
+    const banned = new RegExp(
+      [
+        `${["rest", "aurant"].join("")}s?`,
+        ["kit", "chen"].join(""),
+        ["irv", "ine"].join(""),
+        ["orange", " county"].join(""),
+        ["red", " o"].join(""),
+      ].join("|"),
+      "i",
+    );
+    expect(example).not.toMatch(banned);
     for (const phrase of unique) {
       expect(example).toContain(phrase);
     }
@@ -109,6 +121,16 @@ describe("interview helpers", () => {
       "src/app/(interview)/cfo/page.tsx",
       "src/app/(interview)/ops/page.tsx",
     ];
+    const featureSources = [
+      ...sources,
+      "src/lib/interview.test.ts",
+      "src/components/interview/ClosedInterview.tsx",
+      "services/exec-interview/DEPLOY.md",
+      "services/exec-interview/questions.schema.json",
+    ];
+    for (const file of featureSources) {
+      expect(readFileSync(join(process.cwd(), file), "utf8")).not.toMatch(banned);
+    }
     for (const file of sources) {
       const text = readFileSync(join(process.cwd(), file), "utf8");
       for (const phrase of unique) {
