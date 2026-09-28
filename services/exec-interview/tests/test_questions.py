@@ -53,7 +53,14 @@ def test_answer_and_submit_round_trip(client):
     assert missing.status_code == 200
     session = client.get("/session", headers=headers).json()
     assert session["status"] == "complete"
-    assert session["answers"]["ceo-q1"]["follow_ups"][0]["how_often"] == "weekly"
+    assert session["questions"] == []
+    assert session["answers"] == {}
+    blocked = client.put(
+        "/answer",
+        headers=headers,
+        json={"question_id": "ceo-q1", "text": "should not save"},
+    )
+    assert blocked.status_code == 409
 
 
 def test_submit_requires_must_questions(client):

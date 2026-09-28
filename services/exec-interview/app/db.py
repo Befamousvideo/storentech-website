@@ -55,7 +55,7 @@ class PostgresStore:
             VALUES (%s, %s)
             ON CONFLICT (company_code, role) DO UPDATE
               SET updated_at = sessions.updated_at
-            RETURNING company_code, role, status, created_at, updated_at, completed_at
+            RETURNING company_code, role, status, created_at, updated_at, completed_at, revoked_at
             """,
             (company_code, role),
         )
@@ -67,7 +67,7 @@ class PostgresStore:
         conn = await self._conn_ready()
         result = await conn.execute(
             """
-            SELECT company_code, role, status, created_at, updated_at, completed_at
+            SELECT company_code, role, status, created_at, updated_at, completed_at, revoked_at
             FROM sessions
             WHERE company_code = %s AND role = %s
             """,
@@ -202,15 +202,59 @@ class PostgresStore:
         result = await conn.execute(
             """
             UPDATE sessions
-            SET status = 'complete', completed_at = COALESCE(completed_at, %s), updated_at = %s
+            SET status = 'complete',
+                completed_at = COALESCE(completed_at, %s),
+                revoked_at = COALESCE(revoked_at, %s),
+                updated_at = %s
             WHERE company_code = %s AND role = %s
-            RETURNING company_code, role, status, created_at, updated_at, completed_at
+            RETURNING company_code, role, status, created_at, updated_at, completed_at, revoked_at
+            """,
+            (now, now, now, company_code, role),
+        )
+        row = await result.fetchone()
+        assert row is not None
+        return _session(row) or session
+
+    async def close_role(self, company_code: str, role: Role) -> SessionRecord:
+        session = await self.ensure_session(company_code, role)
+        now = utcnow()
+        conn = await self._conn_ready()
+        result = await conn.execute(
+            """
+            UPDATE sessions
+            SET status = CASE WHEN status = 'complete' THEN 'complete' ELSE 'closed' END,
+                revoked_at = COALESCE(revoked_at, %s),
+                updated_at = %s
+            WHERE company_code = %s AND role = %s
+            RETURNING company_code, role, status, created_at, updated_at, completed_at, revoked_at
             """,
             (now, now, company_code, role),
         )
         row = await result.fetchone()
         assert row is not None
         return _session(row) or session
+
+    async def revoke_key(self, company_code: str, role: Role, key_hash: str) -> None:
+        await self.close_role(company_code, role)
+        digest = (key_hash or "").strip().lower()
+        if not digest:
+            return
+        conn = await self._conn_ready()
+        await conn.execute(
+            """
+            INSERT INTO revoked_keys (company_code, role, key_hash)
+            VALUES (%s, %s, %s)
+            ON CONFLICT (key_hash) DO UPDATE
+              SET role = EXCLUDED.role
+            """,
+            (company_code, role, digest),
+        )
+
+    async def revoked_hashes(self) -> dict[str, Role]:
+        conn = await self._conn_ready()
+        result = await conn.execute("SELECT key_hash, role FROM revoked_keys")
+        rows = await result.fetchall()
+        return {row["key_hash"]: row["role"] for row in rows}
 
 
 def _session(row: dict[str, Any] | None) -> SessionRecord | None:
@@ -223,6 +267,7 @@ def _session(row: dict[str, Any] | None) -> SessionRecord | None:
         created_at=row["created_at"],
         updated_at=row["updated_at"],
         completed_at=row.get("completed_at"),
+        revoked_at=row.get("revoked_at"),
     )
 
 

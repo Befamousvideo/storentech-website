@@ -44,9 +44,21 @@ def main() -> None:
         action="store_true",
         help="Write only the hash into services/exec-interview/.env. Never writes the raw key.",
     )
+    parser.add_argument(
+        "--revoke",
+        action="store_true",
+        help="Close this role and burn its current key instead of generating a new one.",
+    )
     args = parser.parse_args()
     if not is_role(args.role):
         raise SystemExit("unknown role")
+    if args.revoke:
+        from scripts.revoke_key import main as revoke_main
+        import sys
+
+        sys.argv = ["revoke_key", "--role", args.role]
+        revoke_main()
+        return
 
     raw = generate_key()
     digest = hash_key(raw)

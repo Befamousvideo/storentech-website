@@ -234,9 +234,13 @@ docker compose exec interview-api python -m scripts.export_answers --role ceo --
 
 Files land in `services\exec-interview\exports\` on the PC.
 
-## 11. Turn it all off afterward
+## 11. Take it down
 
-Funnel off for 8443 only — does not change Serve on 443:
+The interview is temporary. Submitting a role already burns that role’s key. Answers stay in local Postgres (`exec_interviews`). Do not drop that database until the write-up is done.
+
+### Turn off Funnel (8443 only)
+
+Does not change tailnet-only Serve on 443:
 
 ```powershell
 tailscale funnel --https=8443 off
@@ -244,31 +248,80 @@ tailscale funnel status
 tailscale serve status
 ```
 
-Stop the interview stack (Postgres and other compose projects stay up):
+### Revoke leftover keys
+
+Close any role that has not submitted yet (or close all three):
+
+```powershell
+cd path\to\storentech-website\services\exec-interview
+docker compose exec interview-api python -m scripts.revoke_key --all --clear-env
+```
+
+One role only:
+
+```powershell
+docker compose exec interview-api python -m scripts.revoke_key --role ceo --clear-env
+```
+
+Same thing via the key CLI:
+
+```powershell
+docker compose exec interview-api python -m scripts.generate_key --role ceo --revoke
+```
+
+Then recreate the API so a blank hash in `.env` is loaded:
+
+```powershell
+docker compose up -d --force-recreate interview-api
+```
+
+Old private links then show a thank-you / closed page, not the form.
+
+### Stop the containers
+
+Postgres and other compose projects stay up. Answers stay in `exec_interviews`.
 
 ```powershell
 cd path\to\storentech-website\services\exec-interview
 docker compose down
 ```
 
-To prevent it from starting with Docker Desktop later, keep it down (do not `up -d` again). You can also disable “Start Docker Desktop when you log in” only if you want everything off, including other stacks.
+Do not `up -d` again unless you need another export. Whisper and the intake API will stay down across Docker Desktop restarts once they are down.
 
-Optional cleanup (answers stay in Postgres until you drop them):
+Export before or after stop, as long as Postgres is running:
 
 ```powershell
-docker compose run --rm --no-deps interview-api python -c "print('leave the database until the write-up is done')"
+docker compose up -d interview-api
+docker compose exec interview-api python -m scripts.export_answers --role ceo --out /app/exports
+docker compose down
 ```
 
-When the write-up is finished and you want the rows gone, drop them as the postgres admin on the existing server:
+### Remove the public routes (follow-up PR)
+
+The marketing site still has empty `/ceo`, `/cfo`, and `/ops` shells until you delete them. Open a **follow-up** pull request (do not reuse this one as a production deploy). Remove or revert:
+
+- `src/app/(interview)/` — `ceo/page.tsx`, `cfo/page.tsx`, `ops/page.tsx`, `layout.tsx`
+- `src/components/interview/` — form, closed state, tests
+- `src/lib/interview.ts`, `src/lib/interview-paths.ts`, `src/lib/interview.test.ts`
+- `src/app/robots.ts` — drop `/ceo` `/cfo` `/ops` from `*` and delete the named-bot rules
+- `src/app/robots.test.ts`
+- `src/middleware.ts` — interview `X-Robots-Tag` branch
+- `next.config.ts` — interview `headers()` block
+- `src/components/SiteChrome.tsx` — `isInterviewPath` slim chrome
+- `src/app/globals.css` — `.interview-*` styles
+- `.env.example` and `README.md` — `NEXT_PUBLIC_INTERVIEW_API` lines
+- `vitest.config.ts` / `src/test/setup.ts` only if nothing else uses them
+
+Leave `src/app/sitemap.ts` as-is (it never listed these routes). Leave `services/exec-interview/` on the PC until exports are finished; you do not have to delete it from git in the same PR.
+
+Then remove `NEXT_PUBLIC_INTERVIEW_API` from Vercel (Preview and Production if you added it) and redeploy so the public bundle no longer points at your PC.
+
+When the write-up is finished and you want the rows gone:
 
 ```sql
 DROP DATABASE IF EXISTS exec_interviews;
 DROP ROLE IF EXISTS exec_interview;
 ```
-
-Remove `NEXT_PUBLIC_INTERVIEW_API` from Vercel Production if you added it, and redeploy so the public bundle no longer points at your PC.
-
-Delete the three private links from wherever you stored them. Rotate is the same as step 7.
 
 ## Notes
 
@@ -277,3 +330,4 @@ Delete the three private links from wherever you stored them. Rotate is the same
 - Access keys are accepted only on header `X-Interview-Key`, never on the query string.
 - CORS allows `https://www.storentechai.com`, `https://storentechai.com`, and `CORS_DEV_ORIGIN`.
 - If Docker Desktop was not running, the PC was asleep, or Funnel is off, executives will see that their draft is still on the device.
+- Submitting a role revokes that role’s key. `python -m scripts.revoke_key` closes a role by hand. Answers stay in local Postgres.

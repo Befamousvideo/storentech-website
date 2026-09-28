@@ -6,8 +6,11 @@ import {
   canSubmit,
   captureFragmentKey,
   emptyFollowUp,
+  isClosedStatus,
   mergeDrafts,
+  readLocalSession,
   requiredAnswered,
+  writeLocalSession,
   type InterviewSession,
 } from "@/lib/interview";
 
@@ -26,6 +29,26 @@ const session: InterviewSession = {
 };
 
 describe("interview helpers", () => {
+  it("treats complete and closed as finished interviews", () => {
+    expect(isClosedStatus("complete")).toBe(true);
+    expect(isClosedStatus("closed")).toBe(true);
+    expect(isClosedStatus("in_progress")).toBe(false);
+  });
+
+  it("restores a closed session even when questions were cleared", () => {
+    localStorage.clear();
+    writeLocalSession("ceo", {
+      ...session,
+      status: "complete",
+      intro: "",
+      questions: [],
+      answers: {},
+    });
+    const cached = readLocalSession("ceo");
+    expect(cached?.status).toBe("complete");
+    expect(cached?.questions).toEqual([]);
+  });
+
   it("requires every MUST answer before submit", () => {
     const drafts = {
       q1: { text: "yes", follow_ups: [emptyFollowUp(0)], updatedAt: 1 },

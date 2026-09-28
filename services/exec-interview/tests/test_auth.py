@@ -44,4 +44,7 @@ def test_constant_time_compare_rejects_unknown_without_raising():
     hashes = {"ceo": hash_key("other-key")}
     assert match_role(raw, hashes) is None
     assert match_role("", hashes) is None
-    assert match_role("other-key", hashes) == "ceo"
+    matched = match_role("other-key", hashes)
+    assert matched is not None
+    assert matched.role == "ceo"
+    assert matched.revoked is False

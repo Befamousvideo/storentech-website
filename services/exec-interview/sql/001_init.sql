@@ -5,12 +5,30 @@ CREATE TABLE IF NOT EXISTS sessions (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   company_code TEXT NOT NULL,
   role TEXT NOT NULL CHECK (role IN ('ceo', 'cfo', 'ops')),
-  status TEXT NOT NULL DEFAULT 'in_progress' CHECK (status IN ('in_progress', 'complete')),
+  status TEXT NOT NULL DEFAULT 'in_progress' CHECK (status IN ('in_progress', 'complete', 'closed')),
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   completed_at TIMESTAMPTZ,
+  revoked_at TIMESTAMPTZ,
   UNIQUE (company_code, role)
 );
+
+ALTER TABLE sessions ADD COLUMN IF NOT EXISTS revoked_at TIMESTAMPTZ;
+ALTER TABLE sessions DROP CONSTRAINT IF EXISTS sessions_status_check;
+ALTER TABLE sessions ADD CONSTRAINT sessions_status_check
+  CHECK (status IN ('in_progress', 'complete', 'closed'));
+
+CREATE TABLE IF NOT EXISTS revoked_keys (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  company_code TEXT NOT NULL,
+  role TEXT NOT NULL CHECK (role IN ('ceo', 'cfo', 'ops')),
+  key_hash TEXT NOT NULL,
+  revoked_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  UNIQUE (key_hash)
+);
+
+CREATE INDEX IF NOT EXISTS revoked_keys_role_idx
+  ON revoked_keys (company_code, role);
 
 CREATE TABLE IF NOT EXISTS answers (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),

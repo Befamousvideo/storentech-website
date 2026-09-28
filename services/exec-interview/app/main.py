@@ -4,6 +4,7 @@ import logging
 import os
 import tempfile
 from contextlib import asynccontextmanager
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -11,7 +12,7 @@ from fastapi import Depends, FastAPI, File, Form, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from app.auth import match_role
+from app.auth import hash_key, match_role
 from app.config import Settings, load_settings
 from app.questions import QuestionsError, RolePack, load_questions
 from app.rate_limit import RateLimiter, bucket_token
@@ -39,6 +40,13 @@ ALLOWED_AUDIO_TYPES = {
 }
 
 HOW_OFTEN = {"daily", "few_times_a_week", "weekly", "monthly", "other", ""}
+
+
+@dataclass(frozen=True)
+class Auth:
+    role: Role
+    closed: bool
+    key_hash: str
 
 
 class FollowUpIn(BaseModel):
@@ -94,6 +102,7 @@ def create_app(
             except QuestionsError:
                 logger.error("questions_unavailable")
                 app.state.packs = {}
+        app.state.active_hashes = dict(settings.key_hashes)
         if hasattr(app.state.store, "connect"):
             await app.state.store.connect()  # type: ignore[union-attr]
         yield
@@ -125,29 +134,46 @@ def create_app(
     async def require_role(
         request: Request,
         x_interview_key: str | None = Header(default=None, alias="X-Interview-Key"),
-    ) -> Role:
+    ) -> Auth:
         token = (x_interview_key or "").strip()
         bucket = bucket_token("key", token or request.client.host if request.client else "anon")
         if not limiter.allow(bucket, settings.rate_limit_per_minute):
             raise HTTPException(status_code=429, detail="rate_limited")
-        role = match_role(token, settings.key_hashes)
-        if role is None:
+        revoked = await app.state.store.revoked_hashes()
+        matched = match_role(token, app.state.active_hashes, revoked)
+        if matched is None:
             raise HTTPException(status_code=401, detail="unauthorized")
-        return role
+        session = await app.state.store.get_session(settings.company_code, matched.role)
+        closed = matched.revoked or bool(session and session.is_closed)
+        return Auth(role=matched.role, closed=closed, key_hash=hash_key(token))
+
+    def reject_if_closed(auth: Auth) -> None:
+        if auth.closed:
+            raise HTTPException(status_code=409, detail="closed")
 
     @app.get("/health")
     async def health() -> dict[str, str]:
         return {"ok": "true", "service": "interview-intake"}
 
     @app.get("/session")
-    async def session(role: Role = Depends(require_role)) -> dict[str, Any]:
-        pack = current_packs().get(role)
+    async def session(auth: Auth = Depends(require_role)) -> dict[str, Any]:
+        pack = current_packs().get(auth.role)
         if pack is None:
             raise HTTPException(status_code=503, detail="unavailable")
-        record = await app.state.store.ensure_session(settings.company_code, role)
-        answers = await app.state.store.list_answers(settings.company_code, role)
+        record = await app.state.store.ensure_session(settings.company_code, auth.role)
+        if auth.closed or record.is_closed:
+            return {
+                "role": auth.role,
+                "company_label": pack.company_label,
+                "role_title": pack.role_title,
+                "intro": "",
+                "questions": [],
+                "answers": {},
+                "status": record.status if record.status in {"complete", "closed"} else "closed",
+            }
+        answers = await app.state.store.list_answers(settings.company_code, auth.role)
         return {
-            "role": role,
+            "role": auth.role,
             "company_label": pack.company_label,
             "role_title": pack.role_title,
             "intro": pack.intro,
@@ -157,8 +183,9 @@ def create_app(
         }
 
     @app.put("/answer")
-    async def answer(body: AnswerIn, role: Role = Depends(require_role)) -> dict[str, Any]:
-        pack = current_packs().get(role)
+    async def answer(body: AnswerIn, auth: Auth = Depends(require_role)) -> dict[str, Any]:
+        reject_if_closed(auth)
+        pack = current_packs().get(auth.role)
         if pack is None:
             raise HTTPException(status_code=503, detail="unavailable")
         if body.question_id not in pack.question_ids():
@@ -181,7 +208,7 @@ def create_app(
                 )
         record = await app.state.store.upsert_answer(
             settings.company_code,
-            role,
+            auth.role,
             body.question_id,
             body.text.strip(),
             follow_ups,
@@ -190,16 +217,17 @@ def create_app(
 
     @app.post("/transcribe")
     async def transcribe_audio_endpoint(
-        role: Role = Depends(require_role),
+        auth: Auth = Depends(require_role),
         question_id: str = Form(...),
         file: UploadFile = File(...),
     ) -> dict[str, Any]:
-        pack = current_packs().get(role)
+        reject_if_closed(auth)
+        pack = current_packs().get(auth.role)
         if pack is None:
             raise HTTPException(status_code=503, detail="unavailable")
         if question_id not in pack.question_ids():
             raise HTTPException(status_code=400, detail="unknown_question")
-        if not limiter.allow(bucket_token("transcribe", role), settings.transcribe_limit_per_minute):
+        if not limiter.allow(bucket_token("transcribe", auth.role), settings.transcribe_limit_per_minute):
             raise HTTPException(status_code=429, detail="rate_limited")
 
         content_type = (file.content_type or "").split(";")[0].strip().lower()
@@ -243,20 +271,24 @@ def create_app(
                 pass
 
         attempt = await app.state.store.add_transcript(
-            settings.company_code, role, question_id, text
+            settings.company_code, auth.role, question_id, text
         )
         return {"text": text, "attempt_number": attempt.attempt_number}
 
     @app.post("/submit")
-    async def submit(role: Role = Depends(require_role)) -> dict[str, Any]:
-        pack = current_packs().get(role)
+    async def submit(auth: Auth = Depends(require_role)) -> dict[str, Any]:
+        pack = current_packs().get(auth.role)
         if pack is None:
             raise HTTPException(status_code=503, detail="unavailable")
-        answers = await app.state.store.list_answers(settings.company_code, role)
+        if auth.closed:
+            return {"ok": True, "status": "complete"}
+        answers = await app.state.store.list_answers(settings.company_code, auth.role)
         missing = [qid for qid in pack.must_ids() if not (answers.get(qid) and answers[qid].text.strip())]
         if missing:
             raise HTTPException(status_code=400, detail="missing_required")
-        record = await app.state.store.mark_complete(settings.company_code, role)
+        record = await app.state.store.mark_complete(settings.company_code, auth.role)
+        await app.state.store.revoke_key(settings.company_code, auth.role, auth.key_hash)
+        app.state.active_hashes.pop(auth.role, None)
         return {"ok": True, "status": record.status}
 
     return app

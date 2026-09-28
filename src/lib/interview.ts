@@ -30,8 +30,12 @@ export type InterviewSession = {
   intro: string;
   questions: InterviewQuestion[];
   answers: Record<string, SavedAnswer>;
-  status: "in_progress" | "complete";
+  status: "in_progress" | "complete" | "closed";
 };
+
+export function isClosedStatus(status: InterviewSession["status"] | undefined): boolean {
+  return status === "complete" || status === "closed";
+}
 
 export type DraftAnswer = {
   text: string;
@@ -181,7 +185,9 @@ export function readLocalSession(role: InterviewRole): InterviewSession | null {
     const raw = localStorage.getItem(`${SESSION_PREFIX}${role}`);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as InterviewSession;
-    if (!parsed?.questions?.length) return null;
+    if (!parsed || typeof parsed !== "object") return null;
+    if (isClosedStatus(parsed.status)) return parsed;
+    if (!parsed.questions?.length) return null;
     return parsed;
   } catch {
     return null;

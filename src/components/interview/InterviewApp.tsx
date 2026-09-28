@@ -1,11 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { ClosedInterview } from "@/components/interview/ClosedInterview";
 import { InterviewForm } from "@/components/interview/InterviewForm";
 import {
   appendTranscript,
   captureFragmentKey,
   clearLocalDraft,
+  isClosedStatus,
   extensionForMime,
   interviewApiBase,
   interviewFetch,
@@ -26,6 +28,8 @@ type Gate = "boot" | "locked" | "offline" | "ready";
 type SaveState = "idle" | "saving" | "saved" | "offline";
 
 const LOCKED_COPY = "Please use the private link you were sent.";
+const THANKS_COPY = "Thank you. Your answers are saved. You can close this page.";
+const CLOSED_COPY = "This interview is closed. Thank you.";
 
 export function InterviewApp({ role }: { role: InterviewRole }) {
   const [gate, setGate] = useState<Gate>("boot");
@@ -64,6 +68,10 @@ export function InterviewApp({ role }: { role: InterviewRole }) {
         follow_ups: draft.follow_ups,
       }),
     });
+    if (response.status === 409) {
+      setSubmitted(true);
+      return;
+    }
     if (!response.ok) {
       throw new Error("save_failed");
     }
@@ -137,6 +145,10 @@ export function InterviewApp({ role }: { role: InterviewRole }) {
           method: "POST",
           body: form,
         });
+        if (response.status === 409) {
+          setSubmitted(true);
+          return;
+        }
         if (!response.ok) {
           throw new Error("transcribe_failed");
         }
@@ -229,10 +241,25 @@ export function InterviewApp({ role }: { role: InterviewRole }) {
     try {
       await flushSaves();
       const response = await interviewFetch("/submit", key, { method: "POST" });
+      if (response.status === 409) {
+        clearLocalDraft(role);
+        setSession((current) =>
+          current
+            ? { ...current, status: "closed", questions: [], answers: {}, intro: "" }
+            : current,
+        );
+        setSubmitted(true);
+        return;
+      }
       if (!response.ok) {
         throw new Error("submit_failed");
       }
       clearLocalDraft(role);
+      setSession((current) =>
+        current
+          ? { ...current, status: "complete", questions: [], answers: {}, intro: "" }
+          : current,
+      );
       setSubmitted(true);
       setSaveState("saved");
     } catch {
@@ -270,12 +297,20 @@ export function InterviewApp({ role }: { role: InterviewRole }) {
           if (!cancelled) setGate("locked");
           return;
         }
-        const merged = mergeDrafts(payload, readLocalDraft(role));
         if (!cancelled) {
+          if (isClosedStatus(payload.status)) {
+            clearLocalDraft(role);
+            writeLocalSession(role, { ...payload, questions: [], answers: {}, intro: "" });
+            setSession(payload);
+            setSubmitted(true);
+            setGate("ready");
+            return;
+          }
+          const merged = mergeDrafts(payload, readLocalDraft(role));
           writeLocalSession(role, payload);
           setSession(payload);
           setDrafts(merged);
-          setSubmitted(payload.status === "complete");
+          setSubmitted(false);
           setGate("ready");
         }
       } catch {
@@ -336,6 +371,15 @@ export function InterviewApp({ role }: { role: InterviewRole }) {
         <hr className="rule" />
         <p className="lede">{LOCKED_COPY}</p>
       </div>
+    );
+  }
+
+  if (submitted || isClosedStatus(session.status)) {
+    return (
+      <ClosedInterview
+        title={session.role_title || "Interview"}
+        message={session.status === "closed" ? CLOSED_COPY : THANKS_COPY}
+      />
     );
   }
 

@@ -45,6 +45,9 @@ class AnswerRecord:
         }
 
 
+CLOSED_STATUSES = frozenset({"complete", "closed"})
+
+
 @dataclass
 class SessionRecord:
     company_code: str
@@ -53,6 +56,11 @@ class SessionRecord:
     created_at: datetime = field(default_factory=utcnow)
     updated_at: datetime = field(default_factory=utcnow)
     completed_at: datetime | None = None
+    revoked_at: datetime | None = None
+
+    @property
+    def is_closed(self) -> bool:
+        return self.status in CLOSED_STATUSES or self.revoked_at is not None
 
 
 @dataclass
@@ -82,6 +90,9 @@ class Store(Protocol):
         self, company_code: str, role: Role
     ) -> list[TranscriptAttempt]: ...
     async def mark_complete(self, company_code: str, role: Role) -> SessionRecord: ...
+    async def close_role(self, company_code: str, role: Role) -> SessionRecord: ...
+    async def revoke_key(self, company_code: str, role: Role, key_hash: str) -> None: ...
+    async def revoked_hashes(self) -> dict[str, Role]: ...
     async def close(self) -> None: ...
 
 
@@ -92,6 +103,7 @@ class MemoryStore:
         self._sessions: dict[tuple[str, Role], SessionRecord] = {}
         self._answers: dict[tuple[str, Role, str], AnswerRecord] = {}
         self._transcripts: list[tuple[str, Role, TranscriptAttempt]] = []
+        self._revoked: dict[str, Role] = {}
         self._lock = Lock()
 
     async def ensure_session(self, company_code: str, role: Role) -> SessionRecord:
@@ -162,10 +174,29 @@ class MemoryStore:
 
     async def mark_complete(self, company_code: str, role: Role) -> SessionRecord:
         session = await self.ensure_session(company_code, role)
+        now = utcnow()
         session.status = "complete"
-        session.completed_at = utcnow()
-        session.updated_at = session.completed_at
+        session.completed_at = now
+        session.revoked_at = now
+        session.updated_at = now
         return session
+
+    async def close_role(self, company_code: str, role: Role) -> SessionRecord:
+        session = await self.ensure_session(company_code, role)
+        now = utcnow()
+        if session.status != "complete":
+            session.status = "closed"
+        session.revoked_at = now
+        session.updated_at = now
+        return session
+
+    async def revoke_key(self, company_code: str, role: Role, key_hash: str) -> None:
+        if key_hash:
+            self._revoked[key_hash.lower()] = role
+        await self.close_role(company_code, role)
+
+    async def revoked_hashes(self) -> dict[str, Role]:
+        return dict(self._revoked)
 
     async def close(self) -> None:
         return None
