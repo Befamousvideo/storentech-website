@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/roia",
+        destination: "/ai-opportunity-map",
+        permanent: true,
+      },
+      {
+        source: "/roia/",
+        destination: "/ai-opportunity-map",
+        permanent: true,
+      },
+      {
         source: "/pay",
         destination: stripe,
         permanent: false,
