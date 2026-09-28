@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Start a paid Automation ROI Analysis with StorenTech AI. Write us on the form, or talk to Sarah.",
+    "Start your AI Opportunity Map with StorenTech AI. Write us on the form, or talk to Sarah.",
   alternates: { canonical: "/contact" },
 };
 
@@ -16,12 +16,11 @@ export default function ContactPage() {
       <header className="page-hero">
         <div className="wrap">
           <p className="kicker">Contact</p>
-          <h1>Start the paid analysis.</h1>
+          <h1>Start your AI Opportunity Map.</h1>
           <hr className="rule" />
           <p className="lede">
-            Typical fee {site.prices.analysisTypical}. {site.prices.analysisComplex}{" "}
-            when the operation is complex. Tell us what is broken. The form is
-            the written path; Sarah is the voice path.
+            Starting at {site.prices.analysisTypical}. Tell us what is broken. The
+            form is the written path; Sarah is the voice path.
           </p>
         </div>
       </header>

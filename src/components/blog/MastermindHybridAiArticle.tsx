@@ -11,7 +11,8 @@ function FaqAnswer({ item }: { item: BlogFaq }) {
         Keeping more repetitive and sensitive inference <strong>local</strong>{" "}
         can mean less data leaving the building by default. That is a teaser,
         not a Class how-to. Practices we claim publicly — retention discipline,
-        least privilege, human approval, staging, diligence inside the ROIA —
+        least privilege, human approval, staging, diligence inside the AI
+        Opportunity Map —
         are covered in{" "}
         <Link href="/blog/ai-security-for-ai-employees">
           AI Security for AI Employees
@@ -25,7 +26,7 @@ function FaqAnswer({ item }: { item: BlogFaq }) {
     return (
       <p>
         Yes. <strong>StorenTech AI</strong> is a full-service AI agency. Every
-        client starts with a paid Automation ROI Analysis — never a
+        client starts with a paid AI Opportunity Map — never a
         complimentary sales call — then hire and retainer if the math holds.
         See <Link href="/how-it-works">How it works</Link>.
       </p>
@@ -36,7 +37,7 @@ function FaqAnswer({ item }: { item: BlogFaq }) {
     return (
       <ol>
         <li>
-          <strong>Start the paid analysis</strong> —{" "}
+          <strong>Start your AI Opportunity Map</strong> —{" "}
           <Link href="/contact">Contact</Link> (primary)
         </li>
         <li>
@@ -95,7 +96,7 @@ export function MastermindHybridAiArticle({ post }: { post: BlogPost }) {
             <strong>StorenTech AI</strong> is a full-service AI agency. Every
             client starts with a paid{" "}
             <Link href="/blog/what-is-an-automation-roi-analysis">
-              Automation ROI Analysis
+              AI Opportunity Map
             </Link>{" "}
             — never a complimentary sales call. Hybrid Mastermind is how we
             design the stack <em>after</em> the math, not a hardware pitch
@@ -122,7 +123,7 @@ export function MastermindHybridAiArticle({ post }: { post: BlogPost }) {
         <p>
           Illustrative planning tables exist internally for sales
           conversations. We do <strong>not</strong> publish unverified monthly
-          savings or payback claims here. Your ROIA uses <em>your</em> volumes
+          savings or payback claims here. Your AI Opportunity Map uses <em>your</em> volumes
           and <em>your</em> stack.
         </p>
 
@@ -209,7 +210,7 @@ export function MastermindHybridAiArticle({ post }: { post: BlogPost }) {
             default
           </li>
           <li>
-            <strong>Already solved</strong> — patterns your team (or your ROIA)
+            <strong>Already solved</strong> — patterns your team (or your AI Opportunity Map)
             has already defined; local models handle the loop once skills and
             context are trained
           </li>
@@ -274,7 +275,7 @@ export function MastermindHybridAiArticle({ post }: { post: BlogPost }) {
           <li>
             <strong>A path that starts with math</strong> — the{" "}
             <Link href="/blog/what-is-an-automation-roi-analysis">
-              Automation ROI Analysis
+              AI Opportunity Map
             </Link>{" "}
             maps leaks and ranks the first hire <em>before</em> anyone shops
             hardware or retainers
@@ -321,15 +322,15 @@ export function MastermindHybridAiArticle({ post }: { post: BlogPost }) {
           <li>Teams that will not put a human on sensitive actions</li>
           <li>
             Anyone who assumes every small business “needs a DGX Spark” — they
-            don’t; the ROIA decides whether local compute is even in scope
+            don’t; the AI Opportunity Map decides whether local compute is even in scope
           </li>
         </ul>
 
-        <h2>Soft door: start with the Automation ROI Analysis</h2>
+        <h2>Soft door: start with the AI Opportunity Map</h2>
         <p>
           Hybrid Mastermind is a <strong>design outcome</strong>, not a cold
           open. StorenTech starts every client with a paid{" "}
-          <strong>Automation ROI Analysis</strong> (typically{" "}
+          <strong>AI Opportunity Map</strong> (typically{" "}
           <strong>$1,000</strong>; <strong>$2,000–$3,000</strong> when
           complex). That engagement maps your workflows, quantifies leaks with{" "}
           <em>your</em> numbers, and ranks which AI employee or automation lane
@@ -343,7 +344,7 @@ export function MastermindHybridAiArticle({ post }: { post: BlogPost }) {
         <p>
           Definition and fee table:{" "}
           <Link href="/blog/what-is-an-automation-roi-analysis">
-            What Is an Automation ROI Analysis?
+            What Is an AI Opportunity Map?
           </Link>
           .
           <br />
@@ -370,7 +371,7 @@ export function MastermindHybridAiArticle({ post }: { post: BlogPost }) {
         <p>Three clean paths:</p>
         <ol>
           <li>
-            <strong>Start the paid analysis</strong> —{" "}
+            <strong>Start your AI Opportunity Map</strong> —{" "}
             <Link href="/contact">Contact</Link> (primary)
           </li>
           <li>
@@ -385,7 +386,7 @@ export function MastermindHybridAiArticle({ post }: { post: BlogPost }) {
         <p>
           Related:{" "}
           <Link href="/blog/what-is-an-automation-roi-analysis">
-            What Is an Automation ROI Analysis?
+            What Is an AI Opportunity Map?
           </Link>{" "}
           ·{" "}
           <Link href="/blog/ai-security-for-ai-employees">
@@ -400,7 +401,7 @@ export function MastermindHybridAiArticle({ post }: { post: BlogPost }) {
           <h2 id="ready-heading">Ready when you are</h2>
           <div className="btn-row">
             <Link className="btn btn-solid" href="/contact">
-              Start the paid analysis
+              Start your AI Opportunity Map
             </Link>
             <CallSarahCta />
             <Link className="btn" href="/how-it-works">

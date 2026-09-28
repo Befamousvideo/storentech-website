@@ -5,7 +5,7 @@ import { blogPosts, postPath } from "@/lib/blog";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "StorenTech AI writes about the paid Automation ROI Analysis and hiring an AI employee after the math — never a free sales call.",
+    "StorenTech AI writes about the paid AI Opportunity Map and hiring an AI employee after the math — never a free sales call.",
   alternates: { canonical: "/blog" },
 };
 
@@ -19,7 +19,7 @@ export default function BlogIndexPage() {
           <hr className="rule" />
           <p className="lede">
             Notes from a full-service AI agency. Every client starts with a paid
-            Automation ROI Analysis — never a complimentary audit.
+            AI Opportunity Map — never a complimentary audit.
           </p>
         </div>
       </header>

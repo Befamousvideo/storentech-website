@@ -21,7 +21,7 @@ export function Footer() {
                 {item.label}
               </Link>
             ))}
-            <IntakeLink>Start the paid analysis</IntakeLink>
+            <IntakeLink>{site.offer.cta}</IntakeLink>
           </nav>
           <div className="footer-contact">
             <div>{site.location.kicker}</div>

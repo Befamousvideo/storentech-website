@@ -18,6 +18,26 @@ export function JsonLd() {
     priceRange: "$$$",
     openingHours: "Mo-Fr 09:00-17:00",
     sameAs: [],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: site.offer.primaryTitle,
+      itemListElement: [
+        {
+          "@type": "Offer",
+          name: site.offer.primaryTitle,
+          description: site.offer.primary,
+          price: "1000",
+          priceCurrency: "USD",
+          itemOffered: {
+            "@type": "Service",
+            name: site.offer.primaryTitle,
+            alternateName: site.offer.explanatoryName,
+            description: site.offer.primary,
+            url: `${site.url}/roia`,
+          },
+        },
+      ],
+    },
   };
 
   return (

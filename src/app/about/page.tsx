@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "StorenTech AI is a principal-led automation firm based in Orange County, California. We start with a $1,000 Automation ROI Analysis — a written map of where time or revenue leaks, what to fix first, and how that shows up as lower cost or more revenue.",
+    "StorenTech AI is a principal-led automation firm based in Orange County, California. We start with a $1,000 AI Opportunity Map — a written map of where time or revenue leaks, what to fix first, and how that shows up as lower cost or more revenue.",
   alternates: { canonical: "/about" },
 };
 
@@ -24,7 +24,7 @@ export default function AboutPage() {
         <div className="wrap-narrow copy">
           <p>
             StorenTech AI is a principal-led automation firm based in Orange
-            County, California. We start with a $1,000 Automation ROI Analysis
+            County, California. We start with a $1,000 AI Opportunity Map
             — a written map of where time or revenue leaks, what to fix first,
             and how that shows up as lower cost or more revenue.
           </p>

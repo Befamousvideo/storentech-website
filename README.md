@@ -24,17 +24,18 @@ Open [http://localhost:3000](http://localhost:3000).
 Environment:
 
 - `NEXT_PUBLIC_SITE_URL` — public origin for metadata, sitemap, and Open Graph (default `https://storentech.com`)
-- `NEXT_PUBLIC_INTAKE_URL` — Start analysis CTA. Default is the Workspace Google Form. Set to `https://onboarding.storentechai.com` when ONB1 is live. Not Stripe `/pay`.
+- `NEXT_PUBLIC_INTAKE_URL` — Start your map CTA. Default is the Workspace Google Form. Set to `https://onboarding.storentechai.com` when ONB1 is live. Not Stripe `/pay`.
 - `INQUIRY_WEBHOOK_URL` — optional. If set, each inquiry is `POST`ed as JSON (`name`, `email`, `company`, `broken`, `submittedAt`, `source`)
 
 ## Pages
 
-- `/` — leak-map hero; $1k Automation ROI Analysis; Sarah; humans in the loop. Start analysis → `site.intakeUrl` (Form). No “See the work.”
-- `/work` — services catalog; map first, then build what pays
-- `/how-it-works` — paid analysis, then build what pays
+- `/` — leak-map hero; AI Opportunity Map (Automation ROI Analysis); Sarah; humans in the loop. Start your map → `site.intakeUrl` (Form). No “See the work.”
+- `/roia` — AI Opportunity Map service page. Path stays `/roia`.
+- `/work` — services catalog; map first, then the Build Plan
+- `/how-it-works` — paid AI Opportunity Map, then the Build Plan
 - `/about` — StorenTech AI; humans in the loop
 - `/contact` — name, email, company, what’s broken
-- `/pay` and `pay.storentechai.com` — 302 to Stripe Payment Link (`site.stripe.roiPaymentLink`). Invoice short URL only. Not the Start analysis CTA.
+- `/pay` and `pay.storentechai.com` — 302 to Stripe Payment Link (`site.stripe.roiPaymentLink`). Invoice short URL only. Not the Start your map CTA.
 - `/redo` — thin Red O pay page. Pay CTA → Stripe Payment Link. Does not redirect. Same page on `pay.storentechai.com/redo`.
 
 ## Firebase App Hosting (recommended on GCP)
@@ -70,8 +71,8 @@ Set `NEXT_PUBLIC_SITE_URL` and `INQUIRY_WEBHOOK_URL` in the Vercel project envir
 
 ## Offer (do not change on a whim)
 
-1. Paid Automation ROI Analysis: $1,000 typical; $2,000–$3,000 complex. Never free.
-2. After the map: When AI takes the grind, teams can unlock multiple times the productive capacity of people who stay human — more output, human touch stays. No multiplier or job-cut framing.
-3. We do not publish retainers on this site. Ongoing work is scoped from the evidence in the analysis. $1,000 ROIA is the paid front door, not a retainer.
+1. Paid AI Opportunity Map (an Automation ROI Analysis): starting at $1,000. Never free.
+2. After the map: the Build Plan. When AI takes the grind, teams can unlock multiple times the productive capacity of people who stay human — more output, human touch stays. No multiplier or job-cut framing.
+3. We do not publish retainers on this site. Ongoing work is scoped from the evidence in the map. The $1,000 AI Opportunity Map is the paid front door, not a retainer.
 
 Public contact: phone is `public/sarah-phone.png` (`alt="Call Sarah"`) as an image only. Never render `tel:`, `mailto:`, digits, or email addresses as HTML text. Write-us goes to `/contact` form only.
