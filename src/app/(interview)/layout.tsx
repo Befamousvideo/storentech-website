@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Private interview",
   description: "Private interview",
+  keywords: [],
   robots: {
     index: false,
     follow: false,
@@ -14,7 +15,14 @@ export const metadata: Metadata = {
     },
   },
   referrer: "no-referrer",
+  alternates: {
+    canonical: null,
+  },
   openGraph: {
+    title: "Private interview",
+    description: "Private interview",
+  },
+  twitter: {
     title: "Private interview",
     description: "Private interview",
   },
