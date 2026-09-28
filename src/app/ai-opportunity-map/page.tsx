@@ -7,11 +7,11 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "AI Opportunity Map",
   description: site.offer.primary,
-  alternates: { canonical: "/roia" },
+  alternates: { canonical: "/ai-opportunity-map" },
   openGraph: {
     title: "AI Opportunity Map · StorenTech AI",
     description: site.offer.primary,
-    url: "/roia",
+    url: "/ai-opportunity-map",
   },
   twitter: {
     card: "summary_large_image",
@@ -26,7 +26,7 @@ const serviceLd = {
   name: site.offer.primaryTitle,
   alternateName: site.offer.explanatoryName,
   description: `${site.offer.primary} ${site.offer.later}`,
-  url: `${site.url}/roia`,
+  url: `${site.url}/ai-opportunity-map`,
   provider: {
     "@type": "Organization",
     name: site.name,
@@ -45,7 +45,7 @@ const serviceLd = {
   },
 };
 
-export default function RoiaPage() {
+export default function AiOpportunityMapPage() {
   return (
     <>
       <StructuredData data={serviceLd} />
