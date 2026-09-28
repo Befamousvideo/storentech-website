@@ -25,7 +25,7 @@ const serviceLd = {
   "@type": "Service",
   name: site.offer.primaryTitle,
   alternateName: site.offer.explanatoryName,
-  description: site.offer.primary,
+  description: `${site.offer.primary} ${site.offer.later}`,
   url: `${site.url}/roia`,
   provider: {
     "@type": "Organization",

@@ -21,7 +21,7 @@ const moves = [
   {
     n: "02",
     title: "Build Plan",
-    body: "When AI takes the grind, teams can unlock multiple times the productive capacity of people who stay human — more output, human touch stays. Voice, website chat, or other ops may come later, when the map says so.",
+    body: "When AI takes the grind, teams can unlock multiple times the productive capacity of people who stay human — more output, human touch stays. Builds may include voice agents, website chat, operations automation, web apps, mobile apps, and custom-built solutions.",
   },
   {
     n: "03",
