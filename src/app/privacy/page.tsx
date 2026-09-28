@@ -15,6 +15,12 @@ export const metadata: Metadata = {
       "How StorenTech AI collects, uses, and protects information, including contact forms, calls, and SMS follow-up.",
     url: "/privacy",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy · StorenTech AI",
+    description:
+      "How StorenTech AI collects, uses, and protects information, including contact forms, calls, and SMS follow-up.",
+  },
 };
 
 export default function PrivacyPage() {

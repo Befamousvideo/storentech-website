@@ -15,6 +15,12 @@ export const metadata: Metadata = {
       "Terms for using the StorenTech AI website and SMS follow-up. Consulting work is governed by a separate written agreement.",
     url: "/terms",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Service · StorenTech AI",
+    description:
+      "Terms for using the StorenTech AI website and SMS follow-up. Consulting work is governed by a separate written agreement.",
+  },
 };
 
 export default function TermsPage() {
