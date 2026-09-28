@@ -35,6 +35,10 @@ export function Footer() {
         </div>
         <div className="footer-bottom">
           <span>© 2026 {site.name}. All rights reserved.</span>
+          <nav className="footer-legal" aria-label="Legal">
+            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/terms">Terms of Service</Link>
+          </nav>
           <span>Orange County, California</span>
         </div>
       </div>
