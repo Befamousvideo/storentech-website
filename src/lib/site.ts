@@ -40,7 +40,7 @@ export const site = {
     primary:
       "An Automation ROI Analysis: where time and revenue leak, and what’s worth fixing first. Starting at $1,000.",
     later:
-      "After the map, the Build Plan is how we build what pays — may include voice, website chat, other ops. Implementation ≠ the $1k product.",
+      "After the map, the Build Plan is how we build what pays — may include voice, website chat, other ops.",
     cta: "Start your AI Opportunity Map",
     ctaShort: "Start your map",
     capacity:
