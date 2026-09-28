@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { isInterviewPath } from "@/lib/interview-paths";
+import { INTERVIEW_ROBOTS_TAG, isInterviewPath } from "@/lib/interview-paths";
 import { site } from "@/lib/site";
 
 function requestHosts(request: NextRequest) {
@@ -45,7 +45,7 @@ export function middleware(request: NextRequest) {
 
   if (isInterviewPath(pathname)) {
     const response = NextResponse.next();
-    response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+    response.headers.set("X-Robots-Tag", INTERVIEW_ROBOTS_TAG);
     response.headers.set("Cache-Control", "no-store");
     response.headers.set("Referrer-Policy", "no-referrer");
     return response;
