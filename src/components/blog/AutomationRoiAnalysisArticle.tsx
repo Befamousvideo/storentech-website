@@ -21,7 +21,8 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
         <div className="blog-lead">
           <p>
             <strong>StorenTech AI</strong> is a full-service AI agency. We start
-            every client with an <strong>Automation ROI Analysis</strong> — a
+            every client with an <strong>AI Opportunity Map</strong> — an
+            Automation ROI Analysis, a
             paid engagement that maps your workflows, quantifies time and revenue
             leaks with your real numbers, and ranks which AI employee to hire
             first. It typically costs <strong>$1,000</strong> (
@@ -36,8 +37,8 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
 
         <h2>What “the math” actually means</h2>
         <p>
-          Most “AI audits” show you a demo and ask for a retainer. An Automation
-          ROI Analysis starts the other way: with the numbers you already run
+          Most “AI audits” show you a demo and ask for a retainer. An AI
+          Opportunity Map starts the other way: with the numbers you already run
           the business on.
         </p>
         <p>We work from inputs you can verify — not vibes:</p>
@@ -120,7 +121,7 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
             <tbody>
               <tr>
                 <td>
-                  <strong>Typical Automation ROI Analysis</strong>
+                  <strong>Typical AI Opportunity Map</strong>
                 </td>
                 <td>
                   <strong>$1,000</strong>
@@ -132,7 +133,7 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
               </tr>
               <tr>
                 <td>
-                  <strong>Complex Automation ROI Analysis</strong>
+                  <strong>Complex AI Opportunity Map</strong>
                 </td>
                 <td>
                   <strong>$2,000–$3,000</strong>
@@ -211,7 +212,7 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
           </li>
           <li>
             <IntakeLink>
-              <strong>Start the paid analysis</strong>
+              <strong>Start your AI Opportunity Map</strong>
             </IntakeLink>
           </li>
         </ol>
@@ -234,7 +235,7 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
           <h2 id="ready-heading">Ready when you are</h2>
           <div className="btn-row">
             <IntakeLink className="btn btn-solid">
-              Start the paid analysis
+              Start your AI Opportunity Map
             </IntakeLink>
             <SarahPhoneImage className="sarah-phone" />
             <Link className="btn" href="/how-it-works">

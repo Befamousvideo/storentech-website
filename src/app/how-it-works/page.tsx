@@ -8,20 +8,20 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "How it works",
   description:
-    "Paid Automation ROI Analysis first: a written map of time, revenue, and risk leaks. Map leaks first. Then build what pays — people still in the loop, out front with customers.",
+    "Paid AI Opportunity Map first: an Automation ROI Analysis of time, revenue, and risk leaks. Map leaks first. Then the Build Plan — people still in the loop, out front with customers.",
   alternates: { canonical: "/how-it-works" },
 };
 
 const moves = [
   {
     n: "01",
-    title: "Automation ROI Analysis",
+    title: "AI Opportunity Map",
     body: `Typical fee ${site.prices.analysisTypical}. ${site.prices.analysisComplex} when the operation is complex — multiple locations, a messy stack, or a wider catalog. You get a ranked map: where time and revenue hide, what to fix first, what can wait. This is paid work. It is not a complimentary sales call.`,
   },
   {
     n: "02",
-    title: "After the map, build what pays",
-    body: "When AI takes the grind, teams can unlock multiple times the productive capacity of people who stay human — more output, human touch stays. Implementation is not the $1k product. Voice, website chat, or other ops may come later, when the map says so.",
+    title: "Build Plan",
+    body: "When AI takes the grind, teams can unlock multiple times the productive capacity of people who stay human — more output, human touch stays. Voice, website chat, or other ops may come later, when the map says so.",
   },
   {
     n: "03",
@@ -36,15 +36,15 @@ export default function HowItWorksPage() {
       <header className="page-hero">
         <div className="wrap">
           <p className="kicker">How it works</p>
-          <h1>Pay for the map. Then we build what pays.</h1>
+          <h1>Pay for the map. Then the Build Plan.</h1>
           <hr className="rule" />
           <p className="lede">
-            The door is a paid Automation ROI Analysis. {site.offer.services}{" "}
+            The door is a paid AI Opportunity Map. {site.offer.services}{" "}
             {site.offer.capacity} Call Sarah if you want to talk before you buy
             the map.
           </p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
-            <IntakeLink className="btn btn-solid">Start the paid analysis</IntakeLink>
+            <IntakeLink className="btn btn-solid">{site.offer.cta}</IntakeLink>
             <SarahPhoneImage className="sarah-phone" />
           </div>
         </div>
@@ -74,7 +74,7 @@ export default function HowItWorksPage() {
         <div className="wrap split">
           <div>
             <p className="kicker">What you buy</p>
-            <h2>Pay for the map. Then we build what pays.</h2>
+            <h2>Pay for the map. Then the Build Plan.</h2>
           </div>
           <div className="copy">
             <p>

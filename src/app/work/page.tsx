@@ -6,7 +6,7 @@ import { retainers, site, workGroups } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Map leaks first. Then build what pays — people still in the loop, out front with customers. Front of house, revenue, operations, and growth.",
+    "Map leaks first. Then the Build Plan — people still in the loop, out front with customers. Front of house, revenue, operations, and growth.",
   alternates: { canonical: "/work" },
 };
 
@@ -87,10 +87,10 @@ export default function WorkPage() {
       <section className="section section-tan cta-band">
         <div className="wrap">
           <p className="kicker">Start</p>
-          <h2>Pay for the map. Then we build what pays.</h2>
+          <h2>Pay for the map. Then the Build Plan.</h2>
           <div className="btn-row" style={{ marginTop: "1.5rem" }}>
             <SarahPhoneImage className="sarah-phone" />
-            <IntakeLink className="btn">Start the paid analysis</IntakeLink>
+            <IntakeLink className="btn">{site.offer.cta}</IntakeLink>
           </div>
         </div>
       </section>

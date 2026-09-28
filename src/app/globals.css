@@ -390,6 +390,10 @@ select {
   color: var(--navy);
 }
 
+.hero h1.service-title {
+  max-width: 18ch;
+}
+
 .hero h1.brand-line {
   max-width: 22ch;
   font-size: clamp(1.85rem, 4vw, 3.1rem);

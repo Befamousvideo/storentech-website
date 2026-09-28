@@ -19,14 +19,14 @@ function ExternalLink({
 }
 
 function FaqAnswer({ item }: { item: BlogFaq }) {
-  if (item.question === "How does security show up in the Automation ROI Analysis?") {
+  if (item.question === "How does security show up in the AI Opportunity Map?") {
     return (
       <p>
         Vendor and model <strong>security diligence</strong> is part of the paid
-        ROIA: what tools get connected, what data moves, what approvals exist,
-        and whether the first hire’s access map is sane. See{" "}
+        AI Opportunity Map: what tools get connected, what data moves, what
+        approvals exist, and whether the first hire’s access map is sane. See{" "}
         <Link href="/blog/what-is-an-automation-roi-analysis">
-          What Is an Automation ROI Analysis?
+          What Is an AI Opportunity Map?
         </Link>
         .
       </p>
@@ -37,7 +37,7 @@ function FaqAnswer({ item }: { item: BlogFaq }) {
     return (
       <p>
         Yes. StorenTech AI is a <strong>full-service AI agency</strong>. Every
-        client starts with a paid Automation ROI Analysis — never a
+        client starts with a paid AI Opportunity Map — never a
         complimentary sales call — then hire and retainer if the math and the
         access map hold. Path: <Link href="/how-it-works">How it works</Link>.
       </p>
@@ -72,7 +72,7 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
             vibes-based install. <strong>StorenTech AI</strong> is a
             full-service AI agency. Every client starts with a paid{" "}
             <Link href="/blog/what-is-an-automation-roi-analysis">
-              Automation ROI Analysis
+              AI Opportunity Map
             </Link>
             . Security diligence is part of that map — then we move forward
             the way careful operators do — with industry security best
@@ -268,7 +268,7 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
           Full commercial path: <Link href="/how-it-works">How it works</Link>.
           Definition of the paid map:{" "}
           <Link href="/blog/what-is-an-automation-roi-analysis">
-            What Is an Automation ROI Analysis?
+            What Is an AI Opportunity Map?
           </Link>
           .
         </p>
@@ -324,7 +324,7 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
           Implementations can include <strong>emergency assurance</strong> and a
           clear <strong>human-in-the-loop</strong> response path when something
           looks wrong. The full break-glass playbook lives{" "}
-          <strong>inside the ROIA</strong> — not on a public blog.
+          <strong>inside the AI Opportunity Map</strong> — not on a public blog.
         </p>
 
         <h3>5. Sandbox / staging before production AI employees</h3>
@@ -338,17 +338,17 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
         </p>
 
         <h3>
-          6. Vendor / model security diligence is part of the Automation ROI
-          Analysis
+          6. Vendor / model security diligence is part of the AI Opportunity
+          Map
         </h3>
         <p>
           Every StorenTech client starts with a paid{" "}
-          <strong>Automation ROI Analysis</strong> (typically{" "}
+          <strong>AI Opportunity Map</strong> (typically{" "}
           <strong>$1,000</strong>; <strong>$2,000–$3,000</strong> when complex).
           The analysis is not only hours, response time, and after-hours leakage
           — it includes <strong>which vendors and models</strong> touch the
           workflow, what access they need, and whether the security posture
-          fits the role. Diligence is <strong>inside the ROIA</strong>, not a
+          fits the role. Diligence is <strong>inside the AI Opportunity Map</strong>, not a
           free add-on slide after you’ve already signed a retainer.
         </p>
         <p>
@@ -376,7 +376,7 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
           <li>
             We are <strong>not</strong> publishing proprietary break-glass
             severity levels, freeze playbooks, or trigger how-tos — those stay
-            in the ROIA.
+            in the AI Opportunity Map.
           </li>
           <li>
             We are <strong>not</strong> saying frontier labs’ eval incidents
@@ -404,7 +404,7 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
         <p>Three clean paths:</p>
         <ol>
           <li>
-            <strong>Start the paid analysis</strong> —{" "}
+            <strong>Start your AI Opportunity Map</strong> —{" "}
             <Link href="/contact">Contact</Link> (primary)
           </li>
           <li>
@@ -419,7 +419,7 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
         <p>
           Context on the wedge:{" "}
           <Link href="/blog/what-is-an-automation-roi-analysis">
-            What Is an Automation ROI Analysis?
+            What Is an AI Opportunity Map?
           </Link>
           .
         </p>
@@ -431,7 +431,7 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
           <h2 id="ready-heading">Ready when you are</h2>
           <div className="btn-row">
             <Link className="btn btn-solid" href="/contact">
-              Start the paid analysis
+              Start your AI Opportunity Map
             </Link>
             <div className="blog-sarah-cta">
               <strong>Call Sarah</strong>

@@ -33,17 +33,20 @@ export const site = {
   brandLine:
     "StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays. Ask Sarah anything.",
   description:
-    "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays. Automation ROI Analysis: a written map of time, revenue, and risk leaks. Ask Sarah anything.",
+    "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays. AI Opportunity Map. An Automation ROI Analysis: where time and revenue leak, and what’s worth fixing first. Starting at $1,000. Ask Sarah anything.",
   offer: {
-    primaryTitle: "Automation ROI Analysis",
+    primaryTitle: "AI Opportunity Map",
+    explanatoryName: "Automation ROI Analysis",
     primary:
-      "Automation ROI Analysis — written map of time/revenue/risk leaks vs their software, what to fix first. Clarity before spend.",
+      "An Automation ROI Analysis: where time and revenue leak, and what’s worth fixing first. Starting at $1,000.",
     later:
-      "After the map, we build what pays — may include voice, website chat, other ops. Implementation ≠ the $1k product.",
+      "After the map, the Build Plan is how we build what pays — may include voice, website chat, other ops.",
+    cta: "Start your AI Opportunity Map",
+    ctaShort: "Start your map",
     capacity:
       "When AI takes the grind, teams can unlock multiple times the productive capacity of people who stay human — more output, human touch stays.",
     services:
-      "Map leaks first. Then build what pays — people still in the loop, out front with customers.",
+      "Map leaks first. Then the Build Plan — people still in the loop, out front with customers.",
   },
   founder: {
     name: "Vincent Jackson",
@@ -72,7 +75,7 @@ export const site = {
     analysisTypical: "$1,000",
     analysisComplex: "$2,000–$3,000",
   },
-  // Start analysis CTA. Form now; set NEXT_PUBLIC_INTAKE_URL to ONB1 when gated live.
+  // Start your map CTA. Form now; set NEXT_PUBLIC_INTAKE_URL to ONB1 when gated live.
   intakeUrl: resolveIntakeUrl(process.env.NEXT_PUBLIC_INTAKE_URL),
   intakeOnb1Url: ONB1_INTAKE_URL,
   stripe: {
@@ -82,6 +85,7 @@ export const site = {
 } as const;
 
 export const nav = [
+  { href: "/roia", label: "Opportunity Map" },
   { href: "/work", label: "Work" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/blog", label: "Blog" },
@@ -109,7 +113,7 @@ export const offerSteps = [
   },
   {
     n: "02",
-    title: "After the map",
+    title: "Build Plan",
     body: site.offer.later,
   },
   {

@@ -10,14 +10,11 @@ export default function HomePage() {
         <div className="wrap hero-grid">
           <div>
             <p className="kicker">{site.name}</p>
-            <h1 className="brand-line">{site.tagline}</h1>
+            <h1 className="service-title">{site.offer.primaryTitle}</h1>
             <hr className="rule" />
-            <p className="lede">
-              The front door is a paid Automation ROI Analysis — a written map
-              of time, revenue, and risk leaks. Clarity before spend.
-            </p>
+            <p className="lede">{site.offer.primary}</p>
             <div className="btn-row">
-              <IntakeLink className="btn">Start the paid analysis</IntakeLink>
+              <IntakeLink className="btn">{site.offer.cta}</IntakeLink>
             </div>
             <div className="fine hero-contact">
               <Link href="/contact">Write us</Link>
@@ -41,8 +38,10 @@ export default function HomePage() {
         <div className="wrap">
           <div className="section-head">
             <div>
-              <p className="kicker">{site.prices.analysisTypical}</p>
-              <h2>{site.offer.primaryTitle}</h2>
+              <p className="kicker">Starting at {site.prices.analysisTypical}</p>
+              <h2>
+                <Link href="/roia">{site.offer.primaryTitle}</Link>
+              </h2>
             </div>
             <p className="lede">
               {site.offer.primary} {site.offer.later}
@@ -91,14 +90,13 @@ export default function HomePage() {
       <section className="section section-tan cta-band">
         <div className="wrap">
           <p className="kicker">Next</p>
-          <h2>Start the paid analysis, or write us.</h2>
+          <h2>Start your AI Opportunity Map, or write us.</h2>
           <p className="lede" style={{ marginBottom: "1.6rem" }}>
-            The analysis is {site.prices.analysisTypical} typical,{" "}
-            {site.prices.analysisComplex} when complex. It is not a complimentary
+            Starting at {site.prices.analysisTypical}. It is not a complimentary
             sales call. Sarah is in the header if you want to talk first.
           </p>
           <div className="btn-row">
-            <IntakeLink className="btn">Start analysis</IntakeLink>
+            <IntakeLink className="btn">{site.offer.cta}</IntakeLink>
             <Link className="btn" href="/contact">
               Write us
             </Link>

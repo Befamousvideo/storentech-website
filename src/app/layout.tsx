@@ -22,13 +22,14 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "StorenTech AI — Automation ROI Analysis",
+    default: "StorenTech AI — AI Opportunity Map",
     template: "%s · StorenTech AI",
   },
   description: site.description,
   applicationName: site.name,
   keywords: [
     "AI agency Orange County",
+    "AI Opportunity Map",
     "Automation ROI analysis",
     "voice agent",
     "Orange County",
@@ -39,12 +40,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: site.url,
     siteName: site.name,
-    title: "StorenTech AI",
+    title: "StorenTech AI — AI Opportunity Map",
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "StorenTech AI",
+    title: "StorenTech AI — AI Opportunity Map",
     description: site.description,
   },
   robots: {

@@ -6,7 +6,7 @@ import { useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { IntakeLink } from "@/components/IntakeLink";
 import { SarahPhoneImage } from "@/components/SarahContact";
-import { nav } from "@/lib/site";
+import { nav, site } from "@/lib/site";
 
 function isCurrent(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
@@ -45,7 +45,7 @@ export function Header({ slim = false }: { slim?: boolean }) {
         {slim ? null : (
           <div className="header-actions">
             <SarahPhoneImage className="sarah-phone header-sarah-phone" />
-            <IntakeLink className="btn btn-solid">Start analysis</IntakeLink>
+            <IntakeLink className="btn btn-solid">{site.offer.ctaShort}</IntakeLink>
             <button
               className="menu-toggle"
               type="button"
@@ -80,7 +80,7 @@ export function Header({ slim = false }: { slim?: boolean }) {
           <div className="mobile-actions">
             <SarahPhoneImage className="sarah-phone header-sarah-phone" />
             <IntakeLink className="btn btn-solid" onClick={() => setOpen(false)}>
-              Start analysis
+              {site.offer.ctaShort}
             </IntakeLink>
           </div>
         </div>
