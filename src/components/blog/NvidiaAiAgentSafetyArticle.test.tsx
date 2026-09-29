@@ -192,7 +192,7 @@ describe("NVIDIA AI agent safety blog post", () => {
     expect(html).not.toMatch(/tel:/i);
     expect(text).not.toMatch(/\(?\d{3}\)?[-.\s]\d{3}[-.\s]\d{4}/);
 
-    const dollars = html.match(/\$[\d,]+/g) ?? [];
+    const dollars = html.match(/\$\d{1,3}(?:,\d{3})*/g) ?? [];
     expect([...new Set(dollars)].sort()).toEqual(
       ["$1,000", "$2,000", "$3,000"].sort(),
     );
