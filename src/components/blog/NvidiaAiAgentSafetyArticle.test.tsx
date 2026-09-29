@@ -161,7 +161,7 @@ describe("NVIDIA AI agent safety blog post", () => {
     expect(articleSource).not.toContain("<!--");
     expect(articleSource).not.toContain("tel:");
     expect(articleSource).not.toContain("mailto:");
-    expect(articleSource).not.toContain("mastermind-hybrid-ai");
+    expect(articleSource).toContain('href="/blog/mastermind-hybrid-ai"');
     expect(corpus).not.toMatch(/ROIA/);
     expect(corpus).not.toMatch(/Blueprint/i);
     for (const phrase of retiredPhrases) {
@@ -203,7 +203,7 @@ describe("NVIDIA AI agent safety blog post", () => {
     expect(html).not.toContain("Notes for Bob");
     expect(html).not.toContain("not published");
     expect(html).not.toContain("<!--");
-    expect(html).not.toContain("mastermind-hybrid-ai");
+    expect(html).toContain('href="/blog/mastermind-hybrid-ai"');
     expect(html).not.toMatch(/ROIA/);
     expect(html).not.toMatch(/Blueprint/i);
     expect(html).not.toMatch(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
@@ -230,8 +230,9 @@ describe("NVIDIA AI agent safety blog post", () => {
     expect(text).toContain(
       "We'll cover how our approval step works in a future post.",
     );
-    expect(text).toContain("Our Mastermind hybrid post is coming soon, too.");
-    expect(html).not.toMatch(/href=["'][^"']*mastermind-hybrid-ai/);
+    expect(text).toContain("Mastermind hybrid post");
+    expect(text).not.toContain("coming soon");
+    expect(html).toContain('href="/blog/mastermind-hybrid-ai"');
 
     for (const item of nvidiaAiAgentSafetyFaqs) {
       expect(text).toContain(item.question);

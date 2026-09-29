@@ -278,12 +278,14 @@ export function NvidiaAiAgentSafetyArticle({ post }: { post: BlogPost }) {
           Want to go deeper? Read our guide to{" "}
           <Link href="/blog/ai-security-for-ai-employees">
             AI security for AI employees
-          </Link>{" "}
-          and our post on{" "}
+          </Link>
+          , our post on{" "}
           <Link href="/blog/zapier-webhooks-ai-agents">
             Zapier webhooks and AI agents
           </Link>
-          . Our Mastermind hybrid post is coming soon, too.
+          , and our{" "}
+          <Link href="/blog/mastermind-hybrid-ai">Mastermind hybrid post</Link>
+          .
         </p>
 
         <h2>Start With an AI Opportunity Map</h2>
