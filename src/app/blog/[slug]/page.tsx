@@ -3,12 +3,15 @@ import { notFound } from "next/navigation";
 import { AiSecurityForAiEmployeesArticle } from "@/components/blog/AiSecurityForAiEmployeesArticle";
 import { AutomationRoiAnalysisArticle } from "@/components/blog/AutomationRoiAnalysisArticle";
 import { MastermindHybridAiArticle } from "@/components/blog/MastermindHybridAiArticle";
+import { ZapierWebhooksAiAgentsArticle } from "@/components/blog/ZapierWebhooksAiAgentsArticle";
 import { StructuredData } from "@/components/StructuredData";
 import { blogPosts, getPost, postPath, postUrl, type BlogPost } from "@/lib/blog";
 import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
+    case "zapier-webhooks-ai-agents":
+      return <ZapierWebhooksAiAgentsArticle post={post} />;
     case "what-is-an-automation-roi-analysis":
       return <AutomationRoiAnalysisArticle post={post} />;
     case "ai-security-for-ai-employees":

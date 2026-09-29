@@ -136,7 +136,55 @@ export const mastermindHybridFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the six on-page Q&As word for word. No HowTo schema.
+ */
+export const zapierWebhooksAiAgentsFaqs = [
+  {
+    question: "Do I need to know how to code?",
+    answer:
+      "No. You don't build anything. StorenTech sets it up, tests it, and shows your team how to review and approve the drafts.",
+  },
+  {
+    question: "Is Zapier expensive? Do I need a paid plan?",
+    answer:
+      "Zapier has a Free plan, but the webhook feature we use to connect apps instantly isn't on it. Zapier lists that feature on its paid plans (Professional, Team, and Enterprise). Zapier's plans and pricing change, so check their current plan page. We'll tell you which plan your setup needs during the AI Opportunity Map.",
+  },
+  {
+    question: "Will the AI send emails on its own?",
+    answer:
+      "No. In StorenTech builds, the agent drafts and prepares. A person approves every outgoing email, every public reply, and anything involving money.",
+  },
+  {
+    question: "What if something breaks?",
+    answer:
+      "Because a person approves anything that goes out, a hiccup shouldn't turn into a wrong email landing in a customer's inbox. We test with sample data before going live, and a Zap can be turned off at any time. There's also an emergency stop, which we walk through with you during setup.",
+  },
+  {
+    question: "Is my customer data safe?",
+    answer:
+      "It can be, with good habits. Zapier's own advice is to treat a webhook address like a password. We send the agent only the details it needs for the job, keep passwords and keys out of shared places, and limit what each agent can access.",
+  },
+  {
+    question: "What should I automate first?",
+    answer:
+      "Whatever is costing you the most time or money right now. For many Orange County businesses, that's answering leads or following up. But the honest answer comes from your own workflows. That's what the paid AI Opportunity Map is for.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "zapier-webhooks-ai-agents",
+    title:
+      "Zapier + AI Agents, Explained for Business Owners: Get the Busywork Done (and Keep the Final Say)",
+    metaTitle: "Zapier + AI Agents for Business Owners | StorenTech AI",
+    description:
+      "New to automation? Learn what Zapier does, how an AI assistant can handle busywork, and why a person still approves anything that goes out.",
+    datePublished: "2026-09-28",
+    faqs: zapierWebhooksAiAgentsFaqs,
+    indexCta: "Read the post",
+  },
   {
     slug: "what-is-an-automation-roi-analysis",
     title:
