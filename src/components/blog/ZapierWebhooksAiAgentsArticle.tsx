@@ -193,14 +193,14 @@ export function ZapierWebhooksAiAgentsArticle({ post }: { post: BlogPost }) {
         <p>You don&apos;t build any of this. We do. Here&apos;s how it goes:</p>
         <ol>
           <li>
-            <strong>We start with an Automation ROI Analysis (ROIA).</strong> We
-            look at how work really moves through your business today, which
+            <strong>We start with an AI Opportunity Map (our Automation ROI Analysis).</strong>{" "}
+            We look at how work really moves through your business today, which
             apps you use, and where things fall through the cracks.
           </li>
           <li>
-            <strong>We pick one job to start.</strong> Usually the one
-            that&apos;s costing you the most time or money right now. Not all
-            five at once.
+            <strong>Build Plan.</strong> We pick one job to start. Usually the
+            one that&apos;s costing you the most time or money right now. Not
+            all five at once.
           </li>
           <li>
             <strong>We set it up and test it.</strong> We connect your apps, set
@@ -218,10 +218,10 @@ export function ZapierWebhooksAiAgentsArticle({ post }: { post: BlogPost }) {
           cover that during setup, not on a blog.
         </p>
 
-        <h2>Where to start: the Automation ROI Analysis</h2>
+        <h2>Where to start: the AI Opportunity Map</h2>
         <p>
           Every StorenTech client starts with a paid{" "}
-          <strong>Automation ROI Analysis</strong>. It typically costs{" "}
+          <strong>AI Opportunity Map</strong>. It typically costs{" "}
           <strong>$1,000</strong> (<strong>$2,000–$3,000</strong> when the
           scope is complex). It&apos;s never a free sales call. We map your
           real workflows, find where handoffs break, and rank which job should
@@ -232,7 +232,7 @@ export function ZapierWebhooksAiAgentsArticle({ post }: { post: BlogPost }) {
           <li>
             What the analysis covers:{" "}
             <Link href="/blog/what-is-an-automation-roi-analysis">
-              What Is an Automation ROI Analysis?
+              What Is an AI Opportunity Map?
             </Link>
           </li>
           <li>

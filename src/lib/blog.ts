@@ -149,7 +149,7 @@ export const zapierWebhooksAiAgentsFaqs = [
   {
     question: "Is Zapier expensive? Do I need a paid plan?",
     answer:
-      "Zapier has a Free plan, but the webhook feature we use to connect apps instantly isn't on it. Zapier lists that feature on its paid plans (Professional, Team, and Enterprise). Zapier's plans and pricing change, so check their current plan page. We'll tell you which plan your setup needs during the ROIA.",
+      "Zapier has a Free plan, but the webhook feature we use to connect apps instantly isn't on it. Zapier lists that feature on its paid plans (Professional, Team, and Enterprise). Zapier's plans and pricing change, so check their current plan page. We'll tell you which plan your setup needs during the AI Opportunity Map.",
   },
   {
     question: "Will the AI send emails on its own?",
@@ -169,7 +169,7 @@ export const zapierWebhooksAiAgentsFaqs = [
   {
     question: "What should I automate first?",
     answer:
-      "Whatever is costing you the most time or money right now. For many Orange County businesses, that's answering leads or following up. But the honest answer comes from your own workflows. That's what the paid Automation ROI Analysis is for.",
+      "Whatever is costing you the most time or money right now. For many Orange County businesses, that's answering leads or following up. But the honest answer comes from your own workflows. That's what the paid AI Opportunity Map is for.",
   },
 ] as const satisfies readonly BlogFaq[];
 

@@ -40,7 +40,7 @@ describe("Zapier + AI Agents blog post", () => {
       {
         question: "Is Zapier expensive? Do I need a paid plan?",
         answer:
-          "Zapier has a Free plan, but the webhook feature we use to connect apps instantly isn't on it. Zapier lists that feature on its paid plans (Professional, Team, and Enterprise). Zapier's plans and pricing change, so check their current plan page. We'll tell you which plan your setup needs during the ROIA.",
+          "Zapier has a Free plan, but the webhook feature we use to connect apps instantly isn't on it. Zapier lists that feature on its paid plans (Professional, Team, and Enterprise). Zapier's plans and pricing change, so check their current plan page. We'll tell you which plan your setup needs during the AI Opportunity Map.",
       },
       {
         question: "Will the AI send emails on its own?",
@@ -60,7 +60,7 @@ describe("Zapier + AI Agents blog post", () => {
       {
         question: "What should I automate first?",
         answer:
-          "Whatever is costing you the most time or money right now. For many Orange County businesses, that's answering leads or following up. But the honest answer comes from your own workflows. That's what the paid Automation ROI Analysis is for.",
+          "Whatever is costing you the most time or money right now. For many Orange County businesses, that's answering leads or following up. But the honest answer comes from your own workflows. That's what the paid AI Opportunity Map is for.",
       },
     ]);
   });
@@ -75,6 +75,8 @@ describe("Zapier + AI Agents blog post", () => {
     expect(articleSource).not.toContain("mailto:");
     expect(articleSource).not.toContain("mastermind-hybrid-ai");
     expect(articleSource).not.toMatch(/HowTo/);
+    expect(articleSource).not.toMatch(/ROIA/);
+    expect(articleSource).not.toMatch(/Blueprint/i);
   });
 
   it("renders the body without forbidden strings or extra dollar figures", () => {
@@ -96,11 +98,20 @@ describe("Zapier + AI Agents blog post", () => {
     expect(html).not.toContain("NOTES FOR BOB");
     expect(html).not.toContain("GUARDRAILS");
     expect(html).not.toContain("mastermind-hybrid-ai");
+    expect(html).not.toMatch(/ROIA/);
+    expect(html).not.toMatch(/Blueprint/i);
     expect(html).not.toMatch(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
 
     const dollars = html.match(/\$[\d,]+(?:–\$[\d,]+)?/g) ?? [];
     expect([...new Set(dollars)].sort()).toEqual(
       ["$1,000", "$2,000–$3,000"].sort(),
     );
+    expect(html).toContain(
+      "We start with an AI Opportunity Map (our Automation ROI Analysis).",
+    );
+    expect(html).toContain("Build Plan.");
+    expect(
+      (html.match(/Automation ROI Analysis/g) ?? []).length,
+    ).toBe(1);
   });
 });
