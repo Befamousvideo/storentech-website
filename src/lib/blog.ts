@@ -186,6 +186,27 @@ export const blogPosts: readonly BlogPost[] = [
     indexCta: "Read the post",
   },
   {
+    slug: "mastermind-hybrid-ai",
+    title:
+      "Mastermind Hybrid AI: Local Models + Frontier Models (When Each Earns Its Keep)",
+    metaTitle: "Mastermind Hybrid AI: Local + Frontier | StorenTech",
+    description:
+      "StorenTech’s Mastermind hybrid runs local open-source models for volume and privacy, frontier models when judgment earns the spend — after a paid AI Opportunity Map.",
+    datePublished: "2026-09-25",
+    faqs: mastermindHybridFaqs,
+    indexCta: "Read the post",
+  },
+  {
+    slug: "ai-security-for-ai-employees",
+    title: "AI Security for AI Employees (Process, Not Vibes)",
+    metaTitle: "AI Security for AI Employees | StorenTech AI",
+    description:
+      "Frontier AI capability + eval containment failures mean SMBs need process, not vibes. How StorenTech hires AI employees after a paid AI Opportunity Map — with retention, least privilege, human approval, and staging.",
+    datePublished: "2026-09-23",
+    faqs: aiSecurityFaqs,
+    indexCta: "Read the post",
+  },
+  {
     slug: "what-is-an-automation-roi-analysis",
     title:
       "What Is an AI Opportunity Map? (And Why StorenTech Won’t Start Free)",
@@ -194,27 +215,6 @@ export const blogPosts: readonly BlogPost[] = [
       "StorenTech AI is a full-service AI agency. Every client starts with a paid AI Opportunity Map ($1,000 typ.) that maps leaks and ranks the first AI hire — never a free sales call.",
     datePublished: "2026-09-21",
     faqs: roiAnalysisFaqs,
-  },
-  {
-    slug: "ai-security-for-ai-employees",
-    title: "AI Security for AI Employees (Process, Not Vibes)",
-    metaTitle: "AI Security for AI Employees | StorenTech AI",
-    description:
-      "Frontier AI capability + eval containment failures mean SMBs need process, not vibes. How StorenTech hires AI employees after a paid AI Opportunity Map — with retention, least privilege, human approval, and staging.",
-    datePublished: "2026-09-21",
-    faqs: aiSecurityFaqs,
-    indexCta: "Read the post",
-  },
-  {
-    slug: "mastermind-hybrid-ai",
-    title:
-      "Mastermind Hybrid AI: Local Models + Frontier Models (When Each Earns Its Keep)",
-    metaTitle: "Mastermind Hybrid AI: Local + Frontier | StorenTech",
-    description:
-      "StorenTech’s Mastermind hybrid runs local open-source models for volume and privacy, frontier models when judgment earns the spend — after a paid AI Opportunity Map.",
-    datePublished: "2026-09-21",
-    faqs: mastermindHybridFaqs,
-    indexCta: "Read the post",
   },
 ];
 
