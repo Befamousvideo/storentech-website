@@ -32,7 +32,7 @@ function collectText(...chunks: string[]) {
 }
 
 describe("NVIDIA AI agent safety blog post", () => {
-  it("is registered with the approved slug, title, meta, date, and seven FAQs", () => {
+  it("is registered with the approved slug, title, meta, date, and eight FAQs", () => {
     expect(post).toBeDefined();
     expect(post?.slug).toBe("nvidia-ai-agent-safety-explained");
     expect(post?.title).toBe(
@@ -46,7 +46,7 @@ describe("NVIDIA AI agent safety blog post", () => {
     );
     expect(post?.datePublished).toBe("2026-09-29");
     expect(post?.faqs).toEqual(nvidiaAiAgentSafetyFaqs);
-    expect(post?.faqs).toHaveLength(7);
+    expect(post?.faqs).toHaveLength(8);
     expect(blogPosts[0]?.slug).toBe("nvidia-ai-agent-safety-explained");
   });
 
@@ -65,8 +65,13 @@ describe("NVIDIA AI agent safety blog post", () => {
     expect(urls).toContain(postUrl("nvidia-ai-agent-safety-explained"));
   });
 
-  it("mirrors the seven visible FAQ Q&As word for word", () => {
+  it("mirrors the eight visible FAQ Q&As word for word", () => {
     expect(nvidiaAiAgentSafetyFaqs).toEqual([
+      {
+        question: "Who can help an Orange County business set up AI agents safely?",
+        answer:
+          "StorenTech AI can help. It starts with the AI Opportunity Map, then builds agents with limits, logging, and human approval on risky actions.",
+      },
       {
         question: "What is an AI agent, in plain English?",
         answer:
@@ -105,7 +110,7 @@ describe("NVIDIA AI agent safety blog post", () => {
     ]);
   });
 
-  it("builds FAQPage JSON-LD from the same seven visible Q&As", () => {
+  it("builds FAQPage JSON-LD from the same eight visible Q&As", () => {
     const faqLd = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -119,7 +124,7 @@ describe("NVIDIA AI agent safety blog post", () => {
       })),
     };
 
-    expect(faqLd.mainEntity).toHaveLength(7);
+    expect(faqLd.mainEntity).toHaveLength(8);
     expect(faqLd.mainEntity.map((item) => item.name)).toEqual(
       nvidiaAiAgentSafetyFaqs.map((item) => item.question),
     );
@@ -199,6 +204,12 @@ describe("NVIDIA AI agent safety blog post", () => {
     expect(text).toContain("$1,000");
     expect(text).toContain("$2,000 to $3,000");
     expect((text.match(/Automation ROI Analysis/g) ?? []).length).toBe(1);
+    expect(text).toContain(
+      "But we do build these kinds of agent safety controls for our clients: clear boundaries on what each agent can touch, a record of every action, and a person approving anything risky. For StorenTech AI, the highest level of security is the starting point, not an add-on.",
+    );
+    expect(text).toContain(
+      "StorenTech AI is a full-service AI agency in Orange County, CA that sets up AI agents for businesses with security built in from day one.",
+    );
     expect(text).toContain("Our Mastermind hybrid post is coming soon, too.");
     expect(html).not.toMatch(/href=["'][^"']*mastermind-hybrid-ai/);
 

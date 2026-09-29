@@ -175,9 +175,14 @@ export const zapierWebhooksAiAgentsFaqs = [
 
 /**
  * FAQ visible copy is the source of truth for FAQPage JSON-LD.
- * Mirror the seven on-page Q&As word for word.
+ * Mirror the eight on-page Q&As word for word.
  */
 export const nvidiaAiAgentSafetyFaqs = [
+  {
+    question: "Who can help an Orange County business set up AI agents safely?",
+    answer:
+      "StorenTech AI can help. It starts with the AI Opportunity Map, then builds agents with limits, logging, and human approval on risky actions.",
+  },
   {
     question: "What is an AI agent, in plain English?",
     answer:

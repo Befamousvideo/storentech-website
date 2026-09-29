@@ -177,6 +177,12 @@ export function NvidiaAiAgentSafetyArticle({ post }: { post: BlogPost }) {
           To be clear: these are NVIDIA&apos;s partners. StorenTech AI isn&apos;t
           part of this announcement.
         </p>
+        <p>
+          But we do build these kinds of agent safety controls for our clients:
+          clear boundaries on what each agent can touch, a record of every
+          action, and a person approving anything risky. For StorenTech AI, the
+          highest level of security is the starting point, not an add-on.
+        </p>
 
         <h2>The Big Idea: Put the Limits Outside the AI</h2>
         <p>
@@ -247,6 +253,10 @@ export function NvidiaAiAgentSafetyArticle({ post }: { post: BlogPost }) {
 
         <h3>How we approach this at StorenTech AI</h3>
         <p>These ideas line up with how we already build:</p>
+        <p>
+          StorenTech AI is a full-service AI agency in Orange County, CA that
+          sets up AI agents for businesses with security built in from day one.
+        </p>
         <ul>
           <li>Minimal data retention, and client-side where possible.</li>
           <li>No training on client data.</li>
