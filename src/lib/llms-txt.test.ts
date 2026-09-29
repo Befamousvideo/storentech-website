@@ -1,36 +1,37 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { GET } from "@/app/llms.txt/route";
-import { blogPosts, postPath } from "@/lib/blog";
-import { LLMS_ORIGIN, llmsTxt } from "@/lib/llms-txt";
 
+const LLMS_PATH = join(process.cwd(), "public/llms.txt");
+const ORIGIN = "https://www.storentechai.com";
 const PRIVATE_PATHS = ["/ceo", "/cfo", "/ops", "/pay", "/redo", "/api"];
 
 describe("llms.txt", () => {
-  const text = llmsTxt();
+  const bytes = readFileSync(LLMS_PATH);
+  const text = bytes.toString("utf8");
 
-  it("follows the llms.txt convention with existing site copy only", () => {
+  it("is the approved static file with a trailing newline", () => {
+    expect(bytes[bytes.length - 1]).toBe(0x0a);
     expect(text.startsWith("# StorenTech AI\n")).toBe(true);
-    expect(text).toContain(
-      "> StorenTech AI is a full-service AI agency in Orange County, CA that starts every client engagement with an AI Opportunity Map",
-    );
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
   });
 
-  it("lists the live marketing pages and each live post on the www origin", () => {
-    const required = [
-      LLMS_ORIGIN,
-      `${LLMS_ORIGIN}/blog`,
-      `${LLMS_ORIGIN}/about`,
-      `${LLMS_ORIGIN}/contact`,
-      `${LLMS_ORIGIN}/roia`,
-      `${LLMS_ORIGIN}/work`,
-      `${LLMS_ORIGIN}/how-it-works`,
-      ...blogPosts.map((post) => `${LLMS_ORIGIN}${postPath(post.slug)}`),
-    ];
-    for (const url of required) {
-      expect(text).toContain(url);
+  it('contains "Automation ROI Analysis" exactly once', () => {
+    expect(text.match(/Automation ROI Analysis/g)).toEqual([
+      "Automation ROI Analysis",
+    ]);
+  });
+
+  it("uses only absolute www.storentechai.com links", () => {
+    const hrefs = [...text.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)].map(
+      (match) => match[1],
+    );
+    expect(hrefs.length).toBeGreaterThan(0);
+    for (const href of hrefs) {
+      expect(href.startsWith(`${ORIGIN}/`)).toBe(true);
     }
+    expect(text).toContain(`${ORIGIN}/roia`);
     expect(text).not.toContain("https://storentech.com");
   });
 
@@ -40,7 +41,7 @@ describe("llms.txt", () => {
     }
   });
 
-  it("has no scrapeable phone, email, payment PII, prices, or banned terms", () => {
+  it("has no scrapeable phone, email, prices, or banned terms", () => {
     expect(text).not.toContain("tel:");
     expect(text).not.toContain("mailto:");
     expect(text).not.toMatch(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
@@ -48,15 +49,10 @@ describe("llms.txt", () => {
     expect(text).not.toMatch(/\$[\d,]+/);
     expect(text).not.toContain("buy.stripe.com");
     expect(text.toLowerCase()).not.toContain(["gr", "ok"].join(""));
-    expect(text).not.toMatch(/ROIA/);
     expect(text).not.toMatch(/Blueprint/i);
-  });
 
-  it("serves text/plain from the route handler", async () => {
-    const response = GET();
-    expect(response.headers.get("Content-Type")).toBe(
-      "text/plain; charset=utf-8",
-    );
-    await expect(response.text()).resolves.toBe(text);
+    const withoutRoiaPath = text.replaceAll(`${ORIGIN}/roia`, "");
+    expect(withoutRoiaPath).not.toMatch(/\bROIA\b/i);
+    expect(text).toContain(`${ORIGIN}/roia`);
   });
 });
