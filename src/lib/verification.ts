@@ -11,7 +11,7 @@ function nonEmpty(value: string | undefined) {
  * msvalidate.01 tags.
  */
 export function verificationMetadata(
-  env: NodeJS.ProcessEnv = process.env,
+  env: Record<string, string | undefined> = process.env,
 ): Metadata["verification"] | undefined {
   const google = nonEmpty(env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION);
   const bing = nonEmpty(env.NEXT_PUBLIC_BING_SITE_VERIFICATION);
