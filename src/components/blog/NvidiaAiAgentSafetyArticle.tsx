@@ -83,7 +83,8 @@ export function NvidiaAiAgentSafetyArticle({ post }: { post: BlogPost }) {
             <strong>Sets the boundary</strong> for what an agent can reach.
           </li>
           <li>
-            <strong>Traces all actions</strong>, so every step gets recorded.
+            <strong>Records what it allowed and blocked</strong>, so there&apos;s
+            a trail you can check later.
           </li>
           <li>
             <strong>Enforces policy</strong>, meaning the rules you set actually
@@ -178,10 +179,10 @@ export function NvidiaAiAgentSafetyArticle({ post }: { post: BlogPost }) {
           part of this announcement.
         </p>
         <p>
-          But we do build these kinds of agent safety controls for our clients:
-          clear boundaries on what each agent can touch, a record of every
-          action, and a person approving anything risky. For StorenTech AI, the
-          highest level of security is the starting point, not an add-on.
+          But we do build these kinds of agent safety controls for our clients.
+          We set clear limits on what each assistant can reach, keep those
+          limits outside the AI itself, log what it does, and have a person
+          approve anything risky.
         </p>
 
         <h2>The Big Idea: Put the Limits Outside the AI</h2>
@@ -214,10 +215,11 @@ export function NvidiaAiAgentSafetyArticle({ post }: { post: BlogPost }) {
           <ExternalLink href="https://developer.nvidia.com/blog/add-runtime-controls-to-ai-agents-with-nvidia-openshell">
             developer blog
           </ExternalLink>{" "}
-          says that when an agent asks for more access, the request waits for
-          human review by default, and the agent can&apos;t approve its own
-          request. The Slack integration is built around the same
-          approve-or-reject step.
+          says that when the policy advisor setting is turned on, an
+          agent&apos;s request for more access waits for review, either by an
+          operator or by an AI agent approver, and the agent can&apos;t approve
+          its own request. The Slack integration includes an approve-or-reject
+          step.
         </p>
         <p>A fence. A record. A watchdog. And a human with the final say.</p>
 
@@ -255,20 +257,23 @@ export function NvidiaAiAgentSafetyArticle({ post }: { post: BlogPost }) {
         <p>These ideas line up with how we already build:</p>
         <p>
           StorenTech AI is a full-service AI agency in Orange County, CA that
-          sets up AI agents for businesses with security built in from day one.
+          sets up AI agents for businesses with clear limits and a person
+          approving anything risky.
         </p>
         <ul>
           <li>Minimal data retention, and client-side where possible.</li>
           <li>No training on client data.</li>
-          <li>Least-privilege access plus audit logs.</li>
+          <li>
+            Least-privilege access, plus a log of what each assistant was
+            allowed and blocked from doing.
+          </li>
           <li>Human approval on risky actions.</li>
           <li>Sandbox testing before anything goes to production.</li>
-          <li>We follow industry security best practices.</li>
+          <li>
+            Limits set outside the AI, not just written into its instructions.
+          </li>
         </ul>
-        <p>
-          We also build in a human-in-the-loop and an emergency stop. More on
-          that in a future post.
-        </p>
+        <p>We&apos;ll cover how our approval step works in a future post.</p>
         <p>
           Want to go deeper? Read our guide to{" "}
           <Link href="/blog/ai-security-for-ai-employees">

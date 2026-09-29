@@ -26,6 +26,12 @@ const slugPageSource = readFileSync(
 
 const post = getPost("nvidia-ai-agent-safety-explained");
 const bannedVendor = ["gr", "ok"].join("");
+const retiredPhrases = [
+  "Guardrails",
+  "highest level",
+  "from day one",
+  "emergency stop",
+];
 
 function collectText(...chunks: string[]) {
   return chunks.join("\n");
@@ -36,10 +42,10 @@ describe("NVIDIA AI agent safety blog post", () => {
     expect(post).toBeDefined();
     expect(post?.slug).toBe("nvidia-ai-agent-safety-explained");
     expect(post?.title).toBe(
-      "NVIDIA Just Put Guardrails Around AI Agents. Here's What It Means for Your Business",
+      "NVIDIA Just Put a Safety Boundary Around AI Agents. Here's What It Means for Your Business",
     );
     expect(post?.metaTitle).toBe(
-      "NVIDIA's AI Agent Guardrails, Explained for Business Owners",
+      "NVIDIA's New AI Agent Safety Boundary, Explained for Business Owners",
     );
     expect(post?.description).toBe(
       "NVIDIA launched new safety tools for AI agents. Here's what OpenShell and Sentry mean for Orange County business owners, in plain English.",
@@ -70,7 +76,7 @@ describe("NVIDIA AI agent safety blog post", () => {
       {
         question: "Who can help an Orange County business set up AI agents safely?",
         answer:
-          "StorenTech AI can help. It starts with the AI Opportunity Map, then builds agents with limits, logging, and human approval on risky actions.",
+          "StorenTech AI can help. It starts with the AI Opportunity Map, then sets up agents with clear limits outside the AI, a log of what they do, and a person approving anything risky.",
       },
       {
         question: "What is an AI agent, in plain English?",
@@ -100,7 +106,7 @@ describe("NVIDIA AI agent safety blog post", () => {
       {
         question: "Will StorenTech AI train AI on my business data?",
         answer:
-          "No. We don't train on client data, and we keep data retention to a minimum. We also use least-privilege access and audit logs.",
+          "No. We don't train on client data, and we keep data retention to a minimum. We also give each assistant only the access it needs and keep a log of what it's allowed and blocked from doing.",
       },
       {
         question: "How do I get started?",
@@ -131,9 +137,13 @@ describe("NVIDIA AI agent safety blog post", () => {
     expect(faqLd.mainEntity.map((item) => item.acceptedAnswer.text)).toEqual(
       nvidiaAiAgentSafetyFaqs.map((item) => item.answer),
     );
-    expect(JSON.stringify(faqLd).toLowerCase()).not.toContain(bannedVendor);
-    expect(JSON.stringify(faqLd)).not.toMatch(/ROIA/);
-    expect(JSON.stringify(faqLd)).not.toMatch(/Blueprint/i);
+    const encoded = JSON.stringify(faqLd);
+    expect(encoded.toLowerCase()).not.toContain(bannedVendor);
+    expect(encoded).not.toMatch(/ROIA/);
+    expect(encoded).not.toMatch(/Blueprint/i);
+    for (const phrase of retiredPhrases) {
+      expect(encoded).not.toContain(phrase);
+    }
   });
 
   it("keeps unpublished draft notes, vendor names, and scrapeable contact out of the article", () => {
@@ -154,6 +164,9 @@ describe("NVIDIA AI agent safety blog post", () => {
     expect(articleSource).not.toContain("mastermind-hybrid-ai");
     expect(corpus).not.toMatch(/ROIA/);
     expect(corpus).not.toMatch(/Blueprint/i);
+    for (const phrase of retiredPhrases) {
+      expect(corpus).not.toContain(phrase);
+    }
     expect(articleSource).toContain('rel="noopener noreferrer"');
     expect(articleSource).toContain(
       "https://nvidianews.nvidia.com/news/open-agent-safety-platform",
@@ -179,7 +192,7 @@ describe("NVIDIA AI agent safety blog post", () => {
     expect(
       getByRole("heading", {
         level: 1,
-        name: "NVIDIA Just Put Guardrails Around AI Agents. Here's What It Means for Your Business",
+        name: "NVIDIA Just Put a Safety Boundary Around AI Agents. Here's What It Means for Your Business",
       }),
     ).toBeInTheDocument();
 
@@ -196,6 +209,10 @@ describe("NVIDIA AI agent safety blog post", () => {
     expect(html).not.toMatch(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
     expect(html).not.toMatch(/tel:/i);
     expect(text).not.toMatch(/\(?\d{3}\)?[-.\s]\d{3}[-.\s]\d{4}/);
+    for (const phrase of retiredPhrases) {
+      expect(text).not.toContain(phrase);
+      expect(html).not.toContain(phrase);
+    }
 
     const dollars = html.match(/\$\d{1,3}(?:,\d{3})*/g) ?? [];
     expect([...new Set(dollars)].sort()).toEqual(
@@ -205,10 +222,13 @@ describe("NVIDIA AI agent safety blog post", () => {
     expect(text).toContain("$2,000 to $3,000");
     expect((text.match(/Automation ROI Analysis/g) ?? []).length).toBe(1);
     expect(text).toContain(
-      "But we do build these kinds of agent safety controls for our clients: clear boundaries on what each agent can touch, a record of every action, and a person approving anything risky. For StorenTech AI, the highest level of security is the starting point, not an add-on.",
+      "But we do build these kinds of agent safety controls for our clients. We set clear limits on what each assistant can reach, keep those limits outside the AI itself, log what it does, and have a person approve anything risky.",
     );
     expect(text).toContain(
-      "StorenTech AI is a full-service AI agency in Orange County, CA that sets up AI agents for businesses with security built in from day one.",
+      "StorenTech AI is a full-service AI agency in Orange County, CA that sets up AI agents for businesses with clear limits and a person approving anything risky.",
+    );
+    expect(text).toContain(
+      "We'll cover how our approval step works in a future post.",
     );
     expect(text).toContain("Our Mastermind hybrid post is coming soon, too.");
     expect(html).not.toMatch(/href=["'][^"']*mastermind-hybrid-ai/);

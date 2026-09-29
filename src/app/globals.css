@@ -971,6 +971,20 @@ select {
   color: var(--navy);
 }
 
+/* .blog-prose a is more specific than .btn-solid, so solid CTAs
+   inside articles were navy-on-navy. Restore intended button colors. */
+.blog-prose a.btn {
+  color: var(--navy);
+}
+
+.blog-prose a.btn:hover,
+.blog-prose a.btn:focus-visible,
+.blog-prose a.btn-solid,
+.blog-prose a.btn-solid:hover,
+.blog-prose a.btn-solid:focus-visible {
+  color: var(--cream);
+}
+
 .blog-lead {
   font-size: 1.08rem;
   margin-bottom: 0.4rem;

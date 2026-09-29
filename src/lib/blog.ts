@@ -181,7 +181,7 @@ export const nvidiaAiAgentSafetyFaqs = [
   {
     question: "Who can help an Orange County business set up AI agents safely?",
     answer:
-      "StorenTech AI can help. It starts with the AI Opportunity Map, then builds agents with limits, logging, and human approval on risky actions.",
+      "StorenTech AI can help. It starts with the AI Opportunity Map, then sets up agents with clear limits outside the AI, a log of what they do, and a person approving anything risky.",
   },
   {
     question: "What is an AI agent, in plain English?",
@@ -211,7 +211,7 @@ export const nvidiaAiAgentSafetyFaqs = [
   {
     question: "Will StorenTech AI train AI on my business data?",
     answer:
-      "No. We don't train on client data, and we keep data retention to a minimum. We also use least-privilege access and audit logs.",
+      "No. We don't train on client data, and we keep data retention to a minimum. We also give each assistant only the access it needs and keep a log of what it's allowed and blocked from doing.",
   },
   {
     question: "How do I get started?",
@@ -224,8 +224,9 @@ export const blogPosts: readonly BlogPost[] = [
   {
     slug: "nvidia-ai-agent-safety-explained",
     title:
-      "NVIDIA Just Put Guardrails Around AI Agents. Here's What It Means for Your Business",
-    metaTitle: "NVIDIA's AI Agent Guardrails, Explained for Business Owners",
+      "NVIDIA Just Put a Safety Boundary Around AI Agents. Here's What It Means for Your Business",
+    metaTitle:
+      "NVIDIA's New AI Agent Safety Boundary, Explained for Business Owners",
     description:
       "NVIDIA launched new safety tools for AI agents. Here's what OpenShell and Sentry mean for Orange County business owners, in plain English.",
     datePublished: "2026-09-29",
