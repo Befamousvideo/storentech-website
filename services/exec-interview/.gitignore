@@ -1,0 +1,11 @@
+.env
+.env.local
+questions.json
+data/
+exports/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+*.egg-info/

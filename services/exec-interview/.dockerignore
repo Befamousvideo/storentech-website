@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+questions.json
+data
+exports
+.venv
+__pycache__
+.pytest_cache
+.mypy_cache
+*.pyc
+.git
+tests
+DEPLOY.md
+README.md

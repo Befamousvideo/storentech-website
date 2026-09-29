@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { INTERVIEW_ROBOTS_TAG, isInterviewPath } from "@/lib/interview-paths";
 import { site } from "@/lib/site";
 
 function requestHosts(request: NextRequest) {
@@ -41,6 +42,14 @@ function isAssetPath(pathname: string) {
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+
+  if (isInterviewPath(pathname)) {
+    const response = NextResponse.next();
+    response.headers.set("X-Robots-Tag", INTERVIEW_ROBOTS_TAG);
+    response.headers.set("Cache-Control", "no-store");
+    response.headers.set("Referrer-Policy", "no-referrer");
+    return response;
+  }
 
   if (isRedoPath(pathname) || isAssetPath(pathname)) {
     return NextResponse.next();

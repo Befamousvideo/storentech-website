@@ -1,0 +1,77 @@
+{
+  "company_label": "Company 111",
+  "roles": {
+    "ceo": {
+      "role_title": "CEO",
+      "intro": "Thank you for making time. Answer in your own words about your facility. Required items are marked. Skip anything labeled if time if you need to wrap up. You can type or use the microphone, then edit the text.",
+      "questions": [
+        {
+          "id": "ceo-q1",
+          "text": "Which weekly meeting at your facility takes the most time, and what is it for?",
+          "tag": "must",
+          "follow_ups": true
+        },
+        {
+          "id": "ceo-q2",
+          "text": "What decision about your facility do you wish you had better numbers for?",
+          "tag": "must",
+          "follow_ups": false
+        },
+        {
+          "id": "ceo-q3",
+          "text": "If your AI Chief of Staff could take one thing off your plate next quarter, what would it be?",
+          "tag": "if_time",
+          "follow_ups": false
+        }
+      ]
+    },
+    "cfo": {
+      "role_title": "CFO",
+      "intro": "Thank you for making time. We are looking for how numbers move at your facility today, not a pitch. Required items are marked. You can type or use the microphone, then edit the text.",
+      "questions": [
+        {
+          "id": "cfo-q1",
+          "text": "Which report for your facility do you rebuild most often?",
+          "tag": "must",
+          "follow_ups": true
+        },
+        {
+          "id": "cfo-q2",
+          "text": "Where do numbers for your facility arrive late or get retyped by hand?",
+          "tag": "must",
+          "follow_ups": false
+        },
+        {
+          "id": "cfo-q3",
+          "text": "What would you want on a one-page weekly finance snapshot for your facility?",
+          "tag": "if_time",
+          "follow_ups": false
+        }
+      ]
+    },
+    "ops": {
+      "role_title": "Ops",
+      "intro": "Thank you for making time. We want a clear picture of handoffs at your facility and the work that lives outside the main system. Required items are marked. You can type or use the microphone, then edit the text.",
+      "questions": [
+        {
+          "id": "ops-q1",
+          "text": "Which handoff between people at your facility breaks down most often?",
+          "tag": "must",
+          "follow_ups": true
+        },
+        {
+          "id": "ops-q2",
+          "text": "What work at your facility is still tracked in a spreadsheet because the system does not fit?",
+          "tag": "must",
+          "follow_ups": false
+        },
+        {
+          "id": "ops-q3",
+          "text": "What is on your wishlist for your facility for the next 90 days?",
+          "tag": "if_time",
+          "follow_ups": false
+        }
+      ]
+    }
+  }
+}

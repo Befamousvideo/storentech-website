@@ -33,6 +33,12 @@ yarn-error.log*
 .env
 .env*.local
 
+# local executive interview secrets and real questions (PC only)
+services/exec-interview/.env
+services/exec-interview/questions.json
+services/exec-interview/exports/
+services/exec-interview/data/
+
 # vercel
 .vercel
 
