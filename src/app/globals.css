@@ -118,6 +118,23 @@ select {
   margin-top: 1.15rem;
 }
 
+.confidentiality-note {
+  margin-top: 2rem;
+  padding: 1.25rem 1.4rem 1.3rem;
+  background: var(--cream-card);
+  border: 1px solid var(--line);
+}
+
+.confidentiality-note .kicker {
+  margin-bottom: 0.55rem;
+}
+
+.confidentiality-note p:last-child {
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 48rem;
+}
+
 /* Header */
 .site-header {
   position: sticky;
@@ -1190,6 +1207,10 @@ select {
 
   .demo-card {
     padding: 1.8rem 1.4rem;
+  }
+
+  .confidentiality-note {
+    padding: 1.15rem 1.15rem 1.2rem;
   }
 }
 
