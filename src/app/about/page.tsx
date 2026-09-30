@@ -37,6 +37,21 @@ export default function AboutPage() {
             from the evidence in your analysis.
           </p>
         </div>
+        <div className="wrap-narrow">
+          <aside
+            className="confidentiality-note"
+            aria-labelledby="client-confidentiality-heading"
+          >
+            <p className="kicker" id="client-confidentiality-heading">
+              Client confidentiality
+            </p>
+            <p>
+              {
+                "You won't find client logos here. At StorenTech AI, privacy, security, and confidentiality come first, so we don't publish or share who our clients are, not on this site and not in meetings. We'll gladly walk you through anonymized examples of the work."
+              }
+            </p>
+          </aside>
+        </div>
       </section>
 
       <section className="section section-tan">
