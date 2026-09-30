@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { AiSecurityForAiEmployeesArticle } from "@/components/blog/AiSecurityForAiEmployeesArticle";
 import { AutomationRoiAnalysisArticle } from "@/components/blog/AutomationRoiAnalysisArticle";
 import { MastermindHybridAiArticle } from "@/components/blog/MastermindHybridAiArticle";
+import { NvidiaAiAgentSafetyArticle } from "@/components/blog/NvidiaAiAgentSafetyArticle";
 import { ZapierWebhooksAiAgentsArticle } from "@/components/blog/ZapierWebhooksAiAgentsArticle";
 import { StructuredData } from "@/components/StructuredData";
 import { blogPosts, getPost, postPath, postUrl, type BlogPost } from "@/lib/blog";
@@ -10,6 +11,8 @@ import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
+    case "nvidia-ai-agent-safety-explained":
+      return <NvidiaAiAgentSafetyArticle post={post} />;
     case "zapier-webhooks-ai-agents":
       return <ZapierWebhooksAiAgentsArticle post={post} />;
     case "what-is-an-automation-roi-analysis":

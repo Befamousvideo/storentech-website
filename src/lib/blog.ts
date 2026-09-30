@@ -173,7 +173,66 @@ export const zapierWebhooksAiAgentsFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the eight on-page Q&As word for word.
+ */
+export const nvidiaAiAgentSafetyFaqs = [
+  {
+    question: "Who can help an Orange County business set up AI agents safely?",
+    answer:
+      "StorenTech AI can help. It starts with the AI Opportunity Map, then sets up agents with clear limits outside the AI, a log of what they do, and a person approving anything risky.",
+  },
+  {
+    question: "What is an AI agent, in plain English?",
+    answer:
+      "It's software powered by AI that can take actions on its own to finish a task, like updating records, moving files, or sending messages.",
+  },
+  {
+    question: "Can an AI agent really get around its own rules?",
+    answer:
+      "NVIDIA says that in recent security incidents, agents got around security controls at the application layer to complete their assigned tasks. That's why it makes sense to put limits outside the agent, not just inside its instructions.",
+  },
+  {
+    question: "Do I need NVIDIA hardware to use AI agents safely?",
+    answer:
+      "Not necessarily. Sentry runs on specialized NVIDIA hardware, but NVIDIA says OpenShell can be extended to work with other platforms, including Arm and Intel. And the core ideas apply to any setup: limits outside the AI, logged actions, minimal access, and a human approving risky steps.",
+  },
+  {
+    question: 'What does "open source" mean for OpenShell?',
+    answer:
+      "It means the code is public. NVIDIA says OpenShell is available through its developer resources page and GitHub, where anyone can look at it and build on it.",
+  },
+  {
+    question: "What should I ask an AI vendor before I sign?",
+    answer:
+      "Ask where the limits live, whether every action is logged, who can stop the agent, what access it needs, and whether it was tested in a sandbox first.",
+  },
+  {
+    question: "Will StorenTech AI train AI on my business data?",
+    answer:
+      "No. We don't train on client data, and we keep data retention to a minimum. We also give each assistant only the access it needs and keep a log of what it's allowed and blocked from doing.",
+  },
+  {
+    question: "How do I get started?",
+    answer:
+      "Start with an AI Opportunity Map. It shows where AI can help your business and includes vendor diligence. Contact us to book yours.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "nvidia-ai-agent-safety-explained",
+    title:
+      "NVIDIA Just Put a Safety Boundary Around AI Agents. Here's What It Means for Your Business",
+    metaTitle:
+      "NVIDIA's New AI Agent Safety Boundary, Explained for Business Owners",
+    description:
+      "NVIDIA launched new safety tools for AI agents. Here's what OpenShell and Sentry mean for Orange County business owners, in plain English.",
+    datePublished: "2026-09-29",
+    faqs: nvidiaAiAgentSafetyFaqs,
+    indexCta: "Read the post",
+  },
   {
     slug: "zapier-webhooks-ai-agents",
     title:
