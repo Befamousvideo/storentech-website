@@ -23,9 +23,11 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Environment:
 
-- `NEXT_PUBLIC_SITE_URL` — public origin for metadata, sitemap, and Open Graph (default `https://storentech.com`)
+- `NEXT_PUBLIC_SITE_URL` — public origin for metadata, sitemap, and Open Graph (default `https://www.storentechai.com`). If this is set on Vercel, it must be `https://www.storentechai.com` or it will override the default.
 - `NEXT_PUBLIC_INTAKE_URL` — Start your map CTA. Default is the Workspace Google Form. Set to `https://onboarding.storentechai.com` when ONB1 is live. Not Stripe `/pay`.
 - `INQUIRY_WEBHOOK_URL` — optional. If set, each inquiry is `POST`ed as JSON (`name`, `email`, `company`, `broken`, `submittedAt`, `source`)
+- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` — optional. Google Search Console verification token. Emitted as `google-site-verification` only when set; empty values produce no tag.
+- `NEXT_PUBLIC_BING_SITE_VERIFICATION` — optional. Bing Webmaster Tools token. Emitted as `msvalidate.01` only when set; empty values produce no tag.
 
 ## Pages
 

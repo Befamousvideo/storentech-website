@@ -1,0 +1,19 @@
+# StorenTech AI
+
+> StorenTech AI is a full-service AI agency in Orange County, California. Every client starts with a paid AI Opportunity Map (an Automation ROI Analysis) that shows where time and revenue leak and which AI fixes pay off first. StorenTech AI then builds AI agents with clear limits and a person approving anything risky.
+
+## Pages
+- [Home](https://www.storentechai.com/): We find where time and revenue leak in your business, then fix what pays. People stay in the loop.
+- [AI Opportunity Map](https://www.storentechai.com/roia): A paid analysis of where time, revenue, and risk leak, and what's worth fixing first.
+- [Work](https://www.storentechai.com/work): Map the leaks first, then a Build Plan, with people still in the loop and out front with customers.
+- [How it works](https://www.storentechai.com/how-it-works): Start with the paid AI Opportunity Map, then the Build Plan, then the build.
+- [Blog](https://www.storentechai.com/blog): Plain-English guides for business owners who are new to AI agents and automation.
+- [About](https://www.storentechai.com/about): StorenTech AI is a full-service AI agency based in Orange County, California.
+- [Contact](https://www.storentechai.com/contact): Book your AI Opportunity Map through the contact form.
+
+## Blog
+- [NVIDIA Just Put a Safety Boundary Around AI Agents](https://www.storentechai.com/blog/nvidia-ai-agent-safety-explained): What NVIDIA's new open agent safety platform means for small businesses, in plain English.
+- [Zapier + AI Agents, Explained for Business Owners](https://www.storentechai.com/blog/zapier-webhooks-ai-agents): What Zapier does, how an AI assistant can handle busywork, and why a person still approves anything that goes out.
+- [Mastermind Hybrid AI](https://www.storentechai.com/blog/mastermind-hybrid-ai): How StorenTech AI pairs local open-source models, for volume and privacy, with frontier AI models when a task needs stronger judgment.
+- [AI Security for AI Employees](https://www.storentechai.com/blog/ai-security-for-ai-employees): How StorenTech AI sets up AI employees safely, with minimal data retention, only the access each assistant needs, human approval on risky actions, and testing before anything goes live.
+- [What Is an AI Opportunity Map?](https://www.storentechai.com/blog/what-is-an-automation-roi-analysis): Why every StorenTech AI client starts with a paid AI Opportunity Map instead of a free sales call.

@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
+import { SiteAnalytics } from "@/components/SiteAnalytics";
 import { SiteChrome } from "@/components/SiteChrome";
 import { site } from "@/lib/site";
+import { verificationMetadata } from "@/lib/verification";
 import "./globals.css";
+
+const verification = verificationMetadata();
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -51,6 +55,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  ...(verification ? { verification } : {}),
   // Vince locked brand mark: ORBIT (not hybrid).
   icons: {
     icon: [
@@ -73,6 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <SiteChrome>{children}</SiteChrome>
+        <SiteAnalytics />
       </body>
     </html>
   );

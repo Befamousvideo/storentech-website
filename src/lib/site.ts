@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = "https://storentech.com";
+const DEFAULT_SITE_URL = "https://www.storentechai.com";
 const DEFAULT_INTAKE_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLScjOa8fFyqRLRAmOyDNtk7oFLlVwGwNdyML7VQNvWIUtlsXRg/viewform";
 const ONB1_INTAKE_URL = "https://onboarding.storentechai.com";
