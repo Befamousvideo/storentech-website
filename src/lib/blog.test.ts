@@ -10,6 +10,10 @@ describe("live blog post dates", () => {
         datePublished: post.datePublished,
       })),
     ).toEqual([
+      {
+        slug: "nvidia-ai-agent-safety-explained",
+        datePublished: "2026-09-29",
+      },
       { slug: "zapier-webhooks-ai-agents", datePublished: "2026-09-28" },
       { slug: "mastermind-hybrid-ai", datePublished: "2026-09-25" },
       { slug: "ai-security-for-ai-employees", datePublished: "2026-09-23" },
@@ -21,13 +25,7 @@ describe("live blog post dates", () => {
 
     const dates = blogPosts.map((post) => post.datePublished);
     expect(dates).toEqual([...dates].sort().reverse());
-  });
-
-  it("does not register the NVIDIA post from the separate draft", () => {
-    expect(getPost("nvidia-ai-agent-safety-explained")).toBeUndefined();
-    expect(
-      blogPosts.some((post) => post.slug.includes("nvidia")),
-    ).toBe(false);
+    expect(getPost("nvidia-ai-agent-safety-explained")).toBeDefined();
   });
 
   it("feeds Article dates and sitemap lastModified from datePublished", () => {
