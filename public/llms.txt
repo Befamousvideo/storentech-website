@@ -12,6 +12,7 @@
 - [Contact](https://www.storentechai.com/contact): Book your AI Opportunity Map through the contact form.
 
 ## Blog
+- [NVIDIA Just Put a Safety Boundary Around AI Agents](https://www.storentechai.com/blog/nvidia-ai-agent-safety-explained): What NVIDIA's new open agent safety platform means for small businesses, in plain English.
 - [Zapier + AI Agents, Explained for Business Owners](https://www.storentechai.com/blog/zapier-webhooks-ai-agents): What Zapier does, how an AI assistant can handle busywork, and why a person still approves anything that goes out.
 - [Mastermind Hybrid AI](https://www.storentechai.com/blog/mastermind-hybrid-ai): How StorenTech AI pairs local open-source models, for volume and privacy, with frontier AI models when a task needs stronger judgment.
 - [AI Security for AI Employees](https://www.storentechai.com/blog/ai-security-for-ai-employees): How StorenTech AI sets up AI employees safely, with minimal data retention, only the access each assistant needs, human approval on risky actions, and testing before anything goes live.

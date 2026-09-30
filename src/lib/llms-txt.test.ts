@@ -15,6 +15,12 @@ describe("llms.txt", () => {
     expect(text.startsWith("# StorenTech AI\n")).toBe(true);
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
+    expect(text).toContain(
+      "- [NVIDIA Just Put a Safety Boundary Around AI Agents](https://www.storentechai.com/blog/nvidia-ai-agent-safety-explained): What NVIDIA's new open agent safety platform means for small businesses, in plain English.",
+    );
+    expect(text.indexOf("nvidia-ai-agent-safety-explained")).toBeLessThan(
+      text.indexOf("zapier-webhooks-ai-agents"),
+    );
   });
 
   it('contains "Automation ROI Analysis" exactly once', () => {
