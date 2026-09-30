@@ -62,9 +62,7 @@ export default function WorkPage() {
             </div>
             <p className="lede">
               Ongoing work is scoped from the evidence in your analysis. No
-              public retainer menu on this site. When AI takes the grind, teams
-              can unlock multiple times the productive capacity of people who
-              stay human — more output, human touch stays.
+              public retainer menu on this site. {site.offer.capacity}
             </p>
           </div>
           <div className="card-grid-2">
