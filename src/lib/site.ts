@@ -44,7 +44,7 @@ export const site = {
     cta: "Start your AI Opportunity Map",
     ctaShort: "Start your map",
     capacity:
-      "When AI takes the grind, teams can unlock multiple times the productive capacity of people who stay human — more output, human touch stays.",
+      "When AI takes the grind, your people get time back for the work that needs a human, so more gets done and the human touch stays where customers feel it.",
     services:
       "Map leaks first. Then the Build Plan — people still in the loop, out front with customers.",
   },

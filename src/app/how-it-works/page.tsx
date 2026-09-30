@@ -21,7 +21,7 @@ const moves = [
   {
     n: "02",
     title: "Build Plan",
-    body: "When AI takes the grind, teams can unlock multiple times the productive capacity of people who stay human — more output, human touch stays. Builds may include voice agents, website chat, operations automation, web apps, mobile apps, and custom-built solutions.",
+    body: `${site.offer.capacity} Builds may include voice agents, website chat, operations automation, web apps, mobile apps, and custom-built solutions.`,
   },
   {
     n: "03",
@@ -77,11 +77,7 @@ export default function HowItWorksPage() {
             <h2>Pay for the map. Then the Build Plan.</h2>
           </div>
           <div className="copy">
-            <p>
-              When AI takes the grind, teams can unlock multiple times the
-              productive capacity of people who stay human — more output, human
-              touch stays.
-            </p>
+            <p>{site.offer.capacity}</p>
             <p>
               The analysis prices the first build against your real numbers —
               conversation volume, close rate, after-hours leakage, owner time.
