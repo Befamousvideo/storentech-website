@@ -53,7 +53,7 @@ function isAssetPath(pathname: string) {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Must run before the pay-host Stripe catch-all below.
+  // Must run before the pay-host catch-all below.
   if (isInterviewPath(pathname)) {
     return NextResponse.redirect("https://www.storentechai.com/", 308);
   }
@@ -63,7 +63,7 @@ export function middleware(request: NextRequest) {
   }
 
   if (isPayHost(request) || isPayPath(pathname)) {
-    return NextResponse.redirect(site.stripe.roiPaymentLink, 302);
+    return NextResponse.redirect("https://www.storentechai.com/", 307);
   }
 
   return NextResponse.next();

@@ -79,6 +79,9 @@ export const site = {
   intakeUrl: resolveIntakeUrl(process.env.NEXT_PUBLIC_INTAKE_URL),
   intakeOnb1Url: ONB1_INTAKE_URL,
   stripe: {
+    // Retired. Owner is deleting the Stripe product; do not send visitors
+    // here. Kept only because /redo still imports it. A new payment link
+    // may come back later.
     roiPaymentLink: "https://buy.stripe.com/6oU14ngeE5w1a8wd7RdjO00",
   },
   payHosts: ["pay.storentechai.com", "www.pay.storentechai.com"],
