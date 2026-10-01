@@ -1,6 +1,36 @@
 {
   "redirects": [
     {
+      "source": "/ceo",
+      "destination": "https://www.storentechai.com/",
+      "permanent": true
+    },
+    {
+      "source": "/ceo/:path*",
+      "destination": "https://www.storentechai.com/",
+      "permanent": true
+    },
+    {
+      "source": "/cfo",
+      "destination": "https://www.storentechai.com/",
+      "permanent": true
+    },
+    {
+      "source": "/cfo/:path*",
+      "destination": "https://www.storentechai.com/",
+      "permanent": true
+    },
+    {
+      "source": "/ops",
+      "destination": "https://www.storentechai.com/",
+      "permanent": true
+    },
+    {
+      "source": "/ops/:path*",
+      "destination": "https://www.storentechai.com/",
+      "permanent": true
+    },
+    {
       "source": "/pay",
       "destination": "https://buy.stripe.com/6oU14ngeE5w1a8wd7RdjO00",
       "permanent": false

@@ -1,44 +1,30 @@
 import { describe, expect, it } from "vitest";
-import {
-  INTERVIEW_CRAWLER_AGENTS,
-  INTERVIEW_PATHS,
-  INTERVIEW_ROBOTS_TAG,
-} from "@/lib/interview-paths";
 import robots, { ROBOTS_DISALLOW_PATHS } from "@/app/robots";
 import sitemap from "@/app/sitemap";
 import { site } from "@/lib/site";
 
 const CANONICAL_ORIGIN = "https://www.storentechai.com";
+const RETIRED_INTERVIEW_PATHS = ["/ceo", "/cfo", "/ops"];
 
-describe("interview crawler blocks", () => {
-  it("uses the full X-Robots-Tag token list", () => {
-    expect(INTERVIEW_ROBOTS_TAG).toBe(
-      "noindex, nofollow, noarchive, nosnippet, noimageindex",
-    );
-  });
-
-  it("disallows the full private list for * and every named crawler", () => {
+describe("robots disallow list", () => {
+  it("disallows api, pay, and redo for * and has no named-bot rules", () => {
     const doc = robots();
     const rules = Array.isArray(doc.rules) ? doc.rules : [doc.rules];
-    const expected = [...ROBOTS_DISALLOW_PATHS];
+    const expected = ["/api/", "/pay", "/redo"];
 
-    expect(expected).toEqual(
-      expect.arrayContaining(["/api/", "/pay", "/redo", ...INTERVIEW_PATHS]),
+    expect([...ROBOTS_DISALLOW_PATHS]).toEqual(expected);
+    expect(expected).not.toEqual(
+      expect.arrayContaining(RETIRED_INTERVIEW_PATHS),
     );
 
+    expect(rules).toHaveLength(1);
     const star = rules.find((rule) => rule.userAgent === "*");
     expect(star?.disallow).toEqual(expected);
-
-    for (const agent of INTERVIEW_CRAWLER_AGENTS) {
-      const rule = rules.find((item) => item.userAgent === agent);
-      expect(rule, `${agent} should have an explicit robots rule`).toBeTruthy();
-      expect(rule?.disallow).toEqual(expected);
-    }
   });
 
-  it("keeps interview routes out of the sitemap", () => {
+  it("keeps retired interview routes out of the sitemap", () => {
     const urls = sitemap().map((entry) => entry.url);
-    for (const path of INTERVIEW_PATHS) {
+    for (const path of RETIRED_INTERVIEW_PATHS) {
       expect(urls.some((url) => url.endsWith(path))).toBe(false);
     }
   });
