@@ -7,12 +7,13 @@ const CANONICAL_ORIGIN = "https://www.storentechai.com";
 const RETIRED_INTERVIEW_PATHS = ["/ceo", "/cfo", "/ops"];
 
 describe("robots disallow list", () => {
-  it("disallows api, pay, and redo for * and has no named-bot rules", () => {
+  it("disallows api and pay for * and has no named-bot rules", () => {
     const doc = robots();
     const rules = Array.isArray(doc.rules) ? doc.rules : [doc.rules];
-    const expected = ["/api/", "/pay", "/redo"];
+    const expected = ["/api/", "/pay"];
 
     expect([...ROBOTS_DISALLOW_PATHS]).toEqual(expected);
+    expect(expected).not.toContain("/redo");
     expect(expected).not.toEqual(
       expect.arrayContaining(RETIRED_INTERVIEW_PATHS),
     );
@@ -27,6 +28,7 @@ describe("robots disallow list", () => {
     for (const path of RETIRED_INTERVIEW_PATHS) {
       expect(urls.some((url) => url.endsWith(path))).toBe(false);
     }
+    expect(urls.some((url) => url.includes("/redo"))).toBe(false);
   });
 });
 

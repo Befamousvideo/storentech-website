@@ -38,7 +38,7 @@ Environment:
 - `/about` — StorenTech AI; humans in the loop
 - `/contact` — name, email, company, what’s broken
 - `/pay` and `pay.storentechai.com` — temporary redirect (307) to the homepage (`https://www.storentechai.com/`). Former Stripe Payment Link is retired. Not the Start your map CTA.
-- `/redo` — thin Red O pay page. Pay CTA → Stripe Payment Link. Does not redirect. Same page on `pay.storentechai.com/redo`.
+- `/redo` — permanently redirects to the homepage (`https://www.storentechai.com/`), including trailing slash, query strings, and the same path on `pay.storentechai.com`.
 - `/ceo`, `/cfo`, `/ops` — permanently redirect to the homepage.
 
 ## Firebase App Hosting (recommended on GCP)

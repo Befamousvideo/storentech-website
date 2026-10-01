@@ -910,10 +910,6 @@ select {
   color: var(--gold-soft);
 }
 
-.redo-hero h1 {
-  max-width: 20ch;
-}
-
 .underline-phrase {
   position: relative;
   display: inline-block;
