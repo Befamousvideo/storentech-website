@@ -42,6 +42,25 @@ describe("middleware redirects", () => {
     }
   });
 
+  it("sends /redo on every host to the www homepage, including pay hosts", () => {
+    const cases = [
+      request("https://www.storentechai.com/redo"),
+      request("https://www.storentechai.com/redo/", "www.storentechai.com"),
+      request("https://www.storentechai.com/redo?invoice=1"),
+      request("https://storentechai.com/redo", "storentechai.com"),
+      request("https://pay.storentechai.com/redo", "pay.storentechai.com"),
+      request("https://pay.storentechai.com/redo/", "pay.storentechai.com"),
+      request(
+        "https://www.pay.storentechai.com/redo?ref=invoice",
+        "www.pay.storentechai.com",
+      ),
+    ];
+
+    for (const req of cases) {
+      expectHomepage(req, 308);
+    }
+  });
+
   it("temporarily sends /pay on any host to the www homepage", () => {
     const cases = [
       request("https://www.storentechai.com/pay"),
@@ -56,7 +75,7 @@ describe("middleware redirects", () => {
     }
   });
 
-  it("temporarily sends every path on site.payHosts to the www homepage", () => {
+  it("temporarily sends unmatched pay-host paths to the www homepage", () => {
     expect(site.payHosts).toEqual([
       "pay.storentechai.com",
       "www.pay.storentechai.com",
@@ -72,17 +91,5 @@ describe("middleware redirects", () => {
     for (const req of cases) {
       expectHomepage(req, 307);
     }
-  });
-
-  it("still lets /redo through so that page can keep the retired Payment Link", () => {
-    const redo = middleware(request("https://www.storentechai.com/redo"));
-    expect(redo.status).toBe(200);
-    expect(redo.headers.get("location")).toBeNull();
-
-    const redoOnPay = middleware(
-      request("https://pay.storentechai.com/redo", "pay.storentechai.com"),
-    );
-    expect(redoOnPay.status).toBe(200);
-    expect(redoOnPay.headers.get("location")).toBeNull();
   });
 });

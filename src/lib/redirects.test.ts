@@ -12,6 +12,8 @@ const INTERVIEW_SOURCES = [
   "/ops",
   "/ops/:path*",
 ] as const;
+const REDO_SOURCES = ["/redo", "/redo/:path*"] as const;
+const PERMANENT_SOURCES = [...INTERVIEW_SOURCES, ...REDO_SOURCES] as const;
 
 type RedirectRule = {
   source: string;
@@ -25,9 +27,9 @@ function loadVercelRedirects() {
     .redirects as RedirectRule[];
 }
 
-function isInterviewSource(source: string) {
-  return INTERVIEW_SOURCES.includes(
-    source as (typeof INTERVIEW_SOURCES)[number],
+function isPermanentSource(source: string) {
+  return PERMANENT_SOURCES.includes(
+    source as (typeof PERMANENT_SOURCES)[number],
   );
 }
 
@@ -50,16 +52,19 @@ function findRule(
   });
 }
 
-function assertInterviewFirst(label: string, redirects: RedirectRule[]) {
+function assertPermanentBeforePay(label: string, redirects: RedirectRule[]) {
   const firstPayHost = redirects.findIndex(isPayHostRoot);
   const firstPayPath = redirects.findIndex(
     (rule) => rule.source === "/pay" || rule.source === "/pay/:path*",
   );
-  const firstInterview = redirects.findIndex((rule) =>
-    isInterviewSource(rule.source),
+  const firstPermanent = redirects.findIndex((rule) =>
+    isPermanentSource(rule.source),
+  );
+  const firstRedo = redirects.findIndex((rule) =>
+    REDO_SOURCES.includes(rule.source as (typeof REDO_SOURCES)[number]),
   );
 
-  for (const source of INTERVIEW_SOURCES) {
+  for (const source of PERMANENT_SOURCES) {
     expect(
       redirects.find((rule) => rule.source === source),
       `${label} ${source}`,
@@ -69,14 +74,15 @@ function assertInterviewFirst(label: string, redirects: RedirectRule[]) {
       permanent: true,
     });
   }
-  expect(firstInterview, `${label} interview rules present`).toBeGreaterThanOrEqual(
-    0,
+  expect(firstPermanent, `${label} 308 rules present`).toBeGreaterThanOrEqual(0);
+  expect(firstRedo, `${label} /redo present`).toBeGreaterThanOrEqual(0);
+  expect(firstPayPath, `${label} /pay after 308s`).toBeGreaterThan(firstPermanent);
+  expect(firstPayHost, `${label} pay-host / after 308s`).toBeGreaterThan(
+    firstPermanent,
   );
-  expect(firstPayPath, `${label} /pay after interview`).toBeGreaterThan(
-    firstInterview,
-  );
-  expect(firstPayHost, `${label} pay-host / after interview`).toBeGreaterThan(
-    firstInterview,
+  expect(firstPayPath, `${label} /pay after /redo`).toBeGreaterThan(firstRedo);
+  expect(firstPayHost, `${label} pay-host / after /redo`).toBeGreaterThan(
+    firstRedo,
   );
 }
 
@@ -112,13 +118,13 @@ function collectFiles(root: string, acc: string[] = []): string[] {
   return acc;
 }
 
-describe("legacy interview and /pay redirects", () => {
-  it("permanently sends /ceo /cfo /ops to the www homepage before /pay", async () => {
+describe("legacy interview, /redo, and /pay redirects", () => {
+  it("permanently sends /ceo /cfo /ops and /redo to the www homepage before /pay", async () => {
     const vercel = loadVercelRedirects();
     const nextRedirects = (await nextConfig.redirects?.()) as RedirectRule[];
 
-    assertInterviewFirst("vercel.json", vercel);
-    assertInterviewFirst("next.config.ts", nextRedirects);
+    assertPermanentBeforePay("vercel.json", vercel);
+    assertPermanentBeforePay("next.config.ts", nextRedirects);
   });
 
   it("sends /pay, /pay/:path*, and pay-host roots to the homepage as 307", async () => {
@@ -164,10 +170,11 @@ describe("legacy interview and /pay redirects", () => {
     }
   });
 
-  it("removes the /pay page so config and middleware own the redirect", () => {
+  it("removes the /pay and /redo pages so config and middleware own the redirect", () => {
     expect(existsSync(join(process.cwd(), "src/app/pay/page.tsx"))).toBe(false);
     expect(existsSync(join(process.cwd(), "src/app/pay/PayRedirect.tsx"))).toBe(
       false,
     );
+    expect(existsSync(join(process.cwd(), "src/app/redo/page.tsx"))).toBe(false);
   });
 });

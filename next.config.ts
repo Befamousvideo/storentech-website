@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   async redirects() {
     return [
-      // Retired interview routes first so they beat pay-host catch-alls.
+      // Retired interview and /redo routes first so they beat pay-host catch-alls.
       {
         source: "/ceo",
         destination: homepage,
@@ -34,6 +34,16 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/ops/:path*",
+        destination: homepage,
+        permanent: true,
+      },
+      {
+        source: "/redo",
+        destination: homepage,
+        permanent: true,
+      },
+      {
+        source: "/redo/:path*",
         destination: homepage,
         permanent: true,
       },

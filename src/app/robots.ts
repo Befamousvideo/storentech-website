@@ -4,7 +4,6 @@ import { site } from "@/lib/site";
 export const ROBOTS_DISALLOW_PATHS = [
   "/api/",
   "/pay",
-  "/redo",
 ] as const;
 
 export default function robots(): MetadataRoute.Robots {

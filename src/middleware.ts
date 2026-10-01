@@ -53,12 +53,12 @@ function isAssetPath(pathname: string) {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Must run before the pay-host catch-all below.
-  if (isInterviewPath(pathname)) {
+  // Must run before the pay-host homepage catch-all below.
+  if (isInterviewPath(pathname) || isRedoPath(pathname)) {
     return NextResponse.redirect("https://www.storentechai.com/", 308);
   }
 
-  if (isRedoPath(pathname) || isAssetPath(pathname)) {
+  if (isAssetPath(pathname)) {
     return NextResponse.next();
   }
 
