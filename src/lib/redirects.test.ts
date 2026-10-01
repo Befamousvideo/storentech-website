@@ -1,11 +1,9 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
+import { join, relative } from "node:path";
 import { describe, expect, it } from "vitest";
 import nextConfig from "../../next.config";
-import { site } from "@/lib/site";
 
 const HOMEPAGE = "https://www.storentechai.com/";
-const STRIPE = "https://buy.stripe.com/6oU14ngeE5w1a8wd7RdjO00";
 const INTERVIEW_SOURCES = [
   "/ceo",
   "/ceo/:path*",
@@ -22,6 +20,11 @@ type RedirectRule = {
   has?: { type: string; value: string }[];
 };
 
+function loadVercelRedirects() {
+  return JSON.parse(readFileSync(join(process.cwd(), "vercel.json"), "utf8"))
+    .redirects as RedirectRule[];
+}
+
 function isInterviewSource(source: string) {
   return INTERVIEW_SOURCES.includes(
     source as (typeof INTERVIEW_SOURCES)[number],
@@ -35,8 +38,23 @@ function isPayHostRoot(rule: RedirectRule) {
   );
 }
 
-function assertInterviewBeatsPayHost(label: string, redirects: RedirectRule[]) {
+function findRule(
+  redirects: RedirectRule[],
+  source: string,
+  host?: string,
+) {
+  return redirects.find((rule) => {
+    if (rule.source !== source) return false;
+    if (!host) return !rule.has?.length;
+    return rule.has?.some((item) => item.type === "host" && item.value === host);
+  });
+}
+
+function assertInterviewFirst(label: string, redirects: RedirectRule[]) {
   const firstPayHost = redirects.findIndex(isPayHostRoot);
+  const firstPayPath = redirects.findIndex(
+    (rule) => rule.source === "/pay" || rule.source === "/pay/:path*",
+  );
   const firstInterview = redirects.findIndex((rule) =>
     isInterviewSource(rule.source),
   );
@@ -51,50 +69,105 @@ function assertInterviewBeatsPayHost(label: string, redirects: RedirectRule[]) {
       permanent: true,
     });
   }
-  expect(firstInterview, `${label} interview before pay-host /`).toBeGreaterThanOrEqual(
+  expect(firstInterview, `${label} interview rules present`).toBeGreaterThanOrEqual(
     0,
   );
-  expect(firstPayHost, `${label} pay-host /`).toBeGreaterThan(firstInterview);
+  expect(firstPayPath, `${label} /pay after interview`).toBeGreaterThan(
+    firstInterview,
+  );
+  expect(firstPayHost, `${label} pay-host / after interview`).toBeGreaterThan(
+    firstInterview,
+  );
 }
 
-function assertPayUnchanged(label: string, redirects: RedirectRule[]) {
-  expect(
-    redirects.find((rule) => rule.source === "/pay"),
-    `${label} /pay`,
-  ).toMatchObject({
-    source: "/pay",
-    destination: STRIPE,
-    permanent: false,
-  });
-  expect(
-    redirects.find((rule) => rule.source === "/pay/:path*"),
-    `${label} /pay/:path*`,
-  ).toMatchObject({
-    source: "/pay/:path*",
-    destination: STRIPE,
-    permanent: false,
-  });
+function assertTemporaryHomepage(
+  label: string,
+  rule: RedirectRule | undefined,
+) {
+  expect(rule, label).toEqual(
+    expect.objectContaining({
+      destination: HOMEPAGE,
+      permanent: false,
+    }),
+  );
+}
+
+function collectFiles(root: string, acc: string[] = []): string[] {
+  const abs = join(process.cwd(), root);
+  if (!existsSync(abs)) return acc;
+  const stat = statSync(abs);
+  if (stat.isFile()) {
+    acc.push(abs);
+    return acc;
+  }
+  for (const name of readdirSync(abs)) {
+    const child = join(root, name);
+    const childAbs = join(process.cwd(), child);
+    if (statSync(childAbs).isDirectory()) {
+      collectFiles(child, acc);
+    } else if (/\.(?:ts|tsx|js|json|md)$/.test(name) && !/\.test\.(ts|tsx)$/.test(name)) {
+      acc.push(childAbs);
+    }
+  }
+  return acc;
 }
 
 describe("legacy interview and /pay redirects", () => {
-  it("permanently sends /ceo /cfo /ops to the www homepage in vercel.json and next.config", async () => {
-    const vercel = JSON.parse(
-      readFileSync(join(process.cwd(), "vercel.json"), "utf8"),
-    ) as { redirects: RedirectRule[] };
+  it("permanently sends /ceo /cfo /ops to the www homepage before /pay", async () => {
+    const vercel = loadVercelRedirects();
     const nextRedirects = (await nextConfig.redirects?.()) as RedirectRule[];
 
-    assertInterviewBeatsPayHost("vercel.json", vercel.redirects);
-    assertInterviewBeatsPayHost("next.config.ts", nextRedirects);
+    assertInterviewFirst("vercel.json", vercel);
+    assertInterviewFirst("next.config.ts", nextRedirects);
   });
 
-  it("keeps /pay on the unchanged Stripe Payment Link", async () => {
-    const vercel = JSON.parse(
-      readFileSync(join(process.cwd(), "vercel.json"), "utf8"),
-    ) as { redirects: RedirectRule[] };
+  it("sends /pay, /pay/:path*, and pay-host roots to the homepage as 307", async () => {
+    const vercel = loadVercelRedirects();
     const nextRedirects = (await nextConfig.redirects?.()) as RedirectRule[];
 
-    expect(site.stripe.roiPaymentLink).toBe(STRIPE);
-    assertPayUnchanged("vercel.json", vercel.redirects);
-    assertPayUnchanged("next.config.ts", nextRedirects);
+    for (const [label, redirects] of [
+      ["vercel.json", vercel],
+      ["next.config.ts", nextRedirects],
+    ] as const) {
+      assertTemporaryHomepage(`${label} /pay`, findRule(redirects, "/pay"));
+      assertTemporaryHomepage(
+        `${label} /pay/:path*`,
+        findRule(redirects, "/pay/:path*"),
+      );
+      assertTemporaryHomepage(
+        `${label} pay.storentechai.com /`,
+        findRule(redirects, "/", "pay.storentechai.com"),
+      );
+      assertTemporaryHomepage(
+        `${label} www.pay.storentechai.com /`,
+        findRule(redirects, "/", "www.pay.storentechai.com"),
+      );
+
+      for (const rule of redirects) {
+        expect(rule.destination, `${label} ${rule.source}`).toBe(HOMEPAGE);
+        expect(rule.destination).not.toContain("buy.stripe.com");
+      }
+    }
+  });
+
+  it("does not send config or middleware to the retired Payment Link", () => {
+    const reachable = [
+      "vercel.json",
+      "next.config.ts",
+      "src/middleware.ts",
+    ].flatMap((root) => collectFiles(root));
+
+    for (const file of reachable) {
+      const text = readFileSync(file, "utf8");
+      expect(text, relative(process.cwd(), file)).not.toContain("buy.stripe.com");
+      expect(text, relative(process.cwd(), file)).not.toContain("roiPaymentLink");
+    }
+  });
+
+  it("removes the /pay page so config and middleware own the redirect", () => {
+    expect(existsSync(join(process.cwd(), "src/app/pay/page.tsx"))).toBe(false);
+    expect(existsSync(join(process.cwd(), "src/app/pay/PayRedirect.tsx"))).toBe(
+      false,
+    );
   });
 });

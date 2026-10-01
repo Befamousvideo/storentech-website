@@ -1,14 +1,12 @@
 import type { NextConfig } from "next";
-import { site } from "./src/lib/site";
 
 const homepage = "https://www.storentechai.com/";
-const stripe = site.stripe.roiPaymentLink;
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   async redirects() {
     return [
-      // Retired interview routes first so they beat the pay-host Stripe rules.
+      // Retired interview routes first so they beat pay-host catch-alls.
       {
         source: "/ceo",
         destination: homepage,
@@ -41,24 +39,24 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/pay",
-        destination: stripe,
+        destination: homepage,
         permanent: false,
       },
       {
         source: "/pay/:path*",
-        destination: stripe,
+        destination: homepage,
         permanent: false,
       },
       {
         source: "/",
         has: [{ type: "host", value: "pay.storentechai.com" }],
-        destination: stripe,
+        destination: homepage,
         permanent: false,
       },
       {
         source: "/",
         has: [{ type: "host", value: "www.pay.storentechai.com" }],
-        destination: stripe,
+        destination: homepage,
         permanent: false,
       },
     ];

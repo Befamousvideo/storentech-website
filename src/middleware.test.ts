@@ -4,7 +4,6 @@ import { middleware } from "@/middleware";
 import { site } from "@/lib/site";
 
 const HOMEPAGE = "https://www.storentechai.com/";
-const STRIPE = "https://buy.stripe.com/6oU14ngeE5w1a8wd7RdjO00";
 
 function request(url: string, host?: string) {
   const headers = new Headers();
@@ -13,6 +12,13 @@ function request(url: string, host?: string) {
     headers.set("x-forwarded-host", host);
   }
   return new NextRequest(url, { headers });
+}
+
+function expectHomepage(req: NextRequest, status: number) {
+  const res = middleware(req);
+  expect(res.status, req.url).toBe(status);
+  expect(res.headers.get("location"), req.url).toBe(HOMEPAGE);
+  expect(res.headers.get("location"), req.url).not.toContain("buy.stripe.com");
 }
 
 describe("middleware redirects", () => {
@@ -32,23 +38,51 @@ describe("middleware redirects", () => {
     ];
 
     for (const req of cases) {
-      const res = middleware(req);
-      expect(res.status, req.url).toBe(308);
-      expect(res.headers.get("location"), req.url).toBe(HOMEPAGE);
+      expectHomepage(req, 308);
     }
   });
 
-  it("still sends /pay and the pay-host root to the unchanged Stripe link", () => {
-    expect(site.stripe.roiPaymentLink).toBe(STRIPE);
+  it("temporarily sends /pay on any host to the www homepage", () => {
+    const cases = [
+      request("https://www.storentechai.com/pay"),
+      request("https://www.storentechai.com/pay/", "www.storentechai.com"),
+      request("https://www.storentechai.com/pay/invoice"),
+      request("https://storentechai.com/pay", "storentechai.com"),
+      request("https://pay.storentechai.com/pay", "pay.storentechai.com"),
+    ];
 
-    const pay = middleware(request("https://www.storentechai.com/pay"));
-    expect(pay.status).toBe(302);
-    expect(pay.headers.get("location")).toBe(STRIPE);
+    for (const req of cases) {
+      expectHomepage(req, 307);
+    }
+  });
 
-    const payHost = middleware(
-      request("https://pay.storentechai.com/", "pay.storentechai.com"),
+  it("temporarily sends every path on site.payHosts to the www homepage", () => {
+    expect(site.payHosts).toEqual([
+      "pay.storentechai.com",
+      "www.pay.storentechai.com",
+    ]);
+
+    const cases = site.payHosts.flatMap((host) => [
+      request(`https://${host}/`, host),
+      request(`https://${host}/anything`, host),
+      request(`https://${host}/pay`, host),
+      request(`https://${host}/old-checkout?ref=invoice`, host),
+    ]);
+
+    for (const req of cases) {
+      expectHomepage(req, 307);
+    }
+  });
+
+  it("still lets /redo through so that page can keep the retired Payment Link", () => {
+    const redo = middleware(request("https://www.storentechai.com/redo"));
+    expect(redo.status).toBe(200);
+    expect(redo.headers.get("location")).toBeNull();
+
+    const redoOnPay = middleware(
+      request("https://pay.storentechai.com/redo", "pay.storentechai.com"),
     );
-    expect(payHost.status).toBe(302);
-    expect(payHost.headers.get("location")).toBe(STRIPE);
+    expect(redoOnPay.status).toBe(200);
+    expect(redoOnPay.headers.get("location")).toBeNull();
   });
 });
