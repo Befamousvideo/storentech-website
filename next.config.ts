@@ -1,25 +1,44 @@
 import type { NextConfig } from "next";
-import { INTERVIEW_ROBOTS_TAG } from "./src/lib/interview-paths";
 import { site } from "./src/lib/site";
 
+const homepage = "https://www.storentechai.com/";
 const stripe = site.stripe.roiPaymentLink;
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  async headers() {
-    return [
-      {
-        source: "/:path(ceo|cfo|ops)",
-        headers: [
-          { key: "X-Robots-Tag", value: INTERVIEW_ROBOTS_TAG },
-          { key: "Cache-Control", value: "no-store" },
-          { key: "Referrer-Policy", value: "no-referrer" },
-        ],
-      },
-    ];
-  },
   async redirects() {
     return [
+      // Retired interview routes first so they beat the pay-host Stripe rules.
+      {
+        source: "/ceo",
+        destination: homepage,
+        permanent: true,
+      },
+      {
+        source: "/ceo/:path*",
+        destination: homepage,
+        permanent: true,
+      },
+      {
+        source: "/cfo",
+        destination: homepage,
+        permanent: true,
+      },
+      {
+        source: "/cfo/:path*",
+        destination: homepage,
+        permanent: true,
+      },
+      {
+        source: "/ops",
+        destination: homepage,
+        permanent: true,
+      },
+      {
+        source: "/ops/:path*",
+        destination: homepage,
+        permanent: true,
+      },
       {
         source: "/pay",
         destination: stripe,

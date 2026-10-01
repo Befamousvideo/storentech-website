@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { INTERVIEW_ROBOTS_TAG, isInterviewPath } from "@/lib/interview-paths";
 import { site } from "@/lib/site";
 
 function requestHosts(request: NextRequest) {
@@ -26,6 +25,17 @@ function isPayPath(pathname: string) {
   return pathname === "/pay" || pathname.startsWith("/pay/");
 }
 
+function isInterviewPath(pathname: string) {
+  return (
+    pathname === "/ceo" ||
+    pathname.startsWith("/ceo/") ||
+    pathname === "/cfo" ||
+    pathname.startsWith("/cfo/") ||
+    pathname === "/ops" ||
+    pathname.startsWith("/ops/")
+  );
+}
+
 function isRedoPath(pathname: string) {
   return pathname === "/redo" || pathname.startsWith("/redo/");
 }
@@ -43,12 +53,9 @@ function isAssetPath(pathname: string) {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
+  // Must run before the pay-host Stripe catch-all below.
   if (isInterviewPath(pathname)) {
-    const response = NextResponse.next();
-    response.headers.set("X-Robots-Tag", INTERVIEW_ROBOTS_TAG);
-    response.headers.set("Cache-Control", "no-store");
-    response.headers.set("Referrer-Policy", "no-referrer");
-    return response;
+    return NextResponse.redirect("https://www.storentechai.com/", 308);
   }
 
   if (isRedoPath(pathname) || isAssetPath(pathname)) {
