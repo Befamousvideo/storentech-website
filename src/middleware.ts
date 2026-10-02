@@ -66,7 +66,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect("https://www.storentechai.com/", 307);
   }
 
-  return NextResponse.next();
+  const response = NextResponse.next();
+  if (pathname === "/break-glass" || pathname.startsWith("/break-glass/")) {
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+  }
+  return response;
 }
 
 export const config = {

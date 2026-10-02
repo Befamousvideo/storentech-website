@@ -75,6 +75,26 @@ describe("middleware redirects", () => {
     }
   });
 
+  it("lets /break-glass through with X-Robots-Tag and no redirect", () => {
+    const cases = [
+      request("https://www.storentechai.com/break-glass"),
+      request(
+        "https://www.storentechai.com/break-glass",
+        "www.storentechai.com",
+      ),
+      request("https://www.storentechai.com/break-glass/"),
+    ];
+
+    for (const req of cases) {
+      const res = middleware(req);
+      expect(res.status, req.url).toBe(200);
+      expect(res.headers.get("location"), req.url).toBeNull();
+      expect(res.headers.get("x-robots-tag"), req.url).toBe(
+        "noindex, nofollow",
+      );
+    }
+  });
+
   it("temporarily sends unmatched pay-host paths to the www homepage", () => {
     expect(site.payHosts).toEqual([
       "pay.storentechai.com",
