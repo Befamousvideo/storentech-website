@@ -14,6 +14,7 @@ describe("robots disallow list", () => {
 
     expect([...ROBOTS_DISALLOW_PATHS]).toEqual(expected);
     expect(expected).not.toContain("/redo");
+    expect(expected).not.toContain("/break-glass");
     expect(expected).not.toEqual(
       expect.arrayContaining(RETIRED_INTERVIEW_PATHS),
     );
@@ -29,6 +30,7 @@ describe("robots disallow list", () => {
       expect(urls.some((url) => url.endsWith(path))).toBe(false);
     }
     expect(urls.some((url) => url.includes("/redo"))).toBe(false);
+    expect(urls.some((url) => url.includes("/break-glass"))).toBe(false);
   });
 });
 

@@ -4,7 +4,15 @@ import { describe, expect, it } from "vitest";
 
 const LLMS_PATH = join(process.cwd(), "public/llms.txt");
 const ORIGIN = "https://www.storentechai.com";
-const PRIVATE_PATHS = ["/ceo", "/cfo", "/ops", "/pay", "/redo", "/api"];
+const PRIVATE_PATHS = [
+  "/ceo",
+  "/cfo",
+  "/ops",
+  "/pay",
+  "/redo",
+  "/api",
+  "/break-glass",
+];
 
 describe("llms.txt", () => {
   const bytes = readFileSync(LLMS_PATH);

@@ -895,6 +895,41 @@ select {
   max-width: 18ch;
 }
 
+.break-glass {
+  min-height: calc(100svh - var(--header-h));
+  display: flex;
+  align-items: center;
+  padding: 2.4rem 0 3.2rem;
+}
+
+.break-glass-inner {
+  width: min(calc(100% - 32px), 28rem);
+  margin-inline: auto;
+}
+
+.break-glass h1 {
+  font-size: clamp(2.4rem, 8vw, 3.6rem);
+  max-width: none;
+}
+
+.break-glass .lede {
+  max-width: none;
+}
+
+.break-glass-actions {
+  display: grid;
+  gap: 14px;
+  margin-top: 2rem;
+}
+
+.break-glass-btn {
+  width: 100%;
+  min-height: 3.75rem;
+  padding: 1.05rem 1.2rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+}
+
 .footer-legal {
   display: flex;
   flex-wrap: wrap;
