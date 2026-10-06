@@ -30,6 +30,14 @@ describe("robots disallow list", () => {
     }
     expect(urls.some((url) => url.includes("/redo"))).toBe(false);
   });
+
+  it("does not disallow /for and does not list /for pages in the sitemap", () => {
+    expect([...ROBOTS_DISALLOW_PATHS]).not.toContain("/for");
+    expect([...ROBOTS_DISALLOW_PATHS]).not.toContain("/for/");
+
+    const urls = sitemap().map((entry) => entry.url);
+    expect(urls.some((url) => url.includes("/for"))).toBe(false);
+  });
 });
 
 describe("canonical www.storentechai.com origin", () => {

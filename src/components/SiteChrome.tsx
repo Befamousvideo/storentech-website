@@ -5,13 +5,21 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 
+function hideJsonLd(pathname: string) {
+  return (
+    pathname === "/privacy" ||
+    pathname === "/terms" ||
+    pathname === "/for" ||
+    pathname.startsWith("/for/")
+  );
+}
+
 export function SiteChrome({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const legal = pathname === "/privacy" || pathname === "/terms";
+  const pathname = usePathname() ?? "";
 
   return (
     <>
-      {legal ? null : <JsonLd />}
+      {hideJsonLd(pathname) ? null : <JsonLd />}
       <Header />
       <main id="main">{children}</main>
       <Footer />
