@@ -26,6 +26,12 @@ const slugPageSource = readFileSync(
 
 const post = getPost("ai-agent-cost-controls");
 const bannedVendor = ["gr", "ok"].join("");
+const draftHeaderNotes = [
+  "DRAFT STATUS",
+  "DRAFT for Vince approval",
+  "DO NOT PUBLISH without Vincent ok",
+  "Vincent ok",
+];
 
 function collectText(...chunks: string[]) {
   return chunks.join("\n");
@@ -145,6 +151,9 @@ describe("AI agent cost controls blog post", () => {
     expect(corpus).not.toContain("NOTES FOR BOB");
     expect(corpus).not.toContain("GUARDRAILS");
     expect(corpus).not.toContain("META DRAFT");
+    for (const note of draftHeaderNotes) {
+      expect(corpus).not.toContain(note);
+    }
     expect(articleSource).not.toContain("<!--");
     expect(articleSource).not.toContain("tel:");
     expect(articleSource).not.toContain("mailto:");
@@ -185,6 +194,14 @@ describe("AI agent cost controls blog post", () => {
     expect(html).not.toContain("NOTES FOR BOB");
     expect(html).not.toContain("GUARDRAILS");
     expect(html).not.toContain("<!--");
+    for (const note of draftHeaderNotes) {
+      expect(html).not.toContain(note);
+      expect(text).not.toContain(note);
+    }
+    expect(text).not.toMatch(/DO NOT PUBLISH/i);
+    expect(
+      getByRole("heading", { level: 1 }).previousElementSibling?.textContent,
+    ).toBe("Blog");
     expect(html).not.toContain("/blog/openrouter-ai-stack");
     expect(text).toContain("OpenRouter in Your AI Stack");
     expect(html).not.toMatch(/ROIA/);
