@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { ForPage } from "@/lib/for-pages";
 
 export function ForPreviewArticle({ page }: { page: ForPage }) {
@@ -41,9 +40,14 @@ export function ForPreviewArticle({ page }: { page: ForPage }) {
 
         <section className="blog-cta">
           <div className="btn-row">
-            <Link className="btn btn-solid" href={page.ctaHref}>
+            <a
+              className="btn btn-solid"
+              href={page.ctaHref}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {page.ctaLabel}
-            </Link>
+            </a>
           </div>
         </section>
       </div>
