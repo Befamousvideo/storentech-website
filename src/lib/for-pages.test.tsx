@@ -166,22 +166,50 @@ describe("company preview /for pages", () => {
     }
   });
 
-  it("scopes the King's Seafood page to KSD ordering, not King's Fish House", () => {
+  it("scopes the King's Seafood page to corporate HQ marketing, not KSD or Fish House", () => {
     const page = getForPage("kings-seafood");
     expect(page).toBeDefined();
     if (!page) return;
 
-    expect(page.lookFirst[2]).toEqual({
-      lead: "Approvals on every KSD order.",
-      rest: "Any AI that drafts or places an order gets a sign-off step, a spending cap, a log and an off switch.",
-    });
+    expect(page.topHeading).toBe(
+      "Six brands, 23 restaurants. Three questions before AI acts for any of them.",
+    );
+    expect(page.lookFirst).toEqual([
+      {
+        lead: "Marketing across six brands.",
+        rest: "Promo drafts built from each brand's own guidelines, approved by your team before anything goes out.",
+      },
+      {
+        lead: "One weekly rollup for corporate.",
+        rest: "Sales, labor and marketing results from every restaurant in one weekly view for leadership.",
+      },
+      {
+        lead: "Approvals on anything AI sends or buys.",
+        rest: "Sign-off steps, spending caps, logs and an off switch, set once for the whole group.",
+      },
+    ]);
     expect(page.startBody).toBe(
-      "With an AI Opportunity Map scoped to King's Seafood Distribution, so the first Map stays focused. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
+      "With an AI Opportunity Map scoped to the corporate office, so the first Map stays focused. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. The Map shows where custom AI would save the corporate team the most time or money, ranked so you know where to start. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
     );
-    expect(page.lookFirst.map((item) => `${item.lead} ${item.rest}`).join("\n")).not.toMatch(
-      /King's Fish House/,
+    expect(page.agentIntro).toBe(
+      "Before an AI agent touches a campaign, a booking or a purchase, we'll walk your corporate team through three questions, at no cost and with no obligation:",
     );
-    expect(page.startBody).not.toMatch(/for one division/);
+
+    const copy = [
+      page.topHeading,
+      page.topBody,
+      ...page.lookFirst.map((item) => `${item.lead} ${item.rest}`),
+      page.agentIntro,
+      page.startBody,
+      page.close,
+    ].join("\n");
+    expect(copy).not.toMatch(/KSD/);
+    expect(copy).not.toMatch(/Fish House/);
+    expect(copy).not.toMatch(/Santa Ana facility/);
+    expect(copy).not.toMatch(/every KSD order/);
+    expect(copy).not.toMatch(/one division/);
+    expect(copy).not.toMatch(/3185 Airway Ave/);
+    expect(copy).not.toMatch(/714-432-0400|714-613-8557/);
   });
 
   it("sets noindex metadata titles from the company name and skips JSON-LD", async () => {

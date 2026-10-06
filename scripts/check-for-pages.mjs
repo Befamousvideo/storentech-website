@@ -113,27 +113,56 @@ for (const slug of slugs) {
     if (slug === "kings-seafood") {
       const text = decodePreviewText(html);
       assert(
-        text.includes("Approvals on every KSD order."),
-        `${path} missing KSD approvals bullet`,
+        text.includes("Marketing across six brands."),
+        `${path} missing six-brand marketing bullet`,
       );
       assert(
         text.includes(
-          "Any AI that drafts or places an order gets a sign-off step, a spending cap, a log and an off switch.",
+          "Promo drafts built from each brand's own guidelines, approved by your team before anything goes out.",
         ),
-        `${path} missing KSD approvals description`,
+        `${path} missing six-brand marketing description`,
+      );
+      assert(
+        text.includes("One weekly rollup for corporate."),
+        `${path} missing corporate rollup bullet`,
       );
       assert(
         text.includes(
-          "With an AI Opportunity Map scoped to King's Seafood Distribution, so the first Map stays focused.",
+          "Sales, labor and marketing results from every restaurant in one weekly view for leadership.",
         ),
-        `${path} missing KSD-scoped How we'd start`,
+        `${path} missing corporate rollup description`,
       );
       assert(
-        !text.includes("Labor and prep at King's Fish House."),
-        `${path} still includes the King's Fish House bullet`,
+        text.includes("Approvals on anything AI sends or buys."),
+        `${path} missing group approvals bullet`,
       );
       assert(
-        !text.includes("for one division"),
+        text.includes(
+          "Sign-off steps, spending caps, logs and an off switch, set once for the whole group.",
+        ),
+        `${path} missing group approvals description`,
+      );
+      assert(
+        text.includes(
+          "With an AI Opportunity Map scoped to the corporate office, so the first Map stays focused.",
+        ),
+        `${path} missing corporate-office-scoped How we'd start`,
+      );
+      assert(!text.includes("KSD"), `${path} still includes leftover KSD copy`);
+      assert(
+        !text.includes("Fish House"),
+        `${path} still includes leftover Fish House copy`,
+      );
+      assert(
+        !text.includes("Santa Ana facility"),
+        `${path} still includes leftover Santa Ana facility copy`,
+      );
+      assert(
+        !text.includes("every KSD order"),
+        `${path} still includes leftover every KSD order copy`,
+      );
+      assert(
+        !text.includes("one division"),
         `${path} still scopes the Map to one division`,
       );
     }
