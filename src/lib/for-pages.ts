@@ -206,32 +206,32 @@ export const forPages: ForPage[] = [
     company: "King's Seafood Company",
     h1: "King's Seafood Company: what we'd look at first",
     topHeading:
-      "AI agents can now click buttons. Three questions before one places an order.",
+      "Six brands, 23 restaurants. Three questions before AI acts for any of them.",
     topBody:
-      "On Sep 29, 2026, OpenAI released a tool that lets AI agents complete tasks in a web browser, including ordering screens. King's Seafood Company runs 23 restaurants across six brands, and King's Seafood Distribution (KSD) in Santa Ana handles about 1 million pounds of fish a year (Orange County Business Journal). With President and COO Kelly Ellerman leading operations, any AI near ordering needs clear approvals, cost limits and an off switch before it goes live. Sam King's rule fits here too: \"Price is negotiable. Quality is not.\"",
+      "On Sep 29, 2026, OpenAI released a tool that lets AI agents click buttons and complete tasks in a web browser. Across six brands and 23 restaurants, any AI that posts, emails, books or buys for the group needs clear approvals, cost limits and an off switch.",
     description: forPageDescription("King's Seafood Company"),
     lookFirstHeading: FOR_LOOK_FIRST_HEADING,
     lookFirst: [
       {
-        lead: "Order forecasting from restaurant to KSD.",
-        rest: "Orders forecast from covers, menu mix and season, so distribution buys closer to what kitchens use.",
+        lead: "Marketing across six brands.",
+        rest: "Promo drafts built from each brand's own guidelines, approved by your team before anything goes out.",
       },
       {
-        lead: "Inventory and yield at the Santa Ana facility.",
-        rest: "What came in, what was cut and what shipped, reconciled daily.",
+        lead: "One weekly rollup for corporate.",
+        rest: "Sales, labor and marketing results from every restaurant in one weekly view for leadership.",
       },
       {
-        lead: "Approvals on every KSD order.",
-        rest: "Any AI that drafts or places an order gets a sign-off step, a spending cap, a log and an off switch.",
+        lead: "Approvals on anything AI sends or buys.",
+        rest: "Sign-off steps, spending caps, logs and an off switch, set once for the whole group.",
       },
     ],
     agentHeading: FOR_AGENT_HEADING,
     agentIntro:
-      "Before an AI agent touches a seafood order, we'll walk your operations team through three questions, at no cost and with no obligation:",
+      "Before an AI agent touches a campaign, a booking or a purchase, we'll walk your corporate team through three questions, at no cost and with no obligation:",
     questions: FOR_AGENT_QUESTIONS,
     startHeading: FOR_START_HEADING,
     startBody:
-      "With an AI Opportunity Map scoped to King's Seafood Distribution, so the first Map stays focused. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
+      "With an AI Opportunity Map scoped to the corporate office, so the first Map stays focused. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. The Map shows where custom AI would save the corporate team the most time or money, ranked so you know where to start. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
     close:
       "Who handles operations or technology decisions at King's Seafood? A 30-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
     ctaLabel: FOR_CTA_LABEL,
