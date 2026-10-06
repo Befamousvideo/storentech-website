@@ -15,6 +15,10 @@ const slugs = [
   "kings-seafood",
 ];
 
+const calendarCtaHref =
+  "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3_M6l66KiiwO3HU9p0jzoWXWaJ4hTlaGvhTvVO2pXQcfq1vFVisX-ebfTTEv4_NOYhA3plJTnB";
+const ctaLabel = "Book a 20-minute conversation";
+
 const forbidden = ["714", "tel:", "mailto:", "@storentech", "client", "ROIA"];
 
 const base = (process.argv[2] || "http://127.0.0.1:3000").replace(/\/$/, "");
@@ -29,6 +33,13 @@ function assert(condition, message) {
   if (!condition) {
     throw new Error(message);
   }
+}
+
+function decodePreviewText(html) {
+  return html
+    .replaceAll("&#x27;", "'")
+    .replaceAll("&#39;", "'")
+    .replaceAll("&apos;", "'");
 }
 
 const failures = [];
@@ -71,6 +82,53 @@ for (const slug of slugs) {
       `${path} includes Call Sarah text or alt`,
     );
     assert(!html.includes("application/ld+json"), `${path} includes JSON-LD`);
+    const ctaMatch = html.match(
+      /<a\b[^>]*>[\s\S]*?Book a 20-minute conversation[\s\S]*?<\/a>/,
+    );
+    assert(ctaMatch, `${path} missing ${JSON.stringify(ctaLabel)} link`);
+    assert(
+      ctaMatch[0].includes(`href="${calendarCtaHref}"`),
+      `${path} CTA does not point at Vincent's calendar`,
+    );
+    assert(
+      ctaMatch[0].includes('target="_blank"'),
+      `${path} CTA missing target=_blank`,
+    );
+    assert(
+      ctaMatch[0].includes('rel="noopener noreferrer"'),
+      `${path} CTA missing rel=noopener noreferrer`,
+    );
+    assert(
+      !ctaMatch[0].includes("/contact"),
+      `${path} CTA still points at /contact`,
+    );
+    if (slug === "kings-seafood") {
+      const text = decodePreviewText(html);
+      assert(
+        text.includes("Approvals on every KSD order."),
+        `${path} missing KSD approvals bullet`,
+      );
+      assert(
+        text.includes(
+          "Any AI that drafts or places an order gets a sign-off step, a spending cap, a log and an off switch.",
+        ),
+        `${path} missing KSD approvals description`,
+      );
+      assert(
+        text.includes(
+          "With an AI Opportunity Map scoped to King's Seafood Distribution, so the first Map stays focused.",
+        ),
+        `${path} missing KSD-scoped How we'd start`,
+      );
+      assert(
+        !text.includes("Labor and prep at King's Fish House."),
+        `${path} still includes the King's Fish House bullet`,
+      );
+      assert(
+        !text.includes("for one division"),
+        `${path} still scopes the Map to one division`,
+      );
+    }
     console.log(`ok  ${path}`);
   } catch (error) {
     failures.push(error instanceof Error ? error.message : String(error));

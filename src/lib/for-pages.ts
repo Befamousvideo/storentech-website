@@ -8,6 +8,10 @@ export type ForAgentQuestion = {
   text: string;
 };
 
+export const FOR_CTA_LABEL = "Book a 20-minute conversation";
+export const FOR_CTA_HREF =
+  "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3_M6l66KiiwO3HU9p0jzoWXWaJ4hTlaGvhTvVO2pXQcfq1vFVisX-ebfTTEv4_NOYhA3plJTnB" as const;
+
 export type ForPage = {
   slug: string;
   company: string;
@@ -24,7 +28,7 @@ export type ForPage = {
   startBody: string;
   close: string;
   ctaLabel: string;
-  ctaHref: "/contact";
+  ctaHref: typeof FOR_CTA_HREF;
 };
 
 export const FOR_AGENT_QUESTIONS: ForAgentQuestion[] = [
@@ -45,8 +49,6 @@ export const FOR_AGENT_QUESTIONS: ForAgentQuestion[] = [
 export const FOR_LOOK_FIRST_HEADING = "Three places we'd look first";
 export const FOR_AGENT_HEADING = "3-question AI agent check, at no cost";
 export const FOR_START_HEADING = "How we'd start";
-export const FOR_CTA_LABEL = "Book a 20-minute conversation";
-export const FOR_CTA_HREF = "/contact" as const;
 
 export function forPageDescription(company: string) {
   return `${company}: three places we'd look first, plus a 3-question AI agent check at no cost.`;
@@ -219,8 +221,8 @@ export const forPages: ForPage[] = [
         rest: "What came in, what was cut and what shipped, reconciled daily.",
       },
       {
-        lead: "Labor and prep at King's Fish House.",
-        rest: "Unit-level prep lists and schedules matched to expected volume.",
+        lead: "Approvals on every KSD order.",
+        rest: "Any AI that drafts or places an order gets a sign-off step, a spending cap, a log and an off switch.",
       },
     ],
     agentHeading: FOR_AGENT_HEADING,
@@ -229,7 +231,7 @@ export const forPages: ForPage[] = [
     questions: FOR_AGENT_QUESTIONS,
     startHeading: FOR_START_HEADING,
     startBody:
-      "With an AI Opportunity Map for one division. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
+      "With an AI Opportunity Map scoped to King's Seafood Distribution, so the first Map stays focused. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
     close:
       "Who handles operations or technology decisions at King's Seafood? A 20-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
     ctaLabel: FOR_CTA_LABEL,

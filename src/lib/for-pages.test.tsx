@@ -11,6 +11,8 @@ import ForSlugPage, {
 import { ForPreviewArticle } from "@/components/ForPreviewArticle";
 import { SiteChrome } from "@/components/SiteChrome";
 import {
+  FOR_CTA_HREF,
+  FOR_CTA_LABEL,
   forPageDescription,
   forPages,
   forPagePath,
@@ -127,7 +129,7 @@ describe("company preview /for pages", () => {
     expect(getForPage("not-a-company")).toBeUndefined();
   });
 
-  it("renders each route with verbatim copy, the contact CTA, and noindex HTML", async () => {
+  it("renders each route with verbatim copy, the calendar CTA, and noindex HTML", async () => {
     for (const page of forPages) {
       const ui = await ForSlugPage({
         params: Promise.resolve({ slug: page.slug }),
@@ -150,11 +152,33 @@ describe("company preview /for pages", () => {
       const cta = screen.getByRole("link", {
         name: page.ctaLabel,
       });
-      expect(cta).toHaveAttribute("href", "/contact");
+      expect(page.ctaLabel).toBe(FOR_CTA_LABEL);
+      expect(page.ctaHref).toBe(FOR_CTA_HREF);
+      expect(cta).toHaveAttribute("href", FOR_CTA_HREF);
+      expect(cta).toHaveAttribute("target", "_blank");
+      expect(cta).toHaveAttribute("rel", "noopener noreferrer");
 
       assertCleanPreviewHtml(`/for/${page.slug}`, renderedHtml(container));
       unmount();
     }
+  });
+
+  it("scopes the King's Seafood page to KSD ordering, not King's Fish House", () => {
+    const page = getForPage("kings-seafood");
+    expect(page).toBeDefined();
+    if (!page) return;
+
+    expect(page.lookFirst[2]).toEqual({
+      lead: "Approvals on every KSD order.",
+      rest: "Any AI that drafts or places an order gets a sign-off step, a spending cap, a log and an off switch.",
+    });
+    expect(page.startBody).toBe(
+      "With an AI Opportunity Map scoped to King's Seafood Distribution, so the first Map stays focused. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
+    );
+    expect(page.lookFirst.map((item) => `${item.lead} ${item.rest}`).join("\n")).not.toMatch(
+      /King's Fish House/,
+    );
+    expect(page.startBody).not.toMatch(/for one division/);
   });
 
   it("sets noindex metadata titles from the company name and skips JSON-LD", async () => {
