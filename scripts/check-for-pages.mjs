@@ -83,7 +83,7 @@ for (const slug of slugs) {
     );
     assert(!html.includes("application/ld+json"), `${path} includes JSON-LD`);
     const ctaMatch = html.match(
-      /<a\b[^>]*>[\s\S]*?Book a 20-minute conversation[\s\S]*?<\/a>/,
+      /<a\b[^>]*>\s*Book a 20-minute conversation\s*<\/a>/,
     );
     assert(ctaMatch, `${path} missing ${JSON.stringify(ctaLabel)} link`);
     assert(
