@@ -5,10 +5,10 @@ import { describe, expect, it, vi } from "vitest";
 import sitemap from "@/app/sitemap";
 import { ROBOTS_DISALLOW_PATHS } from "@/app/robots";
 import ForSlugPage, {
-  ForPreviewArticle,
   generateMetadata,
   generateStaticParams,
 } from "@/app/for/[slug]/page";
+import { ForPreviewArticle } from "@/components/ForPreviewArticle";
 import { SiteChrome } from "@/components/SiteChrome";
 import {
   forPages,
@@ -74,6 +74,10 @@ const PUBLIC_SURFACES = [
   "src/app/robots.ts",
   "public/llms.txt",
 ];
+
+function renderedHtml(container: HTMLElement) {
+  return `${document.head.innerHTML}${container.innerHTML}`;
+}
 
 function assertCleanPreviewHtml(label: string, html: string) {
   expect(html, label).toContain('name="robots"');
@@ -144,7 +148,7 @@ describe("company preview /for pages", () => {
       });
       expect(cta).toHaveAttribute("href", "/contact");
 
-      assertCleanPreviewHtml(`/for/${page.slug}`, container.innerHTML);
+      assertCleanPreviewHtml(`/for/${page.slug}`, renderedHtml(container));
       unmount();
     }
   });
@@ -208,6 +212,7 @@ describe("company preview /for pages", () => {
       join(process.cwd(), "src/lib/for-pages.ts"),
       join(process.cwd(), "src/app/for/layout.tsx"),
       join(process.cwd(), "src/app/for/[slug]/page.tsx"),
+      join(process.cwd(), "src/components/ForPreviewArticle.tsx"),
       join(process.cwd(), "src/components/SiteChrome.tsx"),
       join(process.cwd(), "next.config.ts"),
     ]);
@@ -249,7 +254,7 @@ describe("company preview /for pages", () => {
         <ForPreviewArticle page={page} />
       </SiteChrome>,
     );
-    const html = container.innerHTML.replaceAll("/roia", "");
+    const html = renderedHtml(container).replaceAll("/roia", "");
 
     expect(html).not.toContain("application/ld+json");
     expect(html).toContain("noindex, nofollow");
