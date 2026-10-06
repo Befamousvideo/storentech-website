@@ -62,6 +62,8 @@ const EXPECTED_SLUGS = [
   "bluewater-grill",
   "dkn-hotels",
   "kings-seafood",
+  "veritech-plumbing",
+  "sea-pointe",
 ] as const;
 
 const PUBLIC_SURFACES = [
@@ -121,7 +123,7 @@ function collectFiles(root: string, acc: string[] = []): string[] {
 }
 
 describe("company preview /for pages", () => {
-  it("registers the five approved slugs and 404s unknown ones", () => {
+  it("registers the seven approved slugs and 404s unknown ones", () => {
     expect(forPageSlugs).toEqual([...EXPECTED_SLUGS]);
     expect(generateStaticParams()).toEqual(
       EXPECTED_SLUGS.map((slug) => ({ slug })),
@@ -164,6 +166,21 @@ describe("company preview /for pages", () => {
       assertCleanPreviewHtml(`/for/${page.slug}`, renderedHtml(container));
       unmount();
     }
+  });
+
+  it("scopes VeriTech and Sea Pointe Maps to each company's ops", () => {
+    const veritech = getForPage("veritech-plumbing");
+    const seaPointe = getForPage("sea-pointe");
+    expect(veritech).toBeDefined();
+    expect(seaPointe).toBeDefined();
+    if (!veritech || !seaPointe) return;
+
+    expect(veritech.startBody).toBe(
+      "With an AI Opportunity Map scoped to VeriTech ops (scheduling, dispatch, quoting, follow-up), so the first Map stays focused. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
+    );
+    expect(seaPointe.startBody).toBe(
+      "With an AI Opportunity Map scoped to Sea Pointe ops, so the first Map stays focused. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
+    );
   });
 
   it("scopes the King's Seafood page to KSD ordering, not King's Fish House", () => {
