@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Fetch the five /for preview routes and assert they render with noindex
+ * Fetch the seven /for preview routes and assert they render with noindex
  * and none of the forbidden snippets. Unknown slugs must 404.
  *
  * Usage: node scripts/check-for-pages.mjs [baseUrl]
@@ -13,6 +13,8 @@ const slugs = [
   "bluewater-grill",
   "dkn-hotels",
   "kings-seafood",
+  "veritech-plumbing",
+  "sea-pointe",
 ];
 
 const calendarCtaHref =
@@ -110,6 +112,36 @@ for (const slug of slugs) {
       !ctaMatch[0].includes("/contact"),
       `${path} CTA still points at /contact`,
     );
+    if (slug === "veritech-plumbing") {
+      const text = decodePreviewText(html);
+      assert(
+        text.includes(
+          "With an AI Opportunity Map scoped to VeriTech ops (scheduling, dispatch, quoting, follow-up), so the first Map stays focused.",
+        ),
+        `${path} missing VeriTech-scoped How we'd start`,
+      );
+      assert(
+        text.includes(
+          "We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort.",
+        ),
+        `${path} missing shared Map paragraph`,
+      );
+    }
+    if (slug === "sea-pointe") {
+      const text = decodePreviewText(html);
+      assert(
+        text.includes(
+          "With an AI Opportunity Map scoped to Sea Pointe ops, so the first Map stays focused.",
+        ),
+        `${path} missing Sea Pointe-scoped How we'd start`,
+      );
+      assert(
+        text.includes(
+          "We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort.",
+        ),
+        `${path} missing shared Map paragraph`,
+      );
+    }
     if (slug === "kings-seafood") {
       const text = decodePreviewText(html);
       assert(
