@@ -62,6 +62,14 @@ for (const slug of slugs) {
       !/scraping/i.test(inspected),
       `${path} HTML contains "scraping"`,
     );
+    assert(
+      !html.includes("/sarah-phone.png"),
+      `${path} includes the Sarah phone image src`,
+    );
+    assert(
+      !html.includes('alt="Call Sarah"') && !html.includes("Call Sarah"),
+      `${path} includes Call Sarah text or alt`,
+    );
     assert(!html.includes("application/ld+json"), `${path} includes JSON-LD`);
     console.log(`ok  ${path}`);
   } catch (error) {

@@ -11,12 +11,14 @@ import ForSlugPage, {
 import { ForPreviewArticle } from "@/components/ForPreviewArticle";
 import { SiteChrome } from "@/components/SiteChrome";
 import {
+  forPageDescription,
   forPages,
   forPagePath,
   forPageSlugs,
   forPageTitle,
   getForPage,
 } from "@/lib/for-pages";
+import { site } from "@/lib/site";
 import nextConfig from "../../next.config";
 
 vi.mock("next/navigation", async () => {
@@ -165,7 +167,8 @@ describe("company preview /for pages", () => {
         `${page.company}: what we'd look at first | StorenTech AI`,
       );
       expect(metadata.title).toEqual({ absolute: title });
-      expect(metadata.description).toBe(page.description);
+      expect(page.description).toBe(forPageDescription(page.company));
+      expect(metadata.description).toBe(forPageDescription(page.company));
       expect(metadata.robots).toEqual({ index: false, follow: false });
       expect(metadata.alternates).toEqual({
         canonical: forPagePath(page.slug),
@@ -260,6 +263,12 @@ describe("company preview /for pages", () => {
 
     expect(html).not.toContain("application/ld+json");
     expect(html).toContain("noindex, nofollow");
+    expect(html).not.toContain(site.phones.sarah.image);
+    expect(html).not.toContain("Call Sarah");
+    expect(html).not.toContain(site.offer.ctaShort);
+    expect(html).not.toContain(site.offer.cta);
+    expect(container.querySelector(`img[src="${site.phones.sarah.image}"]`)).toBeNull();
+    expect(container.querySelector('img[alt="Call Sarah"]')).toBeNull();
     for (const snippet of FORBIDDEN_HTML) {
       expect(html, snippet).not.toContain(snippet);
     }

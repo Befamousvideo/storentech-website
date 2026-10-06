@@ -12,7 +12,13 @@ function isCurrent(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-export function Header({ slim = false }: { slim?: boolean }) {
+export function Header({
+  slim = false,
+  quiet = false,
+}: {
+  slim?: boolean;
+  quiet?: boolean;
+}) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -44,8 +50,12 @@ export function Header({ slim = false }: { slim?: boolean }) {
 
         {slim ? null : (
           <div className="header-actions">
-            <SarahPhoneImage className="sarah-phone header-sarah-phone" />
-            <IntakeLink className="btn btn-solid">{site.offer.ctaShort}</IntakeLink>
+            {quiet ? null : (
+              <SarahPhoneImage className="sarah-phone header-sarah-phone" />
+            )}
+            {quiet ? null : (
+              <IntakeLink className="btn btn-solid">{site.offer.ctaShort}</IntakeLink>
+            )}
             <button
               className="menu-toggle"
               type="button"
@@ -77,12 +87,14 @@ export function Header({ slim = false }: { slim?: boolean }) {
               </Link>
             ))}
           </nav>
-          <div className="mobile-actions">
-            <SarahPhoneImage className="sarah-phone header-sarah-phone" />
-            <IntakeLink className="btn btn-solid" onClick={() => setOpen(false)}>
-              {site.offer.ctaShort}
-            </IntakeLink>
-          </div>
+          {quiet ? null : (
+            <div className="mobile-actions">
+              <SarahPhoneImage className="sarah-phone header-sarah-phone" />
+              <IntakeLink className="btn btn-solid" onClick={() => setOpen(false)}>
+                {site.offer.ctaShort}
+              </IntakeLink>
+            </div>
+          )}
         </div>
       )}
     </header>

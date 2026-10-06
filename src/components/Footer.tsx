@@ -4,7 +4,7 @@ import { IntakeLink } from "@/components/IntakeLink";
 import { SarahContact } from "@/components/SarahContact";
 import { nav, site } from "@/lib/site";
 
-export function Footer() {
+export function Footer({ quiet = false }: { quiet?: boolean }) {
   return (
     <footer className="site-footer">
       <div className="wrap">
@@ -21,16 +21,18 @@ export function Footer() {
                 {item.label}
               </Link>
             ))}
-            <IntakeLink>{site.offer.cta}</IntakeLink>
+            {quiet ? null : <IntakeLink>{site.offer.cta}</IntakeLink>}
           </nav>
           <div className="footer-contact">
             <div>{site.location.kicker}</div>
-            <SarahContact
-              className="sarah-contact"
-              primaryClassName="sarah-contact-primary"
-              secondaryClassName="sarah-contact-secondary"
-            />
-            <Link href="/contact">Write us</Link>
+            {quiet ? null : (
+              <SarahContact
+                className="sarah-contact"
+                primaryClassName="sarah-contact-primary"
+                secondaryClassName="sarah-contact-secondary"
+              />
+            )}
+            {quiet ? null : <Link href="/contact">Write us</Link>}
           </div>
         </div>
         <div className="footer-bottom">
