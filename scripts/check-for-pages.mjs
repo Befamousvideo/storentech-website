@@ -17,7 +17,7 @@ const slugs = [
 
 const calendarCtaHref =
   "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3_M6l66KiiwO3HU9p0jzoWXWaJ4hTlaGvhTvVO2pXQcfq1vFVisX-ebfTTEv4_NOYhA3plJTnB";
-const ctaLabel = "Book a 20-minute conversation";
+const ctaLabel = "Book a 30-minute conversation";
 
 const forbidden = ["714", "tel:", "mailto:", "@storentech", "client", "ROIA"];
 
@@ -82,8 +82,16 @@ for (const slug of slugs) {
       `${path} includes Call Sarah text or alt`,
     );
     assert(!html.includes("application/ld+json"), `${path} includes JSON-LD`);
+    assert(
+      !html.includes("20-minute"),
+      `${path} still includes 20-minute wording`,
+    );
+    assert(
+      html.includes("30-minute"),
+      `${path} missing 30-minute wording`,
+    );
     const ctaMatch = html.match(
-      /<a\b[^>]*>\s*Book a 20-minute conversation\s*<\/a>/,
+      /<a\b[^>]*>\s*Book a 30-minute conversation\s*<\/a>/,
     );
     assert(ctaMatch, `${path} missing ${JSON.stringify(ctaLabel)} link`);
     assert(

@@ -8,7 +8,7 @@ export type ForAgentQuestion = {
   text: string;
 };
 
-export const FOR_CTA_LABEL = "Book a 20-minute conversation";
+export const FOR_CTA_LABEL = "Book a 30-minute conversation";
 export const FOR_CTA_HREF =
   "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3_M6l66KiiwO3HU9p0jzoWXWaJ4hTlaGvhTvVO2pXQcfq1vFVisX-ebfTTEv4_NOYhA3plJTnB" as const;
 
@@ -93,7 +93,7 @@ export const forPages: ForPage[] = [
     startHeading: FOR_START_HEADING,
     startBody: howWeStartShared,
     close:
-      "Who handles operations or technology decisions at Kei Concepts? A 20-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
+      "Who handles operations or technology decisions at Kei Concepts? A 30-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
     ctaLabel: FOR_CTA_LABEL,
     ctaHref: FOR_CTA_HREF,
   },
@@ -128,7 +128,7 @@ export const forPages: ForPage[] = [
     startHeading: FOR_START_HEADING,
     startBody: howWeStartShared,
     close:
-      "Who handles operations or technology decisions at RJB? A 20-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
+      "Who handles operations or technology decisions at RJB? A 30-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
     ctaLabel: FOR_CTA_LABEL,
     ctaHref: FOR_CTA_HREF,
   },
@@ -163,7 +163,7 @@ export const forPages: ForPage[] = [
     startHeading: FOR_START_HEADING,
     startBody: howWeStartShared,
     close:
-      "Who handles operations or technology decisions at Bluewater? A 20-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
+      "Who handles operations or technology decisions at Bluewater? A 30-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
     ctaLabel: FOR_CTA_LABEL,
     ctaHref: FOR_CTA_HREF,
   },
@@ -197,7 +197,7 @@ export const forPages: ForPage[] = [
     startHeading: FOR_START_HEADING,
     startBody: howWeStartShared,
     close:
-      "Who handles operations or technology decisions at DKN Hotels? A 20-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
+      "Who handles operations or technology decisions at DKN Hotels? A 30-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
     ctaLabel: FOR_CTA_LABEL,
     ctaHref: FOR_CTA_HREF,
   },
@@ -233,7 +233,7 @@ export const forPages: ForPage[] = [
     startBody:
       "With an AI Opportunity Map scoped to King's Seafood Distribution, so the first Map stays focused. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
     close:
-      "Who handles operations or technology decisions at King's Seafood? A 20-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
+      "Who handles operations or technology decisions at King's Seafood? A 30-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
     ctaLabel: FOR_CTA_LABEL,
     ctaHref: FOR_CTA_HREF,
   },
