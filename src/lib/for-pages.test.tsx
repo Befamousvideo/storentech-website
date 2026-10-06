@@ -48,6 +48,8 @@ const BANNED_COPY = [
   /\bAscent\b/,
   /\bOrbit\b/,
   /\bROIA\b/,
+  /\bfree\b/i,
+  /scraping/i,
 ];
 
 const EXPECTED_SLUGS = [
@@ -260,6 +262,9 @@ describe("company preview /for pages", () => {
     expect(html).toContain("noindex, nofollow");
     for (const snippet of FORBIDDEN_HTML) {
       expect(html, snippet).not.toContain(snippet);
+    }
+    for (const pattern of BANNED_COPY) {
+      expect(html, `${pattern}`).not.toMatch(pattern);
     }
   });
 });

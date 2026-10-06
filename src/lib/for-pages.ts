@@ -43,13 +43,13 @@ export const FOR_AGENT_QUESTIONS: ForAgentQuestion[] = [
 ];
 
 export const FOR_LOOK_FIRST_HEADING = "Three places we'd look first";
-export const FOR_AGENT_HEADING = "Free 3-question AI agent check";
+export const FOR_AGENT_HEADING = "3-question AI agent check, at no cost";
 export const FOR_START_HEADING = "How we'd start";
 export const FOR_CTA_LABEL = "Book a 20-minute conversation";
 export const FOR_CTA_HREF = "/contact" as const;
 
 const howWeStartShared =
-  "With an AI Opportunity Map. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. We find where time or revenue leaks, then fix what pays. Human touch stays.";
+  "With an AI Opportunity Map. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.";
 
 export const forPages: ForPage[] = [
   {
@@ -78,7 +78,7 @@ export const forPages: ForPage[] = [
     ],
     agentHeading: FOR_AGENT_HEADING,
     agentIntro:
-      "OpenAI added hosted-browser computer use to its Agents API on Sep 29, 2026, so AI agents can now click buttons and complete tasks in a web browser. Before one touches an order, a schedule or a payment, we'll walk your team through three questions, free and with no obligation:",
+      "On Sep 29, 2026, OpenAI released a tool that lets AI agents click buttons and complete tasks in a web browser. Before one touches an order, a schedule or a payment, we'll walk your team through three questions, at no cost and with no obligation:",
     questions: FOR_AGENT_QUESTIONS,
     startHeading: FOR_START_HEADING,
     startBody: howWeStartShared,
@@ -94,7 +94,7 @@ export const forPages: ForPage[] = [
     topHeading:
       "Creekside makes eight. See the busy nights coming at every RJB restaurant.",
     topBody:
-      "RJB Restaurant Group, owned by Russ Bendel Jr. and partners, is opening Creekside at Sendero Marketplace in Mission Viejo this October, its eighth business in Orange County alongside Vine, Parlor Pizzeria, Bloom, Sapphire, The Pantry, Ironwood and Olea (Orange County Business Journal, Sep 15, 2026). Games, concerts and community events change how busy each room gets. StorenTech can watch public event feeds near each restaurant automatically, never by scraping review sites, and flag the nights that need more staff, prep or product, with a person approving the plan.",
+      "RJB Restaurant Group, owned by Russ Bendel Jr. and partners, is opening Creekside at Sendero Marketplace in Mission Viejo this October, its eighth business in Orange County alongside Vine, Parlor Pizzeria, Bloom, Sapphire, The Pantry, Ironwood and Olea (Orange County Business Journal, Sep 15, 2026). Games, concerts and community events change how busy each room gets. StorenTech can watch public event feeds near each restaurant and flag the nights that need more staff, prep or product, with a person approving the plan.",
     description:
       "RJB Restaurant Group, owned by Russ Bendel Jr. and partners, is opening Creekside at Sendero Marketplace in Mission Viejo this October, its eighth business in Orange County alongside Vine, Parlor Pizzeria, Bloom, Sapphire, The Pantry, Ironwood and Olea (Orange County Business Journal, Sep 15, 2026).",
     lookFirstHeading: FOR_LOOK_FIRST_HEADING,
@@ -114,7 +114,7 @@ export const forPages: ForPage[] = [
     ],
     agentHeading: FOR_AGENT_HEADING,
     agentIntro:
-      "OpenAI added hosted-browser computer use to its Agents API on Sep 29, 2026, so AI agents can now click buttons and complete tasks in a web browser. Before one touches a schedule, an order or a vendor payment, we'll walk the partners through three questions, free and with no obligation:",
+      "On Sep 29, 2026, OpenAI released a tool that lets AI agents click buttons and complete tasks in a web browser. Before one touches a schedule, an order or a vendor payment, we'll walk the partners through three questions, at no cost and with no obligation:",
     questions: FOR_AGENT_QUESTIONS,
     startHeading: FOR_START_HEADING,
     startBody: howWeStartShared,
@@ -130,7 +130,7 @@ export const forPages: ForPage[] = [
     topHeading:
       "Thirty years on the water. See the busy weekends coming at every Bluewater.",
     topBody:
-      "Jim Ulcickas and Rick Staunton opened the first Bluewater Grill in Newport Beach in 1996, and 2026 is the 30th-anniversary year. Today there are eight Bluewater restaurants in California and Arizona, plus El Galleon on Catalina Island, Mia's in Solana Beach and Catalina Rum Company. Events near each waterfront location change staffing and seafood orders. StorenTech can watch public event feeds automatically, never by scraping review sites, so busy weekends show up before the order goes in. As Ulcickas put it: \"It all comes down to blocking and tackling.\"",
+      "Jim Ulcickas and Rick Staunton opened the first Bluewater Grill in Newport Beach in 1996, and 2026 is the 30th-anniversary year. Today there are eight Bluewater restaurants in California and Arizona, plus El Galleon on Catalina Island, Mia's in Solana Beach and Catalina Rum Company. Events near each waterfront location change staffing and seafood orders. StorenTech can watch public event feeds near each location, so busy weekends show up before the order goes in. As Ulcickas put it: \"It all comes down to blocking and tackling.\"",
     description:
       "Jim Ulcickas and Rick Staunton opened the first Bluewater Grill in Newport Beach in 1996, and 2026 is the 30th-anniversary year.",
     lookFirstHeading: FOR_LOOK_FIRST_HEADING,
@@ -150,7 +150,7 @@ export const forPages: ForPage[] = [
     ],
     agentHeading: FOR_AGENT_HEADING,
     agentIntro:
-      "OpenAI added hosted-browser computer use to its Agents API on Sep 29, 2026, so AI agents can now click buttons and complete tasks in a web browser. Before one touches a seafood order or a vendor payment, we'll walk your team through three questions, free and with no obligation:",
+      "On Sep 29, 2026, OpenAI released a tool that lets AI agents click buttons and complete tasks in a web browser. Before one touches a seafood order or a vendor payment, we'll walk your team through three questions, at no cost and with no obligation:",
     questions: FOR_AGENT_QUESTIONS,
     startHeading: FOR_START_HEADING,
     startBody: howWeStartShared,
@@ -165,9 +165,9 @@ export const forPages: ForPage[] = [
     h1: "DKN Hotels: what we'd look at first",
     topHeading: "AI agents can now work a web browser. Who at DKN signs off?",
     topBody:
-      "OpenAI added hosted-browser computer use to its Agents API on Sep 29, 2026. For a hotel company, the question is no longer whether AI can act, but who approved what it does. DKN Hotels, led by CEO Ana Almada, keeps adding properties: the Residence Inn San Diego Sorrento Mesa/Sorrento Valley acquisition with renovation from Q2 2026, the SpringHill Suites Ventura Oxnard opening (Feb 23, 2026), a management contract for the Courtyard Toledo Rossford/Perrysburg (Jun 16, 2026), whose release names the nearby Hollywood Casino Toledo and Stranahan Theater, and the TownePlace Suites Wildomar in 2027. Every new contract is a good time to set approvals, cost limits and an off switch.",
+      "On Sep 29, 2026, OpenAI released a tool that lets AI agents click buttons and complete tasks in a web browser. For a hotel company, the question is no longer whether AI can act, but who approved what it does. DKN Hotels, led by CEO Ana Almada, keeps adding properties: the Residence Inn San Diego Sorrento Mesa/Sorrento Valley acquisition with renovation from Q2 2026, the SpringHill Suites Ventura Oxnard opening (Feb 23, 2026), a management contract for the Courtyard Toledo Rossford/Perrysburg (Jun 16, 2026), and the TownePlace Suites Wildomar in 2027. Every new contract is a good time to set approvals, cost limits and an off switch.",
     description:
-      "OpenAI added hosted-browser computer use to its Agents API on Sep 29, 2026.",
+      "On Sep 29, 2026, OpenAI released a tool that lets AI agents click buttons and complete tasks in a web browser.",
     lookFirstHeading: FOR_LOOK_FIRST_HEADING,
     lookFirst: [
       {
@@ -185,7 +185,7 @@ export const forPages: ForPage[] = [
     ],
     agentHeading: FOR_AGENT_HEADING,
     agentIntro:
-      "Before an AI agent touches a rate, a booking or a purchase, we'll walk your operations team through three questions, free and with no obligation:",
+      "Before an AI agent touches a rate, a booking or a purchase, we'll walk your operations team through three questions, at no cost and with no obligation:",
     questions: FOR_AGENT_QUESTIONS,
     startHeading: FOR_START_HEADING,
     startBody: howWeStartShared,
@@ -201,9 +201,9 @@ export const forPages: ForPage[] = [
     topHeading:
       "AI agents can now click buttons. Three questions before one places an order.",
     topBody:
-      "OpenAI added hosted-browser computer use to its Agents API on Sep 29, 2026, so AI agents can now complete tasks in a web browser, including ordering screens. King's Seafood Company runs 23 restaurants across six brands, and King's Seafood Distribution in Santa Ana handles about 1 million pounds of fish a year (Orange County Business Journal). With President and COO Kelly Ellerman leading operations, any AI near ordering needs clear approvals, cost limits and an off switch before it goes live. Sam King's rule fits here too: \"Price is negotiable. Quality is not.\"",
+      "On Sep 29, 2026, OpenAI released a tool that lets AI agents complete tasks in a web browser, including ordering screens. King's Seafood Company runs 23 restaurants across six brands, and King's Seafood Distribution in Santa Ana handles about 1 million pounds of fish a year (Orange County Business Journal). With President and COO Kelly Ellerman leading operations, any AI near ordering needs clear approvals, cost limits and an off switch before it goes live. Sam King's rule fits here too: \"Price is negotiable. Quality is not.\"",
     description:
-      "OpenAI added hosted-browser computer use to its Agents API on Sep 29, 2026, so AI agents can now complete tasks in a web browser, including ordering screens.",
+      "On Sep 29, 2026, OpenAI released a tool that lets AI agents complete tasks in a web browser, including ordering screens.",
     lookFirstHeading: FOR_LOOK_FIRST_HEADING,
     lookFirst: [
       {
@@ -215,17 +215,17 @@ export const forPages: ForPage[] = [
         rest: "What came in, what was cut and what shipped, reconciled daily.",
       },
       {
-        lead: "Or: labor and prep at King's Fish House.",
+        lead: "Labor and prep at King's Fish House.",
         rest: "Unit-level prep lists and schedules matched to expected volume.",
       },
     ],
     agentHeading: FOR_AGENT_HEADING,
     agentIntro:
-      "Before an AI agent touches a seafood order, we'll walk your operations team through three questions, free and with no obligation:",
+      "Before an AI agent touches a seafood order, we'll walk your operations team through three questions, at no cost and with no obligation:",
     questions: FOR_AGENT_QUESTIONS,
     startHeading: FOR_START_HEADING,
     startBody:
-      "With an AI Opportunity Map for one division. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. We find where time or revenue leaks, then fix what pays. Human touch stays.",
+      "With an AI Opportunity Map for one division. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
     close:
       "Who handles operations or technology decisions at King's Seafood? A 20-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
     ctaLabel: FOR_CTA_LABEL,

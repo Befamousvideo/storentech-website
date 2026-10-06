@@ -54,6 +54,14 @@ for (const slug of slugs) {
         `${path} HTML contains forbidden snippet ${JSON.stringify(snippet)}`,
       );
     }
+    assert(
+      !/\bfree\b/i.test(inspected),
+      `${path} HTML contains the word "free"`,
+    );
+    assert(
+      !/scraping/i.test(inspected),
+      `${path} HTML contains "scraping"`,
+    );
     assert(!html.includes("application/ld+json"), `${path} includes JSON-LD`);
     console.log(`ok  ${path}`);
   } catch (error) {
