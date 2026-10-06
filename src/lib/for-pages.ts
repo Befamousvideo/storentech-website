@@ -237,6 +237,78 @@ export const forPages: ForPage[] = [
     ctaLabel: FOR_CTA_LABEL,
     ctaHref: FOR_CTA_HREF,
   },
+  {
+    slug: "veritech-plumbing",
+    company: "VeriTech Plumbing",
+    h1: "VeriTech Plumbing: what we'd look at first",
+    topHeading:
+      "P&M Plumbing is joining VeriTech. Make two companies run on one schedule.",
+    topBody:
+      "VeriTech announced on Sep 3, 2026 that P&M Plumbing of Garden Grove, serving Orange County since 1979, will be integrated into VeriTech. Two customer lists, two service histories and one dispatch board: we can bring them together on your own accounts, without another subscription.",
+    description: forPageDescription("VeriTech Plumbing"),
+    lookFirstHeading: FOR_LOOK_FIRST_HEADING,
+    lookFirst: [
+      {
+        lead: "One customer list from two companies.",
+        rest: "P&M and VeriTech customers and service history matched, with your team approving each merge.",
+      },
+      {
+        lead: "Scheduling and dispatch.",
+        rest: "Calls turned into scheduled jobs, techs matched by area and job type, a person approving the board.",
+      },
+      {
+        lead: "Quotes and follow-up.",
+        rest: "Quote drafts and follow-ups on open quotes and backflow tests, sent only after your team signs off.",
+      },
+    ],
+    agentHeading: FOR_AGENT_HEADING,
+    agentIntro:
+      "On Sep 29, 2026, OpenAI released a tool that lets AI agents click buttons and complete tasks in a web browser. Before one touches a quote, a schedule or a purchase, we'll walk your team through three questions, at no cost and with no obligation:",
+    questions: FOR_AGENT_QUESTIONS,
+    startHeading: FOR_START_HEADING,
+    startBody:
+      "With an AI Opportunity Map scoped to VeriTech ops (scheduling, dispatch, quoting, follow-up), so the first Map stays focused. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
+    close:
+      "Who handles operations or technology decisions at VeriTech? A 30-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
+    ctaLabel: FOR_CTA_LABEL,
+    ctaHref: FOR_CTA_HREF,
+  },
+  {
+    slug: "sea-pointe",
+    company: "Sea Pointe Design & Remodel",
+    h1: "Sea Pointe Design & Remodel: what we'd look at first",
+    topHeading:
+      "Forty years of remodels. Every call answered, every design consult booked.",
+    topBody:
+      "Sea Pointe Design & Remodel marked 40 years in Irvine in 2026. When the phones are busy, a missed call can be a missed kitchen. We can help your team answer, book design consults and follow up, with a person approving anything that goes out.",
+    description: forPageDescription("Sea Pointe Design & Remodel"),
+    lookFirstHeading: FOR_LOOK_FIRST_HEADING,
+    lookFirst: [
+      {
+        lead: "Calls and inquiries, answered.",
+        rest: "After-hours and overflow calls captured with the details your office needs to call back.",
+      },
+      {
+        lead: "Design consult booking.",
+        rest: "Consults booked straight onto your designers' calendars, with reminders so fewer slots go empty.",
+      },
+      {
+        lead: "Follow-up that doesn't slip.",
+        rest: "Follow-ups after consults and proposals drafted from your notes, sent only after your team signs off.",
+      },
+    ],
+    agentHeading: FOR_AGENT_HEADING,
+    agentIntro:
+      "On Sep 29, 2026, OpenAI released a tool that lets AI agents click buttons and complete tasks in a web browser. Before one touches a booking, a message or a purchase, we'll walk your team through three questions, at no cost and with no obligation:",
+    questions: FOR_AGENT_QUESTIONS,
+    startHeading: FOR_START_HEADING,
+    startBody:
+      "With an AI Opportunity Map scoped to Sea Pointe ops, so the first Map stays focused. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
+    close:
+      "Who handles operations or technology decisions at Sea Pointe? A 30-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
+    ctaLabel: FOR_CTA_LABEL,
+    ctaHref: FOR_CTA_HREF,
+  },
 ];
 
 export const forPageSlugs = forPages.map((page) => page.slug);
