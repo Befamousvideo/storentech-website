@@ -18,6 +18,16 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: "/roia",
+        destination: "/ai-opportunity-map",
+        permanent: true,
+      },
+      {
+        source: "/roia/",
+        destination: "/ai-opportunity-map",
+        permanent: true,
+      },
       // Retired interview and /redo routes first so they beat pay-host catch-alls.
       {
         source: "/ceo",

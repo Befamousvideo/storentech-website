@@ -77,7 +77,7 @@ const PUBLIC_SURFACES = [
   "src/app/contact/page.tsx",
   "src/app/how-it-works/page.tsx",
   "src/app/work/page.tsx",
-  "src/app/roia/page.tsx",
+  "src/app/ai-opportunity-map/page.tsx",
   "src/app/sitemap.ts",
   "src/app/robots.ts",
   "public/llms.txt",

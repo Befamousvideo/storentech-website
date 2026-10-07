@@ -43,7 +43,8 @@ describe("llms.txt", () => {
     for (const href of hrefs) {
       expect(href.startsWith(`${ORIGIN}/`)).toBe(true);
     }
-    expect(text).toContain(`${ORIGIN}/roia`);
+    expect(text).toContain(`${ORIGIN}/ai-opportunity-map`);
+    expect(text).not.toContain(`${ORIGIN}/roia`);
     expect(text).not.toContain("https://storentech.com");
   });
 
@@ -63,8 +64,9 @@ describe("llms.txt", () => {
     expect(text.toLowerCase()).not.toContain(["gr", "ok"].join(""));
     expect(text).not.toMatch(/Blueprint/i);
 
-    const withoutRoiaPath = text.replaceAll(`${ORIGIN}/roia`, "");
-    expect(withoutRoiaPath).not.toMatch(/\bROIA\b/i);
-    expect(text).toContain(`${ORIGIN}/roia`);
+    const withoutMapPath = text.replaceAll(`${ORIGIN}/ai-opportunity-map`, "");
+    expect(withoutMapPath).not.toMatch(/\bROIA\b/i);
+    expect(text).toContain(`${ORIGIN}/ai-opportunity-map`);
+    expect(text).not.toContain(`${ORIGIN}/roia`);
   });
 });

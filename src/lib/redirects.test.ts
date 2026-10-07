@@ -14,6 +14,8 @@ const INTERVIEW_SOURCES = [
 ] as const;
 const REDO_SOURCES = ["/redo", "/redo/:path*"] as const;
 const PERMANENT_SOURCES = [...INTERVIEW_SOURCES, ...REDO_SOURCES] as const;
+const ROIA_SOURCES = ["/roia", "/roia/"] as const;
+const ROIA_DESTINATION = "/ai-opportunity-map";
 
 type RedirectRule = {
   source: string;
@@ -119,6 +121,24 @@ function collectFiles(root: string, acc: string[] = []): string[] {
 }
 
 describe("legacy interview, /redo, and /pay redirects", () => {
+  it("permanently moves /roia to /ai-opportunity-map in next.config and vercel.json", async () => {
+    const vercel = loadVercelRedirects();
+    const nextRedirects = (await nextConfig.redirects?.()) as RedirectRule[];
+
+    for (const [label, redirects] of [
+      ["vercel.json", vercel],
+      ["next.config.ts", nextRedirects],
+    ] as const) {
+      for (const source of ROIA_SOURCES) {
+        expect(findRule(redirects, source), `${label} ${source}`).toEqual({
+          source,
+          destination: ROIA_DESTINATION,
+          permanent: true,
+        });
+      }
+    }
+  });
+
   it("permanently sends /ceo /cfo /ops and /redo to the www homepage before /pay", async () => {
     const vercel = loadVercelRedirects();
     const nextRedirects = (await nextConfig.redirects?.()) as RedirectRule[];
@@ -150,6 +170,9 @@ describe("legacy interview, /redo, and /pay redirects", () => {
       );
 
       for (const rule of redirects) {
+        if (ROIA_SOURCES.includes(rule.source as (typeof ROIA_SOURCES)[number])) {
+          continue;
+        }
         expect(rule.destination, `${label} ${rule.source}`).toBe(HOMEPAGE);
         expect(rule.destination).not.toContain("buy.stripe.com");
       }

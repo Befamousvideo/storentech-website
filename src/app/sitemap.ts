@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
-    "/roia",
+    "/ai-opportunity-map",
     "/work",
     "/how-it-works",
     "/about",

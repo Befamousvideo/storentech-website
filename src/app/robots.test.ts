@@ -29,6 +29,8 @@ describe("robots disallow list", () => {
       expect(urls.some((url) => url.endsWith(path))).toBe(false);
     }
     expect(urls.some((url) => url.includes("/redo"))).toBe(false);
+    expect(urls.some((url) => url.endsWith("/roia"))).toBe(false);
+    expect(urls.some((url) => url.endsWith("/ai-opportunity-map"))).toBe(true);
   });
 
   it("does not disallow /for and does not list /for pages in the sitemap", () => {
