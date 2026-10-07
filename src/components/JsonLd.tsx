@@ -6,6 +6,7 @@ export function JsonLd() {
     "@type": ["LocalBusiness", "ProfessionalService"],
     name: site.name,
     url: site.url,
+    logo: `${site.url}${site.brand.mark}`,
     image: `${site.url}/opengraph-image`,
     description: site.description,
     address: {

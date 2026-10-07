@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   ...(verification ? { verification } : {}),
-  // Vince locked brand mark: ORBIT (not hybrid).
+  // Vince locked brand mark: Orbit v4 (clean).
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
