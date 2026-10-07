@@ -12,6 +12,7 @@
 - [Contact](https://www.storentechai.com/contact): Book your AI Opportunity Map through the contact form.
 
 ## Blog
+- [What Does It Cost to Run an AI Agent?](https://www.storentechai.com/blog/ai-agent-cost-controls): How Orange County owners set budgets, hard caps, and cost-per-workflow tracking before surprise AI bills.
 - [NVIDIA Just Put a Safety Boundary Around AI Agents](https://www.storentechai.com/blog/nvidia-ai-agent-safety-explained): What NVIDIA's new open agent safety platform means for small businesses, in plain English.
 - [Zapier + AI Agents, Explained for Business Owners](https://www.storentechai.com/blog/zapier-webhooks-ai-agents): What Zapier does, how an AI assistant can handle busywork, and why a person still approves anything that goes out.
 - [Mastermind Hybrid AI](https://www.storentechai.com/blog/mastermind-hybrid-ai): How StorenTech AI pairs local open-source models, for volume and privacy, with frontier AI models when a task needs stronger judgment.

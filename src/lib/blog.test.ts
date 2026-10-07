@@ -10,6 +10,7 @@ describe("live blog post dates", () => {
         datePublished: post.datePublished,
       })),
     ).toEqual([
+      { slug: "ai-agent-cost-controls", datePublished: "2026-10-05" },
       {
         slug: "nvidia-ai-agent-safety-explained",
         datePublished: "2026-09-29",
@@ -25,6 +26,7 @@ describe("live blog post dates", () => {
 
     const dates = blogPosts.map((post) => post.datePublished);
     expect(dates).toEqual([...dates].sort().reverse());
+    expect(getPost("ai-agent-cost-controls")).toBeDefined();
     expect(getPost("nvidia-ai-agent-safety-explained")).toBeDefined();
   });
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { AiAgentCostControlsArticle } from "@/components/blog/AiAgentCostControlsArticle";
 import { AiSecurityForAiEmployeesArticle } from "@/components/blog/AiSecurityForAiEmployeesArticle";
 import { AutomationRoiAnalysisArticle } from "@/components/blog/AutomationRoiAnalysisArticle";
 import { MastermindHybridAiArticle } from "@/components/blog/MastermindHybridAiArticle";
@@ -11,6 +12,8 @@ import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
+    case "ai-agent-cost-controls":
+      return <AiAgentCostControlsArticle post={post} />;
     case "nvidia-ai-agent-safety-explained":
       return <NvidiaAiAgentSafetyArticle post={post} />;
     case "zapier-webhooks-ai-agents":

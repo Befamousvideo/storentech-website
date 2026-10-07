@@ -53,7 +53,9 @@ describe("NVIDIA AI agent safety blog post", () => {
     expect(post?.datePublished).toBe("2026-09-29");
     expect(post?.faqs).toEqual(nvidiaAiAgentSafetyFaqs);
     expect(post?.faqs).toHaveLength(8);
-    expect(blogPosts[0]?.slug).toBe("nvidia-ai-agent-safety-explained");
+    expect(blogPosts.map((item) => item.slug)).toContain(
+      "nvidia-ai-agent-safety-explained",
+    );
   });
 
   it("appears on the blog index list and in the sitemap", () => {

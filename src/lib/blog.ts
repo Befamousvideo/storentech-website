@@ -177,6 +177,48 @@ export const zapierWebhooksAiAgentsFaqs = [
  * FAQ visible copy is the source of truth for FAQPage JSON-LD.
  * Mirror the eight on-page Q&As word for word.
  */
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the seven on-page Q&As word for word. No HowTo schema.
+ */
+export const aiAgentCostControlsFaqs = [
+  {
+    question: "How much does it cost to run an AI agent?",
+    answer:
+      "It depends on the job, how often it runs, which model you use, and how many tools it calls. There is no honest flat number that fits every Orange County business. What you can do is set a budget, hard caps, and cost-per-workflow tracking so the bill doesn't surprise you. That's part of what a paid AI Opportunity Map is for.",
+  },
+  {
+    question: "How do I control AI costs for my business?",
+    answer:
+      "Treat AI like a metered utility: give each workflow a budget, put a hard cap under it, alert a person before you hit the wall, and track cost per job—not only a monthly total. Prefer cheaper models for busywork and stronger models for judgment calls. Keep a human approving anything that goes out.",
+  },
+  {
+    question: "Will an AI agent spend money without me knowing?",
+    answer:
+      "It can, if nobody sets limits. In a StorenTech build, usage budgets, hard caps, and alerts are part of the design. The agent still doesn't send emails or move money on its own—a person approves those steps—but usage can climb if the meter is left open. Caps close that door.",
+  },
+  {
+    question: "Do I need a fancy dashboard on day one?",
+    answer:
+      "No. You need a clear budget, a hard stop, and a simple way to see what each workflow burned. Fancy charts can come later. Predictable spend comes first.",
+  },
+  {
+    question: "What's the difference between model cost and the whole AI bill?",
+    answer:
+      "Model usage (tokens) is often the biggest piece, but tools, hosting, and the apps you connect also matter. Cost-per-workflow tracking looks at the whole path for that job, not one line on a vendor invoice.",
+  },
+  {
+    question: "Who in Orange County can set up AI agents with cost controls?",
+    answer:
+      "StorenTech AI, a full-service AI agency in Orange County, CA, builds AI employees with budgets, hard caps, alerts, and human approval on anything that goes out. Every engagement starts with a paid AI Opportunity Map so you know which job to automate first—and how to keep the bill predictable.",
+  },
+  {
+    question: "What should I automate first if I'm worried about cost?",
+    answer:
+      "Start with one high-friction job—often lead reply or follow-up—and put spend controls on it from the start. Don't turn on five agents at once. The paid AI Opportunity Map ranks the first job using your real workflows, not a generic checklist.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const nvidiaAiAgentSafetyFaqs = [
   {
     question: "Who can help an Orange County business set up AI agents safely?",
@@ -221,6 +263,17 @@ export const nvidiaAiAgentSafetyFaqs = [
 ] as const satisfies readonly BlogFaq[];
 
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "ai-agent-cost-controls",
+    title:
+      "What Does It Cost to Run an AI Agent? How to Keep the Bill From Surprising You",
+    metaTitle: "AI Agent Cost Controls for Business | StorenTech AI",
+    description:
+      "Agents can work all night—and spend all night. How Orange County owners set budgets, hard caps, and cost-per-workflow tracking before surprise bills.",
+    datePublished: "2026-10-05",
+    faqs: aiAgentCostControlsFaqs,
+    indexCta: "Read the post",
+  },
   {
     slug: "nvidia-ai-agent-safety-explained",
     title:

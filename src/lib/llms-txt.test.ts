@@ -16,7 +16,13 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [What Does It Cost to Run an AI Agent?](https://www.storentechai.com/blog/ai-agent-cost-controls): How Orange County owners set budgets, hard caps, and cost-per-workflow tracking before surprise AI bills.",
+    );
+    expect(text).toContain(
       "- [NVIDIA Just Put a Safety Boundary Around AI Agents](https://www.storentechai.com/blog/nvidia-ai-agent-safety-explained): What NVIDIA's new open agent safety platform means for small businesses, in plain English.",
+    );
+    expect(text.indexOf("ai-agent-cost-controls")).toBeLessThan(
+      text.indexOf("nvidia-ai-agent-safety-explained"),
     );
     expect(text.indexOf("nvidia-ai-agent-safety-explained")).toBeLessThan(
       text.indexOf("zapier-webhooks-ai-agents"),
