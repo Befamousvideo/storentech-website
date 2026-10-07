@@ -32,7 +32,7 @@ Environment:
 ## Pages
 
 - `/` — leak-map hero; AI Opportunity Map (Automation ROI Analysis); Sarah; humans in the loop. Start your map → `site.intakeUrl` (Form). No “See the work.”
-- `/roia` — AI Opportunity Map service page. Path stays `/roia`.
+- `/ai-opportunity-map` — AI Opportunity Map service page. `/roia` permanently redirects here.
 - `/work` — services catalog; map first, then the Build Plan
 - `/how-it-works` — paid AI Opportunity Map, then the Build Plan
 - `/about` — StorenTech AI; humans in the loop

@@ -40,7 +40,7 @@ export default function HomePage() {
             <div>
               <p className="kicker">Starting at {site.prices.analysisTypical}</p>
               <h2>
-                <Link href="/roia">{site.offer.primaryTitle}</Link>
+                <Link href="/ai-opportunity-map">{site.offer.primaryTitle}</Link>
               </h2>
             </div>
             <p className="lede">
