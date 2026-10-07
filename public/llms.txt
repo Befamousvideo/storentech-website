@@ -4,7 +4,7 @@
 
 ## Pages
 - [Home](https://www.storentechai.com/): We find where time and revenue leak in your business, then fix what pays. People stay in the loop.
-- [AI Opportunity Map](https://www.storentechai.com/roia): A paid analysis of where time, revenue, and risk leak, and what's worth fixing first.
+- [AI Opportunity Map](https://www.storentechai.com/ai-opportunity-map): A paid analysis of where time, revenue, and risk leak, and what's worth fixing first.
 - [Work](https://www.storentechai.com/work): Map the leaks first, then a Build Plan, with people still in the loop and out front with customers.
 - [How it works](https://www.storentechai.com/how-it-works): Start with the paid AI Opportunity Map, then the Build Plan, then the build.
 - [Blog](https://www.storentechai.com/blog): Plain-English guides for business owners who are new to AI agents and automation.
