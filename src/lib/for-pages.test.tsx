@@ -154,10 +154,13 @@ describe("company preview /for pages", () => {
       const cta = screen.getByRole("link", {
         name: page.ctaLabel,
       });
-      expect(FOR_CTA_LABEL).toBe("Book a 30-minute conversation");
+      expect(FOR_CTA_LABEL).toBe("Book a 15-minute conversation");
       expect(page.ctaLabel).toBe(FOR_CTA_LABEL);
-      expect(page.close).toContain("A 30-minute conversation");
+      expect(page.close).toContain("A 15-minute conversation");
       expect(`${page.ctaLabel} ${page.close}`).not.toMatch(/20-minute/);
+      expect(`${page.ctaLabel} ${page.close}`).not.toMatch(/30-minute/);
+      expect(FOR_CTA_HREF).toBe("https://calendar.app.google/HMPtGz91Dgv6c6R46");
+      expect(FOR_CTA_HREF).not.toContain("AcZssZ3_M6l66");
       expect(page.ctaHref).toBe(FOR_CTA_HREF);
       expect(cta).toHaveAttribute("href", FOR_CTA_HREF);
       expect(cta).toHaveAttribute("target", "_blank");

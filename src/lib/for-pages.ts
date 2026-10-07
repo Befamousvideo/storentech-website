@@ -8,9 +8,9 @@ export type ForAgentQuestion = {
   text: string;
 };
 
-export const FOR_CTA_LABEL = "Book a 30-minute conversation";
+export const FOR_CTA_LABEL = "Book a 15-minute conversation";
 export const FOR_CTA_HREF =
-  "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3_M6l66KiiwO3HU9p0jzoWXWaJ4hTlaGvhTvVO2pXQcfq1vFVisX-ebfTTEv4_NOYhA3plJTnB" as const;
+  "https://calendar.app.google/HMPtGz91Dgv6c6R46" as const;
 
 export type ForPage = {
   slug: string;
@@ -93,7 +93,7 @@ export const forPages: ForPage[] = [
     startHeading: FOR_START_HEADING,
     startBody: howWeStartShared,
     close:
-      "Who handles operations or technology decisions at Kei Concepts? A 30-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
+      "Who handles operations or technology decisions at Kei Concepts? A 15-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
     ctaLabel: FOR_CTA_LABEL,
     ctaHref: FOR_CTA_HREF,
   },
@@ -128,7 +128,7 @@ export const forPages: ForPage[] = [
     startHeading: FOR_START_HEADING,
     startBody: howWeStartShared,
     close:
-      "Who handles operations or technology decisions at RJB? A 30-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
+      "Who handles operations or technology decisions at RJB? A 15-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
     ctaLabel: FOR_CTA_LABEL,
     ctaHref: FOR_CTA_HREF,
   },
@@ -163,7 +163,7 @@ export const forPages: ForPage[] = [
     startHeading: FOR_START_HEADING,
     startBody: howWeStartShared,
     close:
-      "Who handles operations or technology decisions at Bluewater? A 30-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
+      "Who handles operations or technology decisions at Bluewater? A 15-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
     ctaLabel: FOR_CTA_LABEL,
     ctaHref: FOR_CTA_HREF,
   },
@@ -197,7 +197,7 @@ export const forPages: ForPage[] = [
     startHeading: FOR_START_HEADING,
     startBody: howWeStartShared,
     close:
-      "Who handles operations or technology decisions at DKN Hotels? A 30-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
+      "Who handles operations or technology decisions at DKN Hotels? A 15-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
     ctaLabel: FOR_CTA_LABEL,
     ctaHref: FOR_CTA_HREF,
   },
@@ -233,7 +233,7 @@ export const forPages: ForPage[] = [
     startBody:
       "With an AI Opportunity Map scoped to the corporate office, so the first Map stays focused. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. The Map shows where custom AI would save the corporate team the most time or money, ranked so you know where to start. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
     close:
-      "Who handles operations or technology decisions at King's Seafood? A 30-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
+      "Who handles operations or technology decisions at King's Seafood? A 15-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
     ctaLabel: FOR_CTA_LABEL,
     ctaHref: FOR_CTA_HREF,
   },
@@ -269,7 +269,7 @@ export const forPages: ForPage[] = [
     startBody:
       "With an AI Opportunity Map scoped to VeriTech ops (scheduling, dispatch, quoting, follow-up), so the first Map stays focused. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
     close:
-      "Who handles operations or technology decisions at VeriTech? A 30-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
+      "Who handles operations or technology decisions at VeriTech? A 15-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
     ctaLabel: FOR_CTA_LABEL,
     ctaHref: FOR_CTA_HREF,
   },
@@ -305,7 +305,7 @@ export const forPages: ForPage[] = [
     startBody:
       "With an AI Opportunity Map scoped to Sea Pointe ops, so the first Map stays focused. We talk with your leadership and key staff, map where time or revenue leaks, and rank the fixes by payoff and effort. You come away knowing what to fix first, and why, with no surprise costs. Human touch stays.",
     close:
-      "Who handles operations or technology decisions at Sea Pointe? A 30-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
+      "Who handles operations or technology decisions at Sea Pointe? A 15-minute conversation, no pitch deck. Vincent Jackson, StorenTech AI.",
     ctaLabel: FOR_CTA_LABEL,
     ctaHref: FOR_CTA_HREF,
   },

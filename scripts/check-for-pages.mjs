@@ -17,9 +17,8 @@ const slugs = [
   "sea-pointe",
 ];
 
-const calendarCtaHref =
-  "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3_M6l66KiiwO3HU9p0jzoWXWaJ4hTlaGvhTvVO2pXQcfq1vFVisX-ebfTTEv4_NOYhA3plJTnB";
-const ctaLabel = "Book a 30-minute conversation";
+const calendarCtaHref = "https://calendar.app.google/HMPtGz91Dgv6c6R46";
+const ctaLabel = "Book a 15-minute conversation";
 
 const forbidden = ["714", "tel:", "mailto:", "@storentech", "client", "ROIA"];
 
@@ -89,11 +88,19 @@ for (const slug of slugs) {
       `${path} still includes 20-minute wording`,
     );
     assert(
-      html.includes("30-minute"),
-      `${path} missing 30-minute wording`,
+      !html.includes("30-minute"),
+      `${path} still includes 30-minute wording`,
+    );
+    assert(
+      !html.includes("AcZssZ3_M6l66"),
+      `${path} still links the old 30-minute calendar schedule`,
+    );
+    assert(
+      html.includes("15-minute"),
+      `${path} missing 15-minute wording`,
     );
     const ctaMatch = html.match(
-      /<a\b[^>]*>\s*Book a 30-minute conversation\s*<\/a>/,
+      /<a\b[^>]*>\s*Book a 15-minute conversation\s*<\/a>/,
     );
     assert(ctaMatch, `${path} missing ${JSON.stringify(ctaLabel)} link`);
     assert(
