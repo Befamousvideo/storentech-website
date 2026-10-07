@@ -11,6 +11,7 @@ export default function HomePage() {
           <div>
             <p className="kicker">{site.name}</p>
             <h1 className="service-title">{site.offer.primaryTitle}</h1>
+            <p className="lede">Whether you call it AI or Super Intelligence (SI), the first step is the same: find where it actually pays in your business.</p>
             <hr className="rule" />
             <p className="lede">{site.offer.primary}</p>
             <div className="btn-row">
