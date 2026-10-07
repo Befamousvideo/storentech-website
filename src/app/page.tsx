@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { IntakeLink } from "@/components/IntakeLink";
 import { SarahContact } from "@/components/SarahContact";
+import { StructuredData } from "@/components/StructuredData";
 import { site, verticals } from "@/lib/site";
+import { siteFaqPageLd, siteFaqs } from "@/lib/site-faqs";
 
 export default function HomePage() {
   return (
     <>
+      <StructuredData data={siteFaqPageLd()} />
       <section className="hero">
         <div className="wrap hero-grid">
           <div>
@@ -84,6 +87,21 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" id="faq" aria-labelledby="faq-heading">
+        <div className="wrap">
+          <p className="kicker">FAQ</p>
+          <h2 id="faq-heading">Common questions.</h2>
+          <div className="site-faq">
+            {siteFaqs.map((item) => (
+              <div className="faq-item" key={item.question}>
+                <h3>{item.question}</h3>
+                <p>{item.answer}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
