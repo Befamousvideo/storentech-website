@@ -421,6 +421,11 @@ select {
   margin-bottom: 1.85rem;
 }
 
+.hero h1 + .lede {
+  margin-top: 0.85rem;
+  margin-bottom: 0;
+}
+
 .hero-contact {
   margin-top: 1.35rem;
 }
