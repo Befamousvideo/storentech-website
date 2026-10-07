@@ -1062,6 +1062,25 @@ select {
   margin-top: 3.2rem;
 }
 
+.site-faq {
+  max-width: 46rem;
+}
+
+.site-faq .faq-item h3 {
+  font-size: 1.35rem;
+  margin: 0 0 0.55rem;
+}
+
+.site-faq .faq-item p {
+  color: var(--muted);
+  max-width: 42rem;
+}
+
+#faq h2 {
+  font-size: clamp(2rem, 4vw, 3.15rem);
+  margin: 0.7rem 0 2.2rem;
+}
+
 .faq-item {
   padding: 1.35rem 0;
   border-top: 1px solid var(--line-strong);
