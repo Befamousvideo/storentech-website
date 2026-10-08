@@ -4,6 +4,9 @@ const homepage = "https://www.storentechai.com/";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // So /ai-opportunity-map/, /map/, and /roia/ can 301 to /opportunity
+  // in one hop instead of Next.js 308ing away the slash first.
+  skipTrailingSlashRedirect: true,
   async headers() {
     return [
       {
@@ -19,14 +22,39 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/opportunity/",
+        destination: "/opportunity",
+        statusCode: 301,
+      },
+      {
+        source: "/ai-opportunity-map",
+        destination: "/opportunity",
+        statusCode: 301,
+      },
+      {
+        source: "/ai-opportunity-map/",
+        destination: "/opportunity",
+        statusCode: 301,
+      },
+      {
+        source: "/map",
+        destination: "/opportunity",
+        statusCode: 301,
+      },
+      {
+        source: "/map/",
+        destination: "/opportunity",
+        statusCode: 301,
+      },
+      {
         source: "/roia",
-        destination: "/ai-opportunity-map",
-        permanent: true,
+        destination: "/opportunity",
+        statusCode: 301,
       },
       {
         source: "/roia/",
-        destination: "/ai-opportunity-map",
-        permanent: true,
+        destination: "/opportunity",
+        statusCode: 301,
       },
       // Retired interview and /redo routes first so they beat pay-host catch-alls.
       {

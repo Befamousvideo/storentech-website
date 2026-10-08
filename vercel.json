@@ -1,14 +1,39 @@
 {
   "redirects": [
     {
+      "source": "/opportunity/",
+      "destination": "/opportunity",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-opportunity-map",
+      "destination": "/opportunity",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-opportunity-map/",
+      "destination": "/opportunity",
+      "statusCode": 301
+    },
+    {
+      "source": "/map",
+      "destination": "/opportunity",
+      "statusCode": 301
+    },
+    {
+      "source": "/map/",
+      "destination": "/opportunity",
+      "statusCode": 301
+    },
+    {
       "source": "/roia",
-      "destination": "/ai-opportunity-map",
-      "permanent": true
+      "destination": "/opportunity",
+      "statusCode": 301
     },
     {
       "source": "/roia/",
-      "destination": "/ai-opportunity-map",
-      "permanent": true
+      "destination": "/opportunity",
+      "statusCode": 301
     },
     {
       "source": "/ceo",

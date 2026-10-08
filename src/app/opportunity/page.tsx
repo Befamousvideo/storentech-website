@@ -7,11 +7,11 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "AI Opportunity Map",
   description: site.offer.primary,
-  alternates: { canonical: "/ai-opportunity-map" },
+  alternates: { canonical: "/opportunity" },
   openGraph: {
     title: "AI Opportunity Map · StorenTech AI",
     description: site.offer.primary,
-    url: "/ai-opportunity-map",
+    url: "/opportunity",
   },
   twitter: {
     card: "summary_large_image",
@@ -26,7 +26,7 @@ const serviceLd = {
   name: site.offer.primaryTitle,
   alternateName: site.offer.explanatoryName,
   description: `${site.offer.primary} ${site.offer.later}`,
-  url: `${site.url}/ai-opportunity-map`,
+  url: `${site.url}/opportunity`,
   provider: {
     "@type": "Organization",
     name: site.name,
@@ -54,7 +54,9 @@ export default function AiOpportunityMapPage() {
           <p className="kicker">Starting at {site.prices.analysisTypical}</p>
           <h1>{site.offer.primaryTitle}</h1>
           <hr className="rule" />
-          <p className="lede">{site.offer.primary}</p>
+          <p className="lede">
+            An AI Opportunity Map shows where time or revenue leaks, and which AI moves pay back first. Starting at $1,000.
+          </p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
             <IntakeLink className="btn btn-solid">{site.offer.cta}</IntakeLink>
             <SarahPhoneImage className="sarah-phone" />

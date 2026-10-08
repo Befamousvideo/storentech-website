@@ -86,7 +86,7 @@ export const site = {
 } as const;
 
 export const nav = [
-  { href: "/ai-opportunity-map", label: "Opportunity Map" },
+  { href: "/opportunity", label: "Opportunity Map" },
   { href: "/work", label: "Work" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/blog", label: "Blog" },

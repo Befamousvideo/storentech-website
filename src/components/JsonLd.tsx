@@ -34,7 +34,7 @@ export function JsonLd() {
             name: site.offer.primaryTitle,
             alternateName: site.offer.explanatoryName,
             description: `${site.offer.primary} ${site.offer.later}`,
-            url: `${site.url}/ai-opportunity-map`,
+            url: `${site.url}/opportunity`,
           },
         },
       ],
