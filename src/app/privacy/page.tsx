@@ -44,8 +44,8 @@ export default function PrivacyPage() {
           <h2>Who we are</h2>
           <p>
             StorenTech AI is an AI automation consulting firm based in Orange
-            County, California. Our lead offer is the AI Opportunity Map, also
-            called an Automation ROI Analysis. After the map, some clients
+            County, California. Our lead offer is the AI Opportunity Map.
+            After the map, some clients
             choose an optional Build Plan. If you ask us to follow up, we may
             use an AI phone assistant and SMS or phone calls through
             communications providers.

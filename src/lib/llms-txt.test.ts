@@ -29,10 +29,11 @@ describe("llms.txt", () => {
     );
   });
 
-  it('contains "Automation ROI Analysis" exactly once', () => {
-    expect(text.match(/Automation ROI Analysis/g)).toEqual([
-      "Automation ROI Analysis",
-    ]);
+  it("does not use the retired Automation ROI Analysis name", () => {
+    expect(text).not.toContain("Automation ROI Analysis");
+    expect(text).toContain(
+      "Every client starts with a paid AI Opportunity Map that shows",
+    );
   });
 
   it("uses only absolute www.storentechai.com links", () => {

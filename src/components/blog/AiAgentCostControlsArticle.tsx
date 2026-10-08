@@ -148,8 +148,8 @@ export function AiAgentCostControlsArticle({ post }: { post: BlogPost }) {
           When you know cost per workflow, you can decide whether the job still
           makes sense, whether a cheaper model should do the prep work, or
           whether a human should keep doing it. That measured usage is also what
-          we quote against in an AI Opportunity Map (our Automation ROI
-          Analysis): we look at real paths through your business, not guesswork.
+          we quote against in an AI Opportunity Map (our AI Opportunity
+          Map): we look at real paths through your business, not guesswork.
         </p>
 
         <h2>What &quot;measured usage&quot; looks like in practice</h2>
@@ -197,7 +197,7 @@ export function AiAgentCostControlsArticle({ post }: { post: BlogPost }) {
         <ol>
           <li>
             <strong>
-              We start with an AI Opportunity Map (our Automation ROI Analysis).
+              We start with an AI Opportunity Map (our AI Opportunity Map).
             </strong>{" "}
             We look at how work moves today, which apps you use, and where
             automation would actually pay for itself—including rough usage risk.

@@ -107,11 +107,11 @@ describe("Zapier + AI Agents blog post", () => {
       ["$1,000", "$2,000–$3,000"].sort(),
     );
     expect(html).toContain(
-      "We start with an AI Opportunity Map (our Automation ROI Analysis).",
+      "We start with an AI Opportunity Map (our AI Opportunity Map).",
     );
     expect(html).toContain("Build Plan.");
     expect(
       (html.match(/Automation ROI Analysis/g) ?? []).length,
-    ).toBe(1);
+    ).toBe(0);
   });
 });

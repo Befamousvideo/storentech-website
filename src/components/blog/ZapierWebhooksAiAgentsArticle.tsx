@@ -193,7 +193,7 @@ export function ZapierWebhooksAiAgentsArticle({ post }: { post: BlogPost }) {
         <p>You don&apos;t build any of this. We do. Here&apos;s how it goes:</p>
         <ol>
           <li>
-            <strong>We start with an AI Opportunity Map (our Automation ROI Analysis).</strong>{" "}
+            <strong>We start with an AI Opportunity Map (our AI Opportunity Map).</strong>{" "}
             We look at how work really moves through your business today, which
             apps you use, and where things fall through the cracks.
           </li>

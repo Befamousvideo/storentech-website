@@ -23,10 +23,10 @@ export const roiAnalysisFaqs = [
   {
     question: "What is an AI Opportunity Map?",
     answer:
-      "At StorenTech AI (a full-service AI agency), every client starts with a paid AI Opportunity Map — an Automation ROI Analysis: we map your workflows with your real numbers, rank which AI employee to hire first, and give a go/no-go. Typical fee $1,000 ($2,000–$3,000 when complex).",
+      "At StorenTech AI (a full-service AI agency), every client starts with a paid AI Opportunity Map — an AI Opportunity Map: we map your workflows with your real numbers, rank which AI employee to hire first, and give a go/no-go. Typical fee $1,000 ($2,000–$3,000 when complex).",
   },
   {
-    question: "How much does StorenTech’s ROI analysis cost?",
+    question: "How much does StorenTech’s AI Opportunity Map cost?",
     answer:
       "Typically $1,000. Complex scopes run $2,000–$3,000 (multi-location, messy stack, or broader than front-of-house).",
   },
