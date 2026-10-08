@@ -14,13 +14,21 @@ const INTERVIEW_SOURCES = [
 ] as const;
 const REDO_SOURCES = ["/redo", "/redo/:path*"] as const;
 const PERMANENT_SOURCES = [...INTERVIEW_SOURCES, ...REDO_SOURCES] as const;
-const ROIA_SOURCES = ["/roia", "/roia/"] as const;
-const ROIA_DESTINATION = "/ai-opportunity-map";
+const OPPORTUNITY_SOURCES = [
+  "/ai-opportunity-map",
+  "/ai-opportunity-map/",
+  "/map",
+  "/map/",
+  "/roia",
+  "/roia/",
+] as const;
+const OPPORTUNITY_DESTINATION = "/opportunity";
 
 type RedirectRule = {
   source: string;
   destination: string;
-  permanent: boolean;
+  permanent?: boolean;
+  statusCode?: number;
   has?: { type: string; value: string }[];
 };
 
@@ -121,7 +129,7 @@ function collectFiles(root: string, acc: string[] = []): string[] {
 }
 
 describe("legacy interview, /redo, and /pay redirects", () => {
-  it("permanently moves /roia to /ai-opportunity-map in next.config and vercel.json", async () => {
+  it("permanently moves legacy map URLs to /opportunity in next.config and vercel.json", async () => {
     const vercel = loadVercelRedirects();
     const nextRedirects = (await nextConfig.redirects?.()) as RedirectRule[];
 
@@ -129,13 +137,21 @@ describe("legacy interview, /redo, and /pay redirects", () => {
       ["vercel.json", vercel],
       ["next.config.ts", nextRedirects],
     ] as const) {
-      for (const source of ROIA_SOURCES) {
+      for (const source of OPPORTUNITY_SOURCES) {
         expect(findRule(redirects, source), `${label} ${source}`).toEqual({
           source,
-          destination: ROIA_DESTINATION,
-          permanent: true,
+          destination: OPPORTUNITY_DESTINATION,
+          statusCode: 301,
         });
       }
+      expect(
+        redirects.some((rule) => rule.destination === "/ai-opportunity-map"),
+        `${label} has no hop through /ai-opportunity-map`,
+      ).toBe(false);
+      expect(
+        redirects.some((rule) => rule.destination === "/map"),
+        `${label} has no hop through /map`,
+      ).toBe(false);
     }
   });
 
@@ -170,7 +186,11 @@ describe("legacy interview, /redo, and /pay redirects", () => {
       );
 
       for (const rule of redirects) {
-        if (ROIA_SOURCES.includes(rule.source as (typeof ROIA_SOURCES)[number])) {
+        if (
+          OPPORTUNITY_SOURCES.includes(
+            rule.source as (typeof OPPORTUNITY_SOURCES)[number],
+          )
+        ) {
           continue;
         }
         expect(rule.destination, `${label} ${rule.source}`).toBe(HOMEPAGE);
@@ -199,5 +219,16 @@ describe("legacy interview, /redo, and /pay redirects", () => {
       false,
     );
     expect(existsSync(join(process.cwd(), "src/app/redo/page.tsx"))).toBe(false);
+  });
+
+  it("serves the AI Opportunity Map at /opportunity, not the legacy paths", () => {
+    expect(existsSync(join(process.cwd(), "src/app/opportunity/page.tsx"))).toBe(
+      true,
+    );
+    expect(
+      existsSync(join(process.cwd(), "src/app/ai-opportunity-map/page.tsx")),
+    ).toBe(false);
+    expect(existsSync(join(process.cwd(), "src/app/map/page.tsx"))).toBe(false);
+    expect(existsSync(join(process.cwd(), "src/app/roia/page.tsx"))).toBe(false);
   });
 });

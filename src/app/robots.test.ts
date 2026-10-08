@@ -30,7 +30,9 @@ describe("robots disallow list", () => {
     }
     expect(urls.some((url) => url.includes("/redo"))).toBe(false);
     expect(urls.some((url) => url.endsWith("/roia"))).toBe(false);
-    expect(urls.some((url) => url.endsWith("/ai-opportunity-map"))).toBe(true);
+    expect(urls.some((url) => url.endsWith("/ai-opportunity-map"))).toBe(false);
+    expect(urls.some((url) => url.endsWith("/map"))).toBe(false);
+    expect(urls).toContain(`${CANONICAL_ORIGIN}/opportunity`);
   });
 
   it("does not disallow /for and does not list /for pages in the sitemap", () => {
