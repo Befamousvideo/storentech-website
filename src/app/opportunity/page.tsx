@@ -54,7 +54,9 @@ export default function AiOpportunityMapPage() {
           <p className="kicker">Starting at {site.prices.analysisTypical}</p>
           <h1>{site.offer.primaryTitle}</h1>
           <hr className="rule" />
-          <p className="lede">{site.offer.primary}</p>
+          <p className="lede">
+            An AI Opportunity Map shows where time or revenue leaks, and which AI moves pay back first. Starting at $1,000.
+          </p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
             <IntakeLink className="btn btn-solid">{site.offer.cta}</IntakeLink>
             <SarahPhoneImage className="sarah-phone" />
