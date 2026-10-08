@@ -215,10 +215,10 @@ describe("AI agent cost controls blog post", () => {
       ["$1,000", "$2,000–$3,000"].sort(),
     );
     expect(text).toContain(
-      "We start with an AI Opportunity Map (our Automation ROI Analysis).",
+      "We start with an AI Opportunity Map (our AI Opportunity Map).",
     );
     expect(text).toContain("Build Plan.");
-    expect((text.match(/Automation ROI Analysis/g) ?? []).length).toBe(2);
+    expect((text.match(/Automation ROI Analysis/g) ?? []).length).toBe(0);
 
     for (const item of aiAgentCostControlsFaqs) {
       expect(text).toContain(item.question);

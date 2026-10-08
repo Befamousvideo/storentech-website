@@ -222,7 +222,7 @@ describe("NVIDIA AI agent safety blog post", () => {
     );
     expect(text).toContain("$1,000");
     expect(text).toContain("$2,000 to $3,000");
-    expect((text.match(/Automation ROI Analysis/g) ?? []).length).toBe(1);
+    expect((text.match(/Automation ROI Analysis/g) ?? []).length).toBe(0);
     expect(text).toContain(
       "But we do build these kinds of agent safety controls for our clients. We set clear limits on what each assistant can reach, keep those limits outside the AI itself, log what it does, and have a person approve anything risky.",
     );

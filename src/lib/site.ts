@@ -32,12 +32,12 @@ export const site = {
   brandLine:
     "StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays. Ask Sarah anything.",
   description:
-    "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays. AI Opportunity Map. An Automation ROI Analysis: where time and revenue leak, and what’s worth fixing first. Starting at $1,000. Ask Sarah anything.",
+    "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays. AI Opportunity Map. An AI Opportunity Map shows where time or revenue leaks, and which AI moves pay back first. Starting at $1,000. Ask Sarah anything.",
   offer: {
     primaryTitle: "AI Opportunity Map",
     explanatoryName: "Automation ROI Analysis",
     primary:
-      "An Automation ROI Analysis: where time and revenue leak, and what’s worth fixing first. Starting at $1,000.",
+      "An AI Opportunity Map shows where time or revenue leaks, and which AI moves pay back first. Starting at $1,000.",
     later:
       "After the map, the Build Plan is how we build what pays. Builds may include voice agents, website chat, operations automation, web apps, mobile apps, and custom-built solutions.",
     cta: "Start your AI Opportunity Map",

@@ -65,7 +65,7 @@ export default function TermsPage() {
           <h2>Our services</h2>
           <p>
             We provide AI automation consulting. The lead offer on this site
-            is the AI Opportunity Map, also called an Automation ROI Analysis:
+            is the AI Opportunity Map:
             a paid written map of where time or revenue leaks and what is
             worth fixing first. After the map, some clients choose an optional
             Build Plan.

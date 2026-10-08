@@ -291,8 +291,8 @@ export function NvidiaAiAgentSafetyArticle({ post }: { post: BlogPost }) {
         <h2>Start With an AI Opportunity Map</h2>
         <p>
           Not sure where agents fit in your business, or which vendors to trust?
-          Start with an <strong>AI Opportunity Map</strong> (our Automation ROI
-          Analysis).
+          Start with an <strong>AI Opportunity Map</strong> (our AI Opportunity
+          Map).
         </p>
         <p>
           The AI Opportunity Map shows where AI can help your business. It

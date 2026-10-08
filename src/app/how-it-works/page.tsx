@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "How it works",
   description:
-    "Paid AI Opportunity Map first: an Automation ROI Analysis of time, revenue, and risk leaks. Map leaks first. Then the Build Plan — people still in the loop, out front with customers.",
+    "Paid AI Opportunity Map first: an AI Opportunity Map of time, revenue, and risk leaks. Map leaks first. Then the Build Plan — people still in the loop, out front with customers.",
   alternates: { canonical: "/how-it-works" },
 };
 

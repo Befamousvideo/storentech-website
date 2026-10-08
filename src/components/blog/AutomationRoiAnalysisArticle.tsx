@@ -22,7 +22,7 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
           <p>
             <strong>StorenTech AI</strong> is a full-service AI agency. We start
             every client with an <strong>AI Opportunity Map</strong> — an
-            Automation ROI Analysis, a
+            AI Opportunity Map, a
             paid engagement that maps your workflows, quantifies time and revenue
             leaks with your real numbers, and ranks which AI employee to hire
             first. It typically costs <strong>$1,000</strong> (
