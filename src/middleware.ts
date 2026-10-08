@@ -40,6 +40,28 @@ function isRedoPath(pathname: string) {
   return pathname === "/redo" || pathname.startsWith("/redo/");
 }
 
+const OPPORTUNITY_ALIASES = new Set([
+  "/opportunity/",
+  "/ai-opportunity-map",
+  "/ai-opportunity-map/",
+  "/map",
+  "/map/",
+  "/roia",
+  "/roia/",
+]);
+
+function isOpportunityAlias(pathname: string) {
+  return OPPORTUNITY_ALIASES.has(pathname);
+}
+
+function opportunityRedirect(request: NextRequest) {
+  const dest = isPayHost(request)
+    ? new URL("https://www.storentechai.com/opportunity")
+    : new URL("/opportunity", request.nextUrl);
+  dest.search = request.nextUrl.search;
+  return NextResponse.redirect(dest, 301);
+}
+
 function isAssetPath(pathname: string) {
   return (
     pathname.startsWith("/_next/") ||
@@ -52,6 +74,12 @@ function isAssetPath(pathname: string) {
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+
+  // Beat Next.js trailing-slash 308s and the pay-host catch-all so
+  // each alias is a single 301 to /opportunity, query string kept.
+  if (isOpportunityAlias(pathname)) {
+    return opportunityRedirect(request);
+  }
 
   // Must run before the pay-host homepage catch-all below.
   if (isInterviewPath(pathname) || isRedoPath(pathname)) {

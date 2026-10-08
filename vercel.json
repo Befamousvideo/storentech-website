@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/opportunity/",
+      "destination": "/opportunity",
+      "statusCode": 301
+    },
+    {
       "source": "/ai-opportunity-map",
       "destination": "/opportunity",
       "statusCode": 301

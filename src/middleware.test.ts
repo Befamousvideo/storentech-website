@@ -22,6 +22,43 @@ function expectHomepage(req: NextRequest, status: number) {
 }
 
 describe("middleware redirects", () => {
+  it("sends legacy map URLs to /opportunity as a single 301", () => {
+    const wwwCases = [
+      ["/opportunity/", "/opportunity"],
+      ["/ai-opportunity-map", "/opportunity"],
+      ["/ai-opportunity-map/", "/opportunity"],
+      ["/ai-opportunity-map?utm=1", "/opportunity?utm=1"],
+      ["/ai-opportunity-map/?utm=1", "/opportunity?utm=1"],
+      ["/map", "/opportunity"],
+      ["/map/", "/opportunity"],
+      ["/map?from=old", "/opportunity?from=old"],
+      ["/map/?from=old", "/opportunity?from=old"],
+      ["/roia", "/opportunity"],
+      ["/roia/", "/opportunity"],
+      ["/roia?q=keep", "/opportunity?q=keep"],
+      ["/roia/?q=keep", "/opportunity?q=keep"],
+    ] as const;
+
+    for (const [path, dest] of wwwCases) {
+      const req = request(`https://www.storentechai.com${path}`);
+      const res = middleware(req);
+      expect(res.status, req.url).toBe(301);
+      expect(res.headers.get("location"), req.url).toBe(
+        `https://www.storentechai.com${dest}`,
+      );
+    }
+
+    const payReq = request(
+      "https://pay.storentechai.com/roia?q=keep",
+      "pay.storentechai.com",
+    );
+    const payRes = middleware(payReq);
+    expect(payRes.status).toBe(301);
+    expect(payRes.headers.get("location")).toBe(
+      "https://www.storentechai.com/opportunity?q=keep",
+    );
+  });
+
   it("sends /ceo /cfo /ops on every host to the www homepage, including pay hosts", () => {
     const cases = [
       request("https://www.storentechai.com/ceo"),

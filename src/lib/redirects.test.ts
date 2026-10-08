@@ -15,6 +15,7 @@ const INTERVIEW_SOURCES = [
 const REDO_SOURCES = ["/redo", "/redo/:path*"] as const;
 const PERMANENT_SOURCES = [...INTERVIEW_SOURCES, ...REDO_SOURCES] as const;
 const OPPORTUNITY_SOURCES = [
+  "/opportunity/",
   "/ai-opportunity-map",
   "/ai-opportunity-map/",
   "/map",
@@ -129,6 +130,10 @@ function collectFiles(root: string, acc: string[] = []): string[] {
 }
 
 describe("legacy interview, /redo, and /pay redirects", () => {
+  it("disables the built-in trailing-slash 308 so alias 301s stay one hop", () => {
+    expect(nextConfig.skipTrailingSlashRedirect).toBe(true);
+  });
+
   it("permanently moves legacy map URLs to /opportunity in next.config and vercel.json", async () => {
     const vercel = loadVercelRedirects();
     const nextRedirects = (await nextConfig.redirects?.()) as RedirectRule[];
