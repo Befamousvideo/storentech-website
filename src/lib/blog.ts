@@ -5,6 +5,14 @@ export type BlogFaq = {
   answer: string;
 };
 
+export type BlogHero = {
+  avif: string;
+  webp: string;
+  width: number;
+  height: number;
+  alt: string;
+};
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -13,6 +21,7 @@ export type BlogPost = {
   datePublished: string;
   faqs: readonly BlogFaq[];
   indexCta?: string;
+  hero?: BlogHero;
 };
 
 /**
@@ -262,7 +271,58 @@ export const nvidiaAiAgentSafetyFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const aiToolCleanupChecklistFaqs = [
+  {
+    question: "How do I find out which AI tools my business is using?",
+    answer:
+      "Check your subscriptions and credit card statements, look at the settings in the software you already pay for, and ask your team, without blame, what they use. Put it all in one list with who uses each tool and what it can reach.",
+  },
+  {
+    question: 'What is "shadow AI"?',
+    answer:
+      "Shadow AI is any AI tool someone uses for work without the business knowing about it, like a no-cost assistant an employee signed up for on their own. It's usually well-meant, but it can mean company information is going somewhere nobody is watching.",
+  },
+  {
+    question: "Should I ban employees from using AI tools?",
+    answer:
+      "Usually not. Banning tends to push use out of sight. A short list of approved tools, plus a simple rule that a person approves anything that sends, pays or deletes, works better.",
+  },
+  {
+    question: "How often should a small business review its AI tools?",
+    answer:
+      "Once a quarter is a good habit. Software updates keep adding new AI features, often switched on by default.",
+  },
+  {
+    question:
+      "Can StorenTech AI help an Orange County business find every AI tool it's using?",
+    answer:
+      "Yes. StorenTech AI starts every engagement with an AI Opportunity Map, and counting the AI tools a business already uses is part of it. The map shows what's in use, what overlaps, what each tool can reach, and which AI moves pay back first.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "ai-tool-cleanup-checklist",
+    title:
+      "Your Business Probably Has More AI Tools Than You Think. Here's a 30-Minute Cleanup Checklist",
+    metaTitle: "AI Tool Cleanup Checklist for Small Business | StorenTech AI",
+    description:
+      "Your business likely uses more AI than you think. A 30-minute checklist to count every AI tool, who owns it, and what it can touch.",
+    datePublished: "2026-10-12",
+    faqs: aiToolCleanupChecklistFaqs,
+    indexCta: "Read the post",
+    hero: {
+      avif: "/blog/ai-tool-cleanup-checklist.avif",
+      webp: "/blog/ai-tool-cleanup-checklist.webp",
+      width: 1600,
+      height: 900,
+      alt: "StorenTech AI blog header showing Count your AI tools before you add another one, beside a checklist labeled AI tools and keep or cut choices for chat, calendar, email, documents, voice, and other apps.",
+    },
+  },
   {
     slug: "ai-agent-cost-controls",
     title:
