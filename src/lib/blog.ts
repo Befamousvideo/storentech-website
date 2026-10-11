@@ -308,10 +308,10 @@ export const blogPosts: readonly BlogPost[] = [
   {
     slug: "ai-tool-cleanup-checklist",
     title:
-      "Your Business Probably Has More AI Tools Than You Think. Here's a 30-Minute Cleanup Checklist",
+      "Your Business Probably Has More AI Tools Than You Think. Here's a Cleanup Checklist",
     metaTitle: "AI Tool Cleanup Checklist for Small Business | StorenTech AI",
     description:
-      "Your business likely uses more AI than you think. A 30-minute checklist to count every AI tool, who owns it, and what it can touch.",
+      "Your business likely uses more AI than you think. A quick checklist to count every AI tool, who owns it, and what it can touch.",
     datePublished: "2026-10-12",
     faqs: aiToolCleanupChecklistFaqs,
     indexCta: "Read the post",

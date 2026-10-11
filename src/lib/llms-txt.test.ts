@@ -16,7 +16,7 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
-      "- [Your Business Probably Has More AI Tools Than You Think. Here's a 30-Minute Cleanup Checklist](https://www.storentechai.com/blog/ai-tool-cleanup-checklist): Your business likely uses more AI than you think. A 30-minute checklist to count every AI tool, who owns it, and what it can touch.",
+      "- [Your Business Probably Has More AI Tools Than You Think. Here's a Cleanup Checklist](https://www.storentechai.com/blog/ai-tool-cleanup-checklist): Your business likely uses more AI than you think. A quick checklist to count every AI tool, who owns it, and what it can touch.",
     );
     expect(text).toContain(
       "- [What Does It Cost to Run an AI Agent?](https://www.storentechai.com/blog/ai-agent-cost-controls): How Orange County owners set budgets, hard caps, and cost-per-workflow tracking before surprise AI bills.",

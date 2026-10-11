@@ -61,13 +61,13 @@ describe("AI tool cleanup checklist blog post", () => {
     expect(post).toBeDefined();
     expect(post?.slug).toBe("ai-tool-cleanup-checklist");
     expect(post?.title).toBe(
-      "Your Business Probably Has More AI Tools Than You Think. Here's a 30-Minute Cleanup Checklist",
+      "Your Business Probably Has More AI Tools Than You Think. Here's a Cleanup Checklist",
     );
     expect(post?.metaTitle).toBe(
       "AI Tool Cleanup Checklist for Small Business | StorenTech AI",
     );
     expect(post?.description).toBe(
-      "Your business likely uses more AI than you think. A 30-minute checklist to count every AI tool, who owns it, and what it can touch.",
+      "Your business likely uses more AI than you think. A quick checklist to count every AI tool, who owns it, and what it can touch.",
     );
     expect(post?.datePublished).toBe("2026-10-12");
     expect(post?.faqs).toEqual(aiToolCleanupChecklistFaqs);
@@ -278,7 +278,7 @@ describe("AI tool cleanup checklist blog post", () => {
     expect(
       getByRole("heading", {
         level: 1,
-        name: "Your Business Probably Has More AI Tools Than You Think. Here's a 30-Minute Cleanup Checklist",
+        name: "Your Business Probably Has More AI Tools Than You Think. Here's a Cleanup Checklist",
       }),
     ).toBeInTheDocument();
 
