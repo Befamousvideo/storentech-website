@@ -21,9 +21,7 @@ function nonEmpty(value: string | undefined) {
   return trimmed || undefined;
 }
 
-export function bunnyStreamLibraryId(
-  env: { NEXT_PUBLIC_BUNNY_STREAM_LIBRARY_ID?: string } = process.env,
-) {
+export function bunnyStreamLibraryId(env: NodeJS.ProcessEnv = process.env) {
   return nonEmpty(env.NEXT_PUBLIC_BUNNY_STREAM_LIBRARY_ID);
 }
 
