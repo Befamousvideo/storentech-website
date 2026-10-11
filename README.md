@@ -28,6 +28,7 @@ Environment:
 - `INQUIRY_WEBHOOK_URL` — optional. If set, each inquiry is `POST`ed as JSON (`name`, `email`, `company`, `broken`, `submittedAt`, `source`)
 - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` — optional. Google Search Console verification token. Emitted as `google-site-verification` only when set; empty values produce no tag.
 - `NEXT_PUBLIC_BING_SITE_VERIFICATION` — optional. Bing Webmaster Tools token. Emitted as `msvalidate.01` only when set; empty values produce no tag.
+- `NEXT_PUBLIC_BUNNY_STREAM_LIBRARY_ID` — public Bunny Stream library id for spokesperson videos on blog posts. Set it for Vercel Preview and Production. Each post opts in with `video: { bunnyId, title, aspect }` in `src/lib/blog.ts`. If the library id or a post's video id is missing, the player shows "Video coming soon" and no iframe. Portrait clips can set `aspect` to `4:5`; the default is `16:9`.
 
 ## Pages
 

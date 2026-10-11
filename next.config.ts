@@ -17,6 +17,16 @@ const nextConfig: NextConfig = {
         source: "/for/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value:
+              "frame-src 'self' https://iframe.mediadelivery.net https://vercel.live",
+          },
+        ],
+      },
     ];
   },
   async redirects() {

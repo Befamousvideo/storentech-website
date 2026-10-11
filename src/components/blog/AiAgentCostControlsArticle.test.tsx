@@ -199,9 +199,16 @@ describe("AI agent cost controls blog post", () => {
       expect(text).not.toContain(note);
     }
     expect(text).not.toMatch(/DO NOT PUBLISH/i);
+    const heading = getByRole("heading", { level: 1 });
+    expect(heading.previousElementSibling?.textContent).toBe("Blog");
+    const video = container.querySelector(".bunny-video");
+    expect(video).toBeTruthy();
     expect(
-      getByRole("heading", { level: 1 }).previousElementSibling?.textContent,
-    ).toBe("Blog");
+      heading.compareDocumentPosition(video!) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    expect(video?.textContent).toContain("Video coming soon");
+    expect(container.querySelector("iframe")).toBeNull();
+    expect(html).not.toContain("iframe.mediadelivery.net");
     expect(html).not.toContain("/blog/openrouter-ai-stack");
     expect(text).toContain("OpenRouter in Your AI Stack");
     expect(html).not.toMatch(/ROIA/);
