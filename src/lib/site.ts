@@ -1,6 +1,8 @@
 const DEFAULT_SITE_URL = "https://www.storentechai.com";
-const DEFAULT_INTAKE_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLScjOa8fFyqRLRAmOyDNtk7oFLlVwGwNdyML7VQNvWIUtlsXRg/viewform";
+export const BOOKING_CTA_HREF =
+  "https://calendar.app.google/7KkoctujrZtnzhjU7" as const;
+
+const DEFAULT_INTAKE_URL = BOOKING_CTA_HREF;
 const ONB1_INTAKE_URL = "https://onboarding.storentechai.com";
 
 function resolveIntakeUrl(raw: string | undefined) {
@@ -74,7 +76,7 @@ export const site = {
     analysisTypical: "$1,000",
     analysisComplex: "$2,000–$3,000",
   },
-  // Start your map CTA. Form now; set NEXT_PUBLIC_INTAKE_URL to ONB1 when gated live.
+  // Start-your-map CTA. Calendar booking; set NEXT_PUBLIC_INTAKE_URL to ONB1 when gated live.
   intakeUrl: resolveIntakeUrl(process.env.NEXT_PUBLIC_INTAKE_URL),
   intakeOnb1Url: ONB1_INTAKE_URL,
   stripe: {
