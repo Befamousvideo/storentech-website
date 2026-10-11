@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BunnyVideo } from "@/components/BunnyVideo";
 import type { BlogFaq, BlogPost } from "@/lib/blog";
 
 function FaqAnswer({ item }: { item: BlogFaq }) {
@@ -39,6 +40,13 @@ export function AiAgentCostControlsArticle({ post }: { post: BlogPost }) {
           </p>
           <h1>{post.title}</h1>
           <hr className="rule" />
+          {post.video ? (
+            <BunnyVideo
+              bunnyId={post.video.bunnyId}
+              title={post.video.title}
+              aspect={post.video.aspect}
+            />
+          ) : null}
         </div>
       </header>
 

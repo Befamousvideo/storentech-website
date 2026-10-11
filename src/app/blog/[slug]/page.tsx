@@ -6,6 +6,7 @@ import { AutomationRoiAnalysisArticle } from "@/components/blog/AutomationRoiAna
 import { MastermindHybridAiArticle } from "@/components/blog/MastermindHybridAiArticle";
 import { NvidiaAiAgentSafetyArticle } from "@/components/blog/NvidiaAiAgentSafetyArticle";
 import { ZapierWebhooksAiAgentsArticle } from "@/components/blog/ZapierWebhooksAiAgentsArticle";
+import { blogVideoJsonLd } from "@/components/BunnyVideo";
 import { StructuredData } from "@/components/StructuredData";
 import { blogPosts, getPost, postPath, postUrl, type BlogPost } from "@/lib/blog";
 import { site } from "@/lib/site";
@@ -95,6 +96,8 @@ export default async function BlogPostPage({ params }: Props) {
     },
   };
 
+  const videoLd = blogVideoJsonLd(post);
+
   const faqLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -111,6 +114,7 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <>
       <StructuredData data={articleLd} />
+      {videoLd ? <StructuredData data={videoLd} /> : null}
       <StructuredData data={faqLd} />
       <BlogArticle post={post} />
     </>

@@ -5,6 +5,14 @@ export type BlogFaq = {
   answer: string;
 };
 
+export type BlogVideo = {
+  /** Bunny Stream video id. Omit until the upload exists. */
+  bunnyId?: string;
+  title: string;
+  /** "16:9" (default) or "4:5" for a portrait spokesperson clip. */
+  aspect?: string;
+};
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -13,6 +21,7 @@ export type BlogPost = {
   datePublished: string;
   faqs: readonly BlogFaq[];
   indexCta?: string;
+  video?: BlogVideo;
 };
 
 /**
@@ -273,6 +282,10 @@ export const blogPosts: readonly BlogPost[] = [
     datePublished: "2026-10-05",
     faqs: aiAgentCostControlsFaqs,
     indexCta: "Read the post",
+    video: {
+      title: "What it costs to run an AI agent",
+      aspect: "16:9",
+    },
   },
   {
     slug: "nvidia-ai-agent-safety-explained",
