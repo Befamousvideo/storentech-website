@@ -53,7 +53,9 @@ describe("AI agent cost controls blog post", () => {
     expect(post?.datePublished).toBe("2026-10-05");
     expect(post?.faqs).toEqual(aiAgentCostControlsFaqs);
     expect(post?.faqs).toHaveLength(7);
-    expect(blogPosts[0]?.slug).toBe("ai-agent-cost-controls");
+    expect(blogPosts.map((item) => item.slug)).toContain(
+      "ai-agent-cost-controls",
+    );
   });
 
   it("appears on the blog index list and in the sitemap", () => {

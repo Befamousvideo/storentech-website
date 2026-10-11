@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AiAgentCostControlsArticle } from "@/components/blog/AiAgentCostControlsArticle";
 import { AiSecurityForAiEmployeesArticle } from "@/components/blog/AiSecurityForAiEmployeesArticle";
+import { AiToolCleanupChecklistArticle } from "@/components/blog/AiToolCleanupChecklistArticle";
 import { AutomationRoiAnalysisArticle } from "@/components/blog/AutomationRoiAnalysisArticle";
 import { MastermindHybridAiArticle } from "@/components/blog/MastermindHybridAiArticle";
 import { NvidiaAiAgentSafetyArticle } from "@/components/blog/NvidiaAiAgentSafetyArticle";
@@ -12,6 +13,8 @@ import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
+    case "ai-tool-cleanup-checklist":
+      return <AiToolCleanupChecklistArticle post={post} />;
     case "ai-agent-cost-controls":
       return <AiAgentCostControlsArticle post={post} />;
     case "nvidia-ai-agent-safety-explained":
@@ -42,6 +45,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPost(slug);
   if (!post) return {};
 
+  const images = post.hero
+    ? [
+        {
+          url: post.hero.webp,
+          width: post.hero.width,
+          height: post.hero.height,
+          alt: post.hero.alt,
+          type: "image/webp",
+        },
+        {
+          url: post.hero.avif,
+          width: post.hero.width,
+          height: post.hero.height,
+          alt: post.hero.alt,
+          type: "image/avif",
+        },
+      ]
+    : undefined;
+
   return {
     title: { absolute: post.metaTitle },
     description: post.description,
@@ -52,11 +74,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.metaTitle,
       description: post.description,
       url: postPath(post.slug),
+      ...(images ? { images } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: post.metaTitle,
       description: post.description,
+      ...(images ? { images } : {}),
     },
   };
 }
@@ -75,6 +99,16 @@ export default async function BlogPostPage({ params }: Props) {
     description: post.description,
     datePublished: post.datePublished,
     dateModified: post.datePublished,
+    ...(post.hero
+      ? {
+          image: {
+            "@type": "ImageObject",
+            url: `${site.url}${post.hero.webp}`,
+            width: post.hero.width,
+            height: post.hero.height,
+          },
+        }
+      : {}),
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": url,
