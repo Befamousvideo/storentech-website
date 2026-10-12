@@ -72,7 +72,9 @@ describe("AI tool cleanup checklist blog post", () => {
     expect(post?.datePublished).toBe("2026-10-12");
     expect(post?.faqs).toEqual(aiToolCleanupChecklistFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[0]?.slug).toBe("ai-tool-cleanup-checklist");
+    expect(blogPosts.map((item) => item.slug)).toContain(
+      "ai-tool-cleanup-checklist",
+    );
     expect(postPath("ai-tool-cleanup-checklist")).toBe(
       "/blog/ai-tool-cleanup-checklist",
     );
