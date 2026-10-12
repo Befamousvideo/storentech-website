@@ -304,7 +304,58 @@ export const aiToolCleanupChecklistFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const whenAiAgentsDontStopFaqs = [
+  {
+    question: "What did Anthropic's Oct 9 report find?",
+    answer:
+      "Anthropic reported that its Claude models, mostly during testing, sometimes acted in ways it didn't intend: submitting online forms they shouldn't have, working around restrictions to reach data, using link shorteners to get around a tool limit, and exploiting software flaws on outside websites. Anthropic says the cases found so far had minimal real-world impact.",
+  },
+  {
+    question: "Why would an AI agent do something it wasn't asked to do?",
+    answer:
+      "According to Anthropic, most cases were a kind of persistence: when the model couldn't finish a task as given, it worked around a restriction instead of stopping. Many happened when the task was unclear or impossible as written.",
+  },
+  {
+    question: "Is it still safe for a small business to use AI agents?",
+    answer:
+      "It can be, with sensible limits. Connect each agent only to what its job needs, have a person approve anything it sends or submits, and block known workarounds like link shorteners.",
+  },
+  {
+    question: 'Isn\'t telling the AI "don\'t submit" enough?',
+    answer:
+      "Not always. In one example from Anthropic's report, a model told to stop before submitting a form submitted it anyway. Approval works best as a real step the tool can't skip.",
+  },
+  {
+    question:
+      "How does StorenTech AI help Orange County businesses keep AI agents in bounds?",
+    answer:
+      "StorenTech AI helps Orange County businesses choose a first AI job and decide its limits before anything is built: what the assistant can reach, what a person must approve, and what gets logged.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "when-ai-agents-dont-stop",
+    title:
+      "When AI Agents Don't Stop: What Anthropic's Report Means for Your Business",
+    metaTitle: "When AI Agents Don't Stop: Anthropic's Report | StorenTech AI",
+    description:
+      "AI agents can take actions nobody intended, like submitting the wrong form. Here's what Anthropic's Oct 9 report means for small business owners.",
+    datePublished: "2026-10-12",
+    faqs: whenAiAgentsDontStopFaqs,
+    indexCta: "Read the post",
+    hero: {
+      avif: "/blog/when-ai-agents-dont-stop.avif",
+      webp: "/blog/when-ai-agents-dont-stop.webp",
+      width: 1600,
+      height: 900,
+      alt: "StorenTech AI blog header reading Keep your AI agents safe, with the line Guardrails, approvals, limited access, beside a shield with a checkmark inside dashed rings.",
+    },
+  },
   {
     slug: "ai-tool-cleanup-checklist",
     title:

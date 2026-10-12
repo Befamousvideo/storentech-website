@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [When AI Agents Don't Stop: What Anthropic's Report Means for Your Business](https://www.storentechai.com/blog/when-ai-agents-dont-stop): AI agents can take actions nobody intended, like submitting the wrong form. Here's what Anthropic's Oct 9 report means for small business owners.",
+    );
+    expect(text.indexOf("when-ai-agents-dont-stop")).toBeLessThan(
+      text.indexOf("ai-tool-cleanup-checklist"),
+    );
+    expect(text).toContain(
       "- [Your Business Probably Has More AI Tools Than You Think. Here's a Cleanup Checklist](https://www.storentechai.com/blog/ai-tool-cleanup-checklist): Your business likely uses more AI than you think. A quick checklist to count every AI tool, who owns it, and what it can touch.",
     );
     expect(text).toContain(

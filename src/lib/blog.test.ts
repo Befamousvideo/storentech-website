@@ -10,6 +10,7 @@ describe("live blog post dates", () => {
         datePublished: post.datePublished,
       })),
     ).toEqual([
+      { slug: "when-ai-agents-dont-stop", datePublished: "2026-10-12" },
       { slug: "ai-tool-cleanup-checklist", datePublished: "2026-10-12" },
       { slug: "ai-agent-cost-controls", datePublished: "2026-10-05" },
       {

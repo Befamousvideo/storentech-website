@@ -7,12 +7,15 @@ import { AutomationRoiAnalysisArticle } from "@/components/blog/AutomationRoiAna
 import { MastermindHybridAiArticle } from "@/components/blog/MastermindHybridAiArticle";
 import { NvidiaAiAgentSafetyArticle } from "@/components/blog/NvidiaAiAgentSafetyArticle";
 import { ZapierWebhooksAiAgentsArticle } from "@/components/blog/ZapierWebhooksAiAgentsArticle";
+import { WhenAiAgentsDontStopArticle } from "@/components/blog/WhenAiAgentsDontStopArticle";
 import { StructuredData } from "@/components/StructuredData";
 import { blogPosts, getPost, postPath, postUrl, type BlogPost } from "@/lib/blog";
 import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
+    case "when-ai-agents-dont-stop":
+      return <WhenAiAgentsDontStopArticle post={post} />;
     case "ai-tool-cleanup-checklist":
       return <AiToolCleanupChecklistArticle post={post} />;
     case "ai-agent-cost-controls":
