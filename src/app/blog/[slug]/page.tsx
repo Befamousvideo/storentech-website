@@ -7,6 +7,7 @@ import { AutomationRoiAnalysisArticle } from "@/components/blog/AutomationRoiAna
 import { MastermindHybridAiArticle } from "@/components/blog/MastermindHybridAiArticle";
 import { NvidiaAiAgentSafetyArticle } from "@/components/blog/NvidiaAiAgentSafetyArticle";
 import { ZapierWebhooksAiAgentsArticle } from "@/components/blog/ZapierWebhooksAiAgentsArticle";
+import { AiModelRetirementNov30BusinessChecklistArticle } from "@/components/blog/AiModelRetirementNov30BusinessChecklistArticle";
 import { WhenAiAgentsDontStopArticle } from "@/components/blog/WhenAiAgentsDontStopArticle";
 import { StructuredData } from "@/components/StructuredData";
 import { blogPosts, getPost, postPath, postUrl, type BlogPost } from "@/lib/blog";
@@ -14,6 +15,8 @@ import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
+    case "ai-model-retirement-nov-30-business-checklist":
+      return <AiModelRetirementNov30BusinessChecklistArticle post={post} />;
     case "when-ai-agents-dont-stop":
       return <WhenAiAgentsDontStopArticle post={post} />;
     case "ai-tool-cleanup-checklist":
