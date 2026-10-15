@@ -337,7 +337,60 @@ export const whenAiAgentsDontStopFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const aiModelRetirementNov30BusinessChecklistFaqs = [
+  {
+    question: "When does Claude Sonnet 4.5 retire?",
+    answer:
+      "Anthropic's model deprecations page lists Nov. 30, 2026 as the retirement date for Claude Sonnet 4.5 on the Claude API. Anthropic announced it on Sept. 30, 2026 and recommends Claude Sonnet 5.5 as the replacement. Some cloud providers that offer Claude set their own dates.",
+  },
+  {
+    question: "What happens to my chatbot if its AI model retires?",
+    answer:
+      "If nobody moves it to a newer model before the retirement date, it can stop answering. Tools from larger software companies are usually updated for you. Custom-built tools are the ones to check.",
+  },
+  {
+    question: "How do I know which AI model my tools use?",
+    answer:
+      "Ask the vendor directly, or ask whoever built the tool. For custom builds, the model name is in the settings or code that calls the AI service.",
+  },
+  {
+    question: "Is the newer model a drop-in replacement?",
+    answer:
+      "Often close, but not identical. Test it on real examples, compare the answers, and watch the cost for the first few weeks.",
+  },
+  {
+    question:
+      "Can StorenTech AI check whether my Orange County business's AI tools depend on a retiring model?",
+    answer:
+      "Yes. StorenTech AI lists the AI tools a business uses, and what each one runs on, as part of its AI Opportunity Map, then flags anything that needs updating before a vendor deadline.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "ai-model-retirement-nov-30-business-checklist",
+    title:
+      "One Popular AI Model Retires Nov. 30. A 15-Minute Check for Business Owners",
+    metaTitle:
+      "AI Model Retiring Nov. 30? A Business Checklist | StorenTech AI",
+    description:
+      "Claude Sonnet 4.5 retires Nov. 30, 2026 on Anthropic's API. A 15-minute check to see if your chatbot, assistant or automation depends on it.",
+    datePublished: "2026-10-15",
+    faqs: aiModelRetirementNov30BusinessChecklistFaqs,
+    indexCta: "Read the post",
+    hero: {
+      avif: "/blog/ai-model-retirement-nov-30-business-checklist.avif",
+      webp: "/blog/ai-model-retirement-nov-30-business-checklist.webp",
+      width: 1600,
+      height: 900,
+      alt:
+        "StorenTech AI blog header with the line Swapping an AI model is like swapping an employee, beside a desk with a laptop chat window, a November calendar with the 30th circled, and a sticky note reading Ask your vendor.",
+    },
+  },
   {
     slug: "when-ai-agents-dont-stop",
     title:
