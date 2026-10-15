@@ -382,6 +382,14 @@ export const blogPosts: readonly BlogPost[] = [
     datePublished: "2026-10-15",
     faqs: aiModelRetirementNov30BusinessChecklistFaqs,
     indexCta: "Read the post",
+    hero: {
+      avif: "/blog/ai-model-retirement-nov-30-business-checklist.avif",
+      webp: "/blog/ai-model-retirement-nov-30-business-checklist.webp",
+      width: 1600,
+      height: 900,
+      alt:
+        "StorenTech AI blog header with the line Swapping an AI model is like swapping an employee, beside a desk with a laptop chat window, a November calendar with the 30th circled, and a sticky note reading Ask your vendor.",
+    },
   },
   {
     slug: "when-ai-agents-dont-stop",

@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { generateMetadata } from "@/app/blog/[slug]/page";
@@ -28,16 +30,27 @@ describe("AI model retirement Nov 30 business checklist blog post", () => {
     expect(post?.datePublished).toBe("2026-10-15");
     expect(post?.faqs).toEqual(aiModelRetirementNov30BusinessChecklistFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(post?.hero).toBeUndefined();
     expect(blogPosts[0]?.slug).toBe(slug);
   });
 
-  it("omits a post-specific OG image so sitewide defaults apply", async () => {
+  it("ships the 1600x900 header in webp and avif", () => {
+    expect(post?.hero?.width).toBe(1600);
+    expect(post?.hero?.height).toBe(900);
+    for (const file of [post?.hero?.webp, post?.hero?.avif]) {
+      expect(existsSync(join(process.cwd(), "public", file ?? "missing"))).toBe(true);
+    }
+  });
+
+  it("uses the header as the OG and Twitter image", async () => {
     const meta = await generateMetadata({
       params: Promise.resolve({ slug }),
     });
-    expect(meta.openGraph?.images).toBeUndefined();
-    expect(meta.twitter?.images).toBeUndefined();
+    expect(JSON.stringify(meta.openGraph)).toContain(
+      "/blog/ai-model-retirement-nov-30-business-checklist.webp",
+    );
+    expect(JSON.stringify(meta.twitter)).toContain(
+      "/blog/ai-model-retirement-nov-30-business-checklist.webp",
+    );
   });
 
   it("appears in the sitemap and renders without draft notes", () => {
@@ -49,5 +62,7 @@ describe("AI model retirement Nov 30 business checklist blog post", () => {
     expect(text).toContain("Swapping an AI model is like swapping an employee");
     expect(text).not.toMatch(/DRAFT|Tony Traffic|DO NOT PUBLISH|BOB BLOCK/);
     expect(text).toContain("Start your AI Opportunity Map");
+    const image = container.querySelector(".blog-hero-media img");
+    expect(image).toHaveAttribute("alt", post?.hero?.alt);
   });
 });

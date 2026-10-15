@@ -9,6 +9,8 @@ export function AiModelRetirementNov30BusinessChecklistArticle({
 }: {
   post: BlogPost;
 }) {
+  const hero = post.hero;
+
   return (
     <article className="blog-article">
       <header className="page-hero blog-hero">
@@ -19,6 +21,21 @@ export function AiModelRetirementNov30BusinessChecklistArticle({
           <h1>{post.title}</h1>
           <hr className="rule" />
         </div>
+        {hero ? (
+          <figure className="blog-hero-media">
+            <picture>
+              <source srcSet={hero.avif} type="image/avif" />
+              <source srcSet={hero.webp} type="image/webp" />
+              <img
+                src={hero.webp}
+                alt={hero.alt}
+                width={hero.width}
+                height={hero.height}
+                fetchPriority="high"
+              />
+            </picture>
+          </figure>
+        ) : null}
       </header>
 
       <div className="wrap-narrow blog-prose">
