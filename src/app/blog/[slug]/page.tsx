@@ -9,12 +9,15 @@ import { NvidiaAiAgentSafetyArticle } from "@/components/blog/NvidiaAiAgentSafet
 import { ZapierWebhooksAiAgentsArticle } from "@/components/blog/ZapierWebhooksAiAgentsArticle";
 import { AiModelRetirementNov30BusinessChecklistArticle } from "@/components/blog/AiModelRetirementNov30BusinessChecklistArticle";
 import { WhenAiAgentsDontStopArticle } from "@/components/blog/WhenAiAgentsDontStopArticle";
+import { AiPullReportsFromVendorPortalsArticle } from "@/components/blog/AiPullReportsFromVendorPortalsArticle";
 import { StructuredData } from "@/components/StructuredData";
 import { blogPosts, getPost, postPath, postUrl, type BlogPost } from "@/lib/blog";
 import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
+    case "ai-pull-reports-from-vendor-portals":
+      return <AiPullReportsFromVendorPortalsArticle post={post} />;
     case "ai-model-retirement-nov-30-business-checklist":
       return <AiModelRetirementNov30BusinessChecklistArticle post={post} />;
     case "when-ai-agents-dont-stop":

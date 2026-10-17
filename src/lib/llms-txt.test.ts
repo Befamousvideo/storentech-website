@@ -16,7 +16,13 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [Stop Losing Fridays to Portals. How AI Can Pull Reports From Websites That Don't Connect to Anything](https://www.storentechai.com/blog/ai-pull-reports-from-vendor-portals): If your team logs into vendor websites to copy numbers into spreadsheets, AI can now do the reading while a person approves anything that changes.",
+    );
+    expect(text).toContain(
       "- [One Popular AI Model Retires Nov. 30. A 15-Minute Check for Business Owners](https://www.storentechai.com/blog/ai-model-retirement-nov-30-business-checklist): Claude Sonnet 4.5 retires Nov. 30, 2026 on Anthropic's API. A 15-minute check to see if your chatbot, assistant or automation depends on it.",
+    );
+    expect(text.indexOf("ai-pull-reports-from-vendor-portals")).toBeLessThan(
+      text.indexOf("ai-model-retirement-nov-30-business-checklist"),
     );
     expect(text).toContain(
       "- [When AI Agents Don't Stop: What Anthropic's Report Means for Your Business](https://www.storentechai.com/blog/when-ai-agents-dont-stop): AI agents can take actions nobody intended, like submitting the wrong form. Here's what Anthropic's Oct 9 report means for small business owners.",
