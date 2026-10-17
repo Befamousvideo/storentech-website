@@ -414,6 +414,13 @@ export const blogPosts: readonly BlogPost[] = [
     datePublished: "2026-10-17",
     faqs: aiPullReportsFromVendorPortalsFaqs,
     indexCta: "Read the post",
+    hero: {
+      avif: "/blog/ai-pull-reports-from-vendor-portals.avif",
+      webp: "/blog/ai-pull-reports-from-vendor-portals.webp",
+      width: 1600,
+      height: 900,
+      alt: "Stop losing Fridays to portals",
+    },
   },
   {
     slug: "ai-model-retirement-nov-30-business-checklist",

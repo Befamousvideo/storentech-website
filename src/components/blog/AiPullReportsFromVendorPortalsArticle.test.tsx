@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { generateMetadata } from "@/app/blog/[slug]/page";
@@ -29,18 +31,31 @@ describe("AI pull reports from vendor portals blog post", () => {
     expect(post?.faqs).toEqual(aiPullReportsFromVendorPortalsFaqs);
     expect(post?.faqs).toHaveLength(5);
     expect(blogPosts[0]?.slug).toBe(slug);
-    expect(post?.hero).toBeUndefined();
   });
 
-  it("omits OG and Twitter images until a header ships", async () => {
+  it("ships the 1600x900 header in webp and avif", () => {
+    expect(post?.hero?.width).toBe(1600);
+    expect(post?.hero?.height).toBe(900);
+    for (const file of [post?.hero?.webp, post?.hero?.avif]) {
+      expect(existsSync(join(process.cwd(), "public", file ?? "missing"))).toBe(
+        true,
+      );
+    }
+  });
+
+  it("uses the header as the OG and Twitter image", async () => {
     const meta = await generateMetadata({
       params: Promise.resolve({ slug }),
     });
-    expect(meta.openGraph?.images).toBeUndefined();
-    expect(meta.twitter?.images).toBeUndefined();
+    expect(JSON.stringify(meta.openGraph)).toContain(
+      "/blog/ai-pull-reports-from-vendor-portals.webp",
+    );
+    expect(JSON.stringify(meta.twitter)).toContain(
+      "/blog/ai-pull-reports-from-vendor-portals.webp",
+    );
   });
 
-  it("appears in the sitemap and renders without draft notes, contact info, or a hero image", () => {
+  it("appears in the sitemap and renders without draft notes or contact info", () => {
     expect(sitemap().map((entry) => entry.url)).toContain(postUrl(slug));
     const { container } = render(
       <AiPullReportsFromVendorPortalsArticle post={post!} />,
@@ -52,6 +67,7 @@ describe("AI pull reports from vendor portals blog post", () => {
     expect(text).not.toMatch(/DRAFT|Tony Traffic|DO NOT PUBLISH|BOB BLOCK/);
     expect(text).not.toMatch(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
     expect(text).not.toMatch(/\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/);
-    expect(container.querySelector(".blog-hero-media img")).toBeNull();
+    const image = container.querySelector(".blog-hero-media img");
+    expect(image).toHaveAttribute("alt", post?.hero?.alt);
   });
 });
