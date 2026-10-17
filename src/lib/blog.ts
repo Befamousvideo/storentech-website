@@ -403,7 +403,58 @@ export const aiPullReportsFromVendorPortalsFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const whatShouldYourBusinessAiBeAllowedToDoFaqs = [
+  {
+    question: "What should a business AI tool be allowed to do?",
+    answer:
+      "Only what its job requires. Decide four things for each tool: what it can see, what it can change, what needs a person's approval and who owns it. Write them down on one page.",
+  },
+  {
+    question: "Which AI actions should always need human approval?",
+    answer:
+      "Anything that's hard to undo or touches customers or money: first messages to a customer, changes to prices, quotes or invoices, payments and refunds, and deleting records.",
+  },
+  {
+    question: "Is deciding what AI can do a tech decision or a business decision?",
+    answer:
+      "It's a business decision. The owner or manager decides what the tool may do, just as they decide what an employee may approve. The technical setup follows that decision.",
+  },
+  {
+    question:
+      "How does StorenTech AI decide what an AI assistant is allowed to do for an Orange County business?",
+    answer:
+      "StorenTech AI maps it during the AI Opportunity Map, before anything is built. Each assistant gets clear limits kept outside the AI itself, its actions are logged, and a person approves anything risky.",
+  },
+  {
+    question: "How often should I review what my AI tools can do?",
+    answer:
+      "Review a tool whenever it adds a feature, you change vendors or its owner changes roles, and at least a few times a year otherwise.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "what-should-your-business-ai-be-allowed-to-do",
+    title:
+      "Before AI Clicks Submit: 4 Questions to Decide What Your Business AI Is Allowed to Do",
+    metaTitle: "Before AI Clicks Submit: 4 Questions | StorenTech AI",
+    description:
+      "Before AI clicks a button for your business, answer 4 questions: what it can see, what it can change, what needs your yes, and who owns it.",
+    datePublished: "2026-10-17",
+    faqs: whatShouldYourBusinessAiBeAllowedToDoFaqs,
+    indexCta: "Read the post",
+    hero: {
+      avif: "/blog/what-should-your-business-ai-be-allowed-to-do.avif",
+      webp: "/blog/what-should-your-business-ai-be-allowed-to-do.webp",
+      width: 1600,
+      height: 900,
+      alt: "Before AI clicks submit",
+    },
+  },
   {
     slug: "ai-pull-reports-from-vendor-portals",
     title:

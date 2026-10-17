@@ -30,7 +30,7 @@ describe("AI model retirement Nov 30 business checklist blog post", () => {
     expect(post?.datePublished).toBe("2026-10-15");
     expect(post?.faqs).toEqual(aiModelRetirementNov30BusinessChecklistFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[1]?.slug).toBe(slug);
+    expect(blogPosts[2]?.slug).toBe(slug);
   });
 
   it("ships the 1600x900 header in webp and avif", () => {
