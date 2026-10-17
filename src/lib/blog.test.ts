@@ -11,6 +11,10 @@ describe("live blog post dates", () => {
       })),
     ).toEqual([
       {
+        slug: "ai-pull-reports-from-vendor-portals",
+        datePublished: "2026-10-17",
+      },
+      {
         slug: "ai-model-retirement-nov-30-business-checklist",
         datePublished: "2026-10-15",
       },

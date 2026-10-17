@@ -370,7 +370,58 @@ export const aiModelRetirementNov30BusinessChecklistFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const aiPullReportsFromVendorPortalsFaqs = [
+  {
+    question: "Can AI pull data from a website that has no integration?",
+    answer:
+      "Yes. Newer AI tools can work inside a web browser the way a person does: open the page, read it and copy the numbers you need. It works best on simple, repetitive reading jobs that a person can easily check.",
+  },
+  {
+    question: "Is it safe to let AI log into my vendor portals?",
+    answer:
+      "It can be, with limits. Start with read-only jobs, keep a person approving anything that changes, and keep payments and anything irreversible off limits. Use a login meant for this job rather than someone's personal one.",
+  },
+  {
+    question: "What's a good first portal task to automate?",
+    answer:
+      "Pulling a weekly statement from one supplier and listing any credits or mismatches. It's repetitive, easy to check, and can turn up money you're owed.",
+  },
+  {
+    question: "Will the AI break when the website changes?",
+    answer:
+      "It's more forgiving than old-style scripts because it reads the page like a person does, but it can still get confused. That's why a person reviews the results, especially early on.",
+  },
+  {
+    question:
+      "Can StorenTech AI help an Orange County business automate work in websites that have no integration?",
+    answer:
+      "Yes. StorenTech AI looks for portal chores during its AI Opportunity Map, then sets up read-first pilots where AI does the reading and a person approves anything that changes.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "ai-pull-reports-from-vendor-portals",
+    title:
+      "Stop Losing Fridays to Portals. How AI Can Pull Reports From Websites That Don't Connect to Anything",
+    metaTitle: "AI That Pulls Reports From Vendor Portals | StorenTech AI",
+    description:
+      "If your team logs into vendor websites to copy numbers into spreadsheets, AI can now do the reading while a person approves anything that changes.",
+    datePublished: "2026-10-17",
+    faqs: aiPullReportsFromVendorPortalsFaqs,
+    indexCta: "Read the post",
+    hero: {
+      avif: "/blog/ai-pull-reports-from-vendor-portals.avif",
+      webp: "/blog/ai-pull-reports-from-vendor-portals.webp",
+      width: 1600,
+      height: 900,
+      alt: "Stop losing Fridays to portals",
+    },
+  },
   {
     slug: "ai-model-retirement-nov-30-business-checklist",
     title:
