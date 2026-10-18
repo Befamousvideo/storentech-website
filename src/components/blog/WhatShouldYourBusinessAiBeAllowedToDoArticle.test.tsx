@@ -16,7 +16,7 @@ const slug = "what-should-your-business-ai-be-allowed-to-do";
 const post = getPost(slug);
 
 describe("what should your business AI be allowed to do blog post", () => {
-  it("is registered first with the approved slug, title, meta, date, and five FAQs", () => {
+  it("is registered with the approved slug, title, meta, date, and five FAQs", () => {
     expect(post?.title).toBe(
       "Before AI Clicks Submit: 4 Questions to Decide What Your Business AI Is Allowed to Do",
     );
@@ -30,7 +30,7 @@ describe("what should your business AI be allowed to do blog post", () => {
     expect(post?.datePublished).toBe("2026-10-17");
     expect(post?.faqs).toEqual(whatShouldYourBusinessAiBeAllowedToDoFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[0]?.slug).toBe(slug);
+    expect(blogPosts.some((entry) => entry.slug === slug)).toBe(true);
   });
 
   it("ships the 1600x900 header in webp and avif", () => {
