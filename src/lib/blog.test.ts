@@ -11,6 +11,10 @@ describe("live blog post dates", () => {
       })),
     ).toEqual([
       {
+        slug: "ai-voice-agent-small-business",
+        datePublished: "2026-10-21",
+      },
+      {
         slug: "what-should-your-business-ai-be-allowed-to-do",
         datePublished: "2026-10-17",
       },
