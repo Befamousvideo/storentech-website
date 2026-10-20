@@ -60,8 +60,8 @@ export default function AiOpportunityMapPage() {
             <SarahPhoneImage className="sarah-phone" />
           </div>
           <p className="lede" style={{ marginTop: "1.4rem" }}>
-            Not ready? Book a 15-minute intro call. It&apos;s a short conversation at
-            free. The Map itself is paid, starting at {site.prices.analysisTypical}.{" "}
+            Not ready? Book a 15-minute intro call. It&apos;s a short conversation, and
+            it&apos;s free. The Map itself is paid, starting at {site.prices.analysisTypical}.{" "}
             <a href={BOOKING_CTA_HREF} target="_blank" rel="noopener noreferrer">
               Book intro
             </a>

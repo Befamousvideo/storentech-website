@@ -21,7 +21,7 @@ export default function ContactPage() {
           <p className="lede">
             The AI Opportunity Map starts at {site.prices.analysisTypical}. Tell us
             what is broken. The form is the written path, Sarah is the voice path,
-            and a 15-minute intro call is the calendar path, at free.{" "}
+            and a 15-minute intro call is the calendar path, for free.{" "}
             <a href={BOOKING_CTA_HREF} target="_blank" rel="noopener noreferrer">
               Book intro
             </a>

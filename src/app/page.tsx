@@ -115,7 +115,7 @@ export default function HomePage() {
           <h2>Start your AI Opportunity Map, or write us.</h2>
           <p className="lede" style={{ marginBottom: "1.6rem" }}>
             Starting at {site.prices.analysisTypical}. The Map is paid work. Want to
-            talk first? Book a 15-minute intro call at free, or call Sarah.
+            talk first? Book a 15-minute intro call for free, or call Sarah.
           </p>
           <div className="btn-row">
             <IntakeLink className="btn">{site.offer.cta}</IntakeLink>
