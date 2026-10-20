@@ -2,7 +2,7 @@ import Link from "next/link";
 import { IntakeLink } from "@/components/IntakeLink";
 import { SarahContact } from "@/components/SarahContact";
 import { StructuredData } from "@/components/StructuredData";
-import { site, verticals } from "@/lib/site";
+import { BOOKING_CTA_HREF, site, verticals } from "@/lib/site";
 import { siteFaqPageLd, siteFaqs } from "@/lib/site-faqs";
 
 export default function HomePage() {
@@ -19,6 +19,9 @@ export default function HomePage() {
             <p className="lede">{site.offer.primary}</p>
             <div className="btn-row">
               <IntakeLink className="btn">{site.offer.cta}</IntakeLink>
+              <a className="btn" href={BOOKING_CTA_HREF} target="_blank" rel="noopener noreferrer">
+                Book a 15-min intro
+              </a>
             </div>
             <div className="fine hero-contact">
               <Link href="/contact">Write us</Link>
@@ -111,8 +114,8 @@ export default function HomePage() {
           <p className="kicker">Next</p>
           <h2>Start your AI Opportunity Map, or write us.</h2>
           <p className="lede" style={{ marginBottom: "1.6rem" }}>
-            Starting at {site.prices.analysisTypical}. It is not a complimentary
-            sales call. Sarah is in the header if you want to talk first.
+            Starting at {site.prices.analysisTypical}. The Map is paid work. Want to
+            talk first? Book a 15-minute intro call at free, or call Sarah.
           </p>
           <div className="btn-row">
             <IntakeLink className="btn">{site.offer.cta}</IntakeLink>

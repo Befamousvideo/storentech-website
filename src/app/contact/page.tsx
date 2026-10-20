@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { SarahPhoneImage } from "@/components/SarahContact";
-import { site } from "@/lib/site";
+import { BOOKING_CTA_HREF, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -19,8 +19,12 @@ export default function ContactPage() {
           <h1>Start your AI Opportunity Map.</h1>
           <hr className="rule" />
           <p className="lede">
-            Starting at {site.prices.analysisTypical}. Tell us what is broken. The
-            form is the written path; Sarah is the voice path.
+            The AI Opportunity Map starts at {site.prices.analysisTypical}. Tell us
+            what is broken. The form is the written path, Sarah is the voice path,
+            and a 15-minute intro call is the calendar path, at free.{" "}
+            <a href={BOOKING_CTA_HREF} target="_blank" rel="noopener noreferrer">
+              Book intro
+            </a>
           </p>
         </div>
       </header>

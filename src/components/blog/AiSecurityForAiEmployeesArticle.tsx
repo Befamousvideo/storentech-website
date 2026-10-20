@@ -37,8 +37,8 @@ function FaqAnswer({ item }: { item: BlogFaq }) {
     return (
       <p>
         Yes. StorenTech AI is a <strong>full-service AI agency</strong>. Every
-        client starts with a paid AI Opportunity Map — never a
-        complimentary sales call — then hire and retainer if the math and the
+        client starts with a paid AI Opportunity Map. The Map is paid; the
+        15-minute intro call is not. Then hire and retainer if the math and the
         access map hold. Path: <Link href="/how-it-works">How it works</Link>.
       </p>
     );
