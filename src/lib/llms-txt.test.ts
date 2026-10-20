@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [What a Voice Agent Can Do for a Small Business: Answer, Book, Sell](https://www.storentechai.com/blog/ai-voice-agent-small-business): An AI voice agent can answer every call, book appointments and handle sales questions for contractors and field service firms, while your team owns the customer.",
+    );
+    expect(text.indexOf("ai-voice-agent-small-business")).toBeLessThan(
+      text.indexOf("what-should-your-business-ai-be-allowed-to-do"),
+    );
+    expect(text).toContain(
       "- [Before AI Clicks Submit: 4 Questions to Decide What Your Business AI Is Allowed to Do](https://www.storentechai.com/blog/what-should-your-business-ai-be-allowed-to-do): Before AI clicks a button for your business, answer 4 questions: what it can see, what it can change, what needs your yes, and who owns it.",
     );
     expect(text).toContain(
