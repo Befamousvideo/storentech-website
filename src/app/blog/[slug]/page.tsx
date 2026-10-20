@@ -10,6 +10,7 @@ import { ZapierWebhooksAiAgentsArticle } from "@/components/blog/ZapierWebhooksA
 import { AiModelRetirementNov30BusinessChecklistArticle } from "@/components/blog/AiModelRetirementNov30BusinessChecklistArticle";
 import { WhenAiAgentsDontStopArticle } from "@/components/blog/WhenAiAgentsDontStopArticle";
 import { AiPullReportsFromVendorPortalsArticle } from "@/components/blog/AiPullReportsFromVendorPortalsArticle";
+import { AiVoiceAgentSmallBusinessArticle } from "@/components/blog/AiVoiceAgentSmallBusinessArticle";
 import { WhatShouldYourBusinessAiBeAllowedToDoArticle } from "@/components/blog/WhatShouldYourBusinessAiBeAllowedToDoArticle";
 import { StructuredData } from "@/components/StructuredData";
 import { blogPosts, getPost, postPath, postUrl, type BlogPost } from "@/lib/blog";
@@ -17,6 +18,8 @@ import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
+    case "ai-voice-agent-small-business":
+      return <AiVoiceAgentSmallBusinessArticle post={post} />;
     case "what-should-your-business-ai-be-allowed-to-do":
       return <WhatShouldYourBusinessAiBeAllowedToDoArticle post={post} />;
     case "ai-pull-reports-from-vendor-portals":

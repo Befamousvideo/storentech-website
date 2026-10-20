@@ -407,6 +407,39 @@ export const aiPullReportsFromVendorPortalsFaqs = [
  * FAQ visible copy is the source of truth for FAQPage JSON-LD.
  * Mirror the five on-page Q&As word for word.
  */
+export const aiVoiceAgentSmallBusinessFaqs = [
+  {
+    question: "What can an AI voice agent do for a small business?",
+    answer:
+      "It can answer every call, book appointments on your calendar, answer common sales questions about your services and send confirmations, while handing anything unusual to a person.",
+  },
+  {
+    question: "Can an AI receptionist book jobs for contractors?",
+    answer:
+      "Yes. A voice agent connected to your calendar can ask the right questions, offer open times, confirm the appointment and pass the details to your team.",
+  },
+  {
+    question: "Will customers know they're talking to AI?",
+    answer:
+      "They should. We recommend the agent says it's an AI assistant, keeps the conversation natural and connects callers to a person whenever they ask.",
+  },
+  {
+    question: "Does a voice agent replace my office staff?",
+    answer:
+      "No. It handles the routine calls so your team can focus on quotes, special requests and customer relationships. People still approve anything that matters.",
+  },
+  {
+    question:
+      "Can StorenTech AI set up a voice agent for an Orange County contractor or field service business?",
+    answer:
+      "Yes. StorenTech AI helps Orange County businesses find where a voice agent pays first through an AI Opportunity Map, then builds it with your team in charge of approvals.",
+  },
+] as const satisfies readonly BlogFaq[];
+
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
 export const whatShouldYourBusinessAiBeAllowedToDoFaqs = [
   {
     question: "What should a business AI tool be allowed to do?",
@@ -437,6 +470,25 @@ export const whatShouldYourBusinessAiBeAllowedToDoFaqs = [
 ] as const satisfies readonly BlogFaq[];
 
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "ai-voice-agent-small-business",
+    title:
+      "What a Voice Agent Can Do for a Small Business: Answer, Book, Sell",
+    metaTitle:
+      "What a Voice Agent Can Do for a Small Business | StorenTech AI",
+    description:
+      "An AI voice agent can answer every call, book appointments and handle sales questions for contractors and field service firms, while your team owns the customer.",
+    datePublished: "2026-10-21",
+    faqs: aiVoiceAgentSmallBusinessFaqs,
+    indexCta: "Read the post",
+    hero: {
+      avif: "/blog/ai-voice-agent-small-business.avif",
+      webp: "/blog/ai-voice-agent-small-business.webp",
+      width: 1600,
+      height: 900,
+      alt: "StorenTech AI blog header reading Turn missed calls into booked jobs, beside a phone showing an incoming call answered by AI on the first ring and a Today calendar with a new job booked.",
+    },
+  },
   {
     slug: "what-should-your-business-ai-be-allowed-to-do",
     title:
