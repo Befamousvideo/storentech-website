@@ -481,6 +481,13 @@ export const blogPosts: readonly BlogPost[] = [
     datePublished: "2026-10-21",
     faqs: aiVoiceAgentSmallBusinessFaqs,
     indexCta: "Read the post",
+    hero: {
+      avif: "/blog/ai-voice-agent-small-business.avif",
+      webp: "/blog/ai-voice-agent-small-business.webp",
+      width: 1600,
+      height: 900,
+      alt: "StorenTech AI blog header reading Turn missed calls into booked jobs, beside a phone showing an incoming call answered by AI on the first ring and a Today calendar with a new job booked.",
+    },
   },
   {
     slug: "what-should-your-business-ai-be-allowed-to-do",

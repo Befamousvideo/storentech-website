@@ -1,6 +1,7 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { render } from "@testing-library/react";
+import sharp from "sharp";
 import { describe, expect, it } from "vitest";
 import BlogPostPage, { generateMetadata } from "@/app/blog/[slug]/page";
 import sitemap from "@/app/sitemap";
@@ -43,7 +44,29 @@ describe("AI voice agent for small business blog post", () => {
     expect(post?.faqs).toHaveLength(5);
     expect(blogPosts[0]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/ai-voice-agent-small-business");
-    expect(post?.hero).toBeUndefined();
+    expect(post?.hero).toEqual({
+      avif: "/blog/ai-voice-agent-small-business.avif",
+      webp: "/blog/ai-voice-agent-small-business.webp",
+      width: 1600,
+      height: 900,
+      alt: "StorenTech AI blog header reading Turn missed calls into booked jobs, beside a phone showing an incoming call answered by AI on the first ring and a Today calendar with a new job booked.",
+    });
+  });
+
+  it("ships the 1600x900 header in webp and avif", async () => {
+    const webpPath = join(process.cwd(), "public", post?.hero?.webp ?? "missing");
+    const avifPath = join(process.cwd(), "public", post?.hero?.avif ?? "missing");
+    expect(existsSync(webpPath)).toBe(true);
+    expect(existsSync(avifPath)).toBe(true);
+    const webp = await sharp(webpPath).metadata();
+    const avif = await sharp(avifPath).metadata();
+    expect(webp.format).toBe("webp");
+    expect(webp.width).toBe(1600);
+    expect(webp.height).toBe(900);
+    expect(avif.format).toBe("heif");
+    expect(avif.compression).toBe("av1");
+    expect(avif.width).toBe(1600);
+    expect(avif.height).toBe(900);
   });
 
   it("appears on the blog index list, in llms.txt, and in the sitemap", () => {
@@ -64,7 +87,7 @@ describe("AI voice agent for small business blog post", () => {
     expect(entry?.lastModified).toEqual(new Date("2026-10-21"));
   });
 
-  it("sets canonical, title, and description without a post image", async () => {
+  it("sets canonical, title, description, and the header as the Open Graph image", async () => {
     const metadata = await generateMetadata({
       params: Promise.resolve({ slug }),
     });
@@ -79,14 +102,32 @@ describe("AI voice agent for small business blog post", () => {
       title: post?.metaTitle,
       description: post?.description,
       url: "/blog/ai-voice-agent-small-business",
+      images: [
+        {
+          url: "/blog/ai-voice-agent-small-business.webp",
+          width: 1600,
+          height: 900,
+          alt: post?.hero?.alt,
+          type: "image/webp",
+        },
+        {
+          url: "/blog/ai-voice-agent-small-business.avif",
+          width: 1600,
+          height: 900,
+          alt: post?.hero?.alt,
+          type: "image/avif",
+        },
+      ],
     });
-    expect(metadata.openGraph).not.toHaveProperty("images");
     expect(metadata.twitter).toMatchObject({
       card: "summary_large_image",
       title: post?.metaTitle,
       description: post?.description,
+      images: [
+        { url: "/blog/ai-voice-agent-small-business.webp" },
+        { url: "/blog/ai-voice-agent-small-business.avif" },
+      ],
     });
-    expect(metadata.twitter).not.toHaveProperty("images");
   });
 
   it("builds Article and FAQPage JSON-LD from the post", async () => {
@@ -120,8 +161,13 @@ describe("AI voice agent for small business blog post", () => {
       url: postUrl(slug),
       author: { "@type": "Person", name: site.founder.name },
       publisher: { "@type": "Organization", name: site.name, url: site.url },
+      image: {
+        "@type": "ImageObject",
+        url: `${site.url}/blog/ai-voice-agent-small-business.webp`,
+        width: 1600,
+        height: 900,
+      },
     });
-    expect(article).not.toHaveProperty("image");
 
     const mainEntity = faq?.mainEntity as Array<{
       name: string;
@@ -161,7 +207,7 @@ describe("AI voice agent for small business blog post", () => {
     expect(articleSource).not.toMatch(/chatbot|chat with us|start a chat/i);
   });
 
-  it("renders the approved body, opportunity CTA, and no header image", () => {
+  it("renders the approved body, opportunity CTA, and header image", () => {
     expect(post).toBeDefined();
     const { container, getByRole } = render(
       <AiVoiceAgentSmallBusinessArticle post={post!} />,
@@ -176,8 +222,13 @@ describe("AI voice agent for small business blog post", () => {
       }),
     ).toBeInTheDocument();
 
-    expect(container.querySelector(".blog-hero-media img")).toBeNull();
-    expect(html).not.toContain("<img");
+    const image = container.querySelector(".blog-hero-media img");
+    expect(image).toHaveAttribute("src", "/blog/ai-voice-agent-small-business.webp");
+    expect(image).toHaveAttribute("alt", post?.hero?.alt);
+    expect(image).toHaveAttribute("width", "1600");
+    expect(image).toHaveAttribute("height", "900");
+    expect(html).toContain('type="image/avif"');
+    expect(html).toContain("/blog/ai-voice-agent-small-business.avif");
 
     expect(text).toContain(
       "An AI voice agent can answer every call to your business, book the appointment on the spot and handle the sales questions callers ask before they buy.",
