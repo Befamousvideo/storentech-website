@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { IntakeLink } from "@/components/IntakeLink";
 import { SarahPhoneImage } from "@/components/SarahContact";
-import { site } from "@/lib/site";
+import { BOOKING_CTA_HREF, site } from "@/lib/site";
 
 // Mary locked Step 03 verbatim (Partner after the map). Do not rewrite that step.
 
@@ -16,7 +16,7 @@ const moves = [
   {
     n: "01",
     title: "AI Opportunity Map",
-    body: `Typical fee ${site.prices.analysisTypical}. ${site.prices.analysisComplex} when the operation is complex — multiple locations, a messy stack, or a wider catalog. You get a ranked map: where time and revenue hide, what to fix first, what can wait. This is paid work. It is not a complimentary sales call.`,
+    body: `Typical fee ${site.prices.analysisTypical}. ${site.prices.analysisComplex} when the operation is complex — multiple locations, a messy stack, or a wider catalog. You get a ranked map: where time and revenue hide, what to fix first, what can wait. This is paid work. The 15-minute intro call before it costs nothing; the Map is where the analysis happens.`,
   },
   {
     n: "02",
@@ -40,8 +40,11 @@ export default function HowItWorksPage() {
           <hr className="rule" />
           <p className="lede">
             The door is a paid AI Opportunity Map. {site.offer.services}{" "}
-            {site.offer.capacity} Call Sarah if you want to talk before you buy
-            the map.
+            {site.offer.capacity}{" "}
+            <a href={BOOKING_CTA_HREF} target="_blank" rel="noopener noreferrer">
+              Book a 15-minute intro call
+            </a>
+            {", or call Sarah, if you want to talk before you buy the map."}
           </p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
             <IntakeLink className="btn btn-solid">{site.offer.cta}</IntakeLink>

@@ -42,7 +42,7 @@ export const roiAnalysisFaqs = [
   {
     question: "Is the AI audit free?",
     answer:
-      "No. StorenTech’s AI Opportunity Map is never complimentary. Free audits are sales calls; this is a paid map.",
+      "No. StorenTech’s AI Opportunity Map is never complimentary. The Map is paid; the 15-minute intro call is not.",
   },
   {
     question: "What happens if the numbers don’t work?",
@@ -99,7 +99,7 @@ export const aiSecurityFaqs = [
   {
     question: "Is StorenTech a full-service AI agency?",
     answer:
-      "Yes. StorenTech AI is a full-service AI agency. Every client starts with a paid AI Opportunity Map — never a complimentary sales call — then hire and retainer if the math and the access map hold. Path: How it works.",
+      "Yes. StorenTech AI is a full-service AI agency. Every client starts with a paid AI Opportunity Map. The Map is paid; the 15-minute intro call is not. Then hire and retainer if the math and the access map hold. Path: How it works.",
   },
 ] as const satisfies readonly BlogFaq[];
 
@@ -136,7 +136,7 @@ export const mastermindHybridFaqs = [
   {
     question: "Is StorenTech a full-service AI agency?",
     answer:
-      "Yes. StorenTech AI is a full-service AI agency. Every client starts with a paid AI Opportunity Map — never a complimentary sales call — then hire and retainer if the math holds. See How it works.",
+      "Yes. StorenTech AI is a full-service AI agency. Every client starts with a paid AI Opportunity Map. The Map is paid; the 15-minute intro call is not. Then hire and retainer if the math holds. See How it works.",
   },
   {
     question: "How do I start?",
@@ -639,10 +639,10 @@ export const blogPosts: readonly BlogPost[] = [
   {
     slug: "what-is-an-automation-roi-analysis",
     title:
-      "What Is an AI Opportunity Map? (And Why StorenTech Won’t Start Free)",
+      "What Is an AI Opportunity Map? (And Why the Analysis Is Paid)",
     metaTitle: "What Is an AI Opportunity Map? | StorenTech AI",
     description:
-      "StorenTech AI is a full-service AI agency. Every client starts with a paid AI Opportunity Map ($1,000 typ.) that maps leaks and ranks the first AI hire — never a free sales call.",
+      "StorenTech AI is a full-service AI agency. Every client starts with a paid AI Opportunity Map ($1,000 typ.) that maps leaks and ranks the first AI hire. The Map is paid; the 15-minute intro call is not.",
     datePublished: "2026-09-21",
     faqs: roiAnalysisFaqs,
   },
