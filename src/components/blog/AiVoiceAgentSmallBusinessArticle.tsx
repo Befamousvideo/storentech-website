@@ -54,6 +54,25 @@ export function AiVoiceAgentSmallBusinessArticle({ post }: { post: BlogPost }) {
           </p>
         </div>
 
+        <figure className="blog-video">
+          <video
+            controls
+            playsInline
+            muted
+            preload="metadata"
+            poster="/blog/ai-voice-agent-small-business.webp"
+            width={1080}
+            height={1080}
+            style={{ width: "100%", height: "auto", aspectRatio: "1 / 1" }}
+            aria-label="Short video: how an AI voice agent answers for a small business"
+          >
+            <source src="/videos/ai-voice-agent-small-business.mp4" type="video/mp4" />
+          </video>
+          <figcaption>
+            Watch: how an AI voice agent answers for a small business (22 sec).
+          </figcaption>
+        </figure>
+
         <h2>The problem: the phone rings when nobody can answer</h2>
         <p>
           Think about a roofing contractor in Orange County. The owner is on a
