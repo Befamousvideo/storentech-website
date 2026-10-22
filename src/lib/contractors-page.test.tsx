@@ -12,6 +12,8 @@ import {
   CONTRACTORS_CANONICAL_URL,
   CONTRACTORS_CTA_LABEL,
   CONTRACTORS_PATH,
+  CONTRACTORS_SECONDARY_CTA_LABEL,
+  CONTRACTORS_SECONDARY_CTA_SUPPORT,
   contractorsPage,
   contractorsVideo,
 } from "@/lib/contractors-page";
@@ -60,6 +62,19 @@ describe("/contractors landing page", () => {
     expect(CONTRACTORS_CTA_LABEL.toLowerCase()).toContain(
       "free 15-minute intro call",
     );
+    expect(contractorsPage.ctaSupport).toBe(
+      "We'll talk through your calls and jobs and whether AI fits.",
+    );
+    expect(CONTRACTORS_SECONDARY_CTA_LABEL).toBe(
+      "Get your AI Opportunity Map",
+    );
+    expect(CONTRACTORS_SECONDARY_CTA_SUPPORT).toContain("paid deep-dive");
+    expect(
+      `${contractorsPage.ctaLabel} ${contractorsPage.ctaSupport} ${CONTRACTORS_SECONDARY_CTA_SUPPORT}`,
+    ).not.toMatch(/20-minute/);
+    expect(
+      `${contractorsPage.ctaLabel} ${contractorsPage.ctaSupport} ${CONTRACTORS_SECONDARY_CTA_SUPPORT}`,
+    ).not.toMatch(/30-minute/);
     expect(copySource).toContain(contractorsPage.h1);
     expect(copySource).toContain(contractorsPage.example.equation);
     expect(copySource).toContain(contractorsPage.example.result);
@@ -162,12 +177,22 @@ describe("/contractors landing page", () => {
       expect(cta).toHaveAttribute("rel", "noopener noreferrer");
     }
 
+    const opportunityLinks = screen.getAllByRole("link", {
+      name: CONTRACTORS_SECONDARY_CTA_LABEL,
+    });
+    expect(opportunityLinks).toHaveLength(2);
+    for (const link of opportunityLinks) {
+      expect(link).toHaveAttribute("href", "/opportunity");
+      expect(link).toHaveClass("btn");
+      expect(link).not.toHaveClass("btn-solid");
+    }
+
     expect(
-      screen.getByRole("link", { name: contractorsPage.heroSecondary.label }),
-    ).toHaveAttribute("href", "/opportunity");
+      screen.getAllByText(contractorsPage.ctaSupport),
+    ).toHaveLength(2);
     expect(
-      screen.getByRole("link", { name: contractorsPage.finalCta.secondaryLabel }),
-    ).toHaveAttribute("href", "/opportunity");
+      screen.getAllByText(CONTRACTORS_SECONDARY_CTA_SUPPORT),
+    ).toHaveLength(2);
 
     for (const item of contractorsPage.faqs) {
       expect(
