@@ -10,6 +10,8 @@ function hideJsonLd(pathname: string) {
   return (
     pathname === "/privacy" ||
     pathname === "/terms" ||
+    pathname === "/contractors" ||
+    pathname.startsWith("/contractors/") ||
     isForPreviewPath(pathname)
   );
 }

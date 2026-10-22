@@ -1,11 +1,13 @@
 import type { MetadataRoute } from "next";
 import { blogPosts, postPath } from "@/lib/blog";
+import { CONTRACTORS_PATH } from "@/lib/contractors-page";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
     "/opportunity",
+    CONTRACTORS_PATH,
     "/work",
     "/how-it-works",
     "/about",
