@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { render, screen } from "@testing-library/react";
+import { renderToStaticMarkup } from "react-dom/server";
 import sharp from "sharp";
 import { describe, expect, it, vi } from "vitest";
 import ContractorsPage, { metadata } from "@/app/contractors/page";
@@ -116,9 +117,17 @@ describe("/contractors landing page", () => {
     expect(video).toHaveAttribute("src", contractorsVideo.src);
     expect(video).toHaveAttribute("controls");
     expect(video).toHaveAttribute("playsinline");
-    expect(video).toHaveAttribute("muted");
+    expect(video).toHaveProperty("muted", true);
     expect(video).toHaveAttribute("preload", "metadata");
     expect(video).toHaveAttribute("poster", contractorsVideo.poster);
+
+    const staticHtml = renderToStaticMarkup(<ContractorsLanding />);
+    expect(staticHtml).toContain("<video");
+    expect(staticHtml).toContain('controls=""');
+    expect(staticHtml).toContain("playsInline");
+    expect(staticHtml).toContain('muted=""');
+    expect(staticHtml).toContain('preload="metadata"');
+    expect(staticHtml).toContain(`poster="${contractorsVideo.poster}"`);
     expect(video).toHaveAttribute("width", String(contractorsVideo.width));
     expect(video).toHaveAttribute("height", String(contractorsVideo.height));
     expect(video).not.toHaveAttribute("autoplay");
@@ -126,7 +135,7 @@ describe("/contractors landing page", () => {
   });
 
   it("renders the draft sections, labeled example math, and booking CTAs", () => {
-    render(<ContractorsPage />);
+    const { container } = render(<ContractorsPage />);
 
     expect(
       screen.getByRole("heading", { level: 1, name: contractorsPage.h1 }),
@@ -138,13 +147,12 @@ describe("/contractors landing page", () => {
     expect(
       screen.getByRole("heading", { level: 2, name: contractorsPage.example.heading }),
     ).toBeInTheDocument();
-    expect(screen.getByText(contractorsPage.example.label)).toBeInTheDocument();
-    expect(screen.getByText(contractorsPage.example.disclaimer)).toBeInTheDocument();
-    expect(
-      screen.getByText(
-        `${contractorsPage.example.equation} ${contractorsPage.example.result}`,
-      ),
-    ).toBeInTheDocument();
+    const example = container.querySelector(".example-math");
+    expect(example?.textContent).toContain(contractorsPage.example.label);
+    expect(example?.textContent).toContain(contractorsPage.example.setup);
+    expect(example?.textContent).toContain(contractorsPage.example.equation);
+    expect(example?.textContent).toContain(contractorsPage.example.result);
+    expect(example?.textContent).toContain(contractorsPage.example.disclaimer);
 
     const ctas = screen.getAllByRole("link", { name: CONTRACTORS_CTA_LABEL });
     expect(ctas).toHaveLength(2);
