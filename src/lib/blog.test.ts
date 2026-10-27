@@ -11,6 +11,10 @@ describe("live blog post dates", () => {
       })),
     ).toEqual([
       {
+        slug: "hugging-face-github-explained",
+        datePublished: "2026-10-28",
+      },
+      {
         slug: "ai-sorts-leads-service-requests",
         datePublished: "2026-10-26",
       },

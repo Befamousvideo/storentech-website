@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [Hugging Face and GitHub, Explained: What They Are and Why Your AI Work Should Live There](https://www.storentechai.com/blog/hugging-face-github-explained): Hugging Face and GitHub in plain English: what each one does, why your AI tools and code should live there, and five questions to ask your developer.",
+    );
+    expect(text.indexOf("hugging-face-github-explained")).toBeLessThan(
+      text.indexOf("ai-sorts-leads-service-requests"),
+    );
+    expect(text).toContain(
       "- [AI Can Sort Your Leads and Service Requests in Seconds. Here's Where a Person Should Still Decide.](https://www.storentechai.com/blog/ai-sorts-leads-service-requests): AI can now sort leads and service requests almost instantly. Here's what to let it sort, and the decisions a person in your business should still make.",
     );
     expect(text.indexOf("ai-sorts-leads-service-requests")).toBeLessThan(

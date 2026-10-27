@@ -502,7 +502,51 @@ export const aiSortsLeadsServiceRequestsFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const huggingFaceGithubExplainedFaqs = [
+  {
+    question: "What is GitHub used for in a small business?",
+    answer:
+      "GitHub stores the code behind your software and websites, records every change and lets you control who can see or edit it. It's where custom AI tools and automations should be kept.",
+  },
+  {
+    question: "What is Hugging Face?",
+    answer:
+      "Hugging Face is a platform for sharing and finding AI models and the data used to train them. Each model has a page describing its intended use, limitations and license.",
+  },
+  {
+    question: "Do I need to know how to code to use GitHub or Hugging Face?",
+    answer:
+      "No. Owners mainly need to make sure the business owns the accounts, access is limited to the right people and alerts are turned on. A developer handles the day-to-day work.",
+  },
+  {
+    question:
+      "Who can help an Orange County business organize its AI code and models?",
+    answer:
+      "StorenTech AI helps Orange County businesses make sure their AI tools live in accounts they own, with private access, change history and alerts in place.",
+  },
+  {
+    question: "What happens to my AI tools if my developer leaves?",
+    answer:
+      "If the code and models are in business-owned accounts with clear notes, another developer can take over. If they're in personal accounts, you may have to rebuild.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "hugging-face-github-explained",
+    title:
+      "Hugging Face and GitHub, Explained: What They Are and Why Your AI Work Should Live There",
+    metaTitle: "Hugging Face and GitHub, Explained | StorenTech AI",
+    description:
+      "Hugging Face and GitHub in plain English: what each one does, why your AI tools and code should live there, and five questions to ask your developer.",
+    datePublished: "2026-10-28",
+    faqs: huggingFaceGithubExplainedFaqs,
+    indexCta: "Read the post",
+  },
   {
     slug: "ai-sorts-leads-service-requests",
     title:
