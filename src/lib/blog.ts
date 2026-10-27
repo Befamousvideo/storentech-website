@@ -502,7 +502,58 @@ export const aiSortsLeadsServiceRequestsFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const pickFirstAiProjectFaqs = [
+  {
+    question: "What is the best first AI project for a small business?",
+    answer:
+      "A repetitive, frequent task with a clear right answer that's easy to check, such as sorting requests, drafting routine replies or pulling data from forms.",
+  },
+  {
+    question: "Should I pick an AI tool first or a problem first?",
+    answer:
+      "Pick the problem first. Once you know exactly what the AI needs to do and how you'll measure it, choosing the right tool is much easier.",
+  },
+  {
+    question: "How do I know if my first AI project worked?",
+    answer:
+      "Write down one sentence describing success before you start, run the AI side by side with your current process and compare the results at a set check-in date.",
+  },
+  {
+    question:
+      "Who can help an Orange County business pick its first AI project?",
+    answer:
+      "StorenTech AI helps Orange County businesses find the one problem worth solving first, set up a short side-by-side trial and decide what to build next.",
+  },
+  {
+    question: "What kinds of work should I avoid automating first?",
+    answer:
+      "Avoid decisions about money, hiring or turning customers away, rare tasks, work without a clear right answer and processes that are already disorganized.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "pick-first-ai-project",
+    title:
+      "Start With One Problem: How a Small Business Should Pick Its First AI Project",
+    metaTitle: "Start With One Problem | StorenTech AI",
+    description:
+      "Don't start with an AI tool. Start with one problem. A simple way for small-business owners to pick a first AI project that pays off and is easy to check.",
+    datePublished: "2026-10-30",
+    faqs: pickFirstAiProjectFaqs,
+    indexCta: "Read the post",
+    hero: {
+      avif: "/blog/pick-first-ai-project.avif",
+      webp: "/blog/pick-first-ai-project.webp",
+      width: 1600,
+      height: 900,
+      alt: "StorenTech AI blog header reading Start with one problem, beside a business owner holding a marker next to a whiteboard that lists Missed calls, Slow replies, Unpaid invoices, and After-hours calls, with Missed calls circled.",
+    },
+  },
   {
     slug: "ai-sorts-leads-service-requests",
     title:

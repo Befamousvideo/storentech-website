@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { PickFirstAiProjectArticle } from "@/components/blog/PickFirstAiProjectArticle";
 import { AiSortsLeadsServiceRequestsArticle } from "@/components/blog/AiSortsLeadsServiceRequestsArticle";
 import { AiAgentCostControlsArticle } from "@/components/blog/AiAgentCostControlsArticle";
 import { AiSecurityForAiEmployeesArticle } from "@/components/blog/AiSecurityForAiEmployeesArticle";
@@ -19,6 +20,8 @@ import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
+    case "pick-first-ai-project":
+      return <PickFirstAiProjectArticle post={post} />;
     case "ai-sorts-leads-service-requests":
       return <AiSortsLeadsServiceRequestsArticle post={post} />;
     case "ai-voice-agent-small-business":

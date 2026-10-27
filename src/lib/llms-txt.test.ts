@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [Start With One Problem: How a Small Business Should Pick Its First AI Project](https://www.storentechai.com/blog/pick-first-ai-project): Don't start with an AI tool. Start with one problem. A simple way for small-business owners to pick a first AI project that pays off and is easy to check.",
+    );
+    expect(text.indexOf("pick-first-ai-project")).toBeLessThan(
+      text.indexOf("ai-sorts-leads-service-requests"),
+    );
+    expect(text).toContain(
       "- [AI Can Sort Your Leads and Service Requests in Seconds. Here's Where a Person Should Still Decide.](https://www.storentechai.com/blog/ai-sorts-leads-service-requests): AI can now sort leads and service requests almost instantly. Here's what to let it sort, and the decisions a person in your business should still make.",
     );
     expect(text.indexOf("ai-sorts-leads-service-requests")).toBeLessThan(

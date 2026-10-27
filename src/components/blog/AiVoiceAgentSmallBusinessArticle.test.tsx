@@ -42,7 +42,7 @@ describe("AI voice agent for small business blog post", () => {
     expect(post?.datePublished).toBe("2026-10-21");
     expect(post?.faqs).toEqual(aiVoiceAgentSmallBusinessFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[1]?.slug).toBe(slug);
+    expect(blogPosts[2]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/ai-voice-agent-small-business");
     expect(post?.hero).toEqual({
       avif: "/blog/ai-voice-agent-small-business.avif",

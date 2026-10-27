@@ -12,6 +12,7 @@
 - [Contact](https://www.storentechai.com/contact): Book your AI Opportunity Map through the contact form.
 
 ## Blog
+- [Start With One Problem: How a Small Business Should Pick Its First AI Project](https://www.storentechai.com/blog/pick-first-ai-project): Don't start with an AI tool. Start with one problem. A simple way for small-business owners to pick a first AI project that pays off and is easy to check.
 - [AI Can Sort Your Leads and Service Requests in Seconds. Here's Where a Person Should Still Decide.](https://www.storentechai.com/blog/ai-sorts-leads-service-requests): AI can now sort leads and service requests almost instantly. Here's what to let it sort, and the decisions a person in your business should still make.
 - [What a Voice Agent Can Do for a Small Business: Answer, Book, Sell](https://www.storentechai.com/blog/ai-voice-agent-small-business): An AI voice agent can answer every call, book appointments and handle sales questions for contractors and field service firms, while your team owns the customer.
 - [Before AI Clicks Submit: 4 Questions to Decide What Your Business AI Is Allowed to Do](https://www.storentechai.com/blog/what-should-your-business-ai-be-allowed-to-do): Before AI clicks a button for your business, answer 4 questions: what it can see, what it can change, what needs your yes, and who owns it.
