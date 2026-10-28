@@ -44,7 +44,7 @@ describe("AI sorts leads and service requests blog post", () => {
     expect(post?.datePublished).toBe("2026-10-26");
     expect(post?.faqs).toEqual(aiSortsLeadsServiceRequestsFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[0]?.slug).toBe(slug);
+    expect(blogPosts[1]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/ai-sorts-leads-service-requests");
     expect(post?.hero).toBeUndefined();
   });
