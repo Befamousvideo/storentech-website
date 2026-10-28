@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [AI Can Sort Your Leads and Service Requests in Seconds. Here's Where a Person Should Still Decide.](https://www.storentechai.com/blog/ai-sorts-leads-service-requests): AI can now sort leads and service requests almost instantly. Here's what to let it sort, and the decisions a person in your business should still make.",
+    );
+    expect(text.indexOf("ai-sorts-leads-service-requests")).toBeLessThan(
+      text.indexOf("ai-voice-agent-small-business"),
+    );
+    expect(text).toContain(
       "- [What a Voice Agent Can Do for a Small Business: Answer, Book, Sell](https://www.storentechai.com/blog/ai-voice-agent-small-business): An AI voice agent can answer every call, book appointments and handle sales questions for contractors and field service firms, while your team owns the customer.",
     );
     expect(text.indexOf("ai-voice-agent-small-business")).toBeLessThan(

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { AiSortsLeadsServiceRequestsArticle } from "@/components/blog/AiSortsLeadsServiceRequestsArticle";
 import { AiAgentCostControlsArticle } from "@/components/blog/AiAgentCostControlsArticle";
 import { AiSecurityForAiEmployeesArticle } from "@/components/blog/AiSecurityForAiEmployeesArticle";
 import { AiToolCleanupChecklistArticle } from "@/components/blog/AiToolCleanupChecklistArticle";
@@ -18,6 +19,8 @@ import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
+    case "ai-sorts-leads-service-requests":
+      return <AiSortsLeadsServiceRequestsArticle post={post} />;
     case "ai-voice-agent-small-business":
       return <AiVoiceAgentSmallBusinessArticle post={post} />;
     case "what-should-your-business-ai-be-allowed-to-do":

@@ -30,7 +30,7 @@ describe("what should your business AI be allowed to do blog post", () => {
     expect(post?.datePublished).toBe("2026-10-17");
     expect(post?.faqs).toEqual(whatShouldYourBusinessAiBeAllowedToDoFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[1]?.slug).toBe(slug);
+    expect(blogPosts[2]?.slug).toBe(slug);
   });
 
   it("ships the 1600x900 header in webp and avif", () => {

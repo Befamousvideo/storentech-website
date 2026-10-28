@@ -469,7 +469,52 @@ export const whatShouldYourBusinessAiBeAllowedToDoFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const aiSortsLeadsServiceRequestsFaqs = [
+  {
+    question: "Can AI sort my business leads automatically?",
+    answer:
+      "Yes. AI can read new leads and requests and sort them by type, urgency and who should handle them. Most businesses start by letting it sort and keeping a person on final decisions.",
+  },
+  {
+    question: "What decisions should a person make instead of AI?",
+    answer:
+      "Anything involving money, saying no to someone, hiring, lending, medical or legal matters, upset customers, and any item the AI isn't confident about.",
+  },
+  {
+    question: "What is the OpenAI Decisions API?",
+    answer:
+      "It's a developer tool OpenAI released in October 2026 that answers narrow questions about text or images, such as picking a category or scoring urgency, instead of writing a full response.",
+  },
+  {
+    question:
+      "Who can help an Orange County business set up AI sorting for leads and service requests?",
+    answer:
+      'StorenTech AI helps Orange County businesses set up AI sorting with clear categories, a "not sure" line that sends unclear items to a person, and monthly checks on what was sorted where.',
+  },
+  {
+    question: "How do I know if AI is sorting my requests correctly?",
+    answer:
+      "Run it side by side with your team first, then spot-check regularly, especially items the AI marked as spam or low priority.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "ai-sorts-leads-service-requests",
+    title:
+      "AI Can Sort Your Leads and Service Requests in Seconds. Here's Where a Person Should Still Decide.",
+    metaTitle:
+      "AI Can Sort Your Leads and Service Requests | StorenTech AI",
+    description:
+      "AI can now sort leads and service requests almost instantly. Here's what to let it sort, and the decisions a person in your business should still make.",
+    datePublished: "2026-10-26",
+    faqs: aiSortsLeadsServiceRequestsFaqs,
+    indexCta: "Read the post",
+  },
   {
     slug: "ai-voice-agent-small-business",
     title:
