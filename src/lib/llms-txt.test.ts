@@ -30,6 +30,12 @@ describe("llms.txt", () => {
     expect(text).toContain(
       "- [What a Voice Agent Can Do for a Small Business: Answer, Book, Sell](https://www.storentechai.com/blog/ai-voice-agent-small-business): An AI voice agent can answer every call, book appointments and handle sales questions for contractors and field service firms, while your team owns the customer.",
     );
+    expect(text).toContain(
+      "- [Is Your Automation Actually Working?](https://www.storentechai.com/blog/monthly-automation-check-up): Automations rarely crash loudly. They quietly stop doing the job. A 10-minute monthly check-up to see if yours are still working.",
+    );
+    expect(text.indexOf("monthly-automation-check-up")).toBeLessThan(
+      text.indexOf("ai-voice-agent-small-business"),
+    );
     expect(text.indexOf("ai-voice-agent-small-business")).toBeLessThan(
       text.indexOf("what-should-your-business-ai-be-allowed-to-do"),
     );
