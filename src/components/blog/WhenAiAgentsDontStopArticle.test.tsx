@@ -21,7 +21,7 @@ describe("When AI agents don't stop blog post", () => {
     expect(post?.datePublished).toBe("2026-10-12");
     expect(post?.faqs).toEqual(whenAiAgentsDontStopFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[6]?.slug).toBe("when-ai-agents-dont-stop");
+    expect(blogPosts[7]?.slug).toBe("when-ai-agents-dont-stop");
   });
 
   it("ships the 1600x900 header in webp and avif", () => {

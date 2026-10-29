@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { MonthlyAutomationCheckUpArticle } from "@/components/blog/MonthlyAutomationCheckUpArticle";
 import { HuggingFaceGithubExplainedArticle } from "@/components/blog/HuggingFaceGithubExplainedArticle";
 import { AiSortsLeadsServiceRequestsArticle } from "@/components/blog/AiSortsLeadsServiceRequestsArticle";
 import { AiAgentCostControlsArticle } from "@/components/blog/AiAgentCostControlsArticle";
@@ -24,6 +25,8 @@ function BlogArticle({ post }: { post: BlogPost }) {
       return <HuggingFaceGithubExplainedArticle post={post} />;
     case "ai-sorts-leads-service-requests":
       return <AiSortsLeadsServiceRequestsArticle post={post} />;
+    case "monthly-automation-check-up":
+      return <MonthlyAutomationCheckUpArticle post={post} />;
     case "ai-voice-agent-small-business":
       return <AiVoiceAgentSmallBusinessArticle post={post} />;
     case "what-should-your-business-ai-be-allowed-to-do":
