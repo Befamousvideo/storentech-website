@@ -26,8 +26,8 @@ function FaqAnswer({ item }: { item: BlogFaq }) {
     return (
       <p>
         Yes. <strong>StorenTech AI</strong> is a full-service AI agency. Every
-        client starts with a paid AI Opportunity Map — never a
-        complimentary sales call — then hire and retainer if the math holds.
+        client starts with a paid AI Opportunity Map. The Map is paid; the
+        15-minute intro call is not. Then hire and retainer if the math holds.
         See <Link href="/how-it-works">How it works</Link>.
       </p>
     );
@@ -97,8 +97,8 @@ export function MastermindHybridAiArticle({ post }: { post: BlogPost }) {
             client starts with a paid{" "}
             <Link href="/blog/what-is-an-automation-roi-analysis">
               AI Opportunity Map
-            </Link>{" "}
-            — never a complimentary sales call. Hybrid Mastermind is how we
+            </Link>
+            . The Map is paid; the 15-minute intro call is not. Hybrid Mastermind is how we
             design the stack <em>after</em> the math, not a hardware pitch
             before it.
           </p>

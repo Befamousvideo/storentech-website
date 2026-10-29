@@ -25,4 +25,4 @@
 - [Zapier + AI Agents, Explained for Business Owners](https://www.storentechai.com/blog/zapier-webhooks-ai-agents): What Zapier does, how an AI assistant can handle busywork, and why a person still approves anything that goes out.
 - [Mastermind Hybrid AI](https://www.storentechai.com/blog/mastermind-hybrid-ai): How StorenTech AI pairs local open-source models, for volume and privacy, with frontier AI models when a task needs stronger judgment.
 - [AI Security for AI Employees](https://www.storentechai.com/blog/ai-security-for-ai-employees): How StorenTech AI sets up AI employees safely, with minimal data retention, only the access each assistant needs, human approval on risky actions, and testing before anything goes live.
-- [What Is an AI Opportunity Map?](https://www.storentechai.com/blog/what-is-an-automation-roi-analysis): Why every StorenTech AI client starts with a paid AI Opportunity Map instead of a free sales call.
+- [What Is an AI Opportunity Map?](https://www.storentechai.com/blog/what-is-an-automation-roi-analysis): Why every StorenTech AI client starts with a paid AI Opportunity Map; a short free intro call comes first if you want it.

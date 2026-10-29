@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { IntakeLink } from "@/components/IntakeLink";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { StructuredData } from "@/components/StructuredData";
-import { site } from "@/lib/site";
+import { BOOKING_CTA_HREF, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "AI Opportunity Map",
@@ -59,6 +59,13 @@ export default function AiOpportunityMapPage() {
             <IntakeLink className="btn btn-solid">{site.offer.cta}</IntakeLink>
             <SarahPhoneImage className="sarah-phone" />
           </div>
+          <p className="lede" style={{ marginTop: "1.4rem" }}>
+            Not ready? Book a 15-minute intro call. It&apos;s a short conversation, and
+            it&apos;s free. The Map itself is paid, starting at {site.prices.analysisTypical}.{" "}
+            <a href={BOOKING_CTA_HREF} target="_blank" rel="noopener noreferrer">
+              Book intro
+            </a>
+          </p>
         </div>
       </header>
 
