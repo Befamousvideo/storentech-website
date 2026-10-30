@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [Start With One Problem: How a Small Business Should Pick Its First AI Project](https://www.storentechai.com/blog/pick-first-ai-project): Don't start with an AI tool. Start with one problem. A simple way for small-business owners to pick a first AI project that pays off and is easy to check.",
+    );
+    expect(text.indexOf("pick-first-ai-project")).toBeLessThan(
+      text.indexOf("hugging-face-github-explained"),
+    );
+    expect(text).toContain(
       "- [Hugging Face and GitHub, Explained: What They Are and Why Your AI Work Should Live There](https://www.storentechai.com/blog/hugging-face-github-explained): Hugging Face and GitHub in plain English: what each one does, why your AI tools and code should live there, and five questions to ask your developer.",
     );
     expect(text.indexOf("hugging-face-github-explained")).toBeLessThan(

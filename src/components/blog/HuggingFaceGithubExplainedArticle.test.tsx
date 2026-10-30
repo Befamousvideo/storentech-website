@@ -44,7 +44,7 @@ describe("Hugging Face and GitHub explained blog post", () => {
     expect(post?.datePublished).toBe("2026-10-28");
     expect(post?.faqs).toEqual(huggingFaceGithubExplainedFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[0]?.slug).toBe(slug);
+    expect(blogPosts[1]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/hugging-face-github-explained");
     expect(post?.hero).toBeUndefined();
   });
