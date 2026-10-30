@@ -19,6 +19,12 @@ describe("llms.txt", () => {
       "- [Start With One Problem: How a Small Business Should Pick Its First AI Project](https://www.storentechai.com/blog/pick-first-ai-project): Don't start with an AI tool. Start with one problem. A simple way for small-business owners to pick a first AI project that pays off and is easy to check.",
     );
     expect(text.indexOf("pick-first-ai-project")).toBeLessThan(
+      text.indexOf("hugging-face-github-explained"),
+    );
+    expect(text).toContain(
+      "- [Hugging Face and GitHub, Explained: What They Are and Why Your AI Work Should Live There](https://www.storentechai.com/blog/hugging-face-github-explained): Hugging Face and GitHub in plain English: what each one does, why your AI tools and code should live there, and five questions to ask your developer.",
+    );
+    expect(text.indexOf("hugging-face-github-explained")).toBeLessThan(
       text.indexOf("ai-sorts-leads-service-requests"),
     );
     expect(text).toContain(
@@ -29,6 +35,12 @@ describe("llms.txt", () => {
     );
     expect(text).toContain(
       "- [What a Voice Agent Can Do for a Small Business: Answer, Book, Sell](https://www.storentechai.com/blog/ai-voice-agent-small-business): An AI voice agent can answer every call, book appointments and handle sales questions for contractors and field service firms, while your team owns the customer.",
+    );
+    expect(text).toContain(
+      "- [Is Your Automation Actually Working?](https://www.storentechai.com/blog/monthly-automation-check-up): Automations rarely crash loudly. They quietly stop doing the job. A 10-minute monthly check-up to see if yours are still working.",
+    );
+    expect(text.indexOf("monthly-automation-check-up")).toBeLessThan(
+      text.indexOf("ai-voice-agent-small-business"),
     );
     expect(text.indexOf("ai-voice-agent-small-business")).toBeLessThan(
       text.indexOf("what-should-your-business-ai-be-allowed-to-do"),

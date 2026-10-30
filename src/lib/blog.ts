@@ -535,6 +535,72 @@ export const pickFirstAiProjectFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const huggingFaceGithubExplainedFaqs = [
+  {
+    question: "What is GitHub used for in a small business?",
+    answer:
+      "GitHub stores the code behind your software and websites, records every change and lets you control who can see or edit it. It's where custom AI tools and automations should be kept.",
+  },
+  {
+    question: "What is Hugging Face?",
+    answer:
+      "Hugging Face is a platform for sharing and finding AI models and the data used to train them. Each model has a page describing its intended use, limitations and license.",
+  },
+  {
+    question: "Do I need to know how to code to use GitHub or Hugging Face?",
+    answer:
+      "No. Owners mainly need to make sure the business owns the accounts, access is limited to the right people and alerts are turned on. A developer handles the day-to-day work.",
+  },
+  {
+    question:
+      "Who can help an Orange County business organize its AI code and models?",
+    answer:
+      "StorenTech AI helps Orange County businesses make sure their AI tools live in accounts they own, with private access, change history and alerts in place.",
+  },
+  {
+    question: "What happens to my AI tools if my developer leaves?",
+    answer:
+      "If the code and models are in business-owned accounts with clear notes, another developer can take over. If they're in personal accounts, you may have to rebuild.",
+  },
+] as const satisfies readonly BlogFaq[];
+
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const monthlyAutomationCheckUpFaqs = [
+  {
+    question: "How do I know if my automation is actually working?",
+    answer:
+      "Check results, not settings. Pick real examples from the last month and confirm the automation finished the job, like a lead that got its follow-up or a report that arrived with real numbers.",
+  },
+  {
+    question: "How often should a small business check its automations?",
+    answer:
+      "Once a month is enough for most small businesses. A 10-minute check of results, failures, approvals and recovery catches most quiet problems early.",
+  },
+  {
+    question: "Why do automations stop working without warning?",
+    answer:
+      'Usually something around them changes: a form, a password, a software update or a field name. The automation still looks "on" but stops doing the job.',
+  },
+  {
+    question:
+      "How can an Orange County business owner tell whether an automation StorenTech AI built is still working?",
+    answer:
+      'StorenTech AI sets up each automation with a clear definition of what "done" looks like, so Orange County owners can check finished jobs and stuck items each month instead of guessing.',
+  },
+  {
+    question: "Should I turn off automations I don't use?",
+    answer:
+      "Yes. An automation nobody needs is one more thing that can break or send something by mistake.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
   {
     slug: "pick-first-ai-project",
@@ -555,6 +621,17 @@ export const blogPosts: readonly BlogPost[] = [
     },
   },
   {
+    slug: "hugging-face-github-explained",
+    title:
+      "Hugging Face and GitHub, Explained: What They Are and Why Your AI Work Should Live There",
+    metaTitle: "Hugging Face and GitHub, Explained | StorenTech AI",
+    description:
+      "Hugging Face and GitHub in plain English: what each one does, why your AI tools and code should live there, and five questions to ask your developer.",
+    datePublished: "2026-10-28",
+    faqs: huggingFaceGithubExplainedFaqs,
+    indexCta: "Read the post",
+  },
+  {
     slug: "ai-sorts-leads-service-requests",
     title:
       "AI Can Sort Your Leads and Service Requests in Seconds. Here's Where a Person Should Still Decide.",
@@ -564,6 +641,16 @@ export const blogPosts: readonly BlogPost[] = [
       "AI can now sort leads and service requests almost instantly. Here's what to let it sort, and the decisions a person in your business should still make.",
     datePublished: "2026-10-26",
     faqs: aiSortsLeadsServiceRequestsFaqs,
+    indexCta: "Read the post",
+  },
+  {
+    slug: "monthly-automation-check-up",
+    title: "Is Your Automation Actually Working?",
+    metaTitle: "Is Your Automation Actually Working? | StorenTech AI",
+    description:
+      "Automations rarely crash loudly. They quietly stop doing the job. A 10-minute monthly check-up to see if yours are still working.",
+    datePublished: "2026-10-23",
+    faqs: monthlyAutomationCheckUpFaqs,
     indexCta: "Read the post",
   },
   {

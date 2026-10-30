@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PickFirstAiProjectArticle } from "@/components/blog/PickFirstAiProjectArticle";
+import { MonthlyAutomationCheckUpArticle } from "@/components/blog/MonthlyAutomationCheckUpArticle";
+import { HuggingFaceGithubExplainedArticle } from "@/components/blog/HuggingFaceGithubExplainedArticle";
 import { AiSortsLeadsServiceRequestsArticle } from "@/components/blog/AiSortsLeadsServiceRequestsArticle";
 import { AiAgentCostControlsArticle } from "@/components/blog/AiAgentCostControlsArticle";
 import { AiSecurityForAiEmployeesArticle } from "@/components/blog/AiSecurityForAiEmployeesArticle";
@@ -22,8 +24,12 @@ function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
     case "pick-first-ai-project":
       return <PickFirstAiProjectArticle post={post} />;
+    case "hugging-face-github-explained":
+      return <HuggingFaceGithubExplainedArticle post={post} />;
     case "ai-sorts-leads-service-requests":
       return <AiSortsLeadsServiceRequestsArticle post={post} />;
+    case "monthly-automation-check-up":
+      return <MonthlyAutomationCheckUpArticle post={post} />;
     case "ai-voice-agent-small-business":
       return <AiVoiceAgentSmallBusinessArticle post={post} />;
     case "what-should-your-business-ai-be-allowed-to-do":
