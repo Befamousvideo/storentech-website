@@ -11,6 +11,10 @@ describe("live blog post dates", () => {
       })),
     ).toEqual([
       {
+        slug: "ai-phone-agent-changed-overnight",
+        datePublished: "2026-11-02",
+      },
+      {
         slug: "after-hours-calls-contractors",
         datePublished: "2026-11-02",
       },
