@@ -47,7 +47,10 @@ function collectCopyFiles(root: string, acc: string[] = []): string[] {
 }
 
 function withoutIconSizes(text: string) {
-  return text.replace(/\b\d+x\d+\b/g, "");
+  return text
+    .replace(/\b\d+x\d+\b/g, "")
+    // Worksheet math such as "6 × 1/2" is not a marketing multiplier claim.
+    .replace(/\d+(?:\.\d+)?\s*×\s*[\d./]+/g, "");
 }
 
 function assertNoMultiplierClaims(label: string, text: string) {
