@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [5 Questions to Ask Before Hiring an AI Developer](https://www.storentechai.com/blog/questions-before-hiring-ai-developer): Before you hire anyone to build AI for your business, ask these five questions about scope, account ownership, support and how to switch it off.",
+    );
+    expect(text.indexOf("questions-before-hiring-ai-developer")).toBeLessThan(
+      text.indexOf("ai-phone-agent-changed-overnight"),
+    );
+    expect(text).toContain(
       "- [Your AI Phone Agent May Have Changed Overnight. Here's How to Tell.](https://www.storentechai.com/blog/ai-phone-agent-changed-overnight): Many AI phone tools update themselves without asking. Here's how an owner can tell which version is running, test after an update and lock it.",
     );
     expect(text.indexOf("ai-phone-agent-changed-overnight")).toBeLessThan(

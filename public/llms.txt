@@ -12,6 +12,7 @@
 - [Contact](https://www.storentechai.com/contact): Book your AI Opportunity Map through the contact form.
 
 ## Blog
+- [5 Questions to Ask Before Hiring an AI Developer](https://www.storentechai.com/blog/questions-before-hiring-ai-developer): Before you hire anyone to build AI for your business, ask these five questions about scope, account ownership, support and how to switch it off.
 - [Your AI Phone Agent May Have Changed Overnight. Here's How to Tell.](https://www.storentechai.com/blog/ai-phone-agent-changed-overnight): Many AI phone tools update themselves without asking. Here's how an owner can tell which version is running, test after an update and lock it.
 - [What After-Hours Calls Are Worth to a Plumbing or HVAC Business](https://www.storentechai.com/blog/after-hours-calls-contractors): A simple way for Orange County plumbing, HVAC and other contractors to work out what missed after-hours calls cost, using your own numbers.
 - [Start With One Problem: How a Small Business Should Pick Its First AI Project](https://www.storentechai.com/blog/pick-first-ai-project): Don't start with an AI tool. Start with one problem. A simple way for small-business owners to pick a first AI project that pays off and is easy to check.
