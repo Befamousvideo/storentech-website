@@ -5,9 +5,18 @@ export type BlogFaq = {
   answer: string;
 };
 
+export type BlogOgImage = {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  type: string;
+};
+
 export type BlogHero = {
-  avif: string;
-  webp: string;
+  avif?: string;
+  webp?: string;
+  png?: string;
   width: number;
   height: number;
   alt: string;
@@ -22,6 +31,7 @@ export type BlogPost = {
   faqs: readonly BlogFaq[];
   indexCta?: string;
   hero?: BlogHero;
+  ogImage?: BlogOgImage;
 };
 
 /**
@@ -572,6 +582,41 @@ export const huggingFaceGithubExplainedFaqs = [
  * FAQ visible copy is the source of truth for FAQPage JSON-LD.
  * Mirror the five on-page Q&As word for word.
  */
+export const afterHoursCallsContractorsFaqs = [
+  {
+    question:
+      "How do I figure out what missed after-hours calls cost my business?",
+    answer:
+      "Multiply missed after-hours calls per week by the share that were real job requests, the share you'd normally win and your typical job value.",
+  },
+  {
+    question: "Why are after-hours calls so valuable for contractors?",
+    answer:
+      "Evening and weekend callers often have an urgent problem, need help right away and will call the next company if nobody answers.",
+  },
+  {
+    question: "Where do I find how many after-hours calls I miss?",
+    answer:
+      "Most business phone systems and carriers can show missed and unanswered calls by time of day; a month of records is enough for a first estimate.",
+  },
+  {
+    question:
+      "Can an AI phone agent answer after-hours calls for a plumbing or HVAC company?",
+    answer:
+      "Yes. It can answer every call, ask your intake questions, book on your calendar and send urgent jobs to your on-call person.",
+  },
+  {
+    question:
+      "Who sets up after-hours AI phone agents for contractors in Orange County?",
+    answer:
+      "StorenTech AI sets up AI phone agents for Orange County contractors that answer after-hours calls, follow your booking rules and keep your team in charge.",
+  },
+] as const satisfies readonly BlogFaq[];
+
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
 export const monthlyAutomationCheckUpFaqs = [
   {
     question: "How do I know if my automation is actually working?",
@@ -602,6 +647,30 @@ export const monthlyAutomationCheckUpFaqs = [
 ] as const satisfies readonly BlogFaq[];
 
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "after-hours-calls-contractors",
+    title: "What After-Hours Calls Are Worth to a Plumbing or HVAC Business",
+    metaTitle:
+      "What After-Hours Calls Are Worth | StorenTech AI",
+    description:
+      "A simple way for Orange County plumbing, HVAC and other contractors to work out what missed after-hours calls cost, using your own numbers.",
+    datePublished: "2026-11-02",
+    faqs: afterHoursCallsContractorsFaqs,
+    indexCta: "Read the post",
+    hero: {
+      png: "/blog/after-hours-calls-contractors.png",
+      width: 1920,
+      height: 1080,
+      alt: "What After-Hours Calls Are Worth to a Plumbing or HVAC Business",
+    },
+    ogImage: {
+      src: "/blog/after-hours-calls-contractors-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt: "What After-Hours Calls Are Worth to a Plumbing or HVAC Business",
+      type: "image/png",
+    },
+  },
   {
     slug: "pick-first-ai-project",
     title:

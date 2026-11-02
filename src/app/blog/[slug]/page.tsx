@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { AfterHoursCallsContractorsArticle } from "@/components/blog/AfterHoursCallsContractorsArticle";
 import { PickFirstAiProjectArticle } from "@/components/blog/PickFirstAiProjectArticle";
 import { MonthlyAutomationCheckUpArticle } from "@/components/blog/MonthlyAutomationCheckUpArticle";
 import { HuggingFaceGithubExplainedArticle } from "@/components/blog/HuggingFaceGithubExplainedArticle";
@@ -22,6 +23,8 @@ import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
+    case "after-hours-calls-contractors":
+      return <AfterHoursCallsContractorsArticle post={post} />;
     case "pick-first-ai-project":
       return <PickFirstAiProjectArticle post={post} />;
     case "hugging-face-github-explained":
@@ -72,24 +75,44 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPost(slug);
   if (!post) return {};
 
-  const images = post.hero
+  const images = post.ogImage
     ? [
         {
-          url: post.hero.webp,
-          width: post.hero.width,
-          height: post.hero.height,
-          alt: post.hero.alt,
-          type: "image/webp",
-        },
-        {
-          url: post.hero.avif,
-          width: post.hero.width,
-          height: post.hero.height,
-          alt: post.hero.alt,
-          type: "image/avif",
+          url: post.ogImage.src,
+          width: post.ogImage.width,
+          height: post.ogImage.height,
+          alt: post.ogImage.alt,
+          type: post.ogImage.type,
         },
       ]
-    : undefined;
+    : post.hero?.webp && post.hero.avif
+      ? [
+          {
+            url: post.hero.webp,
+            width: post.hero.width,
+            height: post.hero.height,
+            alt: post.hero.alt,
+            type: "image/webp",
+          },
+          {
+            url: post.hero.avif,
+            width: post.hero.width,
+            height: post.hero.height,
+            alt: post.hero.alt,
+            type: "image/avif",
+          },
+        ]
+      : post.hero?.png
+        ? [
+            {
+              url: post.hero.png,
+              width: post.hero.width,
+              height: post.hero.height,
+              alt: post.hero.alt,
+              type: "image/png",
+            },
+          ]
+        : undefined;
 
   return {
     title: { absolute: post.metaTitle },
@@ -130,7 +153,7 @@ export default async function BlogPostPage({ params }: Props) {
       ? {
           image: {
             "@type": "ImageObject",
-            url: `${site.url}${post.hero.webp}`,
+            url: `${site.url}${post.hero.webp ?? post.hero.png ?? post.hero.avif}`,
             width: post.hero.width,
             height: post.hero.height,
           },

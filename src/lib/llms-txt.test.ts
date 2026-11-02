@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [What After-Hours Calls Are Worth to a Plumbing or HVAC Business](https://www.storentechai.com/blog/after-hours-calls-contractors): A simple way for Orange County plumbing, HVAC and other contractors to work out what missed after-hours calls cost, using your own numbers.",
+    );
+    expect(text.indexOf("after-hours-calls-contractors")).toBeLessThan(
+      text.indexOf("pick-first-ai-project"),
+    );
+    expect(text).toContain(
       "- [Start With One Problem: How a Small Business Should Pick Its First AI Project](https://www.storentechai.com/blog/pick-first-ai-project): Don't start with an AI tool. Start with one problem. A simple way for small-business owners to pick a first AI project that pays off and is easy to check.",
     );
     expect(text.indexOf("pick-first-ai-project")).toBeLessThan(
