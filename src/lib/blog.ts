@@ -617,6 +617,39 @@ export const afterHoursCallsContractorsFaqs = [
  * FAQ visible copy is the source of truth for FAQPage JSON-LD.
  * Mirror the five on-page Q&As word for word.
  */
+export const aiPhoneAgentChangedOvernightFaqs = [
+  {
+    question: "Can my AI phone agent change without me knowing?",
+    answer:
+      "Yes. If it's set to a \"latest\" version, the AI company behind it can switch it to a newer model automatically, and its answers or behavior may shift slightly.",
+  },
+  {
+    question: "How do I find out which AI model my phone agent uses?",
+    answer:
+      "Ask whoever manages it for the exact model name and whether it's set to a fixed version or to \"latest,\" or check the model setting in the agent's configuration.",
+  },
+  {
+    question: "Should I lock my AI phone agent to one version?",
+    answer:
+      "Lock it when the agent books appointments or gives answers where mistakes would hurt, and plan tested upgrades a few times a year instead of automatic ones.",
+  },
+  {
+    question: "What should I test after an AI phone agent update?",
+    answer:
+      "Run a few standard test calls: an everyday booking, a common question, an edge case, a hand-off to a person, and a check of the calendar entry or summary afterward.",
+  },
+  {
+    question:
+      "Who can help an Orange County business manage AI phone agent updates?",
+    answer:
+      "StorenTech AI helps Orange County businesses set up AI phone agents with a known version, a simple test routine and a planned path for updates.",
+  },
+] as const satisfies readonly BlogFaq[];
+
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
 export const monthlyAutomationCheckUpFaqs = [
   {
     question: "How do I know if my automation is actually working?",
@@ -647,6 +680,31 @@ export const monthlyAutomationCheckUpFaqs = [
 ] as const satisfies readonly BlogFaq[];
 
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "ai-phone-agent-changed-overnight",
+    title:
+      "Your AI Phone Agent May Have Changed Overnight. Here's How to Tell.",
+    metaTitle:
+      "Your AI Phone Agent May Have Changed Overnight | StorenTech AI",
+    description:
+      "Many AI phone tools update themselves without asking. Here's how an owner can tell which version is running, test after an update and lock it.",
+    datePublished: "2026-11-02",
+    faqs: aiPhoneAgentChangedOvernightFaqs,
+    indexCta: "Read the post",
+    hero: {
+      png: "/blog/ai-phone-agent-changed-overnight.png",
+      width: 1920,
+      height: 1080,
+      alt: "Your AI Phone Agent May Have Changed Overnight. Here's How to Tell.",
+    },
+    ogImage: {
+      src: "/blog/ai-phone-agent-changed-overnight-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt: "Your AI Phone Agent May Have Changed Overnight. Here's How to Tell.",
+      type: "image/png",
+    },
+  },
   {
     slug: "after-hours-calls-contractors",
     title: "What After-Hours Calls Are Worth to a Plumbing or HVAC Business",

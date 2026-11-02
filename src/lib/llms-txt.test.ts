@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [Your AI Phone Agent May Have Changed Overnight. Here's How to Tell.](https://www.storentechai.com/blog/ai-phone-agent-changed-overnight): Many AI phone tools update themselves without asking. Here's how an owner can tell which version is running, test after an update and lock it.",
+    );
+    expect(text.indexOf("ai-phone-agent-changed-overnight")).toBeLessThan(
+      text.indexOf("after-hours-calls-contractors"),
+    );
+    expect(text).toContain(
       "- [What After-Hours Calls Are Worth to a Plumbing or HVAC Business](https://www.storentechai.com/blog/after-hours-calls-contractors): A simple way for Orange County plumbing, HVAC and other contractors to work out what missed after-hours calls cost, using your own numbers.",
     );
     expect(text.indexOf("after-hours-calls-contractors")).toBeLessThan(
