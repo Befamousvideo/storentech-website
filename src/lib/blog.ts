@@ -650,6 +650,39 @@ export const aiPhoneAgentChangedOvernightFaqs = [
  * FAQ visible copy is the source of truth for FAQPage JSON-LD.
  * Mirror the five on-page Q&As word for word.
  */
+export const questionsBeforeHiringAiDeveloperFaqs = [
+  {
+    question: "What should I ask before hiring an AI developer?",
+    answer:
+      "Ask what exactly will be built, what's not included, who owns the accounts and work, what support covers after launch, and how to switch the system off.",
+  },
+  {
+    question: "Should my business own the accounts an AI developer sets up?",
+    answer:
+      "Yes. AI services, automation tools and data used for your business should be in your company's name, with your company holding the admin login.",
+  },
+  {
+    question: "What should an AI project scope include?",
+    answer:
+      "The specific jobs the AI will do, the tools it connects to, a checkable definition of done and a test period before it works on its own.",
+  },
+  {
+    question: "Why does an AI system need an off switch?",
+    answer:
+      "So you can pause it quickly without calling anyone, with calls or requests falling back to your team and risky actions always needing a person's approval.",
+  },
+  {
+    question:
+      "Who builds AI for small businesses in Orange County with client-owned accounts?",
+    answer:
+      "StorenTech AI builds AI systems for Orange County businesses in accounts the client owns, with a written scope and a simple way to switch things off.",
+  },
+] as const satisfies readonly BlogFaq[];
+
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
 export const monthlyAutomationCheckUpFaqs = [
   {
     question: "How do I know if my automation is actually working?",
@@ -680,6 +713,29 @@ export const monthlyAutomationCheckUpFaqs = [
 ] as const satisfies readonly BlogFaq[];
 
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "questions-before-hiring-ai-developer",
+    title: "5 Questions to Ask Before Hiring an AI Developer",
+    metaTitle: "5 Questions to Ask Before Hiring an AI Developer | StorenTech AI",
+    description:
+      "Before you hire anyone to build AI for your business, ask these five questions about scope, account ownership, support and how to switch it off.",
+    datePublished: "2026-11-02",
+    faqs: questionsBeforeHiringAiDeveloperFaqs,
+    indexCta: "Read the post",
+    hero: {
+      png: "/blog/questions-before-hiring-ai-developer.png",
+      width: 1920,
+      height: 1080,
+      alt: "5 Questions to Ask Before Hiring an AI Developer",
+    },
+    ogImage: {
+      src: "/blog/questions-before-hiring-ai-developer-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt: "5 Questions to Ask Before Hiring an AI Developer",
+      type: "image/png",
+    },
+  },
   {
     slug: "ai-phone-agent-changed-overnight",
     title:

@@ -68,7 +68,7 @@ describe("AI phone agent changed overnight blog post", () => {
     expect(post?.datePublished).toBe("2026-11-02");
     expect(post?.faqs).toEqual(aiPhoneAgentChangedOvernightFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[0]?.slug).toBe(slug);
+    expect(blogPosts[1]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/ai-phone-agent-changed-overnight");
     expect(post?.hero).toEqual({
       png: "/blog/ai-phone-agent-changed-overnight.png",

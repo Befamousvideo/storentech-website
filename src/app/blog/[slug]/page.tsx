@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { QuestionsBeforeHiringAiDeveloperArticle } from "@/components/blog/QuestionsBeforeHiringAiDeveloperArticle";
 import { AiPhoneAgentChangedOvernightArticle } from "@/components/blog/AiPhoneAgentChangedOvernightArticle";
 import { AfterHoursCallsContractorsArticle } from "@/components/blog/AfterHoursCallsContractorsArticle";
 import { PickFirstAiProjectArticle } from "@/components/blog/PickFirstAiProjectArticle";
@@ -24,6 +25,8 @@ import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
+    case "questions-before-hiring-ai-developer":
+      return <QuestionsBeforeHiringAiDeveloperArticle post={post} />;
     case "ai-phone-agent-changed-overnight":
       return <AiPhoneAgentChangedOvernightArticle post={post} />;
     case "after-hours-calls-contractors":
