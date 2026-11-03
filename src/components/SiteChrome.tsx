@@ -10,6 +10,7 @@ import { isForPreviewPath } from "@/lib/for-pages";
 function hideJsonLd(pathname: string) {
   return (
     pathname === "/privacy" ||
+    pathname === "/privacy-choices" ||
     pathname === "/terms" ||
     isAdLandingPath(pathname) ||
     isForPreviewPath(pathname)

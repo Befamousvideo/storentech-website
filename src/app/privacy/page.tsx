@@ -80,14 +80,17 @@ export default function PrivacyPage() {
           <h2>Advertising and retargeting</h2>
           <p>
             Some of our ad landing pages (such as our law firm and contractor
-            pages) use an advertising pixel from our ad technology partners. It
-            sets cookies or similar identifiers so we can measure how our TV
-            and online ads perform and show our ads to people who visited those
-            pages. It does not collect what you type into our forms. Our
-            homepage and this page do not use it. You can block or delete these
-            cookies in your browser settings, and you can opt out of
-            interest-based ads through your browser or device ad settings. To
-            ask us about your data, use our{" "}
+            pages) use an advertising pixel from a connected-TV advertising
+            partner. It sets cookies or similar identifiers so we can measure
+            how our TV and online ads perform and show our ads to people who
+            visited those pages. It does not collect what you type into our
+            forms. Our homepage and this page do not use it. We honor Global
+            Privacy Control signals. You can also turn ad retargeting cookies
+            off on{" "}
+            <Link href="/privacy-choices">Your Privacy Choices</Link>. You can
+            block or delete these cookies in your browser settings, and you can
+            opt out of interest-based ads through your browser or device ad
+            settings. To ask us about your data, use our{" "}
             <Link href="/contact">contact form</Link>.
           </p>
 

@@ -1,6 +1,12 @@
 "use client";
 
 import Script from "next/script";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import {
+  AD_CONSENT_CHANGE_EVENT,
+  mayLoadAdTag,
+} from "@/lib/ad-consent";
 
 export const AD_PIXEL_LOADER_SRC =
   "https://js.adsrvr.org/up_loader.1.1.0.js" as const;
@@ -34,7 +40,38 @@ export function initAdPixel() {
   });
 }
 
+function removeLoadedAdPixel() {
+  document
+    .querySelectorAll(`script[src="${AD_PIXEL_LOADER_SRC}"]`)
+    .forEach((node) => node.remove());
+}
+
 export function AdPixel() {
+  const pathname = usePathname() ?? "";
+  const [allowed, setAllowed] = useState(false);
+
+  useEffect(() => {
+    function sync() {
+      const next = mayLoadAdTag({ pathname });
+      setAllowed(next);
+      if (!next) {
+        removeLoadedAdPixel();
+      }
+    }
+
+    sync();
+    window.addEventListener("storage", sync);
+    window.addEventListener(AD_CONSENT_CHANGE_EVENT, sync);
+    return () => {
+      window.removeEventListener("storage", sync);
+      window.removeEventListener(AD_CONSENT_CHANGE_EVENT, sync);
+    };
+  }, [pathname]);
+
+  if (!allowed) {
+    return null;
+  }
+
   return (
     <Script
       id="ad-pixel"

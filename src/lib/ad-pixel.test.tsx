@@ -1,9 +1,13 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { extname, join, relative } from "node:path";
-import { render } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { render, waitFor } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdLandingLayout } from "@/components/AdLandingLayout";
 import { AdPixel, AD_PIXEL_LOADER_SRC, initAdPixel } from "@/components/AdPixel";
+import {
+  AD_RETARGETING_COOKIE_NAME,
+  writeAdRetargetingChoice,
+} from "@/lib/ad-consent";
 import {
   AD_LANDING_ROUTE_PREFIXES,
   isAdLandingPath,
@@ -29,6 +33,16 @@ const lawLayoutSource = readFileSync(
   join(process.cwd(), "src/app/law/layout.tsx"),
   "utf8",
 );
+
+vi.mock("next/navigation", async () => {
+  const actual = await vi.importActual<typeof import("next/navigation")>(
+    "next/navigation",
+  );
+  return {
+    ...actual,
+    usePathname: vi.fn(() => "/law"),
+  };
+});
 
 vi.mock("next/script", () => ({
   default: function Script(props: {
@@ -70,6 +84,12 @@ function collectSourceFiles(root: string, acc: string[] = []): string[] {
   return acc;
 }
 
+afterEach(() => {
+  window.localStorage.clear();
+  document.cookie = `${AD_RETARGETING_COOKIE_NAME}=; Path=/; Max-Age=0`;
+  vi.unstubAllGlobals();
+});
+
 describe("ad landing retargeting pixel", () => {
   it("covers law and contractor ad routes, including specialty children", () => {
     expect(AD_LANDING_ROUTE_PREFIXES).toEqual(["/law", "/contractors"]);
@@ -88,8 +108,11 @@ describe("ad landing retargeting pixel", () => {
     expect(isAdLandingPath("/thank-you")).toBe(false);
   });
 
-  it("loads the pixel loader with next/script and runs init only onLoad", () => {
+  it("loads the pixel loader with next/script and runs init only onLoad", async () => {
     const { container } = render(<AdPixel />);
+    await waitFor(() => {
+      expect(container.querySelector("#ad-pixel")).not.toBeNull();
+    });
     const script = container.querySelector("#ad-pixel");
 
     expect(script).not.toBeNull();
@@ -150,19 +173,57 @@ describe("ad landing retargeting pixel", () => {
     expect(layoutSource).not.toContain("32fv0sy");
   });
 
-  it("renders the pixel from the shared ad-landing layout", () => {
+  it("renders the pixel from the shared ad-landing layout", async () => {
     const { container } = render(
       <AdLandingLayout>
         <p>landing</p>
       </AdLandingLayout>,
     );
 
-    expect(
-      container.querySelector(
-        "[data-src='https://js.adsrvr.org/up_loader.1.1.0.js']",
-      ),
-    ).not.toBeNull();
+    await waitFor(() => {
+      expect(
+        container.querySelector(
+          "[data-src='https://js.adsrvr.org/up_loader.1.1.0.js']",
+        ),
+      ).not.toBeNull();
+    });
     expect(container).toHaveTextContent("landing");
+  });
+
+  it("never loads the pixel when Global Privacy Control is set", async () => {
+    Object.defineProperty(navigator, "globalPrivacyControl", {
+      configurable: true,
+      value: true,
+    });
+    const { container } = render(<AdPixel />);
+    await waitFor(() => {
+      expect(container.querySelector("#ad-pixel")).toBeNull();
+    });
+    Object.defineProperty(navigator, "globalPrivacyControl", {
+      configurable: true,
+      value: undefined,
+    });
+  });
+
+  it("unloads the pixel when the retargeting toggle is turned off", async () => {
+    writeAdRetargetingChoice(true);
+    const { container } = render(<AdPixel />);
+    await waitFor(() => {
+      expect(container.querySelector("#ad-pixel")).not.toBeNull();
+    });
+
+    writeAdRetargetingChoice(false);
+    await waitFor(() => {
+      expect(container.querySelector("#ad-pixel")).toBeNull();
+    });
+  });
+
+  it("does not pass form values or query-string PII to the pixel", () => {
+    expect(pixelSource).not.toContain("location.search");
+    expect(pixelSource).not.toContain("URLSearchParams");
+    expect(pixelSource).not.toContain("FormData");
+    expect(pixelSource).not.toContain("email");
+    expect(initAdPixel.toString()).not.toMatch(/email|name|phone|utm_/);
   });
 
   it("does not name the pixel vendor in comments, component names, or file names", () => {

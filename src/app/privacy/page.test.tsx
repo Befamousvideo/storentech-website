@@ -28,15 +28,26 @@ describe("/privacy advertising and retargeting", () => {
       screen.getByText(/law firm and contractor pages/i),
     ).toBeInTheDocument();
     expect(
+      screen.getByText(/connected-TV advertising partner/i),
+    ).toBeInTheDocument();
+    expect(
       screen.getByText(/does not collect what you type into our forms/i),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/We honor Global Privacy Control signals/i),
     ).toBeInTheDocument();
     const advertising = screen.getByRole("heading", {
       level: 2,
       name: "Advertising and retargeting",
     }).parentElement;
+    expect(
+      advertising?.querySelector('a[href="/privacy-choices"]'),
+    ).toHaveTextContent("Your Privacy Choices");
     expect(advertising?.querySelector('a[href="/contact"]')).toHaveTextContent(
       "contact form",
     );
+    expect(container.textContent).not.toMatch(/\bMeta\b|\bGoogle\b/);
+    expect(source).not.toMatch(/\bMeta\b|\bGoogle\b/);
 
     expect(container.textContent).not.toMatch(
       /does not currently load a third-party analytics or advertising pixel/i,
