@@ -1,9 +1,9 @@
-import { AdLandingRetargetingPixel } from "@/components/AdLandingRetargetingPixel";
+import { AdPixel } from "@/components/AdPixel";
 
 export function AdLandingLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <AdLandingRetargetingPixel />
+      <AdPixel />
       {children}
     </>
   );

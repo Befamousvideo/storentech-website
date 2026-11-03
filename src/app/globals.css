@@ -1112,6 +1112,18 @@ select {
   font-weight: 500;
 }
 
+.ad-landing-media {
+  width: min(calc(100% - 48px), 760px);
+  margin: 0 auto 1.6rem;
+}
+
+.ad-landing-media video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--navy);
+}
+
 .contractors-video {
   width: min(calc(100% - 48px), 760px);
   margin: 0 auto;
