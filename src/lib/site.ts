@@ -43,7 +43,7 @@ export const site = {
     later:
       "After the map, the Build Plan is how we build what pays. Builds may include voice agents, website chat, operations automation, web apps, mobile apps, and custom-built solutions.",
     cta: "Start your AI Opportunity Map",
-    ctaShort: "Start your map",
+    ctaShort: "Book a 15-min intro",
     capacity:
       "When AI takes the grind, your people get time back for the work that needs a human, so more gets done and the human touch stays where customers feel it.",
     services:
@@ -112,7 +112,7 @@ export const offerSteps = [
   {
     n: "01",
     title: site.offer.primaryTitle,
-    body: `${site.prices.analysisTypical}. Written map of time/revenue/risk leaks vs their software, what to fix first. Clarity before spend. Paid. Never complimentary.`,
+    body: `${site.prices.analysisTypical}. Written map of time/revenue/risk leaks vs their software, what to fix first. Clarity before spend. Paid. The 15-minute intro call before it costs nothing; the Map is where the analysis happens.`,
   },
   {
     n: "02",

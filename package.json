@@ -8,11 +8,13 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "chat:eval": "vitest run src/lib/chat/chat-eval.test.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
+    "ai": "^7.0.147",
     "next": "15.5.28",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"

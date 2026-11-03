@@ -4,9 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
-import { IntakeLink } from "@/components/IntakeLink";
 import { SarahPhoneImage } from "@/components/SarahContact";
-import { nav, site } from "@/lib/site";
+import { BOOKING_CTA_HREF, nav, site } from "@/lib/site";
 
 function isCurrent(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
@@ -54,7 +53,14 @@ export function Header({
               <SarahPhoneImage className="sarah-phone header-sarah-phone" />
             )}
             {quiet ? null : (
-              <IntakeLink className="btn btn-solid">{site.offer.ctaShort}</IntakeLink>
+              <a
+                className="btn btn-solid"
+                href={BOOKING_CTA_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {site.offer.ctaShort}
+              </a>
             )}
             <button
               className="menu-toggle"
@@ -90,9 +96,15 @@ export function Header({
           {quiet ? null : (
             <div className="mobile-actions">
               <SarahPhoneImage className="sarah-phone header-sarah-phone" />
-              <IntakeLink className="btn btn-solid" onClick={() => setOpen(false)}>
+              <a
+                className="btn btn-solid"
+                href={BOOKING_CTA_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+              >
                 {site.offer.ctaShort}
-              </IntakeLink>
+              </a>
             </div>
           )}
         </div>

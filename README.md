@@ -20,6 +20,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm run build` | Production build |
 | `npm run start` | Serve the production build |
 | `npm run lint` | ESLint |
+| `npm run chat:eval` | Chatbot evals. Mock answers by default; hits `/api/chat` when `AI_GATEWAY_MODEL` and a gateway credential are set |
 
 Environment:
 
@@ -28,16 +29,19 @@ Environment:
 - `INQUIRY_WEBHOOK_URL` — optional. If set, each inquiry is `POST`ed as JSON (`name`, `email`, `company`, `broken`, `submittedAt`, `source`)
 - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` — optional. Google Search Console verification token. Emitted as `google-site-verification` only when set; empty values produce no tag.
 - `NEXT_PUBLIC_BING_SITE_VERIFICATION` — optional. Bing Webmaster Tools token. Emitted as `msvalidate.01` only when set; empty values produce no tag.
+- `AI_GATEWAY_MODEL` — required for the website chatbot to answer. Vercel AI Gateway id in `provider/model` form.
+- `AI_GATEWAY_PROVIDER` — optional. Used only when `AI_GATEWAY_MODEL` has no provider prefix.
+- `AI_GATEWAY_API_KEY` — authenticates the AI SDK to Vercel AI Gateway. Vercel deployments can use the automatic `VERCEL_OIDC_TOKEN` instead.
 
 ## Pages
 
-- `/` — leak-map hero; AI Opportunity Map (Automation ROI Analysis); Sarah; humans in the loop. Start your map → `site.intakeUrl` (calendar booking). No “See the work.”
+- `/` — leak-map hero; AI Opportunity Map (Automation ROI Analysis); Sarah; humans in the loop. Header “Book a 15-min intro” opens the calendar. “Start your AI Opportunity Map” → `site.intakeUrl` (calendar by default). No “See the work.”
 - `/opportunity` — AI Opportunity Map service page. `/ai-opportunity-map`, `/map`, and `/roia` permanently redirect here (301, single hop).
 - `/work` — services catalog; map first, then the Build Plan
 - `/how-it-works` — paid AI Opportunity Map, then the Build Plan
 - `/about` — StorenTech AI; humans in the loop
 - `/contact` — name, email, company, what’s broken
-- `/pay` and `pay.storentechai.com` — temporary redirect (307) to the homepage (`https://www.storentechai.com/`). Former Stripe Payment Link is retired. Not the Start your map CTA.
+- `/pay` and `pay.storentechai.com` — temporary redirect (307) to the homepage (`https://www.storentechai.com/`). Former Stripe Payment Link is retired. Not the AI Opportunity Map CTA.
 - `/redo` — permanently redirects to the homepage (`https://www.storentechai.com/`), including trailing slash, query strings, and the same path on `pay.storentechai.com`.
 - `/ceo`, `/cfo`, `/ops` — permanently redirect to the homepage.
 
@@ -70,7 +74,7 @@ Use App Hosting for a first-class Next.js backend; use Hosting + frameworks if t
 npx vercel
 ```
 
-Set `NEXT_PUBLIC_SITE_URL` and `INQUIRY_WEBHOOK_URL` in the Vercel project environment. Framework preset: Next.js. No special config file is required.
+Set `NEXT_PUBLIC_SITE_URL` and `INQUIRY_WEBHOOK_URL` in the Vercel project environment. For the chatbot to answer, also set `AI_GATEWAY_MODEL` (`provider/model`) and either `AI_GATEWAY_API_KEY` or a project OIDC token (`VERCEL_OIDC_TOKEN`, added automatically on Vercel). Framework preset: Next.js. No special config file is required.
 
 ## Offer (do not change on a whim)
 

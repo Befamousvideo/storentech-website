@@ -4,6 +4,9 @@ const homepage = "https://www.storentechai.com/";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  outputFileTracingIncludes: {
+    "/api/chat": ["./content/chatbot-kb.md"],
+  },
   // So /ai-opportunity-map/, /map/, and /roia/ can 301 to /opportunity
   // in one hop instead of Next.js 308ing away the slash first.
   skipTrailingSlashRedirect: true,

@@ -223,7 +223,7 @@ export function ZapierWebhooksAiAgentsArticle({ post }: { post: BlogPost }) {
           Every StorenTech client starts with a paid{" "}
           <strong>AI Opportunity Map</strong>. It typically costs{" "}
           <strong>$1,000</strong> (<strong>$2,000–$3,000</strong> when the
-          scope is complex). It&apos;s never a free sales call. We map your
+          scope is complex). The Map is paid; the 15-minute intro call is not. We map your
           real workflows, find where handoffs break, and rank which job should
           be automated first. If the math doesn&apos;t work, we&apos;ll tell
           you.

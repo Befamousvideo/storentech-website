@@ -26,8 +26,8 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
             paid engagement that maps your workflows, quantifies time and revenue
             leaks with your real numbers, and ranks which AI employee to hire
             first. It typically costs <strong>$1,000</strong> (
-            <strong>$2,000–$3,000</strong> when complex). It is not a
-            complimentary sales call.
+            <strong>$2,000–$3,000</strong> when complex). The Map is paid; the
+            15-minute intro call is not.
           </p>
           <p>
             That’s the whole pitch, stripped of the free-audit theater. Hire an
@@ -147,7 +147,7 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
           </table>
         </div>
         <p>
-          It is <strong>never complimentary</strong>. A free “AI audit” is a
+          The Map is paid; the 15-minute intro call is not. A free “AI audit” is a
           sales call with a checklist. You pay for a map you can act on — or
           walk away from.
         </p>

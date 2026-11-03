@@ -1,10 +1,16 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { isForPreviewPath } from "@/lib/for-pages";
+
+const ChatWidget = dynamic(
+  () => import("@/components/ChatWidget").then((mod) => mod.ChatWidget),
+  { ssr: false },
+);
 
 function hideJsonLd(pathname: string) {
   return (
@@ -26,6 +32,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
       <Header quiet={quiet} />
       <main id="main">{children}</main>
       <Footer quiet={quiet} />
+      {quiet ? null : <ChatWidget />}
     </>
   );
 }

@@ -41,7 +41,7 @@ export function ContactForm() {
       }
 
       setStatus("ok");
-      setMessage("Received. We will reply from the office — this is the start of an AI Opportunity Map, not a complimentary audit.");
+      setMessage("Received. We will reply from the office — this is the start of an AI Opportunity Map. The Map is paid; the 15-minute intro call is not.");
       form.reset();
     } catch {
       setStatus("error");
