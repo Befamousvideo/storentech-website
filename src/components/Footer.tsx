@@ -39,6 +39,10 @@ export function Footer({ quiet = false }: { quiet?: boolean }) {
           <span>© 2026 {site.name}. All rights reserved.</span>
           <nav className="footer-legal" aria-label="Legal">
             <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/privacy-choices">Your Privacy Choices</Link>
+            <Link href="/privacy-choices">
+              Do Not Sell or Share My Personal Information
+            </Link>
             <Link href="/terms">Terms of Service</Link>
           </nav>
           <span>Orange County, California</span>

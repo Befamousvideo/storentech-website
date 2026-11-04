@@ -32,7 +32,7 @@ export default function PrivacyPage() {
           <h1 className="legal-title">Privacy Policy</h1>
           <hr className="rule" />
           <p className="lede">
-            Effective date: September 28, 2026. This policy explains how
+            Effective date: November 2, 2026. This policy explains how
             StorenTech AI (“we,” “us”) handles information when you use this
             website or ask us to follow up.
           </p>
@@ -69,15 +69,30 @@ export default function PrivacyPage() {
             <li>
               <strong>Technical and usage data.</strong> Our hosting provider
               may record basic request logs, such as the page requested, time,
-              and general browser or device information. This site does not
-              currently load a third-party analytics or advertising pixel.
+              and general browser or device information.
             </li>
             <li>
               <strong>Cookies.</strong> The site may use essential cookies or
-              similar storage so pages and forms can function. We do not
-              currently use analytics or advertising cookies.
+              similar storage so pages and forms can function.
             </li>
           </ul>
+
+          <h2>Advertising and retargeting</h2>
+          <p>
+            Some of our ad landing pages (such as our law firm and contractor
+            pages) use an advertising pixel from a connected-TV advertising
+            partner. It sets cookies or similar identifiers so we can measure
+            how our TV and online ads perform and show our ads to people who
+            visited those pages. It does not collect what you type into our
+            forms. Our homepage and this page do not use it. We honor Global
+            Privacy Control signals. You can also turn ad retargeting cookies
+            off on{" "}
+            <Link href="/privacy-choices">Your Privacy Choices</Link>. You can
+            block or delete these cookies in your browser settings, and you can
+            opt out of interest-based ads through your browser or device ad
+            settings. To ask us about your data, use our{" "}
+            <Link href="/contact">contact form</Link>.
+          </p>
 
           <h2>How we use information</h2>
           <p>We use this information to:</p>
