@@ -12,6 +12,7 @@
 - [Contact](https://www.storentechai.com/contact): Book your AI Opportunity Map through the contact form.
 
 ## Blog
+- [Write It Down Once: Turning Your Office's Procedures into Instructions an AI Assistant Can Follow](https://www.storentechai.com/blog/office-procedures-ai-instructions): How Orange County owners can write one office procedure so a person or AI assistant can follow it — with a human approving anything that leaves the office.
 - [5 Questions to Ask Before Hiring an AI Developer](https://www.storentechai.com/blog/questions-before-hiring-ai-developer): Before you hire anyone to build AI for your business, ask these five questions about scope, account ownership, support and how to switch it off.
 - [Your AI Phone Agent May Have Changed Overnight. Here's How to Tell.](https://www.storentechai.com/blog/ai-phone-agent-changed-overnight): Many AI phone tools update themselves without asking. Here's how an owner can tell which version is running, test after an update and lock it.
 - [What After-Hours Calls Are Worth to a Plumbing or HVAC Business](https://www.storentechai.com/blog/after-hours-calls-contractors): A simple way for Orange County plumbing, HVAC and other contractors to work out what missed after-hours calls cost, using your own numbers.

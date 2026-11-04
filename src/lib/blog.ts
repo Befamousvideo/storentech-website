@@ -712,7 +712,53 @@ export const monthlyAutomationCheckUpFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const officeProceduresAiInstructionsFaqs = [
+  {
+    question: "Why does AI help fail in so many offices?",
+    answer:
+      "Because the real steps only live in someone's head, so the assistant guesses instead of following a written procedure.",
+  },
+  {
+    question: "What should a written office procedure include?",
+    answer:
+      "When it starts, what to ask in order, what never to say, when to get a person and what needs human approval before it leaves the office.",
+  },
+  {
+    question:
+      "Can the same checklist work for a law firm and other Orange County businesses?",
+    answer:
+      "Yes. A new-inquiry checklist is a law-firm example; other OC businesses can swap in their own job details and escalation rules.",
+  },
+  {
+    question: "What did Anthropic announce about Agent Skills?",
+    answer:
+      "On Oct 22, 2026, Anthropic said it donated Agent Skills — which it calls an open standard for specialized agent knowledge and workflows — to the Agentic AI Foundation under the Linux Foundation, and Anthropic claims more than 70 agent platforms have integrated it.",
+  },
+  {
+    question:
+      "Who helps Orange County owners turn procedures into AI-ready instructions?",
+    answer:
+      "StorenTech AI helps Orange County businesses write office procedures people and AI assistants can follow, with humans still approving outbound steps.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "office-procedures-ai-instructions",
+    title:
+      "Write It Down Once: Turning Your Office's Procedures into Instructions an AI Assistant Can Follow",
+    metaTitle:
+      "Write It Down Once: Office Procedures as AI Instructions | StorenTech AI",
+    description:
+      "How Orange County owners can write one office procedure so a person or AI assistant can follow it — with a human approving anything that leaves the office.",
+    datePublished: "2026-11-13",
+    faqs: officeProceduresAiInstructionsFaqs,
+    indexCta: "Read the post",
+  },
   {
     slug: "questions-before-hiring-ai-developer",
     title: "5 Questions to Ask Before Hiring an AI Developer",
