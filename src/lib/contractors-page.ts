@@ -16,6 +16,11 @@ export const CONTRACTORS_CANONICAL_URL =
 
 export const CONTRACTORS_CTA_LABEL = "Book a free 15-minute intro call";
 
+export const CONTRACTORS_SECONDARY_CTA_LABEL = "Get your AI Opportunity Map";
+
+export const CONTRACTORS_SECONDARY_CTA_SUPPORT =
+  "Want the full picture? A paid deep-dive into where AI saves you time and money.";
+
 export const contractorsVideo = {
   src: "/videos/ai-voice-agent-small-business.mp4",
   poster: "/videos/ai-voice-agent-small-business-poster.jpg",
@@ -33,9 +38,12 @@ export const contractorsPage = {
     "StorenTech AI sets up an AI phone agent that answers your calls after hours and during the rain-season rush, asks the right questions, and puts the job on your calendar. You wake up to booked work, not voicemails.",
   ctaLabel: CONTRACTORS_CTA_LABEL,
   ctaHref: BOOKING_CTA_HREF,
+  ctaSupport:
+    "We'll talk through your calls and jobs and whether AI fits.",
   heroSecondary: {
-    label: "See how the AI Opportunity Map works →",
+    label: CONTRACTORS_SECONDARY_CTA_LABEL,
     href: "/opportunity",
+    support: CONTRACTORS_SECONDARY_CTA_SUPPORT,
   },
   problem: {
     heading: "The problem: rain season fills your phone, not your calendar",
@@ -173,8 +181,9 @@ export const contractorsPage = {
   finalCta: {
     headline: "Rain season is coming. Make sure every call gets answered.",
     body: "In 15 minutes, we'll look at how calls reach you today and where jobs are slipping to the next company. The intro call is at no cost.",
-    secondaryLabel: "Or start with the AI Opportunity Map →",
+    secondaryLabel: CONTRACTORS_SECONDARY_CTA_LABEL,
     secondaryHref: "/opportunity",
+    secondarySupport: CONTRACTORS_SECONDARY_CTA_SUPPORT,
   },
   signoff: "StorenTech AI · Full-service AI agency · Orange County, CA",
 } as const;
