@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [Can a California Law Firm Use an AI Receptionist? What the State Bar's AI Guidance Asks of You](https://www.storentechai.com/blog/california-law-firm-ai-receptionist): What the State Bar of California's generative AI guidance asks of firms considering an AI receptionist. Not legal advice.",
+    );
+    expect(text.indexOf("california-law-firm-ai-receptionist")).toBeLessThan(
+      text.indexOf("questions-before-hiring-ai-developer"),
+    );
+    expect(text).toContain(
       "- [5 Questions to Ask Before Hiring an AI Developer](https://www.storentechai.com/blog/questions-before-hiring-ai-developer): Before you hire anyone to build AI for your business, ask these five questions about scope, account ownership, support and how to switch it off.",
     );
     expect(text.indexOf("questions-before-hiring-ai-developer")).toBeLessThan(

@@ -11,6 +11,10 @@ describe("live blog post dates", () => {
       })),
     ).toEqual([
       {
+        slug: "california-law-firm-ai-receptionist",
+        datePublished: "2026-11-11",
+      },
+      {
         slug: "questions-before-hiring-ai-developer",
         datePublished: "2026-11-02",
       },
