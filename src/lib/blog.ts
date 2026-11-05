@@ -757,6 +757,19 @@ export const blogPosts: readonly BlogPost[] = [
     datePublished: "2026-11-09",
     faqs: lawFirmMissedCallsFaqs,
     indexCta: "Read the post",
+    hero: {
+      png: "/blog/law-firm-missed-calls.png",
+      width: 1920,
+      height: 1080,
+      alt: "When a Potential Client Calls Your Law Firm After Hours, What Happens?",
+    },
+    ogImage: {
+      src: "/blog/law-firm-missed-calls-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt: "When a Potential Client Calls Your Law Firm After Hours, What Happens?",
+      type: "image/png",
+    },
   },
   {
     slug: "questions-before-hiring-ai-developer",

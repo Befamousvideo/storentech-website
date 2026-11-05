@@ -31,6 +31,19 @@ const title =
   "When a Potential Client Calls Your Law Firm After Hours, What Happens?";
 const description =
   "What a potential client hears when they call an Orange County law firm after hours, and what to fix first so fewer callers hang up.";
+const alt = title;
+
+
+function pngSize(path: string) {
+  const buf = readFileSync(join(process.cwd(), path));
+  expect(
+    buf.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])),
+  ).toBe(true);
+  return {
+    width: buf.readUInt32BE(16),
+    height: buf.readUInt32BE(20),
+  };
+}
 
 function assertNoClass107ContactOrPay(label: string, text: string) {
   expect(text, label).not.toContain("tel:");
@@ -55,8 +68,31 @@ describe("law firm missed calls blog post", () => {
     expect(post?.faqs).toHaveLength(5);
     expect(blogPosts[0]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/law-firm-missed-calls");
-    expect(post?.hero).toBeUndefined();
-    expect(post?.ogImage).toBeUndefined();
+    expect(post?.hero).toEqual({
+      png: "/blog/law-firm-missed-calls.png",
+      width: 1920,
+      height: 1080,
+      alt,
+    });
+    expect(post?.ogImage).toEqual({
+      src: "/blog/law-firm-missed-calls-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt,
+      type: "image/png",
+    });
+  });
+
+
+  it("ships the header PNG and the 1200x630 Open Graph PNG", () => {
+    expect(pngSize("public/blog/law-firm-missed-calls.png")).toEqual({
+      width: 1920,
+      height: 1080,
+    });
+    expect(pngSize("public/blog/law-firm-missed-calls-1200x630.png")).toEqual({
+      width: 1200,
+      height: 630,
+    });
   });
 
   it("appears on the blog index, in llms.txt, and in the sitemap", () => {
@@ -83,7 +119,7 @@ describe("law firm missed calls blog post", () => {
     expect(entry?.lastModified).toEqual(new Date("2026-11-09"));
   });
 
-  it("sets canonical, title, and description without a hero image", async () => {
+  it("sets canonical, title, description, and the 1200x630 PNG as the Open Graph image", async () => {
     const metadata = await generateMetadata({
       params: Promise.resolve({ slug }),
     });
@@ -98,12 +134,25 @@ describe("law firm missed calls blog post", () => {
       title: post?.metaTitle,
       description,
       url: "/blog/law-firm-missed-calls",
+      images: [
+        {
+          url: "/blog/law-firm-missed-calls-1200x630.png",
+          width: 1200,
+          height: 630,
+          alt,
+          type: "image/png",
+        },
+      ],
     });
-    expect(metadata.openGraph).not.toHaveProperty("images");
     expect(metadata.twitter).toMatchObject({
       card: "summary_large_image",
       title: post?.metaTitle,
       description,
+      images: [
+        {
+          url: "/blog/law-firm-missed-calls-1200x630.png",
+        },
+      ],
     });
   });
 
@@ -131,6 +180,12 @@ describe("law firm missed calls blog post", () => {
       description,
       datePublished: "2026-11-09",
       dateModified: "2026-11-09",
+      image: {
+        "@type": "ImageObject",
+        url: `${site.url}/blog/law-firm-missed-calls.png`,
+        width: 1920,
+        height: 1080,
+      },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": postUrl(slug),
@@ -139,7 +194,6 @@ describe("law firm missed calls blog post", () => {
       author: { "@type": "Person", name: site.founder.name },
       publisher: { "@type": "Organization", name: site.name, url: site.url },
     });
-    expect(article).not.toHaveProperty("image");
 
     const mainEntity = faq?.mainEntity as Array<{
       name: string;
@@ -182,7 +236,15 @@ describe("law firm missed calls blog post", () => {
     const text = (container.textContent ?? "").replace(/\s+/g, " ");
 
     expect(getByRole("heading", { level: 1, name: title })).toBeInTheDocument();
-    expect(container.querySelector(".blog-hero-media img")).toBeNull();
+    const image = container.querySelector(".blog-hero-media img");
+    expect(image).toHaveAttribute(
+      "src",
+      "/blog/law-firm-missed-calls.png",
+    );
+    expect(image).toHaveAttribute("alt", alt);
+    expect(image).toHaveAttribute("width", "1920");
+    expect(image).toHaveAttribute("height", "1080");
+
     expect(text).toContain(
       "When a potential client calls your Orange County law firm at 7 p.m. or on a Saturday, they usually get voicemail, a full mailbox or no answer at all — and many of them never leave a message.",
     );
