@@ -758,6 +758,19 @@ export const blogPosts: readonly BlogPost[] = [
     datePublished: "2026-11-13",
     faqs: officeProceduresAiInstructionsFaqs,
     indexCta: "Read the post",
+    hero: {
+      png: "/blog/office-procedures-ai-instructions-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt: "Write It Down Once: Turning Your Office's Procedures into Instructions an AI Assistant Can Follow",
+    },
+    ogImage: {
+      src: "/blog/office-procedures-ai-instructions-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt: "Write It Down Once: Turning Your Office's Procedures into Instructions an AI Assistant Can Follow",
+      type: "image/png",
+    },
   },
   {
     slug: "questions-before-hiring-ai-developer",

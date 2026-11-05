@@ -34,6 +34,19 @@ const title =
   "Write It Down Once: Turning Your Office's Procedures into Instructions an AI Assistant Can Follow";
 const description =
   "How Orange County owners can write one office procedure so a person or AI assistant can follow it — with a human approving anything that leaves the office.";
+const alt = title;
+
+
+function pngSize(path: string) {
+  const buf = readFileSync(join(process.cwd(), path));
+  expect(
+    buf.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])),
+  ).toBe(true);
+  return {
+    width: buf.readUInt32BE(16),
+    height: buf.readUInt32BE(20),
+  };
+}
 
 function assertNoClass107ContactOrPay(label: string, text: string) {
   expect(text, label).not.toContain("tel:");
@@ -58,8 +71,31 @@ describe("office procedures as AI instructions blog post", () => {
     expect(post?.faqs).toHaveLength(5);
     expect(blogPosts[0]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/office-procedures-ai-instructions");
-    expect(post?.hero).toBeUndefined();
-    expect(post?.ogImage).toBeUndefined();
+    expect(post?.hero).toEqual({
+      png: "/blog/office-procedures-ai-instructions-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt,
+    });
+    expect(post?.ogImage).toEqual({
+      src: "/blog/office-procedures-ai-instructions-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt,
+      type: "image/png",
+    });
+  });
+
+
+  it("ships the header PNG and the 1200x630 Open Graph PNG", () => {
+    expect(pngSize("public/blog/office-procedures-ai-instructions-1200x630.png")).toEqual({
+      width: 1200,
+      height: 630,
+    });
+    expect(pngSize("public/blog/office-procedures-ai-instructions-1200x630.png")).toEqual({
+      width: 1200,
+      height: 630,
+    });
   });
 
   it("appears on the blog index, in llms.txt, and in the sitemap", () => {
@@ -90,7 +126,7 @@ describe("office procedures as AI instructions blog post", () => {
     expect(entry?.lastModified).toEqual(new Date("2026-11-13"));
   });
 
-  it("sets canonical, title, and description without a hero image", async () => {
+  it("sets canonical, title, description, and the 1200x630 PNG as the Open Graph image", async () => {
     const metadata = await generateMetadata({
       params: Promise.resolve({ slug }),
     });
@@ -105,8 +141,26 @@ describe("office procedures as AI instructions blog post", () => {
       title: post?.metaTitle,
       description,
       url: "/blog/office-procedures-ai-instructions",
+      images: [
+        {
+          url: "/blog/office-procedures-ai-instructions-1200x630.png",
+          width: 1200,
+          height: 630,
+          alt,
+          type: "image/png",
+        },
+      ],
     });
-    expect(metadata.openGraph).not.toHaveProperty("images");
+    expect(metadata.twitter).toMatchObject({
+      card: "summary_large_image",
+      title: post?.metaTitle,
+      description,
+      images: [
+        {
+          url: "/blog/office-procedures-ai-instructions-1200x630.png",
+        },
+      ],
+    });
   });
 
   it("builds Article and FAQPage JSON-LD from the post", async () => {
@@ -133,6 +187,12 @@ describe("office procedures as AI instructions blog post", () => {
       description,
       datePublished: "2026-11-13",
       dateModified: "2026-11-13",
+      image: {
+        "@type": "ImageObject",
+        url: `${site.url}/blog/office-procedures-ai-instructions-1200x630.png`,
+        width: 1200,
+        height: 630,
+      },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": postUrl(slug),
@@ -141,7 +201,6 @@ describe("office procedures as AI instructions blog post", () => {
       author: { "@type": "Person", name: site.founder.name },
       publisher: { "@type": "Organization", name: site.name, url: site.url },
     });
-    expect(article).not.toHaveProperty("image");
 
     const mainEntity = faq?.mainEntity as Array<{
       name: string;
@@ -182,7 +241,15 @@ describe("office procedures as AI instructions blog post", () => {
     const text = (container.textContent ?? "").replace(/\s+/g, " ");
 
     expect(getByRole("heading", { level: 1, name: title })).toBeInTheDocument();
-    expect(container.querySelector(".blog-hero-media img")).toBeNull();
+    const image = container.querySelector(".blog-hero-media img");
+    expect(image).toHaveAttribute(
+      "src",
+      "/blog/office-procedures-ai-instructions-1200x630.png",
+    );
+    expect(image).toHaveAttribute("alt", alt);
+    expect(image).toHaveAttribute("width", "1200");
+    expect(image).toHaveAttribute("height", "630");
+
     expect(text).toContain(
       "Most AI help fails in a real office because nobody wrote down how the office already does the task.",
     );
