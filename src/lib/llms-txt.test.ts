@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [Write It Down Once: Turning Your Office's Procedures into Instructions an AI Assistant Can Follow](https://www.storentechai.com/blog/office-procedures-ai-instructions): How Orange County owners can write one office procedure so a person or AI assistant can follow it — with a human approving anything that leaves the office.",
+    );
+    expect(text.indexOf("office-procedures-ai-instructions")).toBeLessThan(
+      text.indexOf("questions-before-hiring-ai-developer"),
+    );
+    expect(text).toContain(
       "- [5 Questions to Ask Before Hiring an AI Developer](https://www.storentechai.com/blog/questions-before-hiring-ai-developer): Before you hire anyone to build AI for your business, ask these five questions about scope, account ownership, support and how to switch it off.",
     );
     expect(text.indexOf("questions-before-hiring-ai-developer")).toBeLessThan(
