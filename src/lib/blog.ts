@@ -757,6 +757,19 @@ export const blogPosts: readonly BlogPost[] = [
     datePublished: "2026-11-11",
     faqs: californiaLawFirmAiReceptionistFaqs,
     indexCta: "Read the post",
+    hero: {
+      png: "/blog/california-law-firm-ai-receptionist.png",
+      width: 1920,
+      height: 1080,
+      alt: "Can a California Law Firm Use an AI Receptionist? What the State Bar's AI Guidance Asks of You",
+    },
+    ogImage: {
+      src: "/blog/california-law-firm-ai-receptionist-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt: "Can a California Law Firm Use an AI Receptionist? What the State Bar's AI Guidance Asks of You",
+      type: "image/png",
+    },
   },
   {
     slug: "questions-before-hiring-ai-developer",
