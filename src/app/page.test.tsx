@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import HomePage from "@/app/page";
+import { organizationLd } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { siteFaqPageLd, siteFaqs } from "@/lib/site-faqs";
 
@@ -10,11 +11,14 @@ const SI_QUESTION = "Is Super Intelligence (SI) different from AI?";
 const SI_ANSWER =
   "For a business, it's the same family of tools under a newer name. What matters is where it saves time or brings in revenue, and that's what an AI Opportunity Map shows you.";
 
-function homepageFaqLd() {
+function homepageLd() {
   const { container } = render(<HomePage />);
   const scripts = [...container.querySelectorAll('script[type="application/ld+json"]')];
-  const parsed = scripts.map((script) => JSON.parse(script.textContent ?? "{}"));
-  return parsed.find((data) => data["@type"] === "FAQPage");
+  return scripts.map((script) => JSON.parse(script.textContent ?? "{}"));
+}
+
+function homepageFaqLd() {
+  return homepageLd().find((data) => data["@type"] === "FAQPage");
 }
 
 describe("Home page hero", () => {
@@ -31,6 +35,19 @@ describe("Home page hero", () => {
     expect(underHeadline).toHaveClass("lede");
     expect(headline.nextElementSibling).toBe(underHeadline);
     expect(container.querySelectorAll("h1")).toHaveLength(1);
+  });
+});
+
+describe("Home page SEO", () => {
+  it("emits a single Organization JSON-LD block from approved site fields", () => {
+    const blocks = homepageLd();
+    const types = blocks.map((block) => block["@type"]);
+    expect(types).toEqual(["Organization", "FAQPage"]);
+    expect(blocks.find((block) => block["@type"] === "Organization")).toEqual(
+      organizationLd(),
+    );
+    expect(JSON.stringify(blocks)).not.toContain("tel:");
+    expect(JSON.stringify(blocks)).not.toContain("mailto:");
   });
 });
 

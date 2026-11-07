@@ -19,8 +19,14 @@ import { WhenAiAgentsDontStopArticle } from "@/components/blog/WhenAiAgentsDontS
 import { AiPullReportsFromVendorPortalsArticle } from "@/components/blog/AiPullReportsFromVendorPortalsArticle";
 import { AiVoiceAgentSmallBusinessArticle } from "@/components/blog/AiVoiceAgentSmallBusinessArticle";
 import { WhatShouldYourBusinessAiBeAllowedToDoArticle } from "@/components/blog/WhatShouldYourBusinessAiBeAllowedToDoArticle";
+import { RelatedPosts } from "@/components/blog/RelatedPosts";
 import { StructuredData } from "@/components/StructuredData";
 import { blogPosts, getPost, postPath, postUrl, type BlogPost } from "@/lib/blog";
+import {
+  blogPostJsonLdImage,
+  blogPostOgImages,
+  relatedPostsFor,
+} from "@/lib/seo";
 import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
@@ -81,44 +87,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPost(slug);
   if (!post) return {};
 
-  const images = post.ogImage
-    ? [
-        {
-          url: post.ogImage.src,
-          width: post.ogImage.width,
-          height: post.ogImage.height,
-          alt: post.ogImage.alt,
-          type: post.ogImage.type,
-        },
-      ]
-    : post.hero?.webp && post.hero.avif
-      ? [
-          {
-            url: post.hero.webp,
-            width: post.hero.width,
-            height: post.hero.height,
-            alt: post.hero.alt,
-            type: "image/webp",
-          },
-          {
-            url: post.hero.avif,
-            width: post.hero.width,
-            height: post.hero.height,
-            alt: post.hero.alt,
-            type: "image/avif",
-          },
-        ]
-      : post.hero?.png
-        ? [
-            {
-              url: post.hero.png,
-              width: post.hero.width,
-              height: post.hero.height,
-              alt: post.hero.alt,
-              type: "image/png",
-            },
-          ]
-        : undefined;
+  const images = blogPostOgImages(post);
 
   return {
     title: { absolute: post.metaTitle },
@@ -130,13 +99,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.metaTitle,
       description: post.description,
       url: postPath(post.slug),
-      ...(images ? { images } : {}),
+      images,
     },
     twitter: {
       card: "summary_large_image",
       title: post.metaTitle,
       description: post.description,
-      ...(images ? { images } : {}),
+      images,
     },
   };
 }
@@ -155,16 +124,7 @@ export default async function BlogPostPage({ params }: Props) {
     description: post.description,
     datePublished: post.datePublished,
     dateModified: post.datePublished,
-    ...(post.hero
-      ? {
-          image: {
-            "@type": "ImageObject",
-            url: `${site.url}${post.hero.webp ?? post.hero.png ?? post.hero.avif}`,
-            width: post.hero.width,
-            height: post.hero.height,
-          },
-        }
-      : {}),
+    image: blogPostJsonLdImage(post),
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": url,
@@ -203,6 +163,7 @@ export default async function BlogPostPage({ params }: Props) {
       <StructuredData data={articleLd} />
       <StructuredData data={faqLd} />
       <BlogArticle post={post} />
+      <RelatedPosts posts={relatedPostsFor(post.slug)} />
     </>
   );
 }

@@ -114,6 +114,14 @@ describe("llms.txt", () => {
     );
   });
 
+  it("lists the live /contractors page under Pages", () => {
+    expect(text).toContain(
+      "- [Contractors](https://www.storentechai.com/contractors): StorenTech AI sets up AI phone agents and automations for Southern California contractors.",
+    );
+    expect(text.indexOf("## Pages")).toBeLessThan(text.indexOf("/contractors"));
+    expect(text.indexOf("/contractors")).toBeLessThan(text.indexOf("## Blog"));
+  });
+
   it("uses only absolute www.storentechai.com links", () => {
     const hrefs = [...text.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)].map(
       (match) => match[1],
