@@ -69,13 +69,16 @@ export default function PrivacyPage() {
             <li>
               <strong>Technical and usage data.</strong> Our hosting provider
               may record basic request logs, such as the page requested, time,
-              and general browser or device information. This site does not
-              currently load a third-party analytics or advertising pixel.
+              and general browser or device information. We use cookie-free
+              Vercel Web Analytics for aggregate usage statistics. Vercel
+              derives a temporary visitor hash from incoming requests, which
+              resets daily and does not track visitors across days or
+              websites. This site does not load advertising pixels.
             </li>
             <li>
               <strong>Cookies.</strong> The site may use essential cookies or
               similar storage so pages and forms can function. We do not
-              currently use analytics or advertising cookies.
+              use analytics or advertising cookies.
             </li>
           </ul>
 

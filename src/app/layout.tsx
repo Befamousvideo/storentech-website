@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 import { SiteAnalytics } from "@/components/SiteAnalytics";
 import { SiteChrome } from "@/components/SiteChrome";
 import { site } from "@/lib/site";
@@ -85,6 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <SiteChrome>{children}</SiteChrome>
+        <Analytics />
         <SiteAnalytics />
       </body>
     </html>
