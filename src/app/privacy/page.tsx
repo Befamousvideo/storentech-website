@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { siteFallbackOgImages } from "@/lib/seo";
 
 export const dynamic = "force-static";
+
+const ogImages = siteFallbackOgImages();
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -14,12 +17,14 @@ export const metadata: Metadata = {
     description:
       "How StorenTech AI collects, uses, and protects information, including contact forms, calls, and SMS follow-up.",
     url: "/privacy",
+    images: ogImages,
   },
   twitter: {
     card: "summary_large_image",
     title: "Privacy Policy · StorenTech AI",
     description:
       "How StorenTech AI collects, uses, and protects information, including contact forms, calls, and SMS follow-up.",
+    images: ogImages,
   },
 };
 

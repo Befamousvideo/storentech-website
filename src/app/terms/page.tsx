@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { siteFallbackOgImages } from "@/lib/seo";
 
 export const dynamic = "force-static";
+
+const ogImages = siteFallbackOgImages();
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -14,12 +17,14 @@ export const metadata: Metadata = {
     description:
       "Terms for using the StorenTech AI website and SMS follow-up. Consulting work is governed by a separate written agreement.",
     url: "/terms",
+    images: ogImages,
   },
   twitter: {
     card: "summary_large_image",
     title: "Terms of Service · StorenTech AI",
     description:
       "Terms for using the StorenTech AI website and SMS follow-up. Consulting work is governed by a separate written agreement.",
+    images: ogImages,
   },
 };
 
