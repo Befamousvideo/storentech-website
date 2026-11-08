@@ -36,9 +36,7 @@ vi.mock("next/navigation", async () => {
 });
 
 const SCHEDULED_UNMERGED_SLUGS = [
-  "law-firm-missed-calls",
   "california-law-firm-ai-receptionist",
-  "office-procedures-ai-instructions",
 ] as const;
 
 function jsonLdBlocks(container: HTMLElement) {
