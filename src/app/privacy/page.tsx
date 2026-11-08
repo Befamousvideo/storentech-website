@@ -37,7 +37,7 @@ export default function PrivacyPage() {
           <h1 className="legal-title">Privacy Policy</h1>
           <hr className="rule" />
           <p className="lede">
-            Effective date: September 28, 2026. This policy explains how
+            Effective date: November 2, 2026. This policy explains how
             StorenTech AI (“we,” “us”) handles information when you use this
             website or ask us to follow up.
           </p>
@@ -78,14 +78,30 @@ export default function PrivacyPage() {
               Vercel Web Analytics for aggregate usage statistics. Vercel
               derives a temporary visitor hash from incoming requests, which
               resets daily and does not track visitors across days or
-              websites. This site does not load advertising pixels.
+              websites.
             </li>
             <li>
               <strong>Cookies.</strong> The site may use essential cookies or
-              similar storage so pages and forms can function. We do not
-              use analytics or advertising cookies.
+              similar storage so pages and forms can function.
             </li>
           </ul>
+
+          <h2>Advertising and retargeting</h2>
+          <p>
+            Some of our ad landing pages (such as our law firm and contractor
+            pages) use an advertising pixel from a connected-TV advertising
+            partner. It sets cookies or similar identifiers so we can measure
+            how our TV and online ads perform and show our ads to people who
+            visited those pages. It does not collect what you type into our
+            forms. Our homepage and this page do not use it. We honor Global
+            Privacy Control signals. You can also turn ad retargeting cookies
+            off on{" "}
+            <Link href="/privacy-choices">Your Privacy Choices</Link>. You can
+            block or delete these cookies in your browser settings, and you can
+            opt out of interest-based ads through your browser or device ad
+            settings. To ask us about your data, use our{" "}
+            <Link href="/contact">contact form</Link>.
+          </p>
 
           <h2>How we use information</h2>
           <p>We use this information to:</p>
