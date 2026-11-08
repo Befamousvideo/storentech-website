@@ -55,7 +55,7 @@ function assertNoClass107ContactOrPay(label: string, text: string) {
 }
 
 describe("law firm missed calls blog post", () => {
-  it("is registered first with the approved slug, title, meta, date, and five FAQs", () => {
+  it("is registered with the approved slug, title, meta, date, and five FAQs", () => {
     expect(post?.slug).toBe(slug);
     expect(post?.title).toBe(title);
     expect(post?.metaTitle).toBe(
@@ -66,7 +66,7 @@ describe("law firm missed calls blog post", () => {
     expect(post?.datePublished).toBe("2026-11-09");
     expect(post?.faqs).toEqual(lawFirmMissedCallsFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[0]?.slug).toBe(slug);
+    expect(blogPosts[1]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/law-firm-missed-calls");
     expect(post?.hero).toEqual({
       png: "/blog/law-firm-missed-calls.png",

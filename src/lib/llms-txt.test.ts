@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [Can a California Law Firm Use an AI Receptionist? What the State Bar's AI Guidance Asks of You](https://www.storentechai.com/blog/california-law-firm-ai-receptionist): What the State Bar of California's generative AI guidance asks of firms considering an AI receptionist. Not legal advice.",
+    );
+    expect(text.indexOf("california-law-firm-ai-receptionist")).toBeLessThan(
+      text.indexOf("law-firm-missed-calls"),
+    );
+    expect(text).toContain(
       "- [When a Potential Client Calls Your Law Firm After Hours, What Happens?](https://www.storentechai.com/blog/law-firm-missed-calls): What a potential client hears when they call an Orange County law firm after hours, and what to fix first so fewer callers hang up.",
     );
     expect(text.indexOf("law-firm-missed-calls")).toBeLessThan(
