@@ -2,12 +2,14 @@ import Link from "next/link";
 import { IntakeLink } from "@/components/IntakeLink";
 import { SarahContact } from "@/components/SarahContact";
 import { StructuredData } from "@/components/StructuredData";
+import { organizationLd } from "@/lib/seo";
 import { site, verticals } from "@/lib/site";
 import { siteFaqPageLd, siteFaqs } from "@/lib/site-faqs";
 
 export default function HomePage() {
   return (
     <>
+      <StructuredData data={organizationLd()} />
       <StructuredData data={siteFaqPageLd()} />
       <section className="hero">
         <div className="wrap hero-grid">

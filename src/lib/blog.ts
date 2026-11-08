@@ -745,6 +745,39 @@ export const californiaLawFirmAiReceptionistFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const lawFirmMissedCallsFaqs = [
+  {
+    question: "What happens when someone calls a law firm after hours?",
+    answer:
+      "Many callers get voicemail, a full mailbox or no answer, and a large share hang up instead of leaving a message.",
+  },
+  {
+    question: "What did Clio find about law firms answering the phone?",
+    answer:
+      "In Clio's 2024 Legal Trends Report highlights (secret shop of 500 firms), Clio wrote that only 40% of firms answered their calls, 52% answered or called back and 48% were essentially unreachable by phone; just 33% responded to emails.",
+  },
+  {
+    question: "What should a firm fix first for after-hours calls?",
+    answer:
+      "Answer or return the call, capture basics, route urgent matters to a person and follow up the next morning.",
+  },
+  {
+    question: "Can an AI intake line help after hours?",
+    answer:
+      "Yes. It can answer, ask your questions and pass urgent calls to your team; a lawyer still decides who becomes a client.",
+  },
+  {
+    question:
+      "Who helps Orange County law firms with after-hours AI intake?",
+    answer:
+      "StorenTech AI helps Orange County law firms cover after-hours calls with AI intake that follows your questions and keeps lawyers in charge of who becomes a client.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
   {
     slug: "california-law-firm-ai-receptionist",
@@ -768,6 +801,31 @@ export const blogPosts: readonly BlogPost[] = [
       width: 1200,
       height: 630,
       alt: "Can a California Law Firm Use an AI Receptionist? What the State Bar's AI Guidance Asks of You",
+      type: "image/png",
+    },
+  },
+  {
+    slug: "law-firm-missed-calls",
+    title:
+      "When a Potential Client Calls Your Law Firm After Hours, What Happens?",
+    metaTitle:
+      "When a Potential Client Calls Your Law Firm After Hours | StorenTech AI",
+    description:
+      "What a potential client hears when they call an Orange County law firm after hours, and what to fix first so fewer callers hang up.",
+    datePublished: "2026-11-09",
+    faqs: lawFirmMissedCallsFaqs,
+    indexCta: "Read the post",
+    hero: {
+      png: "/blog/law-firm-missed-calls.png",
+      width: 1920,
+      height: 1080,
+      alt: "When a Potential Client Calls Your Law Firm After Hours, What Happens?",
+    },
+    ogImage: {
+      src: "/blog/law-firm-missed-calls-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt: "When a Potential Client Calls Your Law Firm After Hours, What Happens?",
       type: "image/png",
     },
   },
