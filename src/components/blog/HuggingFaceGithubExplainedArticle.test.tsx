@@ -91,8 +91,16 @@ describe("Hugging Face and GitHub explained blog post", () => {
       title: post?.metaTitle,
       description,
       url: "/blog/hugging-face-github-explained",
+      images: [
+        {
+          url: "/opengraph-image",
+          width: 1200,
+          height: 630,
+          alt: "StorenTech AI",
+          type: "image/png",
+        },
+      ],
     });
-    expect(metadata.openGraph).not.toHaveProperty("images");
   });
 
   it("builds Article and FAQPage JSON-LD from the post", async () => {
@@ -126,8 +134,13 @@ describe("Hugging Face and GitHub explained blog post", () => {
       url: postUrl(slug),
       author: { "@type": "Person", name: site.founder.name },
       publisher: { "@type": "Organization", name: site.name, url: site.url },
+      image: {
+        "@type": "ImageObject",
+        url: `${site.url}/opengraph-image`,
+        width: 1200,
+        height: 630,
+      },
     });
-    expect(article).not.toHaveProperty("image");
 
     const mainEntity = faq?.mainEntity as Array<{
       name: string;

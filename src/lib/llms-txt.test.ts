@@ -19,6 +19,12 @@ describe("llms.txt", () => {
       "- [Write It Down Once: Turning Your Office's Procedures into Instructions an AI Assistant Can Follow](https://www.storentechai.com/blog/office-procedures-ai-instructions): How Orange County owners can write one office procedure so a person or AI assistant can follow it — with a human approving anything that leaves the office.",
     );
     expect(text.indexOf("office-procedures-ai-instructions")).toBeLessThan(
+      text.indexOf("law-firm-missed-calls"),
+    );
+    expect(text).toContain(
+      "- [When a Potential Client Calls Your Law Firm After Hours, What Happens?](https://www.storentechai.com/blog/law-firm-missed-calls): What a potential client hears when they call an Orange County law firm after hours, and what to fix first so fewer callers hang up.",
+    );
+    expect(text.indexOf("law-firm-missed-calls")).toBeLessThan(
       text.indexOf("questions-before-hiring-ai-developer"),
     );
     expect(text).toContain(
@@ -118,6 +124,14 @@ describe("llms.txt", () => {
     expect(text).toContain(
       "Every client starts with a paid AI Opportunity Map that shows",
     );
+  });
+
+  it("lists the live /contractors page under Pages", () => {
+    expect(text).toContain(
+      "- [Contractors](https://www.storentechai.com/contractors): StorenTech AI sets up AI phone agents and automations for Southern California contractors.",
+    );
+    expect(text.indexOf("## Pages")).toBeLessThan(text.indexOf("/contractors"));
+    expect(text.indexOf("/contractors")).toBeLessThan(text.indexOf("## Blog"));
   });
 
   it("uses only absolute www.storentechai.com links", () => {

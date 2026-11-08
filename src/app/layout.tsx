@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 import { SiteAnalytics } from "@/components/SiteAnalytics";
 import { SiteChrome } from "@/components/SiteChrome";
 import { site } from "@/lib/site";
@@ -8,16 +9,23 @@ import "./globals.css";
 
 const verification = verificationMetadata();
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+// Local files: next/font/google throws TypeError if the Google CSS fetch fails at build.
+const cormorant = localFont({
+  src: [
+    { path: "./fonts/cormorant-garamond-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/cormorant-garamond-600.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/cormorant-garamond-700.woff2", weight: "700", style: "normal" },
+  ],
   variable: "--font-cormorant",
   display: "swap",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const inter = localFont({
+  src: [
+    { path: "./fonts/inter-400.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/inter-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/inter-600.woff2", weight: "600", style: "normal" },
+  ],
   variable: "--font-inter",
   display: "swap",
 });
@@ -78,6 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <SiteChrome>{children}</SiteChrome>
+        <Analytics />
         <SiteAnalytics />
       </body>
     </html>

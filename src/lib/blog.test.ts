@@ -15,6 +15,10 @@ describe("live blog post dates", () => {
         datePublished: "2026-11-13",
       },
       {
+        slug: "law-firm-missed-calls",
+        datePublished: "2026-11-09",
+      },
+      {
         slug: "questions-before-hiring-ai-developer",
         datePublished: "2026-11-02",
       },
