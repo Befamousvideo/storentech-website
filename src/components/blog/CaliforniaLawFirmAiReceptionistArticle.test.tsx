@@ -58,7 +58,7 @@ function assertNoClass107ContactOrPay(label: string, text: string) {
 }
 
 describe("California law firm AI receptionist blog post", () => {
-  it("is registered first with the approved slug, title, meta, date, and five FAQs", () => {
+  it("is registered with the approved slug, title, meta, date, and five FAQs", () => {
     expect(post?.slug).toBe(slug);
     expect(post?.title).toBe(title);
     expect(post?.metaTitle).toBe(
@@ -69,7 +69,7 @@ describe("California law firm AI receptionist blog post", () => {
     expect(post?.datePublished).toBe("2026-11-11");
     expect(post?.faqs).toEqual(californiaLawFirmAiReceptionistFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[0]?.slug).toBe(slug);
+    expect(blogPosts[1]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/california-law-firm-ai-receptionist");
     expect(post?.hero).toEqual({
       png: "/blog/california-law-firm-ai-receptionist.png",
