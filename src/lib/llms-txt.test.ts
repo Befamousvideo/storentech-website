@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [Write It Down Once: Turning Your Office's Procedures into Instructions an AI Assistant Can Follow](https://www.storentechai.com/blog/office-procedures-ai-instructions): How Orange County owners can write one office procedure so a person or AI assistant can follow it — with a human approving anything that leaves the office.",
+    );
+    expect(text.indexOf("office-procedures-ai-instructions")).toBeLessThan(
+      text.indexOf("california-law-firm-ai-receptionist"),
+    );
+    expect(text).toContain(
       "- [Can a California Law Firm Use an AI Receptionist? What the State Bar's AI Guidance Asks of You](https://www.storentechai.com/blog/california-law-firm-ai-receptionist): What the State Bar of California's generative AI guidance asks of firms considering an AI receptionist. Not legal advice.",
     );
     expect(text.indexOf("california-law-firm-ai-receptionist")).toBeLessThan(

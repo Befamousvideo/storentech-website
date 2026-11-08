@@ -35,9 +35,7 @@ vi.mock("next/navigation", async () => {
   };
 });
 
-const SCHEDULED_UNMERGED_SLUGS = [
-  "office-procedures-ai-instructions",
-] as const;
+const SCHEDULED_UNMERGED_SLUGS = [] as const;
 
 function jsonLdBlocks(container: HTMLElement) {
   return [...container.querySelectorAll('script[type="application/ld+json"]')].map(
