@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { OfficeProceduresAiInstructionsArticle } from "@/components/blog/OfficeProceduresAiInstructionsArticle";
+import { CaliforniaLawFirmAiReceptionistArticle } from "@/components/blog/CaliforniaLawFirmAiReceptionistArticle";
 import { LawFirmMissedCallsArticle } from "@/components/blog/LawFirmMissedCallsArticle";
 import { QuestionsBeforeHiringAiDeveloperArticle } from "@/components/blog/QuestionsBeforeHiringAiDeveloperArticle";
 import { AiPhoneAgentChangedOvernightArticle } from "@/components/blog/AiPhoneAgentChangedOvernightArticle";
@@ -35,6 +36,8 @@ function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
     case "office-procedures-ai-instructions":
       return <OfficeProceduresAiInstructionsArticle post={post} />;
+    case "california-law-firm-ai-receptionist":
+      return <CaliforniaLawFirmAiReceptionistArticle post={post} />;
     case "law-firm-missed-calls":
       return <LawFirmMissedCallsArticle post={post} />;
     case "questions-before-hiring-ai-developer":

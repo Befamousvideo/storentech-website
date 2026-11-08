@@ -750,6 +750,39 @@ export const officeProceduresAiInstructionsFaqs = [
  * FAQ visible copy is the source of truth for FAQPage JSON-LD.
  * Mirror the five on-page Q&As word for word.
  */
+export const californiaLawFirmAiReceptionistFaqs = [
+  {
+    question: "Is this post legal advice about AI receptionists?",
+    answer:
+      "No. It is a plain-English summary for owners. It is not legal advice; talk with your own ethics counsel and read the State Bar guidance.",
+  },
+  {
+    question: "Does the State Bar guidance mention client intake?",
+    answer:
+      'Yes. It lists "autonomously facilitating client intake" as an example of agentic AI in the Practical Guidance PDF on calbar.ca.gov.',
+  },
+  {
+    question: "Can an AI receptionist give legal advice on its own?",
+    answer:
+      "The guidance says lawyers must not deploy agentic systems that communicate legal advice without meaningful lawyer supervision and review.",
+  },
+  {
+    question: "What about automated messages with client information?",
+    answer:
+      "The guidance warns against autonomous external transmission of client information, including automated communications, filings or data transfers, without appropriate safeguards and human review.",
+  },
+  {
+    question:
+      "Who helps Orange County law firms think through AI intake carefully?",
+    answer:
+      "StorenTech AI helps Orange County law firms plan AI intake and receptionist workflows with human review still in charge.",
+  },
+] as const satisfies readonly BlogFaq[];
+
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
 export const lawFirmMissedCallsFaqs = [
   {
     question: "What happens when someone calls a law firm after hours?",
@@ -802,6 +835,31 @@ export const blogPosts: readonly BlogPost[] = [
       width: 1200,
       height: 630,
       alt: "Write It Down Once: Turning Your Office's Procedures into Instructions an AI Assistant Can Follow",
+      type: "image/png",
+    },
+  },
+  {
+    slug: "california-law-firm-ai-receptionist",
+    title:
+      "Can a California Law Firm Use an AI Receptionist? What the State Bar's AI Guidance Asks of You",
+    metaTitle:
+      "Can a California Law Firm Use an AI Receptionist? | StorenTech AI",
+    description:
+      "What the State Bar of California's generative AI guidance asks of firms considering an AI receptionist. Not legal advice.",
+    datePublished: "2026-11-11",
+    faqs: californiaLawFirmAiReceptionistFaqs,
+    indexCta: "Read the post",
+    hero: {
+      png: "/blog/california-law-firm-ai-receptionist.png",
+      width: 1920,
+      height: 1080,
+      alt: "Can a California Law Firm Use an AI Receptionist? What the State Bar's AI Guidance Asks of You",
+    },
+    ogImage: {
+      src: "/blog/california-law-firm-ai-receptionist-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt: "Can a California Law Firm Use an AI Receptionist? What the State Bar's AI Guidance Asks of You",
       type: "image/png",
     },
   },
