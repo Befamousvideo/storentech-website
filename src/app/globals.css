@@ -1263,6 +1263,24 @@ select {
   padding: 2.2rem 0 0;
 }
 
+.related-posts {
+  padding-top: 0;
+}
+
+.related-posts-list {
+  list-style: none;
+  margin: 1.2rem 0 0;
+  padding: 0;
+}
+
+.related-posts-list li + li {
+  margin-top: 0.75rem;
+}
+
+.related-posts-list a {
+  text-decoration: none;
+}
+
 .blog-sarah-cta {
   display: flex;
   flex-direction: column;

@@ -49,11 +49,18 @@ describe("/privacy advertising and retargeting", () => {
     expect(container.textContent).not.toMatch(/\bMeta\b|\bGoogle\b/);
     expect(source).not.toMatch(/\bMeta\b|\bGoogle\b/);
 
+    expect(container.textContent).toMatch(/cookie-free\s+Vercel Web Analytics/i);
     expect(container.textContent).not.toMatch(
       /does not currently load a third-party analytics or advertising pixel/i,
     );
     expect(container.textContent).not.toMatch(
+      /This site does not load advertising pixels/i,
+    );
+    expect(container.textContent).not.toMatch(
       /We do not currently use analytics or advertising cookies/i,
+    );
+    expect(container.textContent).not.toMatch(
+      /We do not\s+use analytics or advertising cookies/i,
     );
   });
 

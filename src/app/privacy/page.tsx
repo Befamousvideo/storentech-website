@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { siteFallbackOgImages } from "@/lib/seo";
 
 export const dynamic = "force-static";
+
+const ogImages = siteFallbackOgImages();
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -14,12 +17,14 @@ export const metadata: Metadata = {
     description:
       "How StorenTech AI collects, uses, and protects information, including contact forms, calls, and SMS follow-up.",
     url: "/privacy",
+    images: ogImages,
   },
   twitter: {
     card: "summary_large_image",
     title: "Privacy Policy · StorenTech AI",
     description:
       "How StorenTech AI collects, uses, and protects information, including contact forms, calls, and SMS follow-up.",
+    images: ogImages,
   },
 };
 
@@ -69,7 +74,11 @@ export default function PrivacyPage() {
             <li>
               <strong>Technical and usage data.</strong> Our hosting provider
               may record basic request logs, such as the page requested, time,
-              and general browser or device information.
+              and general browser or device information. We use cookie-free
+              Vercel Web Analytics for aggregate usage statistics. Vercel
+              derives a temporary visitor hash from incoming requests, which
+              resets daily and does not track visitors across days or
+              websites.
             </li>
             <li>
               <strong>Cookies.</strong> The site may use essential cookies or

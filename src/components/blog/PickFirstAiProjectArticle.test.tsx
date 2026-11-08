@@ -45,7 +45,7 @@ describe("pick first AI project blog post", () => {
     expect(post?.datePublished).toBe("2026-10-30");
     expect(post?.faqs).toEqual(pickFirstAiProjectFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[3]?.slug).toBe(slug);
+    expect(blogPosts[6]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/pick-first-ai-project");
     expect(post?.hero).toEqual({
       avif: "/blog/pick-first-ai-project.avif",

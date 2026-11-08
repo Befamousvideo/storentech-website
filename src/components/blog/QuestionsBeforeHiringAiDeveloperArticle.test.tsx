@@ -67,7 +67,7 @@ describe("questions before hiring an AI developer blog post", () => {
     expect(post?.datePublished).toBe("2026-11-02");
     expect(post?.faqs).toEqual(questionsBeforeHiringAiDeveloperFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[0]?.slug).toBe(slug);
+    expect(blogPosts[3]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/questions-before-hiring-ai-developer");
     expect(post?.hero).toEqual({
       png: "/blog/questions-before-hiring-ai-developer.png",
