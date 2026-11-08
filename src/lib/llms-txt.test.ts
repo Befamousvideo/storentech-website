@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [When a Potential Client Calls Your Law Firm After Hours, What Happens?](https://www.storentechai.com/blog/law-firm-missed-calls): What a potential client hears when they call an Orange County law firm after hours, and what to fix first so fewer callers hang up.",
+    );
+    expect(text.indexOf("law-firm-missed-calls")).toBeLessThan(
+      text.indexOf("questions-before-hiring-ai-developer"),
+    );
+    expect(text).toContain(
       "- [5 Questions to Ask Before Hiring an AI Developer](https://www.storentechai.com/blog/questions-before-hiring-ai-developer): Before you hire anyone to build AI for your business, ask these five questions about scope, account ownership, support and how to switch it off.",
     );
     expect(text.indexOf("questions-before-hiring-ai-developer")).toBeLessThan(
