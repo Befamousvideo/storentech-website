@@ -174,6 +174,7 @@ describe("/law landing page", () => {
     );
     expect(numbers).toEqual(["1", "2", "3"]);
     expect(container.querySelectorAll(".law-diagram-arrow")).toHaveLength(2);
+    expect(cssSource).toContain(".law-diagram-arrow::before");
     expect(cssSource).toContain(".law-diagram-arrow::after");
     expect(cssSource).toMatch(/border-top:\s*12px solid var\(--navy\)/);
     expect(cssSource).not.toContain(".law-process-col-2 li:last-child");
