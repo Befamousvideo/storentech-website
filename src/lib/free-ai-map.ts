@@ -32,11 +32,11 @@ export const FREE_AI_MAP_PROMPT_STEPS = [
   'Read the top-3 list and the "keep human" section carefully. Treat hour estimates as your own sketch, not a promise.',
 ] as const;
 
-export const FREE_AI_MAP_EMAIL_CAPTURE =
-  "Enter your email and we'll send the prompt.";
+export const FREE_AI_MAP_CAPTURE_LINE =
+  "Enter your details and the prompt appears right here.";
 
 export const FREE_AI_MAP_PRIVACY_LINE =
-  "We'll email you the prompt and occasional tips; unsubscribe anytime.";
+  "We'll use your email to send occasional tips. Unsubscribe anytime.";
 
 export const FREE_AI_MAP_THANK_YOU_CTA =
   "Want this done properly with your real numbers? Book a free AI Opportunity Map conversation at storentechai.com/opportunity.";
@@ -46,11 +46,9 @@ export const FREE_AI_MAP_CONVERSATION_PHRASE =
 
 export const FREE_AI_MAP_OPPORTUNITY_HREF = "/opportunity";
 
-/** Tony did not supply a submit CTA. Listed in the PR. */
-export const FREE_AI_MAP_SUBMIT_CTA_PLACEHOLDER =
-  "TODO: send-prompt CTA — Tony writes copy";
+export const FREE_AI_MAP_SUBMIT_CTA = "Show me the prompt";
 
-export const FREE_AI_MAP_CONSENT_TEXT_VERSION = "tony-download-privacy-v1";
+export const FREE_AI_MAP_CONSENT_TEXT_VERSION = "tony-download-privacy-v2";
 
 export const FREE_AI_MAP_PROMPT = `You are helping a small-business owner sketch a rough, first-pass look at where AI could help their team — not replace people. Ask exactly these six questions, ONE AT A TIME. Wait for each answer before asking the next. Do not skip ahead. Do not invent numbers the owner did not give you.
 

@@ -5,13 +5,13 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import {
-  FREE_AI_MAP_EMAIL_CAPTURE,
+  FREE_AI_MAP_CAPTURE_LINE,
   FREE_AI_MAP_OPPORTUNITY_HREF,
   FREE_AI_MAP_PAGE_STEPS,
   FREE_AI_MAP_PATH,
   FREE_AI_MAP_PRIVACY_LINE,
   FREE_AI_MAP_PROMPT_STEPS,
-  FREE_AI_MAP_SUBMIT_CTA_PLACEHOLDER,
+  FREE_AI_MAP_SUBMIT_CTA,
   FREE_AI_MAP_THANK_YOU_CTA,
 } from "@/lib/free-ai-map";
 
@@ -101,7 +101,7 @@ export function FreeAiMapCapture() {
         prompt?: string;
       };
       if (!response.ok || !payload.ok || !payload.prompt) {
-        throw new Error(payload.error || "Could not send.");
+        throw new Error(payload.error || "Could not complete this.");
       }
       setPrompt(payload.prompt);
       setStatus("ok");
@@ -110,7 +110,7 @@ export function FreeAiMapCapture() {
       form.reset();
     } catch {
       setStatus("error");
-      setMessage("The form did not send. Try again.");
+      setMessage("The form did not go through. Try again.");
     }
   }
 
@@ -158,7 +158,7 @@ export function FreeAiMapCapture() {
         ))}
       </ol>
       <form className="form" onSubmit={onSubmit}>
-      <p>{FREE_AI_MAP_EMAIL_CAPTURE}</p>
+      <p>{FREE_AI_MAP_CAPTURE_LINE}</p>
       <div className="honeypot" aria-hidden="true">
         <label htmlFor="company_website">Company website</label>
         <input
@@ -208,7 +208,7 @@ export function FreeAiMapCapture() {
         type="submit"
         disabled={status === "sending"}
       >
-        {status === "sending" ? "Sending" : FREE_AI_MAP_SUBMIT_CTA_PLACEHOLDER}
+        {status === "sending" ? "One moment" : FREE_AI_MAP_SUBMIT_CTA}
       </button>
       {message ? (
         <p className="form-status" role="status">

@@ -7,7 +7,7 @@ import sitemap from "@/app/sitemap";
 import {
   FREE_AI_MAP_BULLETS,
   FREE_AI_MAP_CONVERSATION_PHRASE,
-  FREE_AI_MAP_EMAIL_CAPTURE,
+  FREE_AI_MAP_CAPTURE_LINE,
   FREE_AI_MAP_HEADLINE,
   FREE_AI_MAP_PAGE_STEPS,
   FREE_AI_MAP_PATH,
@@ -51,8 +51,10 @@ describe("/free-ai-map", () => {
     for (const step of FREE_AI_MAP_PAGE_STEPS) {
       expect(screen.getByText(step)).toBeInTheDocument();
     }
-    expect(screen.getByText(FREE_AI_MAP_EMAIL_CAPTURE)).toBeInTheDocument();
+    expect(screen.getByText(FREE_AI_MAP_CAPTURE_LINE)).toBeInTheDocument();
     expect(container.textContent).toContain(FREE_AI_MAP_PRIVACY_LINE);
+    expect(container.textContent).not.toMatch(/send the prompt|email you the prompt|inbox/i);
+    expect(screen.getByRole("button", { name: "Show me the prompt" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute(
       "href",
       "/privacy",

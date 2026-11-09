@@ -47,7 +47,7 @@ describe("FreeAiMapCapture", () => {
     await user.type(screen.getByLabelText("Email"), "owner@example.com");
     await user.type(screen.getByLabelText("Business type"), "Dental");
     await user.click(screen.getByRole("checkbox"));
-    await user.click(screen.getByRole("button", { name: /TODO: send-prompt CTA/i }));
+    await user.click(screen.getByRole("button", { name: "Show me the prompt" }));
 
     expect(await screen.findByText(FREE_AI_MAP_PROMPT_STEPS[0])).toBeInTheDocument();
     expect(document.querySelector(".prompt-box pre")?.textContent).toBe(

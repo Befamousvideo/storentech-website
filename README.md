@@ -38,7 +38,7 @@ Environment:
 - `/how-it-works` — paid AI Opportunity Map, then the Build Plan
 - `/about` — StorenTech AI; humans in the loop
 - `/contact` — name, email, company, what’s broken
-- `/free-ai-map` — free Opportunity Map **prompt** (not the paid Map). Email capture, then the copy-paste prompt. CTA is a free AI Opportunity Map **conversation**.
+- `/free-ai-map` — free Opportunity Map **prompt** (not the paid Map). Lead capture, then the copy-paste prompt on the page. CTA is a free AI Opportunity Map **conversation**.
 - `/pay` and `pay.storentechai.com` — temporary redirect (307) to the homepage (`https://www.storentechai.com/`). Former Stripe Payment Link is retired. Not the Start your map CTA.
 - `/redo` — permanently redirects to the homepage (`https://www.storentechai.com/`), including trailing slash, query strings, and the same path on `pay.storentechai.com`.
 - `/ceo`, `/cfo`, `/ops` — permanently redirect to the homepage.
