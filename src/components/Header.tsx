@@ -17,19 +17,23 @@ function HeaderOfferCta({
   pathname,
   className,
   onClick,
+  compact = false,
 }: {
   pathname: string;
   className: string;
   onClick?: () => void;
+  compact?: boolean;
 }) {
   if (isLawRoot(pathname)) {
     return (
       <a
-        className={`${className} header-law-cta`}
+        className={`${className}${compact ? " header-law-cta" : " header-law-cta-drawer"}`}
         href={`#${LAW_CTA_ANCHOR}`}
         onClick={onClick}
       >
-        {LAW_COPY.headerCtaLabel}
+        {compact
+          ? LAW_COPY.headerCtaCompactLabel
+          : LAW_COPY.headerCtaLabel}
       </a>
     );
   }
@@ -56,7 +60,9 @@ export function Header({
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="site-header">
+    <header
+      className={`site-header${isLawRoot(pathname) ? " site-header-law" : ""}`}
+    >
       <div className={`wrap header-inner${slim ? " header-inner-slim" : ""}`}>
         <Link
           href="/"
@@ -90,6 +96,7 @@ export function Header({
               <HeaderOfferCta
                 pathname={pathname}
                 className="btn btn-solid"
+                compact
               />
             )}
             <button

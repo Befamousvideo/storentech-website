@@ -259,19 +259,26 @@ describe("/law landing page", () => {
     expect(header).not.toBeNull();
     expect(footer).not.toBeNull();
 
-    const headerCtas = within(header as HTMLElement).getAllByRole("link", {
-      name: LAW_COPY.headerCtaLabel,
-    });
-    expect(headerCtas.length).toBeGreaterThanOrEqual(1);
-    for (const cta of headerCtas) {
-      expect(cta).toHaveAttribute("href", `#${LAW_CTA_ANCHOR}`);
-    }
+    const compactCta = header?.querySelector(".header-actions a.btn-solid");
+    const drawerCta = header?.querySelector(".mobile-actions a.btn-solid");
+    expect(compactCta).toHaveTextContent(LAW_COPY.headerCtaCompactLabel);
+    expect(drawerCta).toHaveTextContent(LAW_COPY.headerCtaLabel);
+    expect(compactCta).toHaveAttribute("href", `#${LAW_CTA_ANCHOR}`);
+    expect(drawerCta).toHaveAttribute("href", `#${LAW_CTA_ANCHOR}`);
     expect(header?.innerHTML).not.toContain("calendar.app.google");
     expect(
       within(header as HTMLElement).queryByRole("link", {
         name: site.offer.ctaShort,
       }),
     ).toBeNull();
+
+    const badge = header?.querySelector(
+      `img.header-sarah-phone[src="${site.phones.sarah.image}"]`,
+    );
+    expect(badge).not.toBeNull();
+    expect(badge).toHaveAttribute("alt", "Call Sarah");
+    expect(header?.querySelector("a[href^='tel:']")).toBeNull();
+    expect(header?.textContent ?? "").not.toMatch(phonePattern);
 
     const footerMap = within(footer as HTMLElement).getByRole("link", {
       name: site.offer.cta,
@@ -301,6 +308,11 @@ describe("/law landing page", () => {
         name: LAW_COPY.headerCtaLabel,
       }),
     ).toBeNull();
+    expect(
+      within(homeHeader as HTMLElement).queryByRole("link", {
+        name: LAW_COPY.headerCtaCompactLabel,
+      }),
+    ).toBeNull();
     home.unmount();
 
     pathnameMock.mockReturnValue("/contractors");
@@ -322,6 +334,11 @@ describe("/law landing page", () => {
     expect(
       within(contractorsHeader as HTMLElement).queryByRole("link", {
         name: LAW_COPY.headerCtaLabel,
+      }),
+    ).toBeNull();
+    expect(
+      within(contractorsHeader as HTMLElement).queryByRole("link", {
+        name: LAW_COPY.headerCtaCompactLabel,
       }),
     ).toBeNull();
   });

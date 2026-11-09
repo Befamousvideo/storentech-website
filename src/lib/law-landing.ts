@@ -191,6 +191,7 @@ export const LAW_COPY = {
   ],
   faqHeading: "Common questions",
   headerCtaLabel: "Free initial conversation",
+  headerCtaCompactLabel: "Free conversation",
   closing: {
     heading: "Start with a free initial conversation",
     ctaLabel: "Start a free initial conversation",

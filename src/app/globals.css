@@ -1917,8 +1917,14 @@ select {
   scroll-margin-top: calc(var(--header-h) + 12px);
 }
 
-.header-actions .header-law-cta,
-.mobile-actions .header-law-cta {
+.header-actions .header-law-cta {
+  letter-spacing: 0.08em;
+  padding-left: 1.02rem;
+  padding-right: 1.02rem;
+  white-space: nowrap;
+}
+
+.mobile-actions .header-law-cta-drawer {
   height: auto;
   min-height: 48px;
   max-width: min(11rem, 100%);
@@ -1930,11 +1936,41 @@ select {
   text-align: center;
 }
 
-@media (max-width: 980px) {
-  .header-actions .header-law-cta {
-    display: inline-flex;
+@media (min-width: 1201px) {
+  .site-header-law .header-inner:not(.header-inner-slim) {
+    grid-template-columns: auto minmax(0, 1fr) auto;
   }
 
+  .site-header-law .nav-desktop {
+    justify-content: center;
+    min-width: 0;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .site-header-law .header-inner:not(.header-inner-slim) {
+    grid-template-columns: 1fr auto;
+  }
+
+  .site-header-law .nav-desktop {
+    display: none;
+  }
+
+  .site-header-law .header-actions .btn,
+  .site-header-law .header-actions .header-sarah-phone {
+    display: none;
+  }
+
+  .site-header-law .header-actions .btn-solid,
+  .site-header-law .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 980px) {
   .law-hero {
     padding: 48px 0 24px;
   }
@@ -2010,11 +2046,5 @@ select {
   .law-cta-note,
   .law-cta-hold {
     max-width: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .header-actions .header-law-cta {
-    display: none;
   }
 }
