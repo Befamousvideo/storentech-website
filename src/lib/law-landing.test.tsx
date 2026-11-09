@@ -248,6 +248,24 @@ describe("/law landing page", () => {
     expect(pageSource).not.toContain("application/ld+json");
   });
 
+  it("closes the mobile menu on Escape and returns focus to the toggle", async () => {
+    const user = userEvent.setup();
+    const { container } = render(
+      <SiteChrome>
+        <LawPage />
+      </SiteChrome>,
+    );
+    const toggle = container.querySelector("button.menu-toggle");
+    expect(toggle).not.toBeNull();
+    await user.click(toggle as HTMLButtonElement);
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+    expect(container.querySelector(".mobile-drawer")).toHaveClass("open");
+    await user.keyboard("{Escape}");
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    expect(container.querySelector(".mobile-drawer")).not.toHaveClass("open");
+    expect(toggle).toHaveFocus();
+  });
+
   it("on /law only, swaps the header map CTA for an in-page conversation anchor", () => {
     const { container } = render(
       <SiteChrome>
