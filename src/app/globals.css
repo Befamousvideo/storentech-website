@@ -190,6 +190,10 @@ select {
   color: var(--gold);
 }
 
+.site-header .logo-ai {
+  color: #80623a;
+}
+
 .nav-desktop {
   display: flex;
   align-items: center;

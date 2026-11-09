@@ -266,6 +266,19 @@ describe("/law landing page", () => {
     expect(toggle).toHaveFocus();
   });
 
+  it("darkens only the header logo AI mark and leaves --gold and the footer mark unchanged", () => {
+    expect(cssSource).toMatch(/--gold:\s*#9b7a4b;/);
+    expect(cssSource).toMatch(
+      /\.logo-ai \{[\s\S]*?font-size:\s*0\.72rem;[\s\S]*?color:\s*var\(--gold\);/,
+    );
+    expect(cssSource).toMatch(/\.site-header \.logo-ai \{[\s\S]*?color:\s*#80623a;/);
+    expect(cssSource).toMatch(
+      /\.site-footer \.logo-ai \{[\s\S]*?color:\s*var\(--gold-soft\);/,
+    );
+    expect(cssSource).not.toMatch(/--gold:\s*#80623a/);
+    expect(cssSource).not.toMatch(/\.site-footer \.logo-ai \{[\s\S]*?#80623a/);
+  });
+
   it("on /law only, swaps the header map CTA for an in-page conversation anchor", () => {
     const { container } = render(
       <SiteChrome>
