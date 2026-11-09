@@ -6,11 +6,8 @@ export function LawProcessPanel() {
   return (
     <figure className="law-process">
       <div className="law-process-grid">
-        {columns.map((column, index) => (
-          <article
-            key={column.title}
-            className={`law-process-col law-process-col-${index + 1}`}
-          >
+        {columns.map((column) => (
+          <article key={column.title} className="law-process-col">
             <h3>{column.title}</h3>
             <ul>
               {column.items.map((item) => (

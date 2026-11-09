@@ -1,21 +1,29 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import LawPage, { metadata as lawMetadata } from "@/app/law/page";
 import LawSpecialtyPage from "@/app/law/[specialty]/page";
 import { SiteChrome } from "@/components/SiteChrome";
-import { buildAdLandingLeadHref, LAW_INTAKE_URL } from "@/lib/ad-landing-lead";
+import {
+  buildAdLandingLeadHref,
+  LAW_INTAKE_READY,
+  LAW_INTAKE_URL,
+} from "@/lib/ad-landing-lead";
 import {
   LAW_CANONICAL_PATH,
   LAW_COPY,
+  LAW_CTA_ANCHOR,
   LAW_INTAKE_HOLD_NOTE,
 } from "@/lib/law-landing";
+import { BOOKING_CTA_HREF, site } from "@/lib/site";
 import nextConfig from "../../next.config";
 
 const phonePattern = /\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/;
 const emailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
+
+const pathnameMock = vi.fn(() => "/law");
 
 vi.mock("next/navigation", async () => {
   const actual = await vi.importActual<typeof import("next/navigation")>(
@@ -23,7 +31,7 @@ vi.mock("next/navigation", async () => {
   );
   return {
     ...actual,
-    usePathname: vi.fn(() => "/law"),
+    usePathname: () => pathnameMock(),
   };
 });
 
@@ -47,6 +55,14 @@ const cssSource = readFileSync(
   join(process.cwd(), "src/app/globals.css"),
   "utf8",
 );
+const headerSource = readFileSync(
+  join(process.cwd(), "src/components/Header.tsx"),
+  "utf8",
+);
+const footerSource = readFileSync(
+  join(process.cwd(), "src/components/Footer.tsx"),
+  "utf8",
+);
 
 function headingLevels(container: HTMLElement) {
   return [...container.querySelectorAll("h1, h2, h3, h4, h5, h6")].map(
@@ -65,15 +81,19 @@ function assertNoPii(label: string, html: string) {
   expect(html, label).not.toMatch(emailPattern);
 }
 
+afterEach(() => {
+  pathnameMock.mockReturnValue("/law");
+});
+
 describe("/law landing page", () => {
-  it("keeps the intended intake URL in one constant and does not use it as a live href", () => {
+  it("keeps the intended intake URL in one constant and gates the live href + hold note", () => {
     expect(LAW_INTAKE_URL).toBe(
       "https://onboarding.storentechai.com/?vertical=law&src=ad",
     );
     expect(LAW_INTAKE_URL).toBe(buildAdLandingLeadHref({ vertical: "law" }));
-    expect(ctaSource).toContain("data-intended-href={LAW_INTAKE_URL}");
-    expect(ctaSource).not.toContain("<a");
-    expect(ctaSource).not.toMatch(/\shref=/);
+    expect(LAW_INTAKE_READY).toBe(false);
+    expect(ctaSource).toContain("LAW_INTAKE_READY");
+    expect(ctaSource).toContain("LAW_INTAKE_HOLD_NOTE");
     expect(landingSource).not.toContain("calendar.app.google");
     expect(landingSource).not.toContain("onb1-demo");
     expect(copySource).not.toContain("calendar.app.google");
@@ -107,6 +127,7 @@ describe("/law landing page", () => {
     expect(screen.getByText(LAW_COPY.hero.subhead)).toBeInTheDocument();
     expect(screen.getByText(LAW_COPY.hero.note)).toBeInTheDocument();
     expect(screen.getByText(LAW_COPY.closing.note)).toBeInTheDocument();
+    expect(container.querySelector(`#${LAW_CTA_ANCHOR}`)).not.toBeNull();
 
     const ctas = screen.getAllByRole("button", {
       name: LAW_COPY.hero.ctaLabel,
@@ -128,12 +149,15 @@ describe("/law landing page", () => {
     expect(container.querySelectorAll("h1")).toHaveLength(1);
   });
 
-  it("keeps a single H1 and ordered heading levels", () => {
+  it("keeps a single H1, a visible FAQ heading, and ordered heading levels", () => {
     const { container } = render(<LawPage />);
     const headings = headingLevels(container);
 
     expect(headings[0]).toEqual({ level: 1, text: LAW_COPY.hero.h1 });
     expect(headings.filter((heading) => heading.level === 1)).toHaveLength(1);
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Common questions" }),
+    ).toBeInTheDocument();
 
     let previous = 1;
     for (const heading of headings) {
@@ -141,6 +165,18 @@ describe("/law landing page", () => {
       expect(heading.level - previous).toBeLessThanOrEqual(1);
       previous = heading.level;
     }
+  });
+
+  it("numbers the hero diagram steps and uses CSS arrow connectors", () => {
+    const { container } = render(<LawPage />);
+    const numbers = [...container.querySelectorAll(".law-diagram-n")].map(
+      (node) => node.textContent?.trim(),
+    );
+    expect(numbers).toEqual(["1", "2", "3"]);
+    expect(container.querySelectorAll(".law-diagram-arrow")).toHaveLength(2);
+    expect(cssSource).toContain(".law-diagram-arrow::after");
+    expect(cssSource).toMatch(/border-top:\s*12px solid var\(--navy\)/);
+    expect(cssSource).not.toContain(".law-process-col-2 li:last-child");
   });
 
   it("renders workflow cards, engagement steps, process panel, rules, and FAQs", async () => {
@@ -211,10 +247,94 @@ describe("/law landing page", () => {
     expect(pageSource).not.toContain("application/ld+json");
   });
 
-  it("keeps visible 2px focus styles and does not uppercase the consultation CTA", () => {
+  it("on /law only, swaps the header map CTA for an in-page conversation anchor", () => {
+    const { container } = render(
+      <SiteChrome>
+        <LawPage />
+      </SiteChrome>,
+    );
+    const header = container.querySelector("header.site-header");
+    const footer = container.querySelector("footer.site-footer");
+    expect(header).not.toBeNull();
+    expect(footer).not.toBeNull();
+
+    const headerCtas = within(header as HTMLElement).getAllByRole("link", {
+      name: LAW_COPY.headerCtaLabel,
+    });
+    expect(headerCtas.length).toBeGreaterThanOrEqual(1);
+    for (const cta of headerCtas) {
+      expect(cta).toHaveAttribute("href", `#${LAW_CTA_ANCHOR}`);
+    }
+    expect(header?.innerHTML).not.toContain("calendar.app.google");
+    expect(
+      within(header as HTMLElement).queryByRole("link", {
+        name: site.offer.ctaShort,
+      }),
+    ).toBeNull();
+
+    const footerMap = within(footer as HTMLElement).getByRole("link", {
+      name: site.offer.cta,
+    });
+    expect(footerMap).toHaveAttribute("href", BOOKING_CTA_HREF);
+    expect(footerSource).toContain("IntakeLink");
+    expect(headerSource).toContain("pathname === \"/law\"");
+  });
+
+  it("keeps the existing calendar header CTA on / and /contractors", () => {
+    pathnameMock.mockReturnValue("/");
+    const home = render(
+      <SiteChrome>
+        <div />
+      </SiteChrome>,
+    );
+    const homeHeader = home.container.querySelector("header.site-header");
+    const homeCtas = within(homeHeader as HTMLElement).getAllByRole("link", {
+      name: site.offer.ctaShort,
+    });
+    expect(homeCtas.length).toBeGreaterThanOrEqual(1);
+    for (const cta of homeCtas) {
+      expect(cta).toHaveAttribute("href", BOOKING_CTA_HREF);
+    }
+    expect(
+      within(homeHeader as HTMLElement).queryByRole("link", {
+        name: LAW_COPY.headerCtaLabel,
+      }),
+    ).toBeNull();
+    home.unmount();
+
+    pathnameMock.mockReturnValue("/contractors");
+    const contractors = render(
+      <SiteChrome>
+        <div />
+      </SiteChrome>,
+    );
+    const contractorsHeader = contractors.container.querySelector(
+      "header.site-header",
+    );
+    const contractorCtas = within(
+      contractorsHeader as HTMLElement,
+    ).getAllByRole("link", { name: site.offer.ctaShort });
+    expect(contractorCtas.length).toBeGreaterThanOrEqual(1);
+    for (const cta of contractorCtas) {
+      expect(cta).toHaveAttribute("href", BOOKING_CTA_HREF);
+    }
+    expect(
+      within(contractorsHeader as HTMLElement).queryByRole("link", {
+        name: LAW_COPY.headerCtaLabel,
+      }),
+    ).toBeNull();
+  });
+
+  it("keeps visible 2px focus styles and a disabled look on the pending CTA", () => {
     expect(cssSource).toMatch(/\.law-landing :focus-visible \{[\s\S]*?outline: 2px solid/);
     expect(cssSource).toMatch(/\.law-cta \{[\s\S]*?text-transform: none/);
     expect(cssSource).toMatch(/\.law-cta \{[\s\S]*?min-height: 48px/);
+    expect(cssSource).toMatch(
+      /\.law-cta\[aria-disabled="true"\] \{[\s\S]*?opacity: 0\.65/,
+    );
+    expect(cssSource).toMatch(
+      /\.law-cta\[aria-disabled="true"\] \{[\s\S]*?cursor: not-allowed/,
+    );
   });
 
   it("leaves /law/sample on the placeholder template", async () => {

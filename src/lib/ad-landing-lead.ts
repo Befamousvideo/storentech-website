@@ -6,6 +6,12 @@ export const DEFAULT_ONB1_LEAD_URL = "https://onboarding.storentechai.com";
 export const LAW_INTAKE_URL =
   "https://onboarding.storentechai.com/?vertical=law&src=ad" as const;
 
+/**
+ * Flip to true once LAW_INTAKE_URL is verified. That enables the live href
+ * and removes the preview-only hold note. Keep false while the host is NXDOMAIN.
+ */
+export const LAW_INTAKE_READY = false;
+
 export function resolveOnb1LeadUrl(
   raw: string | undefined = process.env.NEXT_PUBLIC_ONB1_LEAD_URL,
 ) {

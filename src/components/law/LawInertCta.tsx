@@ -1,4 +1,9 @@
-import { LAW_COPY, LAW_INTAKE_HOLD_NOTE, LAW_INTAKE_URL } from "@/lib/law-landing";
+import {
+  LAW_COPY,
+  LAW_INTAKE_HOLD_NOTE,
+  LAW_INTAKE_READY,
+  LAW_INTAKE_URL,
+} from "@/lib/law-landing";
 
 export function LawInertCta({
   label,
@@ -7,6 +12,20 @@ export function LawInertCta({
   label: string;
   noteId: string;
 }) {
+  if (LAW_INTAKE_READY) {
+    return (
+      <div className="law-cta-block">
+        <a
+          className="law-cta"
+          href={LAW_INTAKE_URL}
+          rel="noopener noreferrer"
+        >
+          {label}
+        </a>
+      </div>
+    );
+  }
+
   return (
     <div className="law-cta-block">
       <button

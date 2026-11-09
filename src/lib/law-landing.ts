@@ -1,4 +1,4 @@
-import { LAW_INTAKE_URL } from "@/lib/ad-landing-lead";
+import { LAW_INTAKE_READY, LAW_INTAKE_URL } from "@/lib/ad-landing-lead";
 
 /**
  * Tony's 2026-11-08 /law copy, stored as data so the page cannot drift.
@@ -189,6 +189,8 @@ export const LAW_COPY = {
         "We review your current tools during the analysis. Whether something can connect depends on those tools, and the report says what's realistic.",
     },
   ],
+  faqHeading: "Common questions",
+  headerCtaLabel: "Free initial conversation",
   closing: {
     heading: "Start with a free initial conversation",
     ctaLabel: "Start a free initial conversation",
@@ -199,6 +201,7 @@ export const LAW_COPY = {
 export const LAW_INTAKE_HOLD_NOTE =
   "Preview only: the intake route is pending verification. This button is inactive.";
 
-export { LAW_INTAKE_URL };
+export { LAW_INTAKE_READY, LAW_INTAKE_URL };
 
 export const LAW_CANONICAL_PATH = "/law";
+export const LAW_CTA_ANCHOR = "free-initial-conversation";

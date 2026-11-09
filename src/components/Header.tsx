@@ -6,7 +6,40 @@ import { useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { IntakeLink } from "@/components/IntakeLink";
 import { SarahPhoneImage } from "@/components/SarahContact";
+import { LAW_COPY, LAW_CTA_ANCHOR } from "@/lib/law-landing";
 import { nav, site } from "@/lib/site";
+
+function isLawRoot(pathname: string) {
+  return pathname === "/law";
+}
+
+function HeaderOfferCta({
+  pathname,
+  className,
+  onClick,
+}: {
+  pathname: string;
+  className: string;
+  onClick?: () => void;
+}) {
+  if (isLawRoot(pathname)) {
+    return (
+      <a
+        className={`${className} header-law-cta`}
+        href={`#${LAW_CTA_ANCHOR}`}
+        onClick={onClick}
+      >
+        {LAW_COPY.headerCtaLabel}
+      </a>
+    );
+  }
+
+  return (
+    <IntakeLink className={className} onClick={onClick}>
+      {site.offer.ctaShort}
+    </IntakeLink>
+  );
+}
 
 function isCurrent(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
@@ -19,7 +52,7 @@ export function Header({
   slim?: boolean;
   quiet?: boolean;
 }) {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "";
   const [open, setOpen] = useState(false);
 
   return (
@@ -54,7 +87,10 @@ export function Header({
               <SarahPhoneImage className="sarah-phone header-sarah-phone" />
             )}
             {quiet ? null : (
-              <IntakeLink className="btn btn-solid">{site.offer.ctaShort}</IntakeLink>
+              <HeaderOfferCta
+                pathname={pathname}
+                className="btn btn-solid"
+              />
             )}
             <button
               className="menu-toggle"
@@ -90,9 +126,11 @@ export function Header({
           {quiet ? null : (
             <div className="mobile-actions">
               <SarahPhoneImage className="sarah-phone header-sarah-phone" />
-              <IntakeLink className="btn btn-solid" onClick={() => setOpen(false)}>
-                {site.offer.ctaShort}
-              </IntakeLink>
+              <HeaderOfferCta
+                pathname={pathname}
+                className="btn btn-solid"
+                onClick={() => setOpen(false)}
+              />
             </div>
           )}
         </div>

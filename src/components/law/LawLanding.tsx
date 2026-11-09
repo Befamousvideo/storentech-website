@@ -9,7 +9,7 @@ import { LawNumberedCard } from "@/components/law/LawNumberedCard";
 import { LawProcessPanel } from "@/components/law/LawProcessPanel";
 import { LawStep } from "@/components/law/LawStep";
 import { LawWorkflowDiagram } from "@/components/law/LawWorkflowDiagram";
-import { LAW_COPY } from "@/lib/law-landing";
+import { LAW_COPY, LAW_CTA_ANCHOR } from "@/lib/law-landing";
 
 function MapLink({ className }: { className?: string }) {
   return (
@@ -30,10 +30,12 @@ export function LawLanding() {
             <p className="law-audience">{LAW_COPY.hero.audience}</p>
             <h1>{LAW_COPY.hero.h1}</h1>
             <p className="law-subhead">{LAW_COPY.hero.subhead}</p>
-            <LawInertCta
-              label={LAW_COPY.hero.ctaLabel}
-              noteId="law-cta-hold-hero"
-            />
+            <div id={LAW_CTA_ANCHOR}>
+              <LawInertCta
+                label={LAW_COPY.hero.ctaLabel}
+                noteId="law-cta-hold-hero"
+              />
+            </div>
             <LawHeroNote />
             <MapLink />
           </div>
@@ -123,8 +125,9 @@ export function LawLanding() {
         </div>
       </section>
 
-      <section className="law-section" aria-label="Frequently asked questions">
+      <section className="law-section" aria-labelledby="law-faq-heading">
         <div className="wrap law-faq">
+          <h2 id="law-faq-heading">{LAW_COPY.faqHeading}</h2>
           {LAW_COPY.faqs.map((item) => (
             <LawFaqItem
               key={item.question}
