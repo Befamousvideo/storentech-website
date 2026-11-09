@@ -26,6 +26,7 @@ Environment:
 - `NEXT_PUBLIC_SITE_URL` — public origin for metadata, sitemap, and Open Graph (default `https://www.storentechai.com`). If this is set on Vercel, it must be `https://www.storentechai.com` or it will override the default.
 - `NEXT_PUBLIC_INTAKE_URL` — Start your map CTA. Default is the Google Calendar booking link. Set to `https://onboarding.storentechai.com` when ONB1 is live. Not Stripe `/pay`.
 - `INQUIRY_WEBHOOK_URL` — optional. If set, each inquiry is `POST`ed as JSON (`name`, `email`, `company`, `broken`, `submittedAt`, `source`)
+- `DATABASE_URL` — Neon/Postgres URL for `/free-ai-map` leads (`free_map_leads`). If unset, a valid submit still shows the prompt and nothing is stored. Create the table with `npm run migrate:free-map-leads`.
 - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` — optional. Google Search Console verification token. Emitted as `google-site-verification` only when set; empty values produce no tag.
 - `NEXT_PUBLIC_BING_SITE_VERIFICATION` — optional. Bing Webmaster Tools token. Emitted as `msvalidate.01` only when set; empty values produce no tag.
 
@@ -37,6 +38,7 @@ Environment:
 - `/how-it-works` — paid AI Opportunity Map, then the Build Plan
 - `/about` — StorenTech AI; humans in the loop
 - `/contact` — name, email, company, what’s broken
+- `/free-ai-map` — free Opportunity Map **prompt** (not the paid Map). Email capture, then the copy-paste prompt. CTA is a free AI Opportunity Map **conversation**.
 - `/pay` and `pay.storentechai.com` — temporary redirect (307) to the homepage (`https://www.storentechai.com/`). Former Stripe Payment Link is retired. Not the Start your map CTA.
 - `/redo` — permanently redirects to the homepage (`https://www.storentechai.com/`), including trailing slash, query strings, and the same path on `pay.storentechai.com`.
 - `/ceo`, `/cfo`, `/ops` — permanently redirect to the homepage.
