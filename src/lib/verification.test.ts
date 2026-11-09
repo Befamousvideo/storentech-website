@@ -1,5 +1,10 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { verificationMetadata } from "@/lib/verification";
+import {
+  GOOGLE_SITE_VERIFICATION,
+  verificationMetadata,
+} from "@/lib/verification";
 
 describe("search engine verification metadata", () => {
   it("omits verification entirely when both env vars are unset", () => {
@@ -41,5 +46,17 @@ describe("search engine verification metadata", () => {
       google: "google-token",
       other: { "msvalidate.01": "bing-token" },
     });
+  });
+
+  it("always merges the Google Search Console token into root metadata", () => {
+    expect(GOOGLE_SITE_VERIFICATION).toBe(
+      "m3sRVHUbt4NXci2D6GVEdVM76iQR7IKbeEI8rtEk-vQ",
+    );
+    const layoutSource = readFileSync(
+      join(process.cwd(), "src/app/layout.tsx"),
+      "utf8",
+    );
+    expect(layoutSource).toContain("google: GOOGLE_SITE_VERIFICATION");
+    expect(layoutSource).toContain("GOOGLE_SITE_VERIFICATION");
   });
 });

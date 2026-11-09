@@ -14,6 +14,9 @@ import {
   SITE_FALLBACK_OG_IMAGE,
   blogPostJsonLdImage,
   blogPostOgImages,
+  breadcrumbListLd,
+  contractorsBreadcrumbLd,
+  contractorsServiceLd,
   organizationLd,
   relatedPostsFor,
   siteFallbackOgImages,
@@ -98,6 +101,28 @@ describe("SEO-1: homepage canonical and Organization", () => {
       "FAQPage",
     ]);
     expect(new Set(types).size).toBe(types.length);
+  });
+
+  it("fills LocalBusiness sameAs and omits address, telephone, and email", () => {
+    const { container } = render(
+      <SiteChrome>
+        <div />
+      </SiteChrome>,
+    );
+    const local = jsonLdBlocks(container).find((block) => {
+      const type = block["@type"];
+      return Array.isArray(type) && type.includes("LocalBusiness");
+    });
+
+    expect(local).toMatchObject({
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      name: "StorenTech AI",
+      sameAs: ["https://www.linkedin.com/company/storentechai"],
+    });
+    expect(local).not.toHaveProperty("address");
+    expect(local).not.toHaveProperty("telephone");
+    expect(local).not.toHaveProperty("email");
+    assertNoPii("localbusiness json-ld", JSON.stringify(local));
   });
 });
 
@@ -221,5 +246,44 @@ describe("SEO-1: blog Article JSON-LD, og:image, and related posts", () => {
     expect(related.map((post) => post.slug)).toEqual(
       blogPosts.slice(0, RELATED_POST_COUNT).map((post) => post.slug),
     );
+  });
+});
+
+describe("SEO: /contractors Service and BreadcrumbList", () => {
+  it("matches the service-page pattern with Home > Contractors absolute URLs", () => {
+    const service = contractorsServiceLd();
+    const crumbs = contractorsBreadcrumbLd();
+
+    expect(service).toMatchObject({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "AI Phone Agent for SoCal Contractors",
+      url: "https://www.storentechai.com/contractors",
+      provider: {
+        "@type": "Organization",
+        name: site.name,
+        url: site.url,
+      },
+    });
+    expect(service).not.toHaveProperty("telephone");
+    expect(service).not.toHaveProperty("email");
+    expect(service).not.toHaveProperty("offers");
+
+    expect(crumbs).toEqual(
+      breadcrumbListLd([
+        { name: "Home", url: "https://www.storentechai.com" },
+        {
+          name: "Contractors",
+          url: "https://www.storentechai.com/contractors",
+        },
+      ]),
+    );
+    expect(crumbs.itemListElement[0].item).toBe(
+      "https://www.storentechai.com",
+    );
+    expect(crumbs.itemListElement[1].item).toBe(
+      "https://www.storentechai.com/contractors",
+    );
+    assertNoPii("contractors json-ld", JSON.stringify([service, crumbs]));
   });
 });

@@ -66,6 +66,24 @@ export function writeAdRetargetingChoice(enabled: boolean) {
 }
 
 /**
+ * GPC or the stored retargeting opt-out. Shared by ad tags and GA.
+ */
+export function hasPrivacyOptOut({
+  storedChoice,
+  globalPrivacyControl,
+}: {
+  storedChoice?: boolean | null;
+  globalPrivacyControl?: boolean;
+} = {}) {
+  if (globalPrivacyControl ?? hasGlobalPrivacyControl()) return true;
+  const stored =
+    storedChoice !== undefined
+      ? storedChoice
+      : readStoredAdRetargetingChoice();
+  return stored === false;
+}
+
+/**
  * Gate for every ad tag. Default is on unless the visitor turned
  * retargeting off, the browser sent Global Privacy Control, or the
  * page is a privacy/PII-form route.
@@ -80,11 +98,6 @@ export function mayLoadAdTag({
   globalPrivacyControl?: boolean;
 } = {}) {
   if (isAdTagBlockedPath(pathname)) return false;
-  if (globalPrivacyControl ?? hasGlobalPrivacyControl()) return false;
-  const stored =
-    storedChoice !== undefined
-      ? storedChoice
-      : readStoredAdRetargetingChoice();
-  if (stored === false) return false;
+  if (hasPrivacyOptOut({ storedChoice, globalPrivacyControl })) return false;
   return true;
 }

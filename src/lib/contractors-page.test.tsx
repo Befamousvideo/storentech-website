@@ -43,10 +43,15 @@ const copySource = readFileSync(
   "utf8",
 );
 
+function jsonLdBlocks(container: HTMLElement) {
+  return [...container.querySelectorAll('script[type="application/ld+json"]')].map(
+    (node) => JSON.parse(node.textContent ?? "{}") as Record<string, unknown>,
+  );
+}
+
 function assertNoContactOrPaymentMarkup(label: string, html: string) {
   expect(html, label).not.toContain("tel:");
   expect(html, label).not.toContain("mailto:");
-  expect(html, label).not.toContain("application/ld+json");
   expect(html, label).not.toContain("buy.stripe.com");
   expect(html, label).not.toMatch(phonePattern);
   expect(html, label).not.toMatch(emailPattern);
@@ -66,8 +71,9 @@ describe("/contractors landing page", () => {
     expect(copySource).toContain("Example only.");
     expect(copySource).toContain("made-up numbers");
     expect(landingSource).not.toContain("calendar.app.google");
-    expect(pageSource).not.toContain("application/ld+json");
+    expect(pageSource).toContain("StructuredData");
     expect(landingSource).not.toContain("application/ld+json");
+    expect(landingSource).not.toContain("StructuredData");
   });
 
   it("sets the canonical URL, title, and description", () => {
@@ -177,15 +183,42 @@ describe("/contractors landing page", () => {
     }
   });
 
-  it("does not put phone, email, payment links, or JSON-LD on the page", () => {
+  it("emits Service and BreadcrumbList JSON-LD without phone, email, or payment", () => {
     const { container } = render(
       <SiteChrome>
-        <ContractorsLanding />
+        <ContractorsPage />
       </SiteChrome>,
     );
     const html = container.innerHTML;
+    const blocks = jsonLdBlocks(container);
+    const types = blocks.map((block) => block["@type"]);
+
+    expect(types).toEqual(["Service", "BreadcrumbList"]);
+    expect(blocks.find((block) => block["@type"] === "Service")).toMatchObject({
+      name: "AI Phone Agent for SoCal Contractors",
+      url: CONTRACTORS_CANONICAL_URL,
+    });
+    expect(
+      blocks.find((block) => block["@type"] === "BreadcrumbList"),
+    ).toMatchObject({
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://www.storentechai.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Contractors",
+          item: CONTRACTORS_CANONICAL_URL,
+        },
+      ],
+    });
 
     assertNoContactOrPaymentMarkup("chrome", html);
+    assertNoContactOrPaymentMarkup("json-ld", JSON.stringify(blocks));
     assertNoContactOrPaymentMarkup("page source", pageSource);
     assertNoContactOrPaymentMarkup("landing source", landingSource);
     assertNoContactOrPaymentMarkup("copy source", copySource);
