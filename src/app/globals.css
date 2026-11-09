@@ -926,7 +926,12 @@ select {
 .free-map-result {
   display: grid;
   gap: 1.05rem;
-  margin-top: 1.8rem;
+  margin-top: 0.4rem;
+}
+
+.free-map-capture .free-map-steps,
+.free-map-result .free-map-steps {
+  margin-top: 0.35rem;
 }
 
 .free-map-capture .btn,

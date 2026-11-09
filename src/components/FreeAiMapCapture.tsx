@@ -3,10 +3,11 @@
 import { track } from "@vercel/analytics";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import {
   FREE_AI_MAP_EMAIL_CAPTURE,
   FREE_AI_MAP_OPPORTUNITY_HREF,
+  FREE_AI_MAP_PAGE_STEPS,
   FREE_AI_MAP_PATH,
   FREE_AI_MAP_PRIVACY_LINE,
   FREE_AI_MAP_PROMPT_STEPS,
@@ -54,6 +55,13 @@ export function FreeAiMapCapture() {
   const [message, setMessage] = useState("");
   const [prompt, setPrompt] = useState("");
   const [copied, setCopied] = useState(false);
+  const resultRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (status === "ok" && prompt) {
+      resultRef.current?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+    }
+  }, [status, prompt]);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -119,7 +127,7 @@ export function FreeAiMapCapture() {
 
   if (status === "ok" && prompt) {
     return (
-      <div className="free-map-result">
+      <div className="free-map-result" ref={resultRef}>
         <p className="kicker">How to use</p>
         <ol className="free-map-steps">
           {FREE_AI_MAP_PROMPT_STEPS.map((step) => (
@@ -142,7 +150,14 @@ export function FreeAiMapCapture() {
   }
 
   return (
-    <form className="form free-map-capture" onSubmit={onSubmit}>
+    <div className="free-map-capture">
+      <p className="kicker">How to use</p>
+      <ol className="free-map-steps">
+        {FREE_AI_MAP_PAGE_STEPS.map((step) => (
+          <li key={step}>{step}</li>
+        ))}
+      </ol>
+      <form className="form" onSubmit={onSubmit}>
       <p>{FREE_AI_MAP_EMAIL_CAPTURE}</p>
       <div className="honeypot" aria-hidden="true">
         <label htmlFor="company_website">Company website</label>
@@ -201,5 +216,6 @@ export function FreeAiMapCapture() {
         </p>
       ) : null}
     </form>
+    </div>
   );
 }

@@ -4,7 +4,6 @@ import { FreeAiMapCapture } from "@/components/FreeAiMapCapture";
 import {
   FREE_AI_MAP_BULLETS,
   FREE_AI_MAP_HEADLINE,
-  FREE_AI_MAP_PAGE_STEPS,
   FREE_AI_MAP_PATH,
   FREE_AI_MAP_SUBHEAD,
 } from "@/lib/free-ai-map";
@@ -56,12 +55,6 @@ export default function FreeAiMapPage() {
 
       <section className="section" style={{ paddingTop: "1.5rem" }}>
         <div className="wrap-narrow">
-          <p className="kicker">How to use</p>
-          <ol className="free-map-steps">
-            {FREE_AI_MAP_PAGE_STEPS.map((step) => (
-              <li key={step}>{step}</li>
-            ))}
-          </ol>
           <Suspense fallback={<CaptureFallback />}>
             <FreeAiMapCapture />
           </Suspense>
