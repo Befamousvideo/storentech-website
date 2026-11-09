@@ -5,7 +5,7 @@
 export const FREE_AI_MAP_PATH = "/free-ai-map";
 
 export const FREE_AI_MAP_HEADLINE =
-  "Free Opportunity Map Prompt for owners";
+  "Free AI Opportunity Map Prompt for Business Owners";
 
 export const FREE_AI_MAP_SUBHEAD =
   "Six questions. A rough first look at which tasks AI could help your staff with — with people still in charge.";
@@ -36,7 +36,7 @@ export const FREE_AI_MAP_CAPTURE_LINE =
   "Enter your details and the prompt appears right here.";
 
 export const FREE_AI_MAP_PRIVACY_LINE =
-  "We'll use your email to send occasional tips. Unsubscribe anytime.";
+  "We'll only email you about AI ideas for your business. Reply anytime and we'll take you off the list.";
 
 export const FREE_AI_MAP_THANK_YOU_CTA =
   "Want this done properly with your real numbers? Book a free AI Opportunity Map conversation at storentechai.com/opportunity.";
@@ -48,7 +48,7 @@ export const FREE_AI_MAP_OPPORTUNITY_HREF = "/opportunity";
 
 export const FREE_AI_MAP_SUBMIT_CTA = "Show me the prompt";
 
-export const FREE_AI_MAP_CONSENT_TEXT_VERSION = "tony-download-privacy-v2";
+export const FREE_AI_MAP_CONSENT_TEXT_VERSION = "mary-ai-ideas-privacy-v1";
 
 export const FREE_AI_MAP_PROMPT = `You are helping a small-business owner sketch a rough, first-pass look at where AI could help their team — not replace people. Ask exactly these six questions, ONE AT A TIME. Wait for each answer before asking the next. Do not skip ahead. Do not invent numbers the owner did not give you.
 

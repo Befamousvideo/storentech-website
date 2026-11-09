@@ -41,6 +41,9 @@ const SOURCE_FILES = [
 describe("/free-ai-map", () => {
   it("uses Tony's download-page copy, canonical, and sitemap entry", () => {
     const { container } = render(<FreeAiMapPage />);
+    expect(FREE_AI_MAP_HEADLINE).toBe(
+      "Free AI Opportunity Map Prompt for Business Owners",
+    );
     expect(
       screen.getByRole("heading", { level: 1, name: FREE_AI_MAP_HEADLINE }),
     ).toBeInTheDocument();
@@ -53,7 +56,9 @@ describe("/free-ai-map", () => {
     }
     expect(screen.getByText(FREE_AI_MAP_CAPTURE_LINE)).toBeInTheDocument();
     expect(container.textContent).toContain(FREE_AI_MAP_PRIVACY_LINE);
-    expect(container.textContent).not.toMatch(/send the prompt|email you the prompt|inbox/i);
+    expect(container.textContent).not.toMatch(
+      /occasional tips|Unsubscribe anytime|send the prompt|email you the prompt|inbox/i,
+    );
     expect(screen.getByRole("button", { name: "Show me the prompt" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute(
       "href",
@@ -62,6 +67,9 @@ describe("/free-ai-map", () => {
     expect(container.textContent).not.toContain(FREE_AI_MAP_PROMPT);
     expect(container.querySelector("[class*='chat']")).toBeNull();
     expect(container.textContent).not.toMatch(/chatbot/i);
+    expect(metadata.title).toEqual({ absolute: FREE_AI_MAP_HEADLINE });
+    expect(metadata.openGraph?.title).toBe(FREE_AI_MAP_HEADLINE);
+    expect(metadata.twitter?.title).toBe(FREE_AI_MAP_HEADLINE);
     expect(metadata.alternates?.canonical).toBe(FREE_AI_MAP_PATH);
     expect(metadata.description).toBe(FREE_AI_MAP_SUBHEAD);
     expect(sitemap().some((entry) => entry.url === `${site.url}${FREE_AI_MAP_PATH}`)).toBe(
