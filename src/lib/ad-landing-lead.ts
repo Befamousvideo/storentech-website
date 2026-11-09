@@ -2,6 +2,10 @@ import type { AdLandingVertical } from "@/lib/ad-landing-routes";
 
 export const DEFAULT_ONB1_LEAD_URL = "https://onboarding.storentechai.com";
 
+/** Intended /law intake route. Unresolved (NXDOMAIN) — do not use as a live href. */
+export const LAW_INTAKE_URL =
+  "https://onboarding.storentechai.com/?vertical=law&src=ad" as const;
+
 export function resolveOnb1LeadUrl(
   raw: string | undefined = process.env.NEXT_PUBLIC_ONB1_LEAD_URL,
 ) {

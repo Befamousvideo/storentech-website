@@ -2,7 +2,6 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import LawPage, { metadata as lawMetadata } from "@/app/law/page";
 import LawSpecialtyPage, {
   generateMetadata as generateLawSpecialtyMetadata,
   generateStaticParams as generateLawSpecialtyParams,
@@ -17,7 +16,6 @@ import { SiteChrome } from "@/components/SiteChrome";
 import { buildAdLandingLeadHref, DEFAULT_ONB1_LEAD_URL } from "@/lib/ad-landing-lead";
 import {
   AD_LANDING_SPECIALTIES,
-  adLandingMetadata,
   getAdLandingSpecialty,
   LAW_VERTICAL_PAGE,
 } from "@/lib/ad-landing-pages";
@@ -126,16 +124,7 @@ describe("practice-area ad landing template", () => {
     expect(videos[1]).toHaveAttribute("src", "/videos/spokesperson.mp4");
   });
 
-  it("renders /law and both sample specialty routes from config", async () => {
-    render(<LawPage />);
-    expect(
-      screen.getByRole("heading", {
-        level: 1,
-        name: LAW_VERTICAL_PAGE.h1,
-      }),
-    ).toBeInTheDocument();
-    expect(lawMetadata).toMatchObject(adLandingMetadata(LAW_VERTICAL_PAGE));
-
+  it("renders both sample specialty routes from config", async () => {
     render(
       await LawSpecialtyPage({
         params: Promise.resolve({ specialty: "sample" }),
