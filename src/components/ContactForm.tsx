@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { trackGenerateLead } from "@/lib/analytics";
 
 type Status = "idle" | "sending" | "ok" | "error";
 
@@ -43,6 +44,7 @@ export function ContactForm() {
       setStatus("ok");
       setMessage("Received. We will reply from the office — this is the start of an AI Opportunity Map, not a complimentary audit.");
       form.reset();
+      trackGenerateLead();
     } catch {
       setStatus("error");
       setMessage(

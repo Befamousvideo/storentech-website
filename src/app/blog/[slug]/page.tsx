@@ -24,7 +24,14 @@ import { AiVoiceAgentSmallBusinessArticle } from "@/components/blog/AiVoiceAgent
 import { WhatShouldYourBusinessAiBeAllowedToDoArticle } from "@/components/blog/WhatShouldYourBusinessAiBeAllowedToDoArticle";
 import { RelatedPosts } from "@/components/blog/RelatedPosts";
 import { StructuredData } from "@/components/StructuredData";
-import { blogPosts, getPost, postPath, postUrl, type BlogPost } from "@/lib/blog";
+import {
+  blogJsonLdDate,
+  blogPosts,
+  getPost,
+  postPath,
+  postUrl,
+  type BlogPost,
+} from "@/lib/blog";
 import {
   blogPostJsonLdImage,
   blogPostOgImages,
@@ -125,14 +132,15 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   const url = postUrl(post.slug);
+  const published = blogJsonLdDate(post.datePublished);
 
   const articleLd = {
     "@context": "https://schema.org",
     "@type": ["BlogPosting", "Article"],
     headline: post.title,
     description: post.description,
-    datePublished: post.datePublished,
-    dateModified: post.datePublished,
+    datePublished: published,
+    dateModified: published,
     image: blogPostJsonLdImage(post),
     mainEntityOfPage: {
       "@type": "WebPage",

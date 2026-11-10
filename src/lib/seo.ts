@@ -1,5 +1,9 @@
 import type { BlogPost } from "@/lib/blog";
 import { blogPosts } from "@/lib/blog";
+import {
+  CONTRACTORS_CANONICAL_URL,
+  contractorsPage,
+} from "@/lib/contractors-page";
 import { site } from "@/lib/site";
 
 /** Existing generated Open Graph image (`src/app/opengraph-image.tsx`). */
@@ -127,4 +131,45 @@ export function organizationLd() {
     image: `${site.url}${SITE_FALLBACK_OG_IMAGE.url}`,
     description: site.description,
   };
+}
+
+export function breadcrumbListLd(
+  items: readonly { name: string; url: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
+
+export function contractorsServiceLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "AI Phone Agent for SoCal Contractors",
+    description: contractorsPage.metaDescription,
+    url: CONTRACTORS_CANONICAL_URL,
+    provider: {
+      "@type": "Organization",
+      name: site.name,
+      url: site.url,
+    },
+    areaServed: {
+      "@type": "AdministrativeArea",
+      name: "Orange County",
+    },
+  };
+}
+
+export function contractorsBreadcrumbLd() {
+  return breadcrumbListLd([
+    { name: "Home", url: site.url },
+    { name: "Contractors", url: CONTRACTORS_CANONICAL_URL },
+  ]);
 }

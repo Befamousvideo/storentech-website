@@ -14,10 +14,10 @@ const source = readFileSync(
 );
 
 describe("/privacy advertising and retargeting", () => {
-  it("dates the policy November 2, 2026 and describes the ad landing pixel", () => {
+  it("dates the policy November 9, 2026 and describes the ad landing pixel", () => {
     const { container } = render(<PrivacyPage />);
 
-    expect(screen.getByText(/Effective date: November 2, 2026/)).toBeInTheDocument();
+    expect(screen.getByText(/Effective date: November 9, 2026/)).toBeInTheDocument();
     expect(
       screen.getByRole("heading", {
         level: 2,
@@ -46,10 +46,18 @@ describe("/privacy advertising and retargeting", () => {
     expect(advertising?.querySelector('a[href="/contact"]')).toHaveTextContent(
       "contact form",
     );
-    expect(container.textContent).not.toMatch(/\bMeta\b|\bGoogle\b/);
-    expect(source).not.toMatch(/\bMeta\b|\bGoogle\b/);
+    expect(container.textContent).not.toMatch(/\bMeta\b/);
+    expect(source).not.toMatch(/\bMeta\b/);
 
-    expect(container.textContent).toMatch(/cookie-free\s+Vercel Web Analytics/i);
+    expect(container.textContent).toMatch(
+      /Google Analytics and Vercel Analytics to understand site traffic/i,
+    );
+    expect(container.textContent).toMatch(/Google Analytics sets cookies/i);
+    expect(
+      screen.getAllByRole("link", { name: "Google's browser add-on" })[0],
+    ).toHaveAttribute("href", "https://tools.google.com/dlpage/gaoptout");
+    expect(container.textContent).toMatch(/cookie-free/i);
+    expect(container.textContent).toMatch(/Vercel Analytics/i);
     expect(container.textContent).not.toMatch(
       /does not currently load a third-party analytics or advertising pixel/i,
     );

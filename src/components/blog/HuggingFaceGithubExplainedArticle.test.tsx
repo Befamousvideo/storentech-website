@@ -7,6 +7,7 @@ import BlogPostPage, { generateMetadata } from "@/app/blog/[slug]/page";
 import sitemap from "@/app/sitemap";
 import { HuggingFaceGithubExplainedArticle } from "@/components/blog/HuggingFaceGithubExplainedArticle";
 import {
+  blogJsonLdDate,
   blogPosts,
   getPost,
   huggingFaceGithubExplainedFaqs,
@@ -125,8 +126,8 @@ describe("Hugging Face and GitHub explained blog post", () => {
     expect(article).toMatchObject({
       headline: title,
       description,
-      datePublished: "2026-10-28",
-      dateModified: "2026-10-28",
+      datePublished: blogJsonLdDate("2026-10-28"),
+      dateModified: blogJsonLdDate("2026-10-28"),
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": postUrl(slug),

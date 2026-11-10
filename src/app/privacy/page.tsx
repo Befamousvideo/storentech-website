@@ -37,7 +37,7 @@ export default function PrivacyPage() {
           <h1 className="legal-title">Privacy Policy</h1>
           <hr className="rule" />
           <p className="lede">
-            Effective date: November 2, 2026. This policy explains how
+            Effective date: November 9, 2026. This policy explains how
             StorenTech AI (“we,” “us”) handles information when you use this
             website or ask us to follow up.
           </p>
@@ -74,15 +74,28 @@ export default function PrivacyPage() {
             <li>
               <strong>Technical and usage data.</strong> Our hosting provider
               may record basic request logs, such as the page requested, time,
-              and general browser or device information. We use cookie-free
-              Vercel Web Analytics for aggregate usage statistics. Vercel
-              derives a temporary visitor hash from incoming requests, which
-              resets daily and does not track visitors across days or
-              websites.
+              and general browser or device information. We use Google
+              Analytics and Vercel Analytics to understand site traffic.
+              Google Analytics sets cookies. Vercel Analytics is cookie-free:
+              Vercel derives a temporary visitor hash from incoming requests,
+              which resets daily and does not track visitors across days or
+              websites. You can opt out of Google Analytics with{" "}
+              <a href="https://tools.google.com/dlpage/gaoptout">
+                Google&apos;s browser add-on
+              </a>{" "}
+              or by blocking cookies. If your browser sends a Global Privacy
+              Control signal, or you turn ad retargeting cookies off on{" "}
+              <Link href="/privacy-choices">Your Privacy Choices</Link>, we
+              do not load Google Analytics.
             </li>
             <li>
               <strong>Cookies.</strong> The site may use essential cookies or
-              similar storage so pages and forms can function.
+              similar storage so pages and forms can function. Google
+              Analytics also sets cookies. You can opt out with{" "}
+              <a href="https://tools.google.com/dlpage/gaoptout">
+                Google&apos;s browser add-on
+              </a>{" "}
+              or by blocking cookies.
             </li>
           </ul>
 
@@ -123,7 +136,8 @@ export default function PrivacyPage() {
           <h2>Who we share it with</h2>
           <p>
             We share information with service providers who process it on our
-            behalf — for example, website hosting, form delivery, and the
+            behalf — for example, website hosting, form delivery, website
+            analytics (Google Analytics and Vercel Analytics), and the
             communications providers we use to place or receive calls and send
             texts when you ask us to follow up. Those providers may use the
             information only to perform work for us.

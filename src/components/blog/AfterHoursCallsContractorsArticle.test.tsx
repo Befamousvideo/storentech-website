@@ -8,6 +8,7 @@ import sitemap from "@/app/sitemap";
 import { AfterHoursCallsContractorsArticle } from "@/components/blog/AfterHoursCallsContractorsArticle";
 import {
   afterHoursCallsContractorsFaqs,
+  blogJsonLdDate,
   blogPosts,
   getPost,
   postPath,
@@ -178,8 +179,8 @@ describe("after-hours calls contractors blog post", () => {
     expect(article).toMatchObject({
       headline: title,
       description,
-      datePublished: "2026-11-02",
-      dateModified: "2026-11-02",
+      datePublished: blogJsonLdDate("2026-11-02"),
+      dateModified: blogJsonLdDate("2026-11-02"),
       image: {
         "@type": "ImageObject",
         url: `${site.url}/blog/after-hours-calls-contractors.png`,
