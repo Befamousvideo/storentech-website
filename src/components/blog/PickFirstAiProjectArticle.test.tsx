@@ -8,6 +8,7 @@ import BlogPostPage, { generateMetadata } from "@/app/blog/[slug]/page";
 import sitemap from "@/app/sitemap";
 import { PickFirstAiProjectArticle } from "@/components/blog/PickFirstAiProjectArticle";
 import {
+  blogJsonLdDate,
   blogPosts,
   getPost,
   pickFirstAiProjectFaqs,
@@ -164,8 +165,8 @@ describe("pick first AI project blog post", () => {
     expect(article).toMatchObject({
       headline: title,
       description,
-      datePublished: "2026-10-30",
-      dateModified: "2026-10-30",
+      datePublished: blogJsonLdDate("2026-10-30"),
+      dateModified: blogJsonLdDate("2026-10-30"),
       image: {
         "@type": "ImageObject",
         url: `${site.url}/blog/pick-first-ai-project.webp`,

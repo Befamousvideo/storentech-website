@@ -27,7 +27,7 @@ Environment:
 - `NEXT_PUBLIC_INTAKE_URL` — Start your map CTA. Default is the Google Calendar booking link. Set to `https://onboarding.storentechai.com` when ONB1 is live. Not Stripe `/pay`.
 - `INQUIRY_WEBHOOK_URL` — optional. If set, each inquiry is `POST`ed as JSON (`name`, `email`, `company`, `broken`, `submittedAt`, `source`)
 - `DATABASE_URL` — Neon/Postgres URL for `/free-ai-map` leads (`free_map_leads`). If unset, a valid submit still shows the prompt and nothing is stored. Create the table with `npm run migrate:free-map-leads`.
-- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` — optional. Google Search Console verification token. Emitted as `google-site-verification` only when set; empty values produce no tag.
+- Google Search Console verification is hardcoded in the root layout (`google-site-verification`) and is emitted on every page in every environment. `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` is unused for that tag.
 - `NEXT_PUBLIC_BING_SITE_VERIFICATION` — optional. Bing Webmaster Tools token. Emitted as `msvalidate.01` only when set; empty values produce no tag.
 
 ## Pages

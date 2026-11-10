@@ -8,6 +8,7 @@ import sitemap from "@/app/sitemap";
 import { AiPhoneAgentChangedOvernightArticle } from "@/components/blog/AiPhoneAgentChangedOvernightArticle";
 import {
   aiPhoneAgentChangedOvernightFaqs,
+  blogJsonLdDate,
   blogPosts,
   getPost,
   postPath,
@@ -181,8 +182,8 @@ describe("AI phone agent changed overnight blog post", () => {
     expect(article).toMatchObject({
       headline: title,
       description,
-      datePublished: "2026-11-02",
-      dateModified: "2026-11-02",
+      datePublished: blogJsonLdDate("2026-11-02"),
+      dateModified: blogJsonLdDate("2026-11-02"),
       image: {
         "@type": "ImageObject",
         url: `${site.url}/blog/ai-phone-agent-changed-overnight.png`,

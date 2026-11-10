@@ -337,7 +337,11 @@ select {
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: #80623a;
+}
+
+.section-tan .kicker {
+  color: #7f6139;
 }
 
 .rule {

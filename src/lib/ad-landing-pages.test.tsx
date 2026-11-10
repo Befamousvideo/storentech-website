@@ -188,9 +188,29 @@ describe("practice-area ad landing template", () => {
     const headers = await nextConfig.headers?.();
     const sources = (headers ?? []).map((rule) => rule.source);
     expect(sources).toEqual(
-      expect.arrayContaining(["/law", "/law/:path*", "/contractors/:path*"]),
+      expect.arrayContaining(["/law", "/law/:path*", "/contractors/:path+"]),
     );
     expect(sources).not.toContain("/contractors");
+    expect(sources).not.toContain("/contractors/:path*");
+
+    const robotsFor = (source: string) =>
+      (headers ?? []).find((rule) => rule.source === source)?.headers;
+    expect(robotsFor("/contractors")).toBeUndefined();
+    expect(robotsFor("/contractors/:path+")).toEqual([
+      { key: "X-Robots-Tag", value: "noindex, nofollow" },
+    ]);
+    expect(robotsFor("/for")).toEqual([
+      { key: "X-Robots-Tag", value: "noindex, nofollow" },
+    ]);
+    expect(robotsFor("/for/:path*")).toEqual([
+      { key: "X-Robots-Tag", value: "noindex, nofollow" },
+    ]);
+    expect(robotsFor("/law")).toEqual([
+      { key: "X-Robots-Tag", value: "noindex, nofollow" },
+    ]);
+    expect(robotsFor("/law/:path*")).toEqual([
+      { key: "X-Robots-Tag", value: "noindex, nofollow" },
+    ]);
   });
 
   it("adds no phone, email, payment links, JSON-LD, or chatbot chrome", () => {
