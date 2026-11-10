@@ -7,6 +7,7 @@ import BlogPostPage, { generateMetadata } from "@/app/blog/[slug]/page";
 import sitemap from "@/app/sitemap";
 import { LawFirmMissedCallsArticle } from "@/components/blog/LawFirmMissedCallsArticle";
 import {
+  blogJsonLdDate,
   blogPosts,
   getPost,
   lawFirmMissedCallsFaqs,
@@ -178,8 +179,8 @@ describe("law firm missed calls blog post", () => {
     expect(article).toMatchObject({
       headline: title,
       description,
-      datePublished: "2026-11-09",
-      dateModified: "2026-11-09",
+      datePublished: blogJsonLdDate("2026-11-09"),
+      dateModified: blogJsonLdDate("2026-11-09"),
       image: {
         "@type": "ImageObject",
         url: `${site.url}/blog/law-firm-missed-calls.png`,
