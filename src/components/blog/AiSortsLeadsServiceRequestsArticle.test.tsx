@@ -8,6 +8,7 @@ import sitemap from "@/app/sitemap";
 import { AiSortsLeadsServiceRequestsArticle } from "@/components/blog/AiSortsLeadsServiceRequestsArticle";
 import {
   aiSortsLeadsServiceRequestsFaqs,
+  blogJsonLdDate,
   blogPosts,
   getPost,
   postPath,
@@ -44,7 +45,7 @@ describe("AI sorts leads and service requests blog post", () => {
     expect(post?.datePublished).toBe("2026-10-26");
     expect(post?.faqs).toEqual(aiSortsLeadsServiceRequestsFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[5]?.slug).toBe(slug);
+    expect(blogPosts[8]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/ai-sorts-leads-service-requests");
     expect(post?.hero).toBeUndefined();
   });
@@ -88,12 +89,29 @@ describe("AI sorts leads and service requests blog post", () => {
       title: post?.metaTitle,
       description,
       url: "/blog/ai-sorts-leads-service-requests",
+      images: [
+        {
+          url: "/opengraph-image",
+          width: 1200,
+          height: 630,
+          alt: "StorenTech AI",
+          type: "image/png",
+        },
+      ],
     });
-    expect(metadata.openGraph).not.toHaveProperty("images");
     expect(metadata.twitter).toMatchObject({
       card: "summary_large_image",
       title: post?.metaTitle,
       description,
+      images: [
+        {
+          url: "/opengraph-image",
+          width: 1200,
+          height: 630,
+          alt: "StorenTech AI",
+          type: "image/png",
+        },
+      ],
     });
   });
 
@@ -119,8 +137,8 @@ describe("AI sorts leads and service requests blog post", () => {
     expect(article).toMatchObject({
       headline: title,
       description,
-      datePublished: "2026-10-26",
-      dateModified: "2026-10-26",
+      datePublished: blogJsonLdDate("2026-10-26"),
+      dateModified: blogJsonLdDate("2026-10-26"),
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": postUrl(slug),
@@ -128,8 +146,13 @@ describe("AI sorts leads and service requests blog post", () => {
       url: postUrl(slug),
       author: { "@type": "Person", name: site.founder.name },
       publisher: { "@type": "Organization", name: site.name, url: site.url },
+      image: {
+        "@type": "ImageObject",
+        url: `${site.url}/opengraph-image`,
+        width: 1200,
+        height: 630,
+      },
     });
-    expect(article).not.toHaveProperty("image");
 
     const mainEntity = faq?.mainEntity as Array<{
       name: string;

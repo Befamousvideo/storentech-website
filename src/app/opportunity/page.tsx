@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { IntakeLink } from "@/components/IntakeLink";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { StructuredData } from "@/components/StructuredData";
+import { siteFallbackOgImages } from "@/lib/seo";
 import { site } from "@/lib/site";
+
+const ogImages = siteFallbackOgImages();
 
 export const metadata: Metadata = {
   title: "AI Opportunity Map",
@@ -12,11 +15,13 @@ export const metadata: Metadata = {
     title: "AI Opportunity Map · StorenTech AI",
     description: site.offer.primary,
     url: "/opportunity",
+    images: ogImages,
   },
   twitter: {
     card: "summary_large_image",
     title: "AI Opportunity Map · StorenTech AI",
     description: site.offer.primary,
+    images: ogImages,
   },
 };
 
@@ -56,7 +61,12 @@ export default function AiOpportunityMapPage() {
           <hr className="rule" />
           <p className="lede">{site.offer.primary}</p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
-            <IntakeLink className="btn btn-solid">{site.offer.cta}</IntakeLink>
+            <IntakeLink
+              className="btn btn-solid"
+              analyticsEvent="opportunity_cta_click"
+            >
+              {site.offer.cta}
+            </IntakeLink>
             <SarahPhoneImage className="sarah-phone" />
           </div>
         </div>

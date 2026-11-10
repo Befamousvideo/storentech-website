@@ -7,6 +7,7 @@ import BlogPostPage, { generateMetadata } from "@/app/blog/[slug]/page";
 import sitemap from "@/app/sitemap";
 import { HuggingFaceGithubExplainedArticle } from "@/components/blog/HuggingFaceGithubExplainedArticle";
 import {
+  blogJsonLdDate,
   blogPosts,
   getPost,
   huggingFaceGithubExplainedFaqs,
@@ -44,7 +45,7 @@ describe("Hugging Face and GitHub explained blog post", () => {
     expect(post?.datePublished).toBe("2026-10-28");
     expect(post?.faqs).toEqual(huggingFaceGithubExplainedFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[4]?.slug).toBe(slug);
+    expect(blogPosts[7]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/hugging-face-github-explained");
     expect(post?.hero).toBeUndefined();
   });
@@ -91,8 +92,16 @@ describe("Hugging Face and GitHub explained blog post", () => {
       title: post?.metaTitle,
       description,
       url: "/blog/hugging-face-github-explained",
+      images: [
+        {
+          url: "/opengraph-image",
+          width: 1200,
+          height: 630,
+          alt: "StorenTech AI",
+          type: "image/png",
+        },
+      ],
     });
-    expect(metadata.openGraph).not.toHaveProperty("images");
   });
 
   it("builds Article and FAQPage JSON-LD from the post", async () => {
@@ -117,8 +126,8 @@ describe("Hugging Face and GitHub explained blog post", () => {
     expect(article).toMatchObject({
       headline: title,
       description,
-      datePublished: "2026-10-28",
-      dateModified: "2026-10-28",
+      datePublished: blogJsonLdDate("2026-10-28"),
+      dateModified: blogJsonLdDate("2026-10-28"),
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": postUrl(slug),
@@ -126,8 +135,13 @@ describe("Hugging Face and GitHub explained blog post", () => {
       url: postUrl(slug),
       author: { "@type": "Person", name: site.founder.name },
       publisher: { "@type": "Organization", name: site.name, url: site.url },
+      image: {
+        "@type": "ImageObject",
+        url: `${site.url}/opengraph-image`,
+        width: 1200,
+        height: 630,
+      },
     });
-    expect(article).not.toHaveProperty("image");
 
     const mainEntity = faq?.mainEntity as Array<{
       name: string;

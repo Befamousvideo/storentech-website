@@ -5,14 +5,15 @@ import { FaqHelper } from "@/components/FaqHelper";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
+import { isAdLandingPath } from "@/lib/ad-landing-routes";
 import { isForPreviewPath } from "@/lib/for-pages";
 
 function hideJsonLd(pathname: string) {
   return (
     pathname === "/privacy" ||
+    pathname === "/privacy-choices" ||
     pathname === "/terms" ||
-    pathname === "/contractors" ||
-    pathname.startsWith("/contractors/") ||
+    isAdLandingPath(pathname) ||
     isForPreviewPath(pathname)
   );
 }

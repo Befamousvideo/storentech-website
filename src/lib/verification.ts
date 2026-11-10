@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 
+/** Always emitted as google-site-verification, in every environment. */
+export const GOOGLE_SITE_VERIFICATION =
+  "m3sRVHUbt4NXci2D6GVEdVM76iQR7IKbeEI8rtEk-vQ" as const;
+
 function nonEmpty(value: string | undefined) {
   const trimmed = value?.trim();
   return trimmed ? trimmed : undefined;

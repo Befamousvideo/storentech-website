@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { blogPosts, getPost } from "@/lib/blog";
+import { blogJsonLdDate, blogPosts, getPost } from "@/lib/blog";
 import sitemap from "@/app/sitemap";
 
 describe("live blog post dates", () => {
@@ -10,6 +10,18 @@ describe("live blog post dates", () => {
         datePublished: post.datePublished,
       })),
     ).toEqual([
+      {
+        slug: "office-procedures-ai-instructions",
+        datePublished: "2026-11-13",
+      },
+      {
+        slug: "california-law-firm-ai-receptionist",
+        datePublished: "2026-11-11",
+      },
+      {
+        slug: "law-firm-missed-calls",
+        datePublished: "2026-11-09",
+      },
       {
         slug: "questions-before-hiring-ai-developer",
         datePublished: "2026-11-02",
@@ -74,6 +86,22 @@ describe("live blog post dates", () => {
     expect(dates).toEqual([...dates].sort().reverse());
     expect(getPost("ai-agent-cost-controls")).toBeDefined();
     expect(getPost("nvidia-ai-agent-safety-explained")).toBeDefined();
+  });
+
+  it("formats JSON-LD dates as 08:00 America/Los_Angeles with PST/PDT offsets", () => {
+    expect(blogJsonLdDate("2026-10-21")).toBe("2026-10-21T08:00:00-07:00");
+    expect(blogJsonLdDate("2026-11-02")).toBe("2026-11-02T08:00:00-08:00");
+    expect(blogJsonLdDate("2026-09-21")).toBe("2026-09-21T08:00:00-07:00");
+    expect(blogJsonLdDate("2026-11-13")).toBe("2026-11-13T08:00:00-08:00");
+    expect(blogJsonLdDate("2026-11-02T08:00:00-08:00")).toBe(
+      "2026-11-02T08:00:00-08:00",
+    );
+
+    for (const post of blogPosts) {
+      const formatted = blogJsonLdDate(post.datePublished);
+      expect(formatted.startsWith(`${post.datePublished}T08:00:00`)).toBe(true);
+      expect(formatted).toMatch(/T08:00:00[+-]\d{2}:\d{2}$/);
+    }
   });
 
   it("feeds Article dates and sitemap lastModified from datePublished", () => {

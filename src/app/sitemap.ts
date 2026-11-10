@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
     "/opportunity",
+    "/free-ai-map",
     CONTRACTORS_PATH,
     "/work",
     "/how-it-works",
@@ -14,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/blog",
     "/privacy",
+    "/privacy-choices",
     "/terms",
   ];
   const lastModified = new Date();
@@ -27,7 +29,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ? 1
         : route === "/blog"
           ? 0.7
-          : route === "/privacy" || route === "/terms"
+          : route === "/privacy" ||
+              route === "/privacy-choices" ||
+              route === "/terms"
             ? 0.4
             : 0.8,
   }));

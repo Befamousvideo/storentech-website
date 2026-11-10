@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { SiteAnalytics } from "@/components/SiteAnalytics";
 import { SiteChrome } from "@/components/SiteChrome";
+import { isProductionAnalyticsEnv } from "@/lib/analytics";
 import { site } from "@/lib/site";
-import { verificationMetadata } from "@/lib/verification";
+import {
+  GOOGLE_SITE_VERIFICATION,
+  verificationMetadata,
+} from "@/lib/verification";
 import "./globals.css";
 
 const verification = verificationMetadata();
@@ -62,7 +68,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  ...(verification ? { verification } : {}),
+  verification: {
+    ...(verification ?? {}),
+    google: GOOGLE_SITE_VERIFICATION,
+  },
   // Vince locked brand mark: Orbit v4 (clean).
   icons: {
     icon: [
@@ -85,7 +94,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <SiteChrome>{children}</SiteChrome>
+        <Analytics />
         <SiteAnalytics />
+        {isProductionAnalyticsEnv() ? <GoogleAnalytics /> : null}
       </body>
     </html>
   );
