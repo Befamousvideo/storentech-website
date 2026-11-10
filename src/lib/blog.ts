@@ -1200,3 +1200,39 @@ export function postPath(slug: string) {
 export function postUrl(slug: string) {
   return `${site.url}${postPath(slug)}`;
 }
+
+const BLOG_JSON_LD_TIME_ZONE = "America/Los_Angeles";
+const BLOG_JSON_LD_LOCAL_TIME = "08:00:00";
+const GMT_OFFSET = /GMT([+-]\d{2}:\d{2})/;
+
+/**
+ * Schema.org datePublished/dateModified. Date-only catalog values become
+ * 08:00 America/Los_Angeles with the correct PST/PDT offset.
+ */
+export function blogJsonLdDate(value: string): string {
+  const trimmed = value.trim();
+  if (/T/.test(trimmed) && /(?:Z|[+-]\d{2}:\d{2})$/i.test(trimmed)) {
+    return trimmed;
+  }
+
+  const date = trimmed.slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    throw new Error(`Invalid blog JSON-LD date: ${value}`);
+  }
+
+  const probe = new Date(`${date}T16:00:00.000Z`);
+  const tzName = new Intl.DateTimeFormat("en-US", {
+    timeZone: BLOG_JSON_LD_TIME_ZONE,
+    timeZoneName: "longOffset",
+  })
+    .formatToParts(probe)
+    .find((part) => part.type === "timeZoneName")?.value;
+  const offset = tzName?.match(GMT_OFFSET)?.[1];
+  if (!offset) {
+    throw new Error(
+      `Could not resolve ${BLOG_JSON_LD_TIME_ZONE} offset for ${date}`,
+    );
+  }
+
+  return `${date}T${BLOG_JSON_LD_LOCAL_TIME}${offset}`;
+}

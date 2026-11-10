@@ -7,6 +7,7 @@ import BlogPostPage, { generateMetadata } from "@/app/blog/[slug]/page";
 import sitemap from "@/app/sitemap";
 import { OfficeProceduresAiInstructionsArticle } from "@/components/blog/OfficeProceduresAiInstructionsArticle";
 import {
+  blogJsonLdDate,
   blogPosts,
   getPost,
   officeProceduresAiInstructionsFaqs,
@@ -185,8 +186,8 @@ describe("office procedures as AI instructions blog post", () => {
     expect(article).toMatchObject({
       headline: title,
       description,
-      datePublished: "2026-11-13",
-      dateModified: "2026-11-13",
+      datePublished: blogJsonLdDate("2026-11-13"),
+      dateModified: blogJsonLdDate("2026-11-13"),
       image: {
         "@type": "ImageObject",
         url: `${site.url}/blog/office-procedures-ai-instructions-1200x630.png`,

@@ -8,6 +8,7 @@ import sitemap from "@/app/sitemap";
 import { AiSortsLeadsServiceRequestsArticle } from "@/components/blog/AiSortsLeadsServiceRequestsArticle";
 import {
   aiSortsLeadsServiceRequestsFaqs,
+  blogJsonLdDate,
   blogPosts,
   getPost,
   postPath,
@@ -136,8 +137,8 @@ describe("AI sorts leads and service requests blog post", () => {
     expect(article).toMatchObject({
       headline: title,
       description,
-      datePublished: "2026-10-26",
-      dateModified: "2026-10-26",
+      datePublished: blogJsonLdDate("2026-10-26"),
+      dateModified: blogJsonLdDate("2026-10-26"),
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": postUrl(slug),

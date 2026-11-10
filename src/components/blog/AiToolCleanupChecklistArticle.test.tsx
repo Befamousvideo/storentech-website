@@ -8,6 +8,7 @@ import sitemap from "@/app/sitemap";
 import { AiToolCleanupChecklistArticle } from "@/components/blog/AiToolCleanupChecklistArticle";
 import {
   aiToolCleanupChecklistFaqs,
+  blogJsonLdDate,
   blogPosts,
   getPost,
   postPath,
@@ -209,8 +210,8 @@ describe("AI tool cleanup checklist blog post", () => {
     expect(article).toMatchObject({
       headline: post?.title,
       description: post?.description,
-      datePublished: "2026-10-12",
-      dateModified: "2026-10-12",
+      datePublished: blogJsonLdDate("2026-10-12"),
+      dateModified: blogJsonLdDate("2026-10-12"),
       image: {
         "@type": "ImageObject",
         url: `${site.url}/blog/ai-tool-cleanup-checklist.webp`,

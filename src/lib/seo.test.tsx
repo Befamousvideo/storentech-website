@@ -8,7 +8,7 @@ import { metadata as opportunityMetadata } from "@/app/opportunity/page";
 import { metadata as privacyMetadata } from "@/app/privacy/page";
 import { metadata as termsMetadata } from "@/app/terms/page";
 import { SiteChrome } from "@/components/SiteChrome";
-import { blogPosts, getPost, postPath } from "@/lib/blog";
+import { blogJsonLdDate, blogPosts, getPost, postPath, postUrl } from "@/lib/blog";
 import {
   RELATED_POST_COUNT,
   SITE_FALLBACK_OG_IMAGE,
@@ -193,11 +193,16 @@ describe("SEO-1: blog Article JSON-LD, og:image, and related posts", () => {
       });
       expect(article, post.slug).toMatchObject({
         headline: post.title,
-        datePublished: post.datePublished,
+        datePublished: blogJsonLdDate(post.datePublished),
+        dateModified: blogJsonLdDate(post.datePublished),
+        url: postUrl(post.slug),
         author: { "@type": "Person", name: site.founder.name },
         publisher: { "@type": "Organization", name: site.name, url: site.url },
         image: blogPostJsonLdImage(post),
       });
+      expect(article?.datePublished, post.slug).toMatch(
+        /^\d{4}-\d{2}-\d{2}T08:00:00[+-]\d{2}:\d{2}$/,
+      );
       expect(article?.image, post.slug).toBeTruthy();
 
       const related = relatedPostsFor(post.slug);

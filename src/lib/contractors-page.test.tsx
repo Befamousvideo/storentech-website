@@ -16,6 +16,7 @@ import {
   contractorsVideo,
 } from "@/lib/contractors-page";
 import { BOOKING_CTA_HREF } from "@/lib/site";
+import nextConfig from "../../next.config";
 
 vi.mock("next/navigation", async () => {
   const actual = await vi.importActual<typeof import("next/navigation")>(
@@ -95,6 +96,17 @@ describe("/contractors landing page", () => {
   it("lists /contractors in the sitemap", () => {
     const urls = sitemap().map((entry) => entry.url);
     expect(urls).toContain(CONTRACTORS_CANONICAL_URL);
+  });
+
+  it("does not send X-Robots-Tag noindex on /contractors itself", async () => {
+    const headers = (await nextConfig.headers?.()) ?? [];
+    const sources = headers.map((rule) => rule.source);
+    expect(sources).not.toContain("/contractors");
+    expect(sources).not.toContain("/contractors/:path*");
+    expect(sources).toContain("/contractors/:path+");
+    expect(
+      headers.find((rule) => rule.source === "/contractors/:path+")?.headers,
+    ).toEqual([{ key: "X-Robots-Tag", value: "noindex, nofollow" }]);
   });
 
   it("embeds the square video with controls, a poster, and the draft caption", async () => {
