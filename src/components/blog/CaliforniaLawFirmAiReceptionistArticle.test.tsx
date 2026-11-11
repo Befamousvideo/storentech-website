@@ -70,7 +70,7 @@ describe("California law firm AI receptionist blog post", () => {
     expect(post?.datePublished).toBe("2026-11-11");
     expect(post?.faqs).toEqual(californiaLawFirmAiReceptionistFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[1]?.slug).toBe(slug);
+    expect(blogPosts[4]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/california-law-firm-ai-receptionist");
     expect(post?.hero).toEqual({
       png: "/blog/california-law-firm-ai-receptionist.png",

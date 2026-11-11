@@ -13,6 +13,9 @@
 - [Contractors](https://www.storentechai.com/contractors): StorenTech AI sets up AI phone agents and automations for Southern California contractors.
 
 ## Blog
+- [When Clients Keep Calling for Case Updates, What Should an Orange County Firm Try First?](https://www.storentechai.com/blog/law-firm-case-status-updates): Existing clients calling for case updates eat staff time. What an Orange County firm can try first, and why a person should approve every status update.
+- [The Weekly Report Your Office Still Downloads and Rebuilds by Hand](https://www.storentechai.com/blog/weekly-report-download-rebuild): If someone in your Orange County office rebuilds the same report every week from two portals, here is what to check first before reaching for AI.
+- [Before Your Law Firm Connects Client Data to a New AI Tool, Check These Storage Settings](https://www.storentechai.com/blog/law-firm-ai-data-storage-check): Before an Orange County law firm sends client details into a new AI tool, check where prompts and uploads are stored, who can see them and what is on by default.
 - [Write It Down Once: Turning Your Office's Procedures into Instructions an AI Assistant Can Follow](https://www.storentechai.com/blog/office-procedures-ai-instructions): How Orange County owners can write one office procedure so a person or AI assistant can follow it — with a human approving anything that leaves the office.
 - [Can a California Law Firm Use an AI Receptionist? What the State Bar's AI Guidance Asks of You](https://www.storentechai.com/blog/california-law-firm-ai-receptionist): What the State Bar of California's generative AI guidance asks of firms considering an AI receptionist. Not legal advice.
 - [When a Potential Client Calls Your Law Firm After Hours, What Happens?](https://www.storentechai.com/blog/law-firm-missed-calls): What a potential client hears when they call an Orange County law firm after hours, and what to fix first so fewer callers hang up.

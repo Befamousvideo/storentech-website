@@ -812,7 +812,147 @@ export const lawFirmMissedCallsFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const lawFirmCaseStatusUpdatesFaqs = [
+  {
+    question:
+      "How can a law firm reduce client calls asking for case updates?",
+    answer:
+      "Set a regular update rhythm, explain the next step and a rough time frame, use the channel the client prefers and keep a short template for each update.",
+  },
+  {
+    question: "Can AI send case status updates to clients?",
+    answer:
+      "AI can draft updates from matter notes and answer status calls, but a person at the firm should review every update before it reaches a client.",
+  },
+  {
+    question: "What did Clio find about how firms explain next steps?",
+    answer:
+      'In Clio\'s 2024 secret shop of 500 law firms, Clio found that in phone conversations "only 36% could explain the process and next steps," and 73% of shoppers who connected were unlikely to recommend the firm they spoke with.',
+  },
+  {
+    question: "Is this legal advice?",
+    answer:
+      "No. It is an owner's guide. Talk with your own ethics counsel about AI and client communication.",
+  },
+  {
+    question:
+      "Who helps Orange County law firms with client updates and AI phone coverage?",
+    answer:
+      "StorenTech AI helps Orange County law firms draft case updates and cover status calls with AI, while a person at the firm reviews every update.",
+  },
+] as const satisfies readonly BlogFaq[];
+
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const weeklyReportDownloadRebuildFaqs = [
+  {
+    question: "How do I stop rebuilding the same weekly report by hand?",
+    answer:
+      "First check whether your current software offers scheduled exports, saved reports or built-in connections. Many offices remove much of the work this way before any AI is involved.",
+  },
+  {
+    question: "Can AI download reports from a website portal?",
+    answer:
+      "Some AI tools can operate a browser like a person would. Google, for example, announced on October 30, 2026 that its Computer Use tool is generally available. Whether it works on a given portal has to be tested.",
+  },
+  {
+    question: "Is it safe to let AI log in to business portals?",
+    answer:
+      "Start read-only, use a business-owned login with limited permissions, compare results to a hand-built report and keep a person approving anything that leaves the office.",
+  },
+  {
+    question: "What should I automate first?",
+    answer:
+      "The report that takes the longest each week and depends on one person. Trim it to the numbers people actually use before automating.",
+  },
+  {
+    question: "Who helps Orange County businesses automate weekly reports?",
+    answer:
+      "StorenTech AI helps Orange County businesses find hand-built weekly reports, check what existing software can do and test AI only where it clearly saves time.",
+  },
+] as const satisfies readonly BlogFaq[];
+
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const lawFirmAiDataStorageCheckFaqs = [
+  {
+    question:
+      "What should a law firm check before putting client data into an AI tool?",
+    answer:
+      "Check whether prompts, uploads and logs are stored by default, how long they are kept, who can open them, whose account holds them, how to export or delete them, and whether the data is used to train or improve the vendor's AI.",
+  },
+  {
+    question: "Do AI tools store what you send them?",
+    answer:
+      "Many keep at least some records for a while. For example, Google's Gemini API changelog (October 26, 2026) says new paid-tier projects using its Generate Content API now store requests by default unless someone opts out.",
+  },
+  {
+    question: "Who controls an AI tool's storage settings?",
+    answer:
+      "Usually whoever set the tool up, often a developer or vendor. Make sure the account belongs to the firm and that someone at the firm knows where the settings are.",
+  },
+  {
+    question: "Is this legal advice about client confidentiality?",
+    answer:
+      "No. It is an owner checklist. Talk with your own ethics counsel about what client information may go into any outside tool.",
+  },
+  {
+    question:
+      "Who helps Orange County law firms review AI tools before they touch client data?",
+    answer:
+      "StorenTech AI can help Orange County law firms map where client information goes in each AI tool and which settings the firm should own, before anything goes live.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "law-firm-case-status-updates",
+    title:
+      "When Clients Keep Calling for Case Updates, What Should an Orange County Firm Try First?",
+    metaTitle: "When Clients Keep Calling for Case Updates | StorenTech AI",
+    description:
+      "Existing clients calling for case updates eat staff time. What an Orange County firm can try first, and why a person should approve every status update.",
+    datePublished: "2026-11-20",
+    faqs: lawFirmCaseStatusUpdatesFaqs,
+    indexCta: "Read the post",
+    // TODO: Drive hero 1920 id 1loFv5HbP9WZ-GKkaQqVPtjgU2Kxn-GfS and OG 1200 id 15OhcndYPmC3cQi0GOLDDV6jp1q-l9Tpb required sign-in.
+    // Alt: Calm law office reception desk with a phone and a screen showing a short case-update note ready to review.
+  },
+  {
+    slug: "weekly-report-download-rebuild",
+    title: "The Weekly Report Your Office Still Downloads and Rebuilds by Hand",
+    metaTitle:
+      "The Weekly Report Your Office Still Downloads and Rebuilds by Hand | StorenTech AI",
+    description:
+      "If someone in your Orange County office rebuilds the same report every week from two portals, here is what to check first before reaching for AI.",
+    datePublished: "2026-11-18",
+    faqs: weeklyReportDownloadRebuildFaqs,
+    indexCta: "Read the post",
+    // TODO: Drive hero 1920 id 1El-lVRdvXx36kVpUE076II5jhZMYA6W1 and OG 1200 id 1n5A3JJNpqUq4TLf-JWzw2dgGpbe4CaCk required sign-in.
+    // Alt: Monday-morning desk with coffee, printouts and a laptop showing a spreadsheet rebuilt by hand.
+  },
+  {
+    slug: "law-firm-ai-data-storage-check",
+    title:
+      "Before Your Law Firm Connects Client Data to a New AI Tool, Check These Storage Settings",
+    metaTitle:
+      "Before Your Law Firm Connects Client Data to a New AI Tool | StorenTech AI",
+    description:
+      "Before an Orange County law firm sends client details into a new AI tool, check where prompts and uploads are stored, who can see them and what is on by default.",
+    datePublished: "2026-11-16",
+    faqs: lawFirmAiDataStorageCheckFaqs,
+    indexCta: "Read the post",
+    // TODO: Drive hero 1920 id 1uDbBGJS91nbWqU1FEgTi14tjQds7Ddra and OG 1200 id 1prLzekpwO6Q0w_st2Xk1LF9v8YIGHO3q required sign-in.
+    // Alt: Law office desk with a laptop open to storage settings, a client file folder and a blank checklist.
+  },
   {
     slug: "office-procedures-ai-instructions",
     title:
