@@ -2,11 +2,48 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { IntakeLink } from "@/components/IntakeLink";
 import { SarahPhoneImage } from "@/components/SarahContact";
+import { LAW_COPY, LAW_CTA_ANCHOR } from "@/lib/law-landing";
 import { nav, site } from "@/lib/site";
+
+function isLawRoot(pathname: string) {
+  return pathname === "/law";
+}
+
+function HeaderOfferCta({
+  pathname,
+  className,
+  onClick,
+  compact = false,
+}: {
+  pathname: string;
+  className: string;
+  onClick?: () => void;
+  compact?: boolean;
+}) {
+  if (isLawRoot(pathname)) {
+    return (
+      <a
+        className={`${className}${compact ? " header-law-cta" : " header-law-cta-drawer"}`}
+        href={`#${LAW_CTA_ANCHOR}`}
+        onClick={onClick}
+      >
+        {compact
+          ? LAW_COPY.headerCtaCompactLabel
+          : LAW_COPY.headerCtaLabel}
+      </a>
+    );
+  }
+
+  return (
+    <IntakeLink className={className} onClick={onClick}>
+      {site.offer.ctaShort}
+    </IntakeLink>
+  );
+}
 
 function isCurrent(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
@@ -19,11 +56,26 @@ export function Header({
   slim?: boolean;
   quiet?: boolean;
 }) {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "";
   const [open, setOpen] = useState(false);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      setOpen(false);
+      menuToggleRef.current?.focus();
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
 
   return (
-    <header className="site-header">
+    <header
+      className={`site-header${isLawRoot(pathname) ? " site-header-law" : ""}`}
+    >
       <div className={`wrap header-inner${slim ? " header-inner-slim" : ""}`}>
         <Link
           href="/"
@@ -54,9 +106,14 @@ export function Header({
               <SarahPhoneImage className="sarah-phone header-sarah-phone" />
             )}
             {quiet ? null : (
-              <IntakeLink className="btn btn-solid">{site.offer.ctaShort}</IntakeLink>
+              <HeaderOfferCta
+                pathname={pathname}
+                className="btn btn-solid"
+                compact
+              />
             )}
             <button
+              ref={menuToggleRef}
               className="menu-toggle"
               type="button"
               aria-expanded={open}
@@ -90,9 +147,11 @@ export function Header({
           {quiet ? null : (
             <div className="mobile-actions">
               <SarahPhoneImage className="sarah-phone header-sarah-phone" />
-              <IntakeLink className="btn btn-solid" onClick={() => setOpen(false)}>
-                {site.offer.ctaShort}
-              </IntakeLink>
+              <HeaderOfferCta
+                pathname={pathname}
+                className="btn btn-solid"
+                onClick={() => setOpen(false)}
+              />
             </div>
           )}
         </div>

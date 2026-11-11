@@ -1,6 +1,29 @@
-import type { AdLandingVertical } from "@/lib/ad-landing-routes";
+import type { AdLandingVertical } from "./ad-landing-routes";
 
 export const DEFAULT_ONB1_LEAD_URL = "https://onboarding.storentechai.com";
+
+/** Intended /law intake route. Unresolved (NXDOMAIN) — do not use as a live href. */
+export const LAW_INTAKE_URL =
+  "https://onboarding.storentechai.com/?vertical=law&src=ad" as const;
+
+/**
+ * Flip to true once LAW_INTAKE_URL is verified. That enables the live href,
+ * drops the preview-only hold note, indexes /law, and lists it in the sitemap.
+ * Nested /law/:path+ stays noindex either way. Keep false while the host is NXDOMAIN.
+ */
+export const LAW_INTAKE_READY = false;
+
+export function lawRootIndexPolicy(ready: boolean = LAW_INTAKE_READY) {
+  return {
+    robots: ready
+      ? ({ index: true, follow: true } as const)
+      : ({ index: false, follow: false } as const),
+    includeInSitemap: ready,
+    sendNoindexHeader: !ready,
+  };
+}
+
+export const LAW_ROOT_INDEX = lawRootIndexPolicy();
 
 export function resolveOnb1LeadUrl(
   raw: string | undefined = process.env.NEXT_PUBLIC_ONB1_LEAD_URL,

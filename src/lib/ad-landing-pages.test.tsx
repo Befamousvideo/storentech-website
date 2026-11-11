@@ -2,7 +2,6 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import LawPage, { metadata as lawMetadata } from "@/app/law/page";
 import LawSpecialtyPage, {
   generateMetadata as generateLawSpecialtyMetadata,
   generateStaticParams as generateLawSpecialtyParams,
@@ -17,7 +16,6 @@ import { SiteChrome } from "@/components/SiteChrome";
 import { buildAdLandingLeadHref, DEFAULT_ONB1_LEAD_URL } from "@/lib/ad-landing-lead";
 import {
   AD_LANDING_SPECIALTIES,
-  adLandingMetadata,
   getAdLandingSpecialty,
   LAW_VERTICAL_PAGE,
 } from "@/lib/ad-landing-pages";
@@ -89,14 +87,14 @@ describe("practice-area ad landing template", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: "TODO: law sample specialty headline — Tony writes copy",
+        name: "Sample law firm workflow",
       }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("TODO: law sample specialty subhead — Tony writes copy"),
+      screen.getByText("A sample specialty landing, not live marketing copy."),
     ).toBeInTheDocument();
     const cta = screen.getByRole("link", {
-      name: "TODO: analysis-first CTA label — Tony writes copy",
+      name: "Find what to fix",
     });
     expect(cta).toHaveAttribute(
       "href",
@@ -126,10 +124,18 @@ describe("practice-area ad landing template", () => {
     expect(videos[1]).toHaveAttribute("src", "/videos/spokesperson.mp4");
   });
 
-  it("404s /law and /law specialty placeholders, and renders contractor sample", async () => {
-    expect(() => LawPage()).toThrow("NEXT_NOT_FOUND");
-    expect(lawMetadata).toMatchObject(adLandingMetadata(LAW_VERTICAL_PAGE));
-    expect(() => LawSpecialtyPage()).toThrow("NEXT_NOT_FOUND");
+  it("renders both sample specialty routes from config", async () => {
+    render(
+      await LawSpecialtyPage({
+        params: Promise.resolve({ specialty: "sample" }),
+      }),
+    );
+    expect(
+      screen.getAllByRole("heading", {
+        level: 1,
+        name: "Sample law firm workflow",
+      }).length,
+    ).toBeGreaterThan(0);
 
     render(
       await ContractorsSpecialtyPage({
@@ -144,8 +150,32 @@ describe("practice-area ad landing template", () => {
     ).toBeInTheDocument();
   });
 
+  it("keeps TODO out of /law/sample body and meta", async () => {
+    const page = getAdLandingSpecialty("law", "sample")!;
+    expect(page.h1).toBe("Sample law firm workflow");
+    expect(
+      [page.h1, page.subhead, page.ctaLabel, page.metaTitle, page.metaDescription].join(
+        "\n",
+      ),
+    ).not.toMatch(/\bTODO\b/);
+
+    const metadata = await generateLawSpecialtyMetadata({
+      params: Promise.resolve({ specialty: "sample" }),
+    });
+    expect(JSON.stringify(metadata)).not.toMatch(/\bTODO\b/);
+    expect(metadata).toMatchObject({
+      title: { absolute: "Sample law firm workflow" },
+      description: "A sample specialty landing, not live marketing copy.",
+      robots: { index: false, follow: false },
+    });
+  });
+
   it("404s unknown specialties and noindexes placeholder pages", async () => {
-    expect(() => LawSpecialtyPage()).toThrow("NEXT_NOT_FOUND");
+    await expect(
+      LawSpecialtyPage({
+        params: Promise.resolve({ specialty: "not-a-practice" }),
+      }),
+    ).rejects.toThrow("NEXT_NOT_FOUND");
     await expect(
       generateLawSpecialtyMetadata({
         params: Promise.resolve({ specialty: "not-a-practice" }),
@@ -158,7 +188,7 @@ describe("practice-area ad landing template", () => {
     ).resolves.toMatchObject({ robots: { index: false, follow: false } });
   });
 
-  it("keeps placeholder routes out of the sitemap and noindexes them", async () => {
+  it("keeps /law out of the sitemap while LAW_INTAKE_READY is false, and preserves other robots headers", async () => {
     const urls = sitemap().map((entry) => entry.url);
     expect(urls.some((url) => url.endsWith("/law"))).toBe(false);
     expect(urls.some((url) => url.includes("/law/"))).toBe(false);
@@ -167,8 +197,9 @@ describe("practice-area ad landing template", () => {
     const headers = await nextConfig.headers?.();
     const sources = (headers ?? []).map((rule) => rule.source);
     expect(sources).toEqual(
-      expect.arrayContaining(["/law", "/law/:path*", "/contractors/:path+"]),
+      expect.arrayContaining(["/law", "/law/:path+", "/contractors/:path+"]),
     );
+    expect(sources).not.toContain("/law/:path*");
     expect(sources).not.toContain("/contractors");
     expect(sources).not.toContain("/contractors/:path*");
 
@@ -187,7 +218,8 @@ describe("practice-area ad landing template", () => {
     expect(robotsFor("/law")).toEqual([
       { key: "X-Robots-Tag", value: "noindex, nofollow" },
     ]);
-    expect(robotsFor("/law/:path*")).toEqual([
+    expect(robotsFor("/law/:path*")).toBeUndefined();
+    expect(robotsFor("/law/:path+")).toEqual([
       { key: "X-Robots-Tag", value: "noindex, nofollow" },
     ]);
   });
@@ -207,6 +239,7 @@ describe("practice-area ad landing template", () => {
     expect(html).not.toMatch(phonePattern);
     expect(html).not.toMatch(emailPattern);
     expect(html).not.toMatch(/chatbot/i);
+    expect(html).not.toMatch(/\bTODO\b/);
     expect(templateSource).not.toContain("tel:");
     expect(templateSource).not.toContain("mailto:");
     expect(configSource).not.toContain("tel:");

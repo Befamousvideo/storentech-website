@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { AdLandingTemplate } from "@/components/AdLandingTemplate";
 import {
   adLandingMetadata,
   getAdLandingSpecialty,
@@ -25,6 +26,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return adLandingMetadata(page);
 }
 
-export default function LawSpecialtyPage() {
-  notFound();
+export default async function LawSpecialtyPage({ params }: Props) {
+  const { specialty } = await params;
+  const page = getAdLandingSpecialty("law", specialty);
+  if (!page) notFound();
+  return <AdLandingTemplate page={page} />;
 }
