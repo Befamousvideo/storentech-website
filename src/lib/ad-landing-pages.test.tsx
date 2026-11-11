@@ -126,27 +126,10 @@ describe("practice-area ad landing template", () => {
     expect(videos[1]).toHaveAttribute("src", "/videos/spokesperson.mp4");
   });
 
-  it("renders /law and both sample specialty routes from config", async () => {
-    render(<LawPage />);
-    expect(
-      screen.getByRole("heading", {
-        level: 1,
-        name: LAW_VERTICAL_PAGE.h1,
-      }),
-    ).toBeInTheDocument();
+  it("404s /law and /law specialty placeholders, and renders contractor sample", async () => {
+    expect(() => LawPage()).toThrow("NEXT_NOT_FOUND");
     expect(lawMetadata).toMatchObject(adLandingMetadata(LAW_VERTICAL_PAGE));
-
-    render(
-      await LawSpecialtyPage({
-        params: Promise.resolve({ specialty: "sample" }),
-      }),
-    );
-    expect(
-      screen.getAllByRole("heading", {
-        level: 1,
-        name: "TODO: law sample specialty headline — Tony writes copy",
-      }).length,
-    ).toBeGreaterThan(0);
+    expect(() => LawSpecialtyPage()).toThrow("NEXT_NOT_FOUND");
 
     render(
       await ContractorsSpecialtyPage({
@@ -162,11 +145,7 @@ describe("practice-area ad landing template", () => {
   });
 
   it("404s unknown specialties and noindexes placeholder pages", async () => {
-    await expect(
-      LawSpecialtyPage({
-        params: Promise.resolve({ specialty: "not-a-practice" }),
-      }),
-    ).rejects.toThrow("NEXT_NOT_FOUND");
+    expect(() => LawSpecialtyPage()).toThrow("NEXT_NOT_FOUND");
     await expect(
       generateLawSpecialtyMetadata({
         params: Promise.resolve({ specialty: "not-a-practice" }),
