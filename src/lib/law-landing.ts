@@ -1,23 +1,23 @@
 import { LAW_INTAKE_READY, LAW_INTAKE_URL } from "@/lib/ad-landing-lead";
 
 /**
- * Tony's 2026-11-08 /law copy, stored as data so the page cannot drift.
- * Do not rewrite, embellish, or add marketing claims here.
+ * Approved /law hero and meta copy (Tony, 2026-11-11), stored as data so
+ * the page cannot drift. Do not rewrite, embellish, or add marketing claims.
  */
 export const LAW_COPY = {
   meta: {
-    title: "AI Intake and Admin Support for Small Law Firms | StorenTech AI",
+    title: "AI Intake and Admin Help for Small Law Firms | StorenTech AI",
     description:
-      "StorenTech AI helps small law firms find where intake and admin work slips, starting with a free initial conversation. Your attorneys keep every legal judgment.",
+      "StorenTech AI helps small law firms find where intake and admin work slips, starting with a free conversation. Attorneys keep every legal decision.",
     diagramAlt:
       "Illustrative workflow: a new inquiry is organized for staff, then reviewed by a person at the firm.",
   },
   hero: {
     audience: "For small law firms",
-    h1: "Spend less of your firm's day on intake and admin",
+    h1: "Less of your firm's day on intake and admin",
     subhead:
-      "StorenTech AI finds where calls, inquiries and follow-ups slip through the cracks in your office, then helps you fix the ones worth fixing. Your attorneys keep the legal judgment, and your staff stays in charge of every handoff.",
-    ctaLabel: "Start a free initial conversation",
+      "We find where calls, inquiries and follow-ups slip through the cracks, then help fix the ones worth fixing. Attorneys keep legal judgment.",
+    ctaLabel: "Find what to fix",
     note: "A short form asks for your name, firm, practice area, phone and email, and nothing about your clients or their matters. We'll follow up to set up a free 15-minute conversation. The AI Opportunity Map is a separate, paid report.",
     secondary: {
       label: "How the AI Opportunity Map works",
@@ -194,7 +194,7 @@ export const LAW_COPY = {
   headerCtaCompactLabel: "Free conversation",
   closing: {
     heading: "Start with a free initial conversation",
-    ctaLabel: "Start a free initial conversation",
+    ctaLabel: "Find what to fix",
     note: "A short form, then a free 15-minute conversation. The AI Opportunity Map is a separate, paid report.",
   },
 } as const;

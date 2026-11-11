@@ -17,17 +17,13 @@ const nextConfig: NextConfig = {
         source: "/for/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
-      {
-        source: "/law",
-        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
-      },
-      {
-        source: "/law/:path*",
-        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
-      },
       // Nested specialty ad landings only. `:path*` also matches the
-      // indexed /contractors marketing page (PR #63 intended noindex on
-      // /contractors/[specialty], not /contractors itself).
+      // indexed /law and /contractors roots (PR #63 intended noindex on
+      // /[vertical]/[specialty], not the vertical marketing pages).
+      {
+        source: "/law/:path+",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
       {
         source: "/contractors/:path+",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],

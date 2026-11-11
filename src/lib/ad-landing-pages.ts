@@ -32,11 +32,13 @@ export type AdLandingSpecialtyPage = AdLandingPage & { specialty: string };
 export const LAW_VERTICAL_PAGE: AdLandingPage = {
   vertical: "law",
   placeholder: true,
-  h1: "TODO: /law headline — Tony writes copy",
-  subhead: "TODO: /law subhead — Tony writes copy",
-  ctaLabel: "TODO: analysis-first CTA label — Tony writes copy",
-  metaTitle: "TODO: /law title — Tony writes copy",
-  metaDescription: "TODO: /law description — Tony writes copy",
+  h1: "Less of your firm's day on intake and admin",
+  subhead:
+    "We find where calls, inquiries and follow-ups slip through the cracks, then help fix the ones worth fixing. Attorneys keep legal judgment.",
+  ctaLabel: "Find what to fix",
+  metaTitle: "AI Intake and Admin Help for Small Law Firms | StorenTech AI",
+  metaDescription:
+    "StorenTech AI helps small law firms find where intake and admin work slips, starting with a free conversation. Attorneys keep every legal decision.",
 };
 
 export const AD_LANDING_SPECIALTIES: AdLandingSpecialtyPage[] = [

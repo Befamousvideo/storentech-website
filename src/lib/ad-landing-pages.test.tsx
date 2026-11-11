@@ -168,17 +168,19 @@ describe("practice-area ad landing template", () => {
     ).resolves.toMatchObject({ robots: { index: false, follow: false } });
   });
 
-  it("keeps placeholder routes out of the sitemap and noindexes them", async () => {
+  it("indexes /law, keeps placeholder specialties out of the sitemap, and preserves other robots headers", async () => {
     const urls = sitemap().map((entry) => entry.url);
-    expect(urls.some((url) => url.endsWith("/law"))).toBe(false);
+    expect(urls.some((url) => url.endsWith("/law"))).toBe(true);
     expect(urls.some((url) => url.includes("/law/"))).toBe(false);
     expect(urls.some((url) => url.includes("/contractors/sample"))).toBe(false);
 
     const headers = await nextConfig.headers?.();
     const sources = (headers ?? []).map((rule) => rule.source);
     expect(sources).toEqual(
-      expect.arrayContaining(["/law", "/law/:path*", "/contractors/:path+"]),
+      expect.arrayContaining(["/law/:path+", "/contractors/:path+"]),
     );
+    expect(sources).not.toContain("/law");
+    expect(sources).not.toContain("/law/:path*");
     expect(sources).not.toContain("/contractors");
     expect(sources).not.toContain("/contractors/:path*");
 
@@ -194,10 +196,9 @@ describe("practice-area ad landing template", () => {
     expect(robotsFor("/for/:path*")).toEqual([
       { key: "X-Robots-Tag", value: "noindex, nofollow" },
     ]);
-    expect(robotsFor("/law")).toEqual([
-      { key: "X-Robots-Tag", value: "noindex, nofollow" },
-    ]);
-    expect(robotsFor("/law/:path*")).toEqual([
+    expect(robotsFor("/law")).toBeUndefined();
+    expect(robotsFor("/law/:path*")).toBeUndefined();
+    expect(robotsFor("/law/:path+")).toEqual([
       { key: "X-Robots-Tag", value: "noindex, nofollow" },
     ]);
   });

@@ -5,6 +5,7 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import LawPage, { metadata as lawMetadata } from "@/app/law/page";
 import LawSpecialtyPage from "@/app/law/[specialty]/page";
+import sitemap from "@/app/sitemap";
 import { SiteChrome } from "@/components/SiteChrome";
 import {
   buildAdLandingLeadHref,
@@ -100,21 +101,53 @@ describe("/law landing page", () => {
     expect(copySource).not.toContain("onb1-demo.vercel.app");
   });
 
-  it("noindexes /law and keeps the robots header", async () => {
+  it("locks the approved /law title, description, headline, subhead, and CTA", () => {
+    expect(LAW_COPY.meta.title).toBe(
+      "AI Intake and Admin Help for Small Law Firms | StorenTech AI",
+    );
+    expect(LAW_COPY.meta.description).toBe(
+      "StorenTech AI helps small law firms find where intake and admin work slips, starting with a free conversation. Attorneys keep every legal decision.",
+    );
+    expect(LAW_COPY.hero.h1).toBe("Less of your firm's day on intake and admin");
+    expect(LAW_COPY.hero.subhead).toBe(
+      "We find where calls, inquiries and follow-ups slip through the cracks, then help fix the ones worth fixing. Attorneys keep legal judgment.",
+    );
+    expect(LAW_COPY.hero.ctaLabel).toBe("Find what to fix");
+    expect(LAW_COPY.closing.ctaLabel).toBe("Find what to fix");
+    expect(copySource).not.toContain("TODO");
+    expect(pageSource).not.toContain("TODO");
+  });
+
+  it("indexes /law, lists it in the sitemap, and keeps specialty noindex", async () => {
     expect(lawMetadata).toMatchObject({
       title: { absolute: LAW_COPY.meta.title },
       description: LAW_COPY.meta.description,
-      robots: { index: false, follow: false },
       alternates: { canonical: LAW_CANONICAL_PATH },
+      openGraph: {
+        title: LAW_COPY.meta.title,
+        description: LAW_COPY.meta.description,
+      },
+      twitter: {
+        title: LAW_COPY.meta.title,
+        description: LAW_COPY.meta.description,
+      },
     });
+    expect(lawMetadata.robots).toBeUndefined();
+    expect(pageSource).not.toMatch(/noindex/i);
+    expect(pageSource).not.toContain("index: false");
+
+    const urls = sitemap().map((entry) => entry.url);
+    expect(urls.some((url) => url.endsWith("/law"))).toBe(true);
+    expect(urls.some((url) => url.includes("/law/"))).toBe(false);
 
     const headers = await nextConfig.headers?.();
-    const lawHeader = headers?.find((rule) => rule.source === "/law");
-    expect(lawHeader?.headers).toEqual(
-      expect.arrayContaining([
-        { key: "X-Robots-Tag", value: "noindex, nofollow" },
-      ]),
-    );
+    const sources = (headers ?? []).map((rule) => rule.source);
+    expect(sources).not.toContain("/law");
+    expect(sources).not.toContain("/law/:path*");
+    expect(sources).toContain("/law/:path+");
+    expect(
+      headers?.find((rule) => rule.source === "/law/:path+")?.headers,
+    ).toEqual([{ key: "X-Robots-Tag", value: "noindex, nofollow" }]);
   });
 
   it("renders Tony's hero, inert consultation CTA, and free/paid distinction", () => {
