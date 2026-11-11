@@ -120,6 +120,31 @@ describe("/law landing page", () => {
     expect(pageSource).not.toContain("TODO");
   });
 
+  it("uses Mary's rules heading How attorneys stay in charge", () => {
+    expect(LAW_COPY.rules.heading).toBe("How attorneys stay in charge");
+    expect(copySource).not.toContain("How we follow the rules");
+    expect(LAW_COPY.rules.points[0].body).toContain(
+      '"without meaningful attorney supervision and review."',
+    );
+    expect(LAW_COPY.rules.points[0].body).not.toContain(
+      '"without meaningful lawyer supervision and review."',
+    );
+
+    render(<LawPage />);
+    expect(
+      screen.getByRole("heading", {
+        level: 2,
+        name: "How attorneys stay in charge",
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { name: "How we follow the rules" }),
+    ).toBeNull();
+    expect(
+      screen.getByText(LAW_COPY.rules.points[0].body),
+    ).toBeInTheDocument();
+  });
+
   it("gates /law indexing on LAW_INTAKE_READY and keeps specialty noindex", async () => {
     expect(LAW_INTAKE_READY).toBe(false);
     expect(LAW_ROOT_INDEX).toEqual(lawRootIndexPolicy(false));

@@ -127,13 +127,13 @@ export const LAW_COPY = {
       "The AI Opportunity Map is a report. It tells you where AI could save your team time and where it isn't worth it, so you can decide what, if anything, to build.",
   },
   rules: {
-    heading: "How we follow the rules",
+    heading: "How attorneys stay in charge",
     intro:
       "Professional duties stay with your attorneys. We build around the State Bar of California's current Practical Guidance for the Use of Generative Artificial Intelligence in the Practice of Law and ABA Formal Opinion 512.",
     points: [
       {
         title: "Attorneys supervise",
-        body: 'The State Bar\'s guidance names "autonomously facilitating client intake" as an example of agentic AI and says lawyers must not let such systems communicate legal advice "without meaningful lawyer supervision and review." We design intake so your attorneys stay in charge of anything that touches legal judgment.',
+        body: 'The State Bar\'s guidance names "autonomously facilitating client intake" as an example of agentic AI and says lawyers must not let such systems communicate legal advice "without meaningful attorney supervision and review." We design intake so your attorneys stay in charge of anything that touches legal judgment.',
       },
       {
         title: "Your firm decides what information is used",
