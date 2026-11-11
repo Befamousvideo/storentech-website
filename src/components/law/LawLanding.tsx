@@ -11,10 +11,18 @@ import { LawStep } from "@/components/law/LawStep";
 import { LawWorkflowDiagram } from "@/components/law/LawWorkflowDiagram";
 import { LAW_COPY, LAW_CTA_ANCHOR } from "@/lib/law-landing";
 
-function MapLink({ className }: { className?: string }) {
+function MapLink({
+  className,
+  label,
+  href,
+}: {
+  className?: string;
+  label: string;
+  href: string;
+}) {
   return (
-    <Link className={className ?? "law-text-link"} href={LAW_COPY.hero.secondary.href}>
-      {LAW_COPY.hero.secondary.label}
+    <Link className={className ?? "law-text-link"} href={href}>
+      {label}
     </Link>
   );
 }
@@ -37,7 +45,10 @@ export function LawLanding() {
               />
             </div>
             <LawHeroNote />
-            <MapLink />
+            <MapLink
+              label={LAW_COPY.hero.secondary.label}
+              href={LAW_COPY.hero.secondary.href}
+            />
           </div>
           <LawWorkflowDiagram />
         </div>
@@ -79,7 +90,10 @@ export function LawLanding() {
             ))}
           </div>
           <p className="law-section-foot">
-            <MapLink />
+            <MapLink
+              label={LAW_COPY.engagement.secondary.label}
+              href={LAW_COPY.engagement.secondary.href}
+            />
           </p>
         </div>
       </section>

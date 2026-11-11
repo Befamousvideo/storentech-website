@@ -20,7 +20,7 @@ export const LAW_COPY = {
     ctaLabel: "Find what to fix",
     note: "A short form asks for your name, firm, practice area, phone and email, and nothing about your clients or their matters. We'll follow up to set up a free 15-minute conversation. The AI Opportunity Map is a separate, paid report.",
     secondary: {
-      label: "How the AI Opportunity Map works",
+      label: "How a new inquiry moves through your firm",
       href: "/opportunity",
     },
     diagram: {
@@ -127,7 +127,7 @@ export const LAW_COPY = {
       "The AI Opportunity Map is a report. It tells you where AI could save your team time and where it isn't worth it, so you can decide what, if anything, to build.",
   },
   rules: {
-    heading: "How we follow the rules",
+    heading: "How attorneys stay in charge",
     intro:
       "Professional duties stay with your attorneys. We build around the State Bar of California's current Practical Guidance for the Use of Generative Artificial Intelligence in the Practice of Law and ABA Formal Opinion 512.",
     points: [

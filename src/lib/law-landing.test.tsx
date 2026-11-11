@@ -120,6 +120,55 @@ describe("/law landing page", () => {
     expect(pageSource).not.toContain("TODO");
   });
 
+  it("applies Mary's two /law heading edits and leaves the analysis Map link unchanged", () => {
+    expect(LAW_COPY.hero.secondary.label).toBe(
+      "How a new inquiry moves through your firm",
+    );
+    expect(LAW_COPY.engagement.secondary.label).toBe(
+      "How the AI Opportunity Map works",
+    );
+    expect(LAW_COPY.rules.heading).toBe("How attorneys stay in charge");
+    expect(copySource).not.toContain("How we follow the rules");
+
+    const { container } = render(<LawPage />);
+    const inquiryLink = screen.getByRole("link", {
+      name: "How a new inquiry moves through your firm",
+    });
+    const mapLink = screen.getByRole("link", {
+      name: "How the AI Opportunity Map works",
+    });
+    expect(inquiryLink).toHaveAttribute("href", "/opportunity");
+    expect(mapLink).toHaveAttribute("href", "/opportunity");
+    expect(
+      screen.getByRole("heading", {
+        level: 2,
+        name: "How attorneys stay in charge",
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { name: "How we follow the rules" }),
+    ).toBeNull();
+
+    const text = container.textContent ?? "";
+    expect(text.match(/How a new inquiry moves through your firm/g)).toHaveLength(
+      1,
+    );
+    expect(text.match(/How the AI Opportunity Map works/g)).toHaveLength(1);
+    expect(text).not.toContain("How we follow the rules");
+
+    const diagram = container.querySelector(".law-diagram");
+    expect(diagram).not.toBeNull();
+    expect(inquiryLink.compareDocumentPosition(diagram as Node) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(
+      mapLink.compareDocumentPosition(
+        screen.getByRole("heading", {
+          level: 2,
+          name: "What the analysis looks like",
+        }),
+      ) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
   it("gates /law indexing on LAW_INTAKE_READY and keeps specialty noindex", async () => {
     expect(LAW_INTAKE_READY).toBe(false);
     expect(LAW_ROOT_INDEX).toEqual(lawRootIndexPolicy(false));
@@ -267,13 +316,14 @@ describe("/law landing page", () => {
     expect(stateBar).toHaveAttribute("href", LAW_COPY.rules.links[0].href);
     expect(aba).toHaveAttribute("href", LAW_COPY.rules.links[1].href);
 
-    const mapLinks = screen.getAllByRole("link", {
+    const inquiryLink = screen.getByRole("link", {
       name: LAW_COPY.hero.secondary.label,
     });
-    expect(mapLinks.length).toBeGreaterThanOrEqual(2);
-    for (const link of mapLinks) {
-      expect(link).toHaveAttribute("href", "/opportunity");
-    }
+    const mapLink = screen.getByRole("link", {
+      name: LAW_COPY.engagement.secondary.label,
+    });
+    expect(inquiryLink).toHaveAttribute("href", LAW_COPY.hero.secondary.href);
+    expect(mapLink).toHaveAttribute("href", LAW_COPY.engagement.secondary.href);
 
     const firstFaq = LAW_COPY.faqs[0];
     const faqItem = screen.getByText(firstFaq.question).closest("details");
@@ -453,5 +503,12 @@ describe("/law landing page", () => {
       }),
     ).toBeInTheDocument();
     expect(container.textContent).not.toMatch(/\bTODO\b/);
+    expect(container.textContent).not.toContain(
+      "How a new inquiry moves through your firm",
+    );
+    expect(container.textContent).not.toContain("How attorneys stay in charge");
+    expect(container.textContent).not.toContain(
+      "How the AI Opportunity Map works",
+    );
   });
 });
