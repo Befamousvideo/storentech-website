@@ -35,6 +35,19 @@ const title =
   "When Clients Keep Calling for Case Updates, What Should an Orange County Firm Try First?";
 const description =
   "Existing clients calling for case updates eat staff time. What an Orange County firm can try first, and why a person should approve every status update.";
+const alt =
+  "Calm law office reception desk with a phone and a screen showing a short case-update note ready to review.";
+
+function pngSize(path: string) {
+  const buf = readFileSync(join(process.cwd(), path));
+  expect(
+    buf.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])),
+  ).toBe(true);
+  return {
+    width: buf.readUInt32BE(16),
+    height: buf.readUInt32BE(20),
+  };
+}
 
 function assertNoClass107ContactOrPay(label: string, text: string) {
   expect(text, label).not.toContain("tel:");
@@ -59,8 +72,32 @@ describe("law firm case status updates blog post", () => {
     expect(post?.faqs).toHaveLength(5);
     expect(blogPosts[0]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/law-firm-case-status-updates");
-    expect(post?.hero).toBeUndefined();
-    expect(post?.ogImage).toBeUndefined();
+    expect(post?.hero).toEqual({
+      png: "/blog/law-firm-case-status-updates.png",
+      width: 1920,
+      height: 1080,
+      alt,
+    });
+    expect(post?.ogImage).toEqual({
+      src: "/blog/law-firm-case-status-updates-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt,
+      type: "image/png",
+    });
+  });
+
+  it("ships the header PNG and the 1200x630 Open Graph PNG", () => {
+    expect(pngSize("public/blog/law-firm-case-status-updates.png")).toEqual({
+      width: 1920,
+      height: 1080,
+    });
+    expect(
+      pngSize("public/blog/law-firm-case-status-updates-1200x630.png"),
+    ).toEqual({
+      width: 1200,
+      height: 630,
+    });
   });
 
   it("appears on the blog index, in llms.txt, and in the sitemap", () => {
@@ -87,7 +124,7 @@ describe("law firm case status updates blog post", () => {
     expect(entry?.lastModified).toEqual(new Date("2026-11-20"));
   });
 
-  it("sets canonical, title, and description without a hero image", async () => {
+  it("sets canonical, title, description, and the 1200x630 PNG as the Open Graph image", async () => {
     const metadata = await generateMetadata({
       params: Promise.resolve({ slug }),
     });
@@ -104,10 +141,10 @@ describe("law firm case status updates blog post", () => {
       url: "/blog/law-firm-case-status-updates",
       images: [
         {
-          url: "/opengraph-image",
+          url: "/blog/law-firm-case-status-updates-1200x630.png",
           width: 1200,
           height: 630,
-          alt: "StorenTech AI",
+          alt,
           type: "image/png",
         },
       ],
@@ -118,7 +155,7 @@ describe("law firm case status updates blog post", () => {
       description,
       images: [
         {
-          url: "/opengraph-image",
+          url: "/blog/law-firm-case-status-updates-1200x630.png",
         },
       ],
     });
@@ -150,9 +187,9 @@ describe("law firm case status updates blog post", () => {
       dateModified: blogJsonLdDate("2026-11-20"),
       image: {
         "@type": "ImageObject",
-        url: `${site.url}/opengraph-image`,
-        width: 1200,
-        height: 630,
+        url: `${site.url}/blog/law-firm-case-status-updates.png`,
+        width: 1920,
+        height: 1080,
       },
       mainEntityOfPage: {
         "@type": "WebPage",
@@ -208,7 +245,14 @@ describe("law firm case status updates blog post", () => {
     const text = (container.textContent ?? "").replace(/\s+/g, " ");
 
     expect(getByRole("heading", { level: 1, name: title })).toBeInTheDocument();
-    expect(container.querySelector(".blog-hero-media img")).toBeNull();
+    const image = container.querySelector(".blog-hero-media img");
+    expect(image).toHaveAttribute(
+      "src",
+      "/blog/law-firm-case-status-updates.png",
+    );
+    expect(image).toHaveAttribute("alt", alt);
+    expect(image).toHaveAttribute("width", "1920");
+    expect(image).toHaveAttribute("height", "1080");
 
     expect(text).toContain(
       'When existing clients keep calling to ask "What\'s happening with my case?", the first fix is usually not a new tool.',

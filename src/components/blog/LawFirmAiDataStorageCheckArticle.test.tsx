@@ -35,6 +35,19 @@ const title =
   "Before Your Law Firm Connects Client Data to a New AI Tool, Check These Storage Settings";
 const description =
   "Before an Orange County law firm sends client details into a new AI tool, check where prompts and uploads are stored, who can see them and what is on by default.";
+const alt =
+  "Law office desk with a laptop open to storage settings, a client file folder and a blank checklist.";
+
+function pngSize(path: string) {
+  const buf = readFileSync(join(process.cwd(), path));
+  expect(
+    buf.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])),
+  ).toBe(true);
+  return {
+    width: buf.readUInt32BE(16),
+    height: buf.readUInt32BE(20),
+  };
+}
 
 function assertNoClass107ContactOrPay(label: string, text: string) {
   expect(text, label).not.toContain("tel:");
@@ -58,8 +71,32 @@ describe("law firm AI data storage check blog post", () => {
     expect(post?.faqs).toHaveLength(5);
     expect(blogPosts[2]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/law-firm-ai-data-storage-check");
-    expect(post?.hero).toBeUndefined();
-    expect(post?.ogImage).toBeUndefined();
+    expect(post?.hero).toEqual({
+      png: "/blog/law-firm-ai-data-storage-check.png",
+      width: 1920,
+      height: 1080,
+      alt,
+    });
+    expect(post?.ogImage).toEqual({
+      src: "/blog/law-firm-ai-data-storage-check-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt,
+      type: "image/png",
+    });
+  });
+
+  it("ships the header PNG and the 1200x630 Open Graph PNG", () => {
+    expect(pngSize("public/blog/law-firm-ai-data-storage-check.png")).toEqual({
+      width: 1920,
+      height: 1080,
+    });
+    expect(
+      pngSize("public/blog/law-firm-ai-data-storage-check-1200x630.png"),
+    ).toEqual({
+      width: 1200,
+      height: 630,
+    });
   });
 
   it("appears on the blog index, in llms.txt, and in the sitemap", () => {
@@ -86,7 +123,7 @@ describe("law firm AI data storage check blog post", () => {
     expect(entry?.lastModified).toEqual(new Date("2026-11-16"));
   });
 
-  it("sets canonical, title, and description without a hero image", async () => {
+  it("sets canonical, title, description, and the 1200x630 PNG as the Open Graph image", async () => {
     const metadata = await generateMetadata({
       params: Promise.resolve({ slug }),
     });
@@ -103,10 +140,10 @@ describe("law firm AI data storage check blog post", () => {
       url: "/blog/law-firm-ai-data-storage-check",
       images: [
         {
-          url: "/opengraph-image",
+          url: "/blog/law-firm-ai-data-storage-check-1200x630.png",
           width: 1200,
           height: 630,
-          alt: "StorenTech AI",
+          alt,
           type: "image/png",
         },
       ],
@@ -117,7 +154,7 @@ describe("law firm AI data storage check blog post", () => {
       description,
       images: [
         {
-          url: "/opengraph-image",
+          url: "/blog/law-firm-ai-data-storage-check-1200x630.png",
         },
       ],
     });
@@ -149,9 +186,9 @@ describe("law firm AI data storage check blog post", () => {
       dateModified: blogJsonLdDate("2026-11-16"),
       image: {
         "@type": "ImageObject",
-        url: `${site.url}/opengraph-image`,
-        width: 1200,
-        height: 630,
+        url: `${site.url}/blog/law-firm-ai-data-storage-check.png`,
+        width: 1920,
+        height: 1080,
       },
       mainEntityOfPage: {
         "@type": "WebPage",
@@ -203,7 +240,14 @@ describe("law firm AI data storage check blog post", () => {
     const text = (container.textContent ?? "").replace(/\s+/g, " ");
 
     expect(getByRole("heading", { level: 1, name: title })).toBeInTheDocument();
-    expect(container.querySelector(".blog-hero-media img")).toBeNull();
+    const image = container.querySelector(".blog-hero-media img");
+    expect(image).toHaveAttribute(
+      "src",
+      "/blog/law-firm-ai-data-storage-check.png",
+    );
+    expect(image).toHaveAttribute("alt", alt);
+    expect(image).toHaveAttribute("width", "1920");
+    expect(image).toHaveAttribute("height", "1080");
 
     expect(text).toContain(
       "Before your Orange County law firm sends client, caller or employee details into any new AI tool, find out three things: where your prompts and uploads are stored, who can open those records, and which storage settings are switched on by default.",

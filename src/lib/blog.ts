@@ -923,8 +923,19 @@ export const blogPosts: readonly BlogPost[] = [
     datePublished: "2026-11-20",
     faqs: lawFirmCaseStatusUpdatesFaqs,
     indexCta: "Read the post",
-    // TODO: Drive hero 1920 id 1loFv5HbP9WZ-GKkaQqVPtjgU2Kxn-GfS and OG 1200 id 15OhcndYPmC3cQi0GOLDDV6jp1q-l9Tpb required sign-in.
-    // Alt: Calm law office reception desk with a phone and a screen showing a short case-update note ready to review.
+    hero: {
+      png: "/blog/law-firm-case-status-updates.png",
+      width: 1920,
+      height: 1080,
+      alt: "Calm law office reception desk with a phone and a screen showing a short case-update note ready to review.",
+    },
+    ogImage: {
+      src: "/blog/law-firm-case-status-updates-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt: "Calm law office reception desk with a phone and a screen showing a short case-update note ready to review.",
+      type: "image/png",
+    },
   },
   {
     slug: "weekly-report-download-rebuild",
@@ -936,8 +947,19 @@ export const blogPosts: readonly BlogPost[] = [
     datePublished: "2026-11-18",
     faqs: weeklyReportDownloadRebuildFaqs,
     indexCta: "Read the post",
-    // TODO: Drive hero 1920 id 1El-lVRdvXx36kVpUE076II5jhZMYA6W1 and OG 1200 id 1n5A3JJNpqUq4TLf-JWzw2dgGpbe4CaCk required sign-in.
-    // Alt: Monday-morning desk with coffee, printouts and a laptop showing a spreadsheet rebuilt by hand.
+    hero: {
+      png: "/blog/weekly-report-download-rebuild.png",
+      width: 1920,
+      height: 1080,
+      alt: "Monday-morning desk with coffee, printouts and a laptop showing a spreadsheet rebuilt by hand.",
+    },
+    ogImage: {
+      src: "/blog/weekly-report-download-rebuild-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt: "Monday-morning desk with coffee, printouts and a laptop showing a spreadsheet rebuilt by hand.",
+      type: "image/png",
+    },
   },
   {
     slug: "law-firm-ai-data-storage-check",
@@ -950,8 +972,19 @@ export const blogPosts: readonly BlogPost[] = [
     datePublished: "2026-11-16",
     faqs: lawFirmAiDataStorageCheckFaqs,
     indexCta: "Read the post",
-    // TODO: Drive hero 1920 id 1uDbBGJS91nbWqU1FEgTi14tjQds7Ddra and OG 1200 id 1prLzekpwO6Q0w_st2Xk1LF9v8YIGHO3q required sign-in.
-    // Alt: Law office desk with a laptop open to storage settings, a client file folder and a blank checklist.
+    hero: {
+      png: "/blog/law-firm-ai-data-storage-check.png",
+      width: 1920,
+      height: 1080,
+      alt: "Law office desk with a laptop open to storage settings, a client file folder and a blank checklist.",
+    },
+    ogImage: {
+      src: "/blog/law-firm-ai-data-storage-check-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt: "Law office desk with a laptop open to storage settings, a client file folder and a blank checklist.",
+      type: "image/png",
+    },
   },
   {
     slug: "office-procedures-ai-instructions",

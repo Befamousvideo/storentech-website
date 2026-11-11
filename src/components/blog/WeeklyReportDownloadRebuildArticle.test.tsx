@@ -34,6 +34,19 @@ const emailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
 const title = "The Weekly Report Your Office Still Downloads and Rebuilds by Hand";
 const description =
   "If someone in your Orange County office rebuilds the same report every week from two portals, here is what to check first before reaching for AI.";
+const alt =
+  "Monday-morning desk with coffee, printouts and a laptop showing a spreadsheet rebuilt by hand.";
+
+function pngSize(path: string) {
+  const buf = readFileSync(join(process.cwd(), path));
+  expect(
+    buf.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])),
+  ).toBe(true);
+  return {
+    width: buf.readUInt32BE(16),
+    height: buf.readUInt32BE(20),
+  };
+}
 
 function assertNoClass107ContactOrPay(label: string, text: string) {
   expect(text, label).not.toContain("tel:");
@@ -58,8 +71,32 @@ describe("weekly report download rebuild blog post", () => {
     expect(post?.faqs).toHaveLength(5);
     expect(blogPosts[1]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/weekly-report-download-rebuild");
-    expect(post?.hero).toBeUndefined();
-    expect(post?.ogImage).toBeUndefined();
+    expect(post?.hero).toEqual({
+      png: "/blog/weekly-report-download-rebuild.png",
+      width: 1920,
+      height: 1080,
+      alt,
+    });
+    expect(post?.ogImage).toEqual({
+      src: "/blog/weekly-report-download-rebuild-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt,
+      type: "image/png",
+    });
+  });
+
+  it("ships the header PNG and the 1200x630 Open Graph PNG", () => {
+    expect(pngSize("public/blog/weekly-report-download-rebuild.png")).toEqual({
+      width: 1920,
+      height: 1080,
+    });
+    expect(
+      pngSize("public/blog/weekly-report-download-rebuild-1200x630.png"),
+    ).toEqual({
+      width: 1200,
+      height: 630,
+    });
   });
 
   it("appears on the blog index, in llms.txt, and in the sitemap", () => {
@@ -86,7 +123,7 @@ describe("weekly report download rebuild blog post", () => {
     expect(entry?.lastModified).toEqual(new Date("2026-11-18"));
   });
 
-  it("sets canonical, title, and description without a hero image", async () => {
+  it("sets canonical, title, description, and the 1200x630 PNG as the Open Graph image", async () => {
     const metadata = await generateMetadata({
       params: Promise.resolve({ slug }),
     });
@@ -103,10 +140,10 @@ describe("weekly report download rebuild blog post", () => {
       url: "/blog/weekly-report-download-rebuild",
       images: [
         {
-          url: "/opengraph-image",
+          url: "/blog/weekly-report-download-rebuild-1200x630.png",
           width: 1200,
           height: 630,
-          alt: "StorenTech AI",
+          alt,
           type: "image/png",
         },
       ],
@@ -117,7 +154,7 @@ describe("weekly report download rebuild blog post", () => {
       description,
       images: [
         {
-          url: "/opengraph-image",
+          url: "/blog/weekly-report-download-rebuild-1200x630.png",
         },
       ],
     });
@@ -149,9 +186,9 @@ describe("weekly report download rebuild blog post", () => {
       dateModified: blogJsonLdDate("2026-11-18"),
       image: {
         "@type": "ImageObject",
-        url: `${site.url}/opengraph-image`,
-        width: 1200,
-        height: 630,
+        url: `${site.url}/blog/weekly-report-download-rebuild.png`,
+        width: 1920,
+        height: 1080,
       },
       mainEntityOfPage: {
         "@type": "WebPage",
@@ -205,7 +242,14 @@ describe("weekly report download rebuild blog post", () => {
     const text = (container.textContent ?? "").replace(/\s+/g, " ");
 
     expect(getByRole("heading", { level: 1, name: title })).toBeInTheDocument();
-    expect(container.querySelector(".blog-hero-media img")).toBeNull();
+    const image = container.querySelector(".blog-hero-media img");
+    expect(image).toHaveAttribute(
+      "src",
+      "/blog/weekly-report-download-rebuild.png",
+    );
+    expect(image).toHaveAttribute("alt", alt);
+    expect(image).toHaveAttribute("width", "1920");
+    expect(image).toHaveAttribute("height", "1080");
 
     expect(text).toContain(
       "If someone in your office spends Monday morning downloading files from two or three websites and rebuilding the same spreadsheet, start by asking whether the software you already pay for can export or share that data on its own.",
