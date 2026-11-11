@@ -34,7 +34,7 @@ const emailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
 const title =
   "Before Your Law Firm Connects Client Data to a New AI Tool, Check These Storage Settings";
 const description =
-  "Before an Orange County law firm sends client details into a new AI tool, check where prompts and uploads are stored, who can see them and what is on by default.";
+  "Before an Orange County law firm puts client data into an AI tool, check where prompts and uploads are stored, who sees them and what's on by default.";
 const alt =
   "Law office desk with a laptop open to storage settings, a client file folder and a blank checklist.";
 

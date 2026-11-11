@@ -28,7 +28,7 @@ describe("llms.txt", () => {
       text.indexOf("law-firm-ai-data-storage-check"),
     );
     expect(text).toContain(
-      "- [Before Your Law Firm Connects Client Data to a New AI Tool, Check These Storage Settings](https://www.storentechai.com/blog/law-firm-ai-data-storage-check): Before an Orange County law firm sends client details into a new AI tool, check where prompts and uploads are stored, who can see them and what is on by default.",
+      "- [Before Your Law Firm Connects Client Data to a New AI Tool, Check These Storage Settings](https://www.storentechai.com/blog/law-firm-ai-data-storage-check): Before an Orange County law firm puts client data into an AI tool, check where prompts and uploads are stored, who sees them and what's on by default.",
     );
     expect(text.indexOf("law-firm-ai-data-storage-check")).toBeLessThan(
       text.indexOf("office-procedures-ai-instructions"),
