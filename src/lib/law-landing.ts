@@ -133,7 +133,7 @@ export const LAW_COPY = {
     points: [
       {
         title: "Attorneys supervise",
-        body: 'The State Bar\'s guidance names "autonomously facilitating client intake" as an example of agentic AI and says lawyers must not let such systems communicate legal advice "without meaningful lawyer supervision and review." We design intake so your attorneys stay in charge of anything that touches legal judgment.',
+        body: 'The State Bar\'s guidance names "autonomously facilitating client intake" as an example of agentic AI and says lawyers must not let such systems communicate legal advice "without meaningful attorney supervision and review." We design intake so your attorneys stay in charge of anything that touches legal judgment.',
       },
       {
         title: "Your firm decides what information is used",
