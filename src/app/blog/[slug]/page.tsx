@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { LawFirmCaseStatusUpdatesArticle } from "@/components/blog/LawFirmCaseStatusUpdatesArticle";
+import { WeeklyReportDownloadRebuildArticle } from "@/components/blog/WeeklyReportDownloadRebuildArticle";
+import { LawFirmAiDataStorageCheckArticle } from "@/components/blog/LawFirmAiDataStorageCheckArticle";
 import { OfficeProceduresAiInstructionsArticle } from "@/components/blog/OfficeProceduresAiInstructionsArticle";
 import { CaliforniaLawFirmAiReceptionistArticle } from "@/components/blog/CaliforniaLawFirmAiReceptionistArticle";
 import { LawFirmMissedCallsArticle } from "@/components/blog/LawFirmMissedCallsArticle";
@@ -41,6 +44,12 @@ import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
+    case "law-firm-case-status-updates":
+      return <LawFirmCaseStatusUpdatesArticle post={post} />;
+    case "weekly-report-download-rebuild":
+      return <WeeklyReportDownloadRebuildArticle post={post} />;
+    case "law-firm-ai-data-storage-check":
+      return <LawFirmAiDataStorageCheckArticle post={post} />;
     case "office-procedures-ai-instructions":
       return <OfficeProceduresAiInstructionsArticle post={post} />;
     case "california-law-firm-ai-receptionist":

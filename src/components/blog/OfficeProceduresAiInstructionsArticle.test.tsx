@@ -59,7 +59,7 @@ function assertNoClass107ContactOrPay(label: string, text: string) {
 }
 
 describe("office procedures as AI instructions blog post", () => {
-  it("is registered first with the approved slug, title, meta, date, and five FAQs", () => {
+  it("is registered with the approved slug, title, meta, date, and five FAQs", () => {
     expect(post?.slug).toBe(slug);
     expect(post?.title).toBe(title);
     expect(post?.metaTitle).toBe(
@@ -70,7 +70,7 @@ describe("office procedures as AI instructions blog post", () => {
     expect(post?.datePublished).toBe("2026-11-13");
     expect(post?.faqs).toEqual(officeProceduresAiInstructionsFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[0]?.slug).toBe(slug);
+    expect(blogPosts[3]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/office-procedures-ai-instructions");
     expect(post?.hero).toEqual({
       png: "/blog/office-procedures-ai-instructions-1200x630.png",
