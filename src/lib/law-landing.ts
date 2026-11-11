@@ -20,7 +20,7 @@ export const LAW_COPY = {
     ctaLabel: "Find what to fix",
     note: "A short form asks for your name, firm, practice area, phone and email, and nothing about your clients or their matters. We'll follow up to set up a free 15-minute conversation. The AI Opportunity Map is a separate, paid report.",
     secondary: {
-      label: "How a new inquiry moves through your firm",
+      label: "How the AI Opportunity Map works",
       href: "/opportunity",
     },
     diagram: {
