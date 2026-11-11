@@ -11,6 +11,8 @@ import {
   buildAdLandingLeadHref,
   LAW_INTAKE_READY,
   LAW_INTAKE_URL,
+  LAW_ROOT_INDEX,
+  lawRootIndexPolicy,
 } from "@/lib/ad-landing-lead";
 import {
   LAW_CANONICAL_PATH,
@@ -118,10 +120,26 @@ describe("/law landing page", () => {
     expect(pageSource).not.toContain("TODO");
   });
 
-  it("indexes /law, lists it in the sitemap, and keeps specialty noindex", async () => {
+  it("gates /law indexing on LAW_INTAKE_READY and keeps specialty noindex", async () => {
+    expect(LAW_INTAKE_READY).toBe(false);
+    expect(LAW_ROOT_INDEX).toEqual(lawRootIndexPolicy(false));
+    expect(lawRootIndexPolicy(true)).toEqual({
+      robots: { index: true, follow: true },
+      includeInSitemap: true,
+      sendNoindexHeader: false,
+    });
+    expect(pageSource).toContain("LAW_ROOT_INDEX");
+    expect(
+      readFileSync(join(process.cwd(), "src/app/sitemap.ts"), "utf8"),
+    ).toContain("LAW_ROOT_INDEX.includeInSitemap");
+    expect(
+      readFileSync(join(process.cwd(), "next.config.ts"), "utf8"),
+    ).toContain("LAW_ROOT_INDEX.sendNoindexHeader");
+
     expect(lawMetadata).toMatchObject({
       title: { absolute: LAW_COPY.meta.title },
       description: LAW_COPY.meta.description,
+      robots: { index: false, follow: false },
       alternates: { canonical: LAW_CANONICAL_PATH },
       openGraph: {
         title: LAW_COPY.meta.title,
@@ -132,19 +150,22 @@ describe("/law landing page", () => {
         description: LAW_COPY.meta.description,
       },
     });
-    expect(lawMetadata.robots).toBeUndefined();
-    expect(pageSource).not.toMatch(/noindex/i);
-    expect(pageSource).not.toContain("index: false");
 
     const urls = sitemap().map((entry) => entry.url);
-    expect(urls.some((url) => url.endsWith("/law"))).toBe(true);
+    expect(urls.some((url) => url.endsWith("/law"))).toBe(
+      LAW_ROOT_INDEX.includeInSitemap,
+    );
+    expect(urls.some((url) => url.endsWith("/law"))).toBe(false);
     expect(urls.some((url) => url.includes("/law/"))).toBe(false);
 
     const headers = await nextConfig.headers?.();
     const sources = (headers ?? []).map((rule) => rule.source);
-    expect(sources).not.toContain("/law");
+    expect(sources).toContain("/law");
     expect(sources).not.toContain("/law/:path*");
     expect(sources).toContain("/law/:path+");
+    expect(headers?.find((rule) => rule.source === "/law")?.headers).toEqual([
+      { key: "X-Robots-Tag", value: "noindex, nofollow" },
+    ]);
     expect(
       headers?.find((rule) => rule.source === "/law/:path+")?.headers,
     ).toEqual([{ key: "X-Robots-Tag", value: "noindex, nofollow" }]);
@@ -419,8 +440,8 @@ describe("/law landing page", () => {
     );
   });
 
-  it("leaves /law/sample on the placeholder template", async () => {
-    render(
+  it("leaves /law/sample on the placeholder template without visible TODO", async () => {
+    const { container } = render(
       await LawSpecialtyPage({
         params: Promise.resolve({ specialty: "sample" }),
       }),
@@ -428,8 +449,9 @@ describe("/law landing page", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: "TODO: law sample specialty headline — Tony writes copy",
+        name: "Sample law firm workflow",
       }),
     ).toBeInTheDocument();
+    expect(container.textContent).not.toMatch(/\bTODO\b/);
   });
 });
