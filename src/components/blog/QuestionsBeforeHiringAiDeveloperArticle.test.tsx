@@ -7,6 +7,7 @@ import BlogPostPage, { generateMetadata } from "@/app/blog/[slug]/page";
 import sitemap from "@/app/sitemap";
 import { QuestionsBeforeHiringAiDeveloperArticle } from "@/components/blog/QuestionsBeforeHiringAiDeveloperArticle";
 import {
+  blogJsonLdDate,
   blogPosts,
   getPost,
   postPath,
@@ -186,8 +187,8 @@ describe("questions before hiring an AI developer blog post", () => {
     expect(article).toMatchObject({
       headline: title,
       description,
-      datePublished: "2026-11-02",
-      dateModified: "2026-11-02",
+      datePublished: blogJsonLdDate("2026-11-02"),
+      dateModified: blogJsonLdDate("2026-11-02"),
       image: {
         "@type": "ImageObject",
         url: `${site.url}/blog/questions-before-hiring-ai-developer.png`,

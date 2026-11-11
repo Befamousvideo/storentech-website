@@ -9,16 +9,10 @@ export function JsonLd() {
     logo: `${site.url}${site.brand.mark}`,
     image: `${site.url}/opengraph-image`,
     description: site.description,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Orange County",
-      addressRegion: site.location.region,
-      addressCountry: site.location.country,
-    },
     areaServed: [{ "@type": "AdministrativeArea", name: "Orange County" }],
     priceRange: "$$$",
     openingHours: "Mo-Fr 09:00-17:00",
-    sameAs: [],
+    sameAs: ["https://www.linkedin.com/company/storentechai"],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: site.offer.primaryTitle,

@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import { ContractorsLanding } from "@/components/ContractorsLanding";
+import { StructuredData } from "@/components/StructuredData";
 import {
   CONTRACTORS_CANONICAL_URL,
   contractorsPage,
   contractorsVideo,
 } from "@/lib/contractors-page";
+import {
+  contractorsBreadcrumbLd,
+  contractorsServiceLd,
+} from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: { absolute: contractorsPage.metaTitle },
@@ -33,5 +38,11 @@ export const metadata: Metadata = {
 };
 
 export default function ContractorsPage() {
-  return <ContractorsLanding />;
+  return (
+    <>
+      <StructuredData data={contractorsServiceLd()} />
+      <StructuredData data={contractorsBreadcrumbLd()} />
+      <ContractorsLanding />
+    </>
+  );
 }

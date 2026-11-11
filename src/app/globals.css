@@ -342,7 +342,11 @@ select {
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: #80623a;
+}
+
+.section-tan .kicker {
+  color: #7f6139;
 }
 
 .rule {
@@ -908,6 +912,84 @@ select {
 
 .page-hero h1.legal-title {
   max-width: 18ch;
+}
+
+.page-hero h1.free-map-title {
+  max-width: 22ch;
+}
+
+.free-map-points,
+.free-map-steps {
+  margin: 1.2rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  max-width: 42rem;
+}
+
+.free-map-points li + li,
+.free-map-steps li + li {
+  margin-top: 0.55rem;
+}
+
+.free-map-capture,
+.free-map-result {
+  display: grid;
+  gap: 1.05rem;
+  margin-top: 0.4rem;
+}
+
+.free-map-capture .free-map-steps,
+.free-map-result .free-map-steps {
+  margin-top: 0.35rem;
+}
+
+.free-map-capture .btn,
+.free-map-result .btn {
+  white-space: normal;
+  max-width: 100%;
+}
+
+.field-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 42rem;
+}
+
+.field-check input {
+  margin-top: 0.3rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+}
+
+.prompt-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.prompt-box {
+  background: var(--cream-card);
+  border: 1px solid var(--line-strong);
+  padding: 1.25rem 1.3rem;
+  overflow-x: auto;
+}
+
+.prompt-box pre {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--navy);
+}
+
+.free-map-after {
+  margin-top: 0.4rem;
 }
 
 .footer-legal {

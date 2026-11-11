@@ -8,6 +8,7 @@ import sitemap from "@/app/sitemap";
 import { AiVoiceAgentSmallBusinessArticle } from "@/components/blog/AiVoiceAgentSmallBusinessArticle";
 import {
   aiVoiceAgentSmallBusinessFaqs,
+  blogJsonLdDate,
   blogPosts,
   getPost,
   postPath,
@@ -152,8 +153,8 @@ describe("AI voice agent for small business blog post", () => {
     expect(article).toMatchObject({
       headline: post?.title,
       description: post?.description,
-      datePublished: "2026-10-21",
-      dateModified: "2026-10-21",
+      datePublished: blogJsonLdDate("2026-10-21"),
+      dateModified: blogJsonLdDate("2026-10-21"),
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": postUrl(slug),

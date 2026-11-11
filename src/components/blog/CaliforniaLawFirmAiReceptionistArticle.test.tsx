@@ -7,6 +7,7 @@ import BlogPostPage, { generateMetadata } from "@/app/blog/[slug]/page";
 import sitemap from "@/app/sitemap";
 import { CaliforniaLawFirmAiReceptionistArticle } from "@/components/blog/CaliforniaLawFirmAiReceptionistArticle";
 import {
+  blogJsonLdDate,
   blogPosts,
   californiaLawFirmAiReceptionistFaqs,
   getPost,
@@ -185,8 +186,8 @@ describe("California law firm AI receptionist blog post", () => {
     expect(article).toMatchObject({
       headline: title,
       description,
-      datePublished: "2026-11-11",
-      dateModified: "2026-11-11",
+      datePublished: blogJsonLdDate("2026-11-11"),
+      dateModified: blogJsonLdDate("2026-11-11"),
       image: {
         "@type": "ImageObject",
         url: `${site.url}/blog/california-law-firm-ai-receptionist.png`,

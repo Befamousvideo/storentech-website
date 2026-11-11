@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
     "/opportunity",
+    "/free-ai-map",
     CONTRACTORS_PATH,
     "/work",
     "/how-it-works",
