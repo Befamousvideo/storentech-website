@@ -1,0 +1,248 @@
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.root {
+  position: fixed;
+  right: 1.15rem;
+  bottom: 1.15rem;
+  z-index: 35;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.7rem;
+  width: min(calc(100vw - 1.5rem), 22.5rem);
+  pointer-events: none;
+  font-family: var(--font-sans);
+}
+
+.root > * {
+  pointer-events: auto;
+}
+
+.launcher {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.7rem 0.95rem;
+  border: 1px solid var(--navy);
+  background: var(--navy);
+  color: var(--cream);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.launcher:hover,
+.launcher:focus-visible {
+  background: var(--navy-soft);
+  border-color: var(--navy-soft);
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - var(--header-h) - 1.5rem);
+  background: var(--cream-card);
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  box-shadow: 0 16px 40px rgba(14, 28, 47, 0.12);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0.95rem 1rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.disclaimer {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  max-width: 34ch;
+}
+
+.close {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  margin: -0.35rem -0.2rem 0 0;
+  border: 1px solid var(--navy);
+  background: transparent;
+  color: var(--navy);
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.close:hover,
+.close:focus-visible {
+  background: var(--navy);
+  color: var(--cream);
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.log {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  overflow: auto;
+  min-height: 8rem;
+}
+
+.empty {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
+}
+
+.chip {
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--navy);
+  font-size: 0.72rem;
+  line-height: 1.3;
+  padding: 0.4rem 0.55rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.chip:hover,
+.chip:focus-visible {
+  border-color: var(--navy);
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+
+.turn {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.turnUser {
+  color: var(--navy);
+}
+
+.turnHelper {
+  color: var(--text);
+}
+
+.turnLabel {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.2rem;
+}
+
+.source {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.footer {
+  padding: 0.75rem 1rem 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.form {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--navy);
+  background: var(--cream);
+  color: var(--navy);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+
+.submit {
+  min-height: 44px;
+  padding: 0 0.85rem;
+  border: 1px solid var(--navy);
+  background: var(--navy);
+  color: var(--cream);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.submit:hover,
+.submit:focus-visible {
+  background: var(--navy-soft);
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.handoff {
+  display: inline-flex;
+  margin-top: 0.7rem;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .root {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    width: auto;
+    align-items: stretch;
+  }
+
+  .launcher {
+    align-self: flex-end;
+  }
+
+  /* Keep the sticky header analysis CTA, and the in-page hero CTA, unobstructed. */
+  .panel {
+    max-height: min(58dvh, calc(100dvh - var(--header-h) - 7.5rem));
+  }
+}

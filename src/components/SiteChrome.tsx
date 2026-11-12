@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { FaqHelper } from "@/components/FaqHelper";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
@@ -27,6 +28,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
       <Header quiet={quiet} />
       <main id="main">{children}</main>
       <Footer quiet={quiet} />
+      {quiet ? null : <FaqHelper />}
     </>
   );
 }
