@@ -11,6 +11,18 @@ describe("live blog post dates", () => {
       })),
     ).toEqual([
       {
+        slug: "law-firm-case-status-updates",
+        datePublished: "2026-11-20",
+      },
+      {
+        slug: "weekly-report-download-rebuild",
+        datePublished: "2026-11-18",
+      },
+      {
+        slug: "law-firm-ai-data-storage-check",
+        datePublished: "2026-11-16",
+      },
+      {
         slug: "office-procedures-ai-instructions",
         datePublished: "2026-11-13",
       },
@@ -93,6 +105,9 @@ describe("live blog post dates", () => {
     expect(blogJsonLdDate("2026-11-02")).toBe("2026-11-02T08:00:00-08:00");
     expect(blogJsonLdDate("2026-09-21")).toBe("2026-09-21T08:00:00-07:00");
     expect(blogJsonLdDate("2026-11-13")).toBe("2026-11-13T08:00:00-08:00");
+    expect(blogJsonLdDate("2026-11-16")).toBe("2026-11-16T08:00:00-08:00");
+    expect(blogJsonLdDate("2026-11-18")).toBe("2026-11-18T08:00:00-08:00");
+    expect(blogJsonLdDate("2026-11-20")).toBe("2026-11-20T08:00:00-08:00");
     expect(blogJsonLdDate("2026-11-02T08:00:00-08:00")).toBe(
       "2026-11-02T08:00:00-08:00",
     );

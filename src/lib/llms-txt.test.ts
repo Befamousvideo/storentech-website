@@ -16,6 +16,24 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [When Clients Keep Calling for Case Updates, What Should an Orange County Firm Try First?](https://www.storentechai.com/blog/law-firm-case-status-updates): Existing clients calling for case updates eat staff time. What an Orange County firm can try first, and why a person should approve every status update.",
+    );
+    expect(text.indexOf("law-firm-case-status-updates")).toBeLessThan(
+      text.indexOf("weekly-report-download-rebuild"),
+    );
+    expect(text).toContain(
+      "- [The Weekly Report Your Office Still Downloads and Rebuilds by Hand](https://www.storentechai.com/blog/weekly-report-download-rebuild): If someone in your Orange County office rebuilds the same report every week from two portals, here is what to check first before reaching for AI.",
+    );
+    expect(text.indexOf("weekly-report-download-rebuild")).toBeLessThan(
+      text.indexOf("law-firm-ai-data-storage-check"),
+    );
+    expect(text).toContain(
+      "- [Before Your Law Firm Connects Client Data to a New AI Tool, Check These Storage Settings](https://www.storentechai.com/blog/law-firm-ai-data-storage-check): Before an Orange County law firm puts client data into an AI tool, check where prompts and uploads are stored, who sees them and what's on by default.",
+    );
+    expect(text.indexOf("law-firm-ai-data-storage-check")).toBeLessThan(
+      text.indexOf("office-procedures-ai-instructions"),
+    );
+    expect(text).toContain(
       "- [Write It Down Once: Turning Your Office's Procedures into Instructions an AI Assistant Can Follow](https://www.storentechai.com/blog/office-procedures-ai-instructions): How Orange County owners can write one office procedure so a person or AI assistant can follow it — with a human approving anything that leaves the office.",
     );
     expect(text.indexOf("office-procedures-ai-instructions")).toBeLessThan(

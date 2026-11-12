@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { LAW_ROOT_INDEX } from "./src/lib/ad-landing-lead";
 
 const homepage = "https://www.storentechai.com/";
 
@@ -17,17 +18,20 @@ const nextConfig: NextConfig = {
         source: "/for/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
-      {
-        source: "/law",
-        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
-      },
-      {
-        source: "/law/:path*",
-        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
-      },
+      ...(LAW_ROOT_INDEX.sendNoindexHeader
+        ? [
+            {
+              source: "/law",
+              headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+            },
+          ]
+        : []),
       // Nested specialty ad landings only. `:path*` also matches the
-      // indexed /contractors marketing page (PR #63 intended noindex on
-      // /contractors/[specialty], not /contractors itself).
+      // vertical roots; keep /law/:path+ noindex even after /law is indexed.
+      {
+        source: "/law/:path+",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
       {
         source: "/contractors/:path+",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
