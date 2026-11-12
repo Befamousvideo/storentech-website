@@ -91,7 +91,8 @@ describe("FAQ helper answers", () => {
 
     const phone = answerFaqQuery("What's your phone number?");
     expect(phone.text).not.toMatch(/\d{3}/);
-    expect(phone.text).not.toContain(site.stripe.roiPaymentLink);
+    expect(phone.text).not.toContain("buy.stripe.com");
+    expect(phone.text).not.toContain("6oU14ngeE5w1a8wd7RdjO00");
   });
 
   it("labels itself as FAQ assistance, not live generative AI", () => {

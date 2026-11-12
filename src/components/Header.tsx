@@ -7,7 +7,7 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { IntakeLink } from "@/components/IntakeLink";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { LAW_COPY, LAW_CTA_ANCHOR } from "@/lib/law-landing";
-import { nav, site } from "@/lib/site";
+import { nav, offer } from "@/lib/site";
 
 function isLawRoot(pathname: string) {
   return pathname === "/law";
@@ -40,7 +40,7 @@ function HeaderOfferCta({
 
   return (
     <IntakeLink className={className} onClick={onClick}>
-      {site.offer.ctaShort}
+      {offer.ctaShort}
     </IntakeLink>
   );
 }

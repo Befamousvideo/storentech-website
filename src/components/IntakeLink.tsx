@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { trackOpportunityCtaClick } from "@/lib/analytics";
-import { site } from "@/lib/site";
+import { intakeUrl } from "@/lib/site";
 
 type IntakeLinkProps = {
   className?: string;
@@ -20,7 +20,7 @@ export function IntakeLink({
   return (
     <a
       className={className}
-      href={site.intakeUrl}
+      href={intakeUrl}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => {

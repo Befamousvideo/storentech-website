@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { describe, expect, it } from "vitest";
 import { middleware } from "@/middleware";
-import { site } from "@/lib/site";
+import { PAY_HOSTS } from "@/lib/pay-hosts";
 
 const HOMEPAGE = "https://www.storentechai.com/";
 
@@ -113,12 +113,12 @@ describe("middleware redirects", () => {
   });
 
   it("temporarily sends unmatched pay-host paths to the www homepage", () => {
-    expect(site.payHosts).toEqual([
+    expect(PAY_HOSTS).toEqual([
       "pay.storentechai.com",
       "www.pay.storentechai.com",
     ]);
 
-    const cases = site.payHosts.flatMap((host) => [
+    const cases = PAY_HOSTS.flatMap((host) => [
       request(`https://${host}/`, host),
       request(`https://${host}/anything`, host),
       request(`https://${host}/pay`, host),

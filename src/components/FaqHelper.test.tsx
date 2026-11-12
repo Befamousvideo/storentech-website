@@ -56,6 +56,7 @@ describe("FaqHelper", () => {
     expect(dialog.innerHTML).not.toContain("tel:");
     expect(dialog.innerHTML).not.toContain("mailto:");
     expect(dialog.textContent).not.toContain("714");
-    expect(dialog.textContent).not.toContain(site.stripe.roiPaymentLink);
+    expect(dialog.textContent).not.toContain("buy.stripe.com");
+    expect(dialog.textContent).not.toContain("6oU14ngeE5w1a8wd7RdjO00");
   });
 });

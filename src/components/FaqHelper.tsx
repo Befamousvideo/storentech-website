@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { IntakeLink } from "@/components/IntakeLink";
 import styles from "@/components/FaqHelper.module.css";
 import { answerFaqQuery, type FaqHelperResponse } from "@/lib/faq-helper";
-import { site } from "@/lib/site";
+import { offer } from "@/lib/site";
 
 const SUGGESTIONS = [
   "What is an AI Opportunity Map?",
@@ -174,7 +174,7 @@ export function FaqHelper() {
               </button>
             </form>
             <IntakeLink className={`btn btn-solid ${styles.handoff}`}>
-              {site.offer.cta}
+              {offer.cta}
             </IntakeLink>
           </div>
         </section>
