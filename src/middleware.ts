@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { site } from "@/lib/site";
+import { PAY_HOSTS } from "@/lib/pay-hosts";
 
 function requestHosts(request: NextRequest) {
   const raw = [
@@ -17,7 +17,7 @@ function requestHosts(request: NextRequest) {
 }
 
 function isPayHost(request: NextRequest) {
-  const allowed = site.payHosts as readonly string[];
+  const allowed = PAY_HOSTS as readonly string[];
   return requestHosts(request).some((host) => allowed.includes(host));
 }
 

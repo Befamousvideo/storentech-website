@@ -2,6 +2,7 @@ import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { describe, expect, it } from "vitest";
 import nextConfig from "../../next.config";
+import { site } from "@/lib/site";
 
 const HOMEPAGE = "https://www.storentechai.com/";
 const INTERVIEW_SOURCES = [
@@ -209,13 +210,31 @@ describe("legacy interview, /redo, and /pay redirects", () => {
       "vercel.json",
       "next.config.ts",
       "src/middleware.ts",
+      "src/lib/site.ts",
     ].flatMap((root) => collectFiles(root));
 
     for (const file of reachable) {
       const text = readFileSync(file, "utf8");
       expect(text, relative(process.cwd(), file)).not.toContain("buy.stripe.com");
       expect(text, relative(process.cwd(), file)).not.toContain("roiPaymentLink");
+      expect(text, relative(process.cwd(), file)).not.toContain("payHosts");
     }
+  });
+
+  it("keeps pay hosts in a server-only module so they never reach client chunks", () => {
+    const payHosts = readFileSync(
+      join(process.cwd(), "src/lib/pay-hosts.ts"),
+      "utf8",
+    );
+    const middleware = readFileSync(
+      join(process.cwd(), "src/middleware.ts"),
+      "utf8",
+    );
+    expect(payHosts.startsWith('import "server-only"')).toBe(true);
+    expect(middleware).toContain('from "@/lib/pay-hosts"');
+    expect(middleware).not.toContain('from "@/lib/site"');
+    expect("stripe" in site).toBe(false);
+    expect("payHosts" in site).toBe(false);
   });
 
   it("removes the /pay and /redo pages so config and middleware own the redirect", () => {

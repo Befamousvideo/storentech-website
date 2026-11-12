@@ -20,6 +20,24 @@ function resolveSiteUrl(raw: string | undefined) {
   }
 }
 
+export const offer = {
+  primaryTitle: "AI Opportunity Map",
+  explanatoryName: "Automation ROI Analysis",
+  primary:
+    "An AI Opportunity Map shows where time or revenue leaks, and which AI moves pay back first. Starting at $1,000.",
+  later:
+    "After the map, the Build Plan is how we build what pays. Builds may include voice agents, website chat, operations automation, web apps, mobile apps, and custom-built solutions.",
+  cta: "Start your AI Opportunity Map",
+  ctaShort: "Start your map",
+  capacity:
+    "When AI takes the grind, your people get time back for the work that needs a human, so more gets done and the human touch stays where customers feel it.",
+  services:
+    "Map leaks first. Then the Build Plan — people still in the loop, out front with customers.",
+} as const;
+
+// Start-your-map CTA. Calendar booking; set NEXT_PUBLIC_INTAKE_URL to ONB1 when gated live.
+export const intakeUrl = resolveIntakeUrl(process.env.NEXT_PUBLIC_INTAKE_URL);
+
 export const site = {
   name: "StorenTech AI",
   shortName: "StorenTech",
@@ -35,20 +53,7 @@ export const site = {
     "StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays. Ask Sarah anything.",
   description:
     "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays. AI Opportunity Map. An AI Opportunity Map shows where time or revenue leaks, and which AI moves pay back first. Starting at $1,000. Ask Sarah anything.",
-  offer: {
-    primaryTitle: "AI Opportunity Map",
-    explanatoryName: "Automation ROI Analysis",
-    primary:
-      "An AI Opportunity Map shows where time or revenue leaks, and which AI moves pay back first. Starting at $1,000.",
-    later:
-      "After the map, the Build Plan is how we build what pays. Builds may include voice agents, website chat, operations automation, web apps, mobile apps, and custom-built solutions.",
-    cta: "Start your AI Opportunity Map",
-    ctaShort: "Start your map",
-    capacity:
-      "When AI takes the grind, your people get time back for the work that needs a human, so more gets done and the human touch stays where customers feel it.",
-    services:
-      "Map leaks first. Then the Build Plan — people still in the loop, out front with customers.",
-  },
+  offer,
   founder: {
     name: "Vincent Jackson",
     title: "President",
@@ -76,15 +81,8 @@ export const site = {
     analysisTypical: "$1,000",
     analysisComplex: "$2,000–$3,000",
   },
-  // Start-your-map CTA. Calendar booking; set NEXT_PUBLIC_INTAKE_URL to ONB1 when gated live.
-  intakeUrl: resolveIntakeUrl(process.env.NEXT_PUBLIC_INTAKE_URL),
+  intakeUrl,
   intakeOnb1Url: ONB1_INTAKE_URL,
-  stripe: {
-    // Retired. Owner is deleting the Stripe product; do not send visitors
-    // here. A new payment link may come back later.
-    roiPaymentLink: "https://buy.stripe.com/6oU14ngeE5w1a8wd7RdjO00",
-  },
-  payHosts: ["pay.storentechai.com", "www.pay.storentechai.com"],
 } as const;
 
 export const nav = [

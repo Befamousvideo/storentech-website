@@ -2,7 +2,7 @@ import Link from "next/link";
 import { BrandLogo } from "@/components/BrandLogo";
 import { IntakeLink } from "@/components/IntakeLink";
 import { SarahContact } from "@/components/SarahContact";
-import { nav, site } from "@/lib/site";
+import { nav, offer, site } from "@/lib/site";
 
 export function Footer({ quiet = false }: { quiet?: boolean }) {
   return (
@@ -21,7 +21,7 @@ export function Footer({ quiet = false }: { quiet?: boolean }) {
                 {item.label}
               </Link>
             ))}
-            {quiet ? null : <IntakeLink>{site.offer.cta}</IntakeLink>}
+            {quiet ? null : <IntakeLink>{offer.cta}</IntakeLink>}
           </nav>
           <div className="footer-contact">
             <div>{site.location.kicker}</div>
