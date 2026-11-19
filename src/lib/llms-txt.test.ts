@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [Should AI Call Your Clients Back? What to Settle Before It Dials](https://www.storentechai.com/blog/ai-outbound-callbacks-what-to-settle-first): AI can now place outbound calls through your existing phone line. What an Orange County firm or contractor should settle before letting AI call anyone.",
+    );
+    expect(text.indexOf("ai-outbound-callbacks-what-to-settle-first")).toBeLessThan(
+      text.indexOf("law-firm-case-status-updates"),
+    );
+    expect(text).toContain(
       "- [When Clients Keep Calling for Case Updates, What Should an Orange County Firm Try First?](https://www.storentechai.com/blog/law-firm-case-status-updates): Existing clients calling for case updates eat staff time. What an Orange County firm can try first, and why a person should approve every status update.",
     );
     expect(text.indexOf("law-firm-case-status-updates")).toBeLessThan(

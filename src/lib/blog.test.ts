@@ -11,6 +11,10 @@ describe("live blog post dates", () => {
       })),
     ).toEqual([
       {
+        slug: "ai-outbound-callbacks-what-to-settle-first",
+        datePublished: "2026-11-29",
+      },
+      {
         slug: "law-firm-case-status-updates",
         datePublished: "2026-11-20",
       },
@@ -108,6 +112,7 @@ describe("live blog post dates", () => {
     expect(blogJsonLdDate("2026-11-16")).toBe("2026-11-16T08:00:00-08:00");
     expect(blogJsonLdDate("2026-11-18")).toBe("2026-11-18T08:00:00-08:00");
     expect(blogJsonLdDate("2026-11-20")).toBe("2026-11-20T08:00:00-08:00");
+    expect(blogJsonLdDate("2026-11-29")).toBe("2026-11-29T08:00:00-08:00");
     expect(blogJsonLdDate("2026-11-02T08:00:00-08:00")).toBe(
       "2026-11-02T08:00:00-08:00",
     );
