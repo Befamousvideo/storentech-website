@@ -912,7 +912,51 @@ export const lawFirmAiDataStorageCheckFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const aiModelSwitchDec1CheckFaqs = [
+  {
+    question: "Will my AI tools stop working on Dec. 1, 2026?",
+    answer:
+      "For the change described here, no. The provider says requests to the two older models will be routed to newer models automatically, so tools keep answering. What may change is how they answer and what each request costs.",
+  },
+  {
+    question: "How do I find out which AI model my software uses?",
+    answer:
+      "Ask the vendor or the person who built it. For custom builds, the model name is in the settings or code that calls the AI service. A good vendor can tell you in one sentence.",
+  },
+  {
+    question: "Is an automatic model switch the same as a model retirement?",
+    answer:
+      "Not quite. A retirement means the old model stops answering after a date. An automatic switch means requests keep working but go to a different model. Both are reasons to test before the date.",
+  },
+  {
+    question: "What should I test after an AI model changes?",
+    answer:
+      "Your most common customer questions, one full task from start to finish, anything that goes to customers without review, and the first few weeks of the bill.",
+  },
+  {
+    question:
+      "Can StorenTech AI check whether my Orange County business's AI tools are affected?",
+    answer:
+      "Yes. StorenTech AI lists the AI tools a business relies on, and what each one runs on, as part of its AI Opportunity Map, then flags anything that needs attention before a vendor deadline.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "ai-model-switch-dec-1-check",
+    title: "Before Dec. 1, Ask Which AI Model Your Tools Actually Use",
+    metaTitle:
+      "Before Dec. 1, Ask Which AI Model Your Tools Use | StorenTech AI",
+    description:
+      "Some AI tools will quietly switch models on Dec. 1. Three questions an Orange County owner can ask a vendor this week, and what to test before it changes.",
+    datePublished: "2026-11-21",
+    faqs: aiModelSwitchDec1CheckFaqs,
+    indexCta: "Read the post",
+  },
   {
     slug: "law-firm-case-status-updates",
     title:

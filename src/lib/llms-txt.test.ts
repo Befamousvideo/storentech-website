@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [Before Dec. 1, Ask Which AI Model Your Tools Actually Use](https://www.storentechai.com/blog/ai-model-switch-dec-1-check): Some AI tools will quietly switch models on Dec. 1. Three questions an Orange County owner can ask a vendor this week, and what to test before it changes.",
+    );
+    expect(text.indexOf("ai-model-switch-dec-1-check")).toBeLessThan(
+      text.indexOf("law-firm-case-status-updates"),
+    );
+    expect(text).toContain(
       "- [When Clients Keep Calling for Case Updates, What Should an Orange County Firm Try First?](https://www.storentechai.com/blog/law-firm-case-status-updates): Existing clients calling for case updates eat staff time. What an Orange County firm can try first, and why a person should approve every status update.",
     );
     expect(text.indexOf("law-firm-case-status-updates")).toBeLessThan(
