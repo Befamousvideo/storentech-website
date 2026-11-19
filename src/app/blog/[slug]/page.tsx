@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { ComparingAiConsultantsWhatYouAreBuyingArticle } from "@/components/blog/ComparingAiConsultantsWhatYouAreBuyingArticle";
 import { LawFirmCaseStatusUpdatesArticle } from "@/components/blog/LawFirmCaseStatusUpdatesArticle";
 import { WeeklyReportDownloadRebuildArticle } from "@/components/blog/WeeklyReportDownloadRebuildArticle";
 import { LawFirmAiDataStorageCheckArticle } from "@/components/blog/LawFirmAiDataStorageCheckArticle";
@@ -44,6 +45,8 @@ import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
+    case "comparing-ai-consultants-what-you-are-buying":
+      return <ComparingAiConsultantsWhatYouAreBuyingArticle post={post} />;
     case "law-firm-case-status-updates":
       return <LawFirmCaseStatusUpdatesArticle post={post} />;
     case "weekly-report-download-rebuild":
