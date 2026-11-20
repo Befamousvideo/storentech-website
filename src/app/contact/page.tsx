@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { IntakeLink } from "@/components/IntakeLink";
 import { InterviewLink } from "@/components/InterviewLink";
+import { MapValueCard } from "@/components/MapValueCard";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { site } from "@/lib/site";
 
@@ -21,10 +22,11 @@ export default function ContactPage() {
           <h1>Start your AI Opportunity Map.</h1>
           <hr className="rule" />
           <p className="lede">
-            Starting at {site.prices.analysisTypical}. Tell us what is broken. The
-            form is the written path; Sarah is the voice path.
+            Tell us what is broken. The form is the written path; Sarah is the
+            voice path.
           </p>
-          <div className="btn-row" style={{ marginTop: "1.7rem" }}>
+          <MapValueCard />
+          <div className="btn-row" style={{ marginTop: "0.4rem" }}>
             <InterviewLink className="btn btn-solid">
               {site.offer.interviewCta}
             </InterviewLink>

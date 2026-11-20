@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MapValueCard } from "@/components/MapValueCard";
 import type { BlogPost } from "@/lib/blog";
 
 export function ZapierWebhooksAiAgentsArticle({ post }: { post: BlogPost }) {
@@ -219,14 +220,13 @@ export function ZapierWebhooksAiAgentsArticle({ post }: { post: BlogPost }) {
         </p>
 
         <h2>Where to start: the AI Opportunity Map</h2>
+        <MapValueCard showComplex />
         <p>
           Every StorenTech client starts with a paid{" "}
-          <strong>AI Opportunity Map</strong>. It typically costs{" "}
-          <strong>$1,000</strong> (<strong>$2,000–$3,000</strong> when the
-          scope is complex). It&apos;s never a free sales call. We map your
-          real workflows, find where handoffs break, and rank which job should
-          be automated first. If the math doesn&apos;t work, we&apos;ll tell
-          you.
+          <strong>AI Opportunity Map</strong>. It&apos;s never a free sales
+          call. We map your real workflows, find where handoffs break, and rank
+          which job should be automated first. If the math doesn&apos;t work,
+          we&apos;ll tell you.
         </p>
         <ul>
           <li>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { IntakeLink } from "@/components/IntakeLink";
 import { InterviewLink } from "@/components/InterviewLink";
+import { MapValueCard } from "@/components/MapValueCard";
 import { SarahContact } from "@/components/SarahContact";
 import { StructuredData } from "@/components/StructuredData";
 import { organizationLd } from "@/lib/seo";
@@ -20,6 +21,7 @@ export default function HomePage() {
             <p className="lede">Whether you call it AI or Super Intelligence (SI), the first step is the same: find where it actually pays in your business.</p>
             <hr className="rule" />
             <p className="lede">{site.offer.primary}</p>
+            <MapValueCard />
             <div className="btn-row">
               <InterviewLink className="btn btn-solid">
                 {site.offer.interviewCta}
@@ -48,7 +50,7 @@ export default function HomePage() {
         <div className="wrap">
           <div className="section-head">
             <div>
-              <p className="kicker">Starting at {site.prices.analysisTypical}</p>
+              <p className="kicker">The map</p>
               <h2>
                 <Link href="/opportunity">{site.offer.primaryTitle}</Link>
               </h2>
@@ -116,10 +118,10 @@ export default function HomePage() {
         <div className="wrap">
           <p className="kicker">Next</p>
           <h2>Start your AI Opportunity Map, or write us.</h2>
-          <p className="lede" style={{ marginBottom: "1.6rem" }}>
-            Starting at {site.prices.analysisTypical}. It is not a complimentary
-            sales call. Sarah is in the header if you want to talk first.
+          <p className="lede" style={{ marginBottom: "0.4rem" }}>
+            It is not a complimentary sales call.
           </p>
+          <MapValueCard compact />
           <div className="btn-row">
             <InterviewLink className="btn btn-solid">
               {site.offer.interviewCta}

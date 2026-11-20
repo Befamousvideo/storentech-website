@@ -22,7 +22,7 @@ const PII = [
 
 describe("FAQ helper knowledge allowlist", () => {
   it("stays small, versioned, and source-traced", () => {
-    expect(FAQ_HELPER_KNOWLEDGE_VERSION).toBe("2026-11-07.preview.1");
+    expect(FAQ_HELPER_KNOWLEDGE_VERSION).toBe("2026-11-20.preview.1");
     expect(faqKnowledgeEntries.length).toBeGreaterThanOrEqual(6);
     expect(faqKnowledgeEntries.length).toBeLessThanOrEqual(12);
 

@@ -1,7 +1,7 @@
-import { site } from "@/lib/site";
+import { mapValue, site } from "@/lib/site";
 import { siteFaqs as homepageFaqs } from "@/lib/site-faqs";
 
-export const FAQ_HELPER_KNOWLEDGE_VERSION = "2026-11-07.preview.1" as const;
+export const FAQ_HELPER_KNOWLEDGE_VERSION = "2026-11-20.preview.1" as const;
 
 export type FaqKnowledgeSource = {
   path: string;
@@ -59,7 +59,7 @@ export const faqKnowledgeEntries = [
     id: "opportunity-map",
     version: FAQ_HELPER_KNOWLEDGE_VERSION,
     question: "What is an AI Opportunity Map?",
-    answer: `${site.offer.primary} It is paid work, not a complimentary sales call.`,
+    answer: `${mapValue.lede} ${mapValue.bullets.join(" ")} ${site.offer.primary} It is paid work, not a complimentary sales call.`,
     sources: [
       { path: "src/lib/site.ts", label: "Site copy" },
       { path: "src/app/opportunity/page.tsx", label: "Opportunity Map" },
@@ -115,7 +115,7 @@ export const faqKnowledgeEntries = [
     id: "map-price",
     version: FAQ_HELPER_KNOWLEDGE_VERSION,
     question: "How much is an AI Opportunity Map?",
-    answer: `Typical fee ${site.prices.analysisTypical}. ${site.prices.analysisComplex} when the operation is complex — multiple locations, a messy stack, or a wider catalog. This is paid work. It is not a complimentary sales call.`,
+    answer: `${mapValue.lede} ${mapValue.bullets.join(" ")} Starting at ${site.prices.analysisTypical}. ${site.prices.analysisComplex} when the operation is complex — multiple locations, a messy stack, or a wider catalog. This is paid work. It is not a complimentary sales call.`,
     sources: [
       { path: "src/app/how-it-works/page.tsx", label: "How it works" },
       { path: "src/lib/site.ts", label: "Site copy" },

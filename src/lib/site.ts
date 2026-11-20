@@ -46,11 +46,21 @@ function resolveSiteUrl(raw: string | undefined) {
   }
 }
 
+export const mapValue = {
+  heading: "What you get",
+  lede: "The AI Opportunity Map is a comprehensive deep-dive report on your business — not a quick assessment or a generic checklist.",
+  bullets: [
+    "A typical report identifies major cash and time savings and usually exceeds 40 pages.",
+    "Every company that pays gets a detailed report built for its business, and keeps it.",
+    "You leave with where time and money are leaking, which automations pay back first, and a clear next-step Build Plan.",
+  ],
+} as const;
+
 export const offer = {
   primaryTitle: "AI Opportunity Map",
   explanatoryName: "Automation ROI Analysis",
   primary:
-    "An AI Opportunity Map shows where time or revenue leaks, and which AI moves pay back first. Starting at $1,000.",
+    "An AI Opportunity Map shows where time or revenue leaks, and which AI moves pay back first.",
   later:
     "After the map, the Build Plan is how we build what pays. Builds may include voice agents, website chat, operations automation, web apps, mobile apps, and custom-built solutions.",
   cta: "Start your AI Opportunity Map",
@@ -58,6 +68,7 @@ export const offer = {
   interviewCta: "Start AI Opportunity Map interview",
   interviewCtaShort: "Start your map",
   bookingCta: "Book a call",
+  priceLine: "Starting at $1,000.",
   capacity:
     "When AI takes the grind, your people get time back for the work that needs a human, so more gets done and the human touch stays where customers feel it.",
   services:
@@ -88,7 +99,7 @@ export const site = {
   brandLine:
     "StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays. Ask Sarah anything.",
   description:
-    "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays. AI Opportunity Map. An AI Opportunity Map shows where time or revenue leaks, and which AI moves pay back first. Starting at $1,000. Ask Sarah anything.",
+    "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays. AI Opportunity Map. The AI Opportunity Map is a comprehensive deep-dive report on your business — not a quick assessment or a generic checklist. Starting at $1,000. Ask Sarah anything.",
   offer,
   founder: {
     name: "Vincent Jackson",
@@ -148,7 +159,7 @@ export const offerSteps = [
   {
     n: "01",
     title: site.offer.primaryTitle,
-    body: `${site.prices.analysisTypical}. Written map of time/revenue/risk leaks vs their software, what to fix first. Clarity before spend. Paid. Never complimentary.`,
+    body: `${mapValue.lede} ${mapValue.bullets.join(" ")} Starting at ${site.prices.analysisTypical}. Written map of time/revenue/risk leaks vs their software, what to fix first. Clarity before spend. Paid. Never complimentary.`,
   },
   {
     n: "02",
@@ -198,7 +209,7 @@ export const workGroups: WorkGroup[] = [
     id: "wedge",
     label: "Wedge / front of house",
     title: "The first leak is usually the phone and the inbox.",
-    lede: "Almost every SMB leaks money here. After the map, that grind is a common first build — not the whole firm, and not the $1k product.",
+    lede: "Almost every SMB leaks money here. After the map, that grind is a common first build — not the whole firm, and not the AI Opportunity Map itself.",
     jobs: [
       {
         title: "Speed-to-lead + after-hours closer",

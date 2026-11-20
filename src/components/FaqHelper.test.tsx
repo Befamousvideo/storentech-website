@@ -38,7 +38,7 @@ describe("FaqHelper", () => {
     await user.click(screen.getByRole("button", { name: "Ask" }));
 
     expect(screen.getByText(/time or revenue leaks/i)).toBeInTheDocument();
-    expect(screen.getByText(/2026-11-07\.preview\.1/)).toBeInTheDocument();
+    expect(screen.getByText(/2026-11-20\.preview\.1/)).toBeInTheDocument();
 
     await user.keyboard("{Escape}");
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();

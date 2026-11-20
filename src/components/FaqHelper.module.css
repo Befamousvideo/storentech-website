@@ -229,20 +229,22 @@
 }
 
 @media (max-width: 640px) {
+  /* Tuck to the right edge under the header so the chip does not sit on the Sarah card. */
   .root {
-    right: 0.75rem;
-    bottom: 0.75rem;
-    left: 0.75rem;
+    top: calc(var(--header-h) + 0.45rem);
+    right: 0.4rem;
+    bottom: auto;
+    left: auto;
     width: auto;
-    align-items: stretch;
+    align-items: flex-end;
   }
 
   .launcher {
     align-self: flex-end;
   }
 
-  /* Keep the sticky header analysis CTA, and the in-page hero CTA, unobstructed. */
   .panel {
-    max-height: min(58dvh, calc(100dvh - var(--header-h) - 7.5rem));
+    max-height: min(70dvh, calc(100dvh - var(--header-h) - 1.25rem));
+    width: min(calc(100vw - 1.1rem), 22.5rem);
   }
 }

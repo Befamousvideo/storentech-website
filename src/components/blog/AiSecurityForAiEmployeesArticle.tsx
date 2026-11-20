@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { MapValueCard } from "@/components/MapValueCard";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { site } from "@/lib/site";
 import type { BlogFaq, BlogPost } from "@/lib/blog";
@@ -341,14 +342,14 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
           6. Vendor / model security diligence is part of the AI Opportunity
           Map
         </h3>
+        <MapValueCard showComplex />
         <p>
           Every StorenTech client starts with a paid{" "}
-          <strong>AI Opportunity Map</strong> (typically{" "}
-          <strong>$1,000</strong>; <strong>$2,000–$3,000</strong> when complex).
-          The analysis is not only hours, response time, and after-hours leakage
-          — it includes <strong>which vendors and models</strong> touch the
-          workflow, what access they need, and whether the security posture
-          fits the role. Diligence is <strong>inside the AI Opportunity Map</strong>, not a
+          <strong>AI Opportunity Map</strong>. The analysis is not only hours,
+          response time, and after-hours leakage — it includes{" "}
+          <strong>which vendors and models</strong> touch the workflow, what
+          access they need, and whether the security posture fits the role.
+          Diligence is <strong>inside the AI Opportunity Map</strong>, not a
           free add-on slide after you’ve already signed a retainer.
         </p>
         <p>

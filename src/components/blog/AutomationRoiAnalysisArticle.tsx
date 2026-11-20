@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { IntakeLink } from "@/components/IntakeLink";
 import { InterviewLink } from "@/components/InterviewLink";
+import { MapValueCard } from "@/components/MapValueCard";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { site } from "@/lib/site";
 import type { BlogPost } from "@/lib/blog";
@@ -26,10 +27,9 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
             AI Opportunity Map, a
             paid engagement that maps your workflows, quantifies time and revenue
             leaks with your real numbers, and ranks which AI employee to hire
-            first. It typically costs <strong>$1,000</strong> (
-            <strong>$2,000–$3,000</strong> when complex). It is not a
-            complimentary sales call.
+            first. It is not a complimentary sales call.
           </p>
+          <MapValueCard showComplex />
           <p>
             That’s the whole pitch, stripped of the free-audit theater. Hire an
             AI employee <strong>after the math, not before.</strong>
@@ -110,6 +110,7 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
         </p>
 
         <h2>Typical vs complex pricing</h2>
+        <MapValueCard compact showComplex />
         <div className="blog-table-wrap">
           <table className="blog-table">
             <thead>

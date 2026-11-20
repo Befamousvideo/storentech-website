@@ -612,6 +612,38 @@ select {
   margin-top: 0.35rem;
 }
 
+.map-value {
+  margin: 1.35rem 0 1.55rem;
+  max-width: 38rem;
+}
+
+.map-value .kicker {
+  margin-bottom: 0.45rem;
+}
+
+.map-value-lede {
+  color: var(--navy);
+  font-size: 1.05rem;
+  max-width: 46ch;
+}
+
+.map-value .map-value-lede,
+.copy .map-value-lede {
+  color: var(--navy);
+}
+
+.map-value-price {
+  margin-top: 1.05rem;
+}
+
+.map-value-compact {
+  padding: 1.4rem 1.45rem 1.3rem;
+}
+
+.map-value-compact .map-value-lede {
+  margin: 0;
+}
+
 /* Work groups */
 .work-group + .work-group {
   margin-top: 4.5rem;

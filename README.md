@@ -76,8 +76,8 @@ Set `NEXT_PUBLIC_SITE_URL` and `INQUIRY_WEBHOOK_URL` in the Vercel project envir
 
 ## Offer (do not change on a whim)
 
-1. Paid AI Opportunity Map (an Automation ROI Analysis): starting at $1,000. Never free.
+1. Paid AI Opportunity Map (an Automation ROI Analysis): a comprehensive deep-dive report on the client’s business — not a quick assessment or a generic checklist. Starting at $1,000. Never free.
 2. After the map: the Build Plan. When AI takes the grind, your people get time back for the work that needs a human, so more gets done and the human touch stays where customers feel it. No multiplier or job-cut framing.
-3. We do not publish retainers on this site. Ongoing work is scoped from the evidence in the map. The $1,000 AI Opportunity Map is the paid front door, not a retainer.
+3. We do not publish retainers on this site. Ongoing work is scoped from the evidence in the map. The AI Opportunity Map (starting at $1,000, after the value of that report) is the paid front door, not a retainer.
 
 Public contact: phone is `public/sarah-phone.png` (`alt="Call Sarah"`) as an image only. Never render `tel:`, `mailto:`, digits, or email addresses as HTML text. Write-us goes to `/contact` form only.

@@ -21,7 +21,7 @@ import {
   relatedPostsFor,
   siteFallbackOgImages,
 } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { mapValue, site } from "@/lib/site";
 
 const phonePattern = /\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/;
 const emailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
@@ -143,7 +143,9 @@ describe("SEO-1: Open Graph images", () => {
   it("adds the site fallback og:image on opportunity, privacy, and terms", () => {
     expect(opportunityMetadata.openGraph?.images).toEqual(siteFallbackOgImages());
     expect(opportunityMetadata.twitter?.images).toEqual(siteFallbackOgImages());
-    expect(opportunityMetadata.description).toBe(site.offer.primary);
+    expect(opportunityMetadata.description).toBe(
+      `${mapValue.lede} ${site.offer.priceLine}`,
+    );
     expect(privacyMetadata.openGraph?.images).toEqual(siteFallbackOgImages());
     expect(termsMetadata.openGraph?.images).toEqual(siteFallbackOgImages());
     expect(String(opportunityMetadata.description)).not.toMatch(placeholderPattern);

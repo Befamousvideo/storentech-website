@@ -42,12 +42,12 @@ export const roiAnalysisFaqs = [
   {
     question: "What is an AI Opportunity Map?",
     answer:
-      "At StorenTech AI (a full-service AI agency), every client starts with a paid AI Opportunity Map — an AI Opportunity Map: we map your workflows with your real numbers, rank which AI employee to hire first, and give a go/no-go. Typical fee $1,000 ($2,000–$3,000 when complex).",
+      "At StorenTech AI (a full-service AI agency), every client starts with a paid AI Opportunity Map — a comprehensive deep-dive report on the business, not a quick assessment or a generic checklist. A typical report identifies major cash and time savings and usually exceeds 40 pages. Every company that pays gets a detailed report built for its business, and keeps it. Typical fee $1,000 ($2,000–$3,000 when complex).",
   },
   {
     question: "How much does StorenTech’s AI Opportunity Map cost?",
     answer:
-      "Typically $1,000. Complex scopes run $2,000–$3,000 (multi-location, messy stack, or broader than front-of-house).",
+      "The AI Opportunity Map is a comprehensive deep-dive report on your business — not a quick assessment or a generic checklist. A typical report identifies major cash and time savings and usually exceeds 40 pages. Every company that pays keeps the report. Starting at $1,000. Complex scopes run $2,000–$3,000 (multi-location, messy stack, or broader than front-of-house).",
   },
   {
     question: "Is the AI audit free?",
@@ -1356,7 +1356,7 @@ export const blogPosts: readonly BlogPost[] = [
       "What Is an AI Opportunity Map? (And Why StorenTech Won’t Start Free)",
     metaTitle: "What Is an AI Opportunity Map? | StorenTech AI",
     description:
-      "StorenTech AI is a full-service AI agency. Every client starts with a paid AI Opportunity Map ($1,000 typ.) that maps leaks and ranks the first AI hire — never a free sales call.",
+      "StorenTech AI is a full-service AI agency. Every client starts with a paid AI Opportunity Map — a comprehensive deep-dive report on the business, not a checklist. Starting at $1,000. Never a free sales call.",
     datePublished: "2026-09-21",
     faqs: roiAnalysisFaqs,
   },
