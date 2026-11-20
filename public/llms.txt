@@ -3,7 +3,7 @@
 > StorenTech AI is a full-service AI agency in Orange County, California. Every client starts with a paid AI Opportunity Map that shows where time and revenue leak and which AI fixes pay off first. StorenTech AI then builds AI agents with clear limits and a person approving anything risky.
 
 ## Pages
-- [Home](https://www.storentechai.com/): We find where time and revenue leak in your business, then fix what pays. People stay in the loop.
+- [Home](https://www.storentechai.com/): Keep the cost down. Keep security high. Keep your data yours. StorenTech AI designs, builds, and runs private AI agents for teams that need costs kept in check, security kept high, and their data kept in-house.
 - [AI Opportunity Map](https://www.storentechai.com/opportunity): A paid analysis of where time, revenue, and risk leak, and what's worth fixing first.
 - [Work](https://www.storentechai.com/work): Map the leaks first, then a Build Plan, with people still in the loop and out front with customers.
 - [How it works](https://www.storentechai.com/how-it-works): Start with the paid AI Opportunity Map, then the Build Plan, then the build.

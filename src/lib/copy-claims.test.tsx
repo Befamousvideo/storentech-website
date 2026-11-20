@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 import HowItWorksPage from "@/app/how-it-works/page";
 import HomePage from "@/app/page";
 import WorkPage from "@/app/work/page";
+import { homeCopy } from "@/lib/home";
 import { site } from "@/lib/site";
 
 const MULTIPLE_TIMES = ["multiple", " times"].join("");
@@ -46,6 +47,12 @@ function collectCopyFiles(root: string, acc: string[] = []): string[] {
   return acc;
 }
 
+function withoutApprovedHomeProductivity(text: string) {
+  return text
+    .replaceAll(homeCopy.productivityBody, "")
+    .replaceAll(homeCopy.productivityFootnote, "");
+}
+
 function withoutIconSizes(text: string) {
   return text
     .replace(/\b\d+x\d+\b/g, "")
@@ -79,13 +86,17 @@ describe("marketing copy has no multiplier claims", () => {
 
     for (const file of files) {
       const label = relative(process.cwd(), file);
-      assertNoMultiplierClaims(label, readFileSync(file, "utf8"));
+      const raw = readFileSync(file, "utf8");
+      const text =
+        label === "src/lib/home.ts" || label === "src/app/page.tsx"
+          ? withoutApprovedHomeProductivity(raw)
+          : raw;
+      assertNoMultiplierClaims(label, text);
     }
   });
 
-  it("does not render multiplier claims on home, how-it-works, or work", () => {
+  it("does not render multiplier claims on how-it-works or work", () => {
     const pages = [
-      { name: "/", node: <HomePage /> },
       { name: "/how-it-works", node: <HowItWorksPage /> },
       { name: "/work", node: <WorkPage /> },
     ];
@@ -103,5 +114,27 @@ describe("marketing copy has no multiplier claims", () => {
       expect(html).not.toMatch(/Opportunity Blueprint/i);
       expect(html.replaceAll("/roia", "")).not.toMatch(/\bROIA\b/);
     }
+  });
+
+  it("allows only the approved homepage productivity figures", () => {
+    const { container } = render(<HomePage />);
+    const html = container.innerHTML;
+    const text = container.textContent ?? "";
+
+    expect(text).toContain(homeCopy.productivityBody);
+    expect(text).toContain(homeCopy.productivityFootnote);
+    assertNoMultiplierClaims(
+      "/ text without approved productivity",
+      withoutApprovedHomeProductivity(text),
+    );
+    assertNoMultiplierClaims(
+      "/ html without approved productivity",
+      withoutApprovedHomeProductivity(html),
+    );
+    expect(text).not.toContain(site.offer.capacity);
+    expect(html).not.toContain("tel:");
+    expect(html).not.toContain("mailto:");
+    expect(html).not.toMatch(/Opportunity Blueprint/i);
+    expect(html.replaceAll("/roia", "")).not.toMatch(/\bROIA\b/);
   });
 });

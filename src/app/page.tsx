@@ -1,127 +1,78 @@
-import Link from "next/link";
+import type { Metadata } from "next";
 import { IntakeLink } from "@/components/IntakeLink";
-import { SarahContact } from "@/components/SarahContact";
 import { StructuredData } from "@/components/StructuredData";
+import { HOME_META_DESCRIPTION, HOME_META_TITLE, HOME_NVIDIA_SPARK_HREF, homeCopy } from "@/lib/home";
 import { organizationLd } from "@/lib/seo";
-import { site, verticals } from "@/lib/site";
-import { siteFaqPageLd, siteFaqs } from "@/lib/site-faqs";
+
+export const metadata: Metadata = {
+  title: { absolute: HOME_META_TITLE },
+  description: HOME_META_DESCRIPTION,
+  openGraph: {
+    title: HOME_META_TITLE,
+    description: HOME_META_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: HOME_META_TITLE,
+    description: HOME_META_DESCRIPTION,
+  },
+};
 
 export default function HomePage() {
   return (
     <>
-      <StructuredData data={organizationLd()} />
-      <StructuredData data={siteFaqPageLd()} />
+      <StructuredData data={organizationLd({ description: HOME_META_DESCRIPTION })} />
+
       <section className="hero">
-        <div className="wrap hero-grid">
-          <div>
-            <p className="kicker">{site.name}</p>
-            <h1 className="service-title">{site.offer.primaryTitle}</h1>
-            <p className="lede">Whether you call it AI or Super Intelligence (SI), the first step is the same: find where it actually pays in your business.</p>
-            <hr className="rule" />
-            <p className="lede">{site.offer.primary}</p>
-            <div className="btn-row">
-              <IntakeLink className="btn">{site.offer.cta}</IntakeLink>
-            </div>
-            <div className="fine hero-contact">
-              <Link href="/contact">Write us</Link>
-            </div>
-          </div>
-
-          <aside className="demo-card" aria-label="Talk to Sarah">
-            <p className="kicker">Talk to Sarah</p>
-            <SarahContact
-              className="sarah-contact"
-              primaryClassName="sarah-contact-primary"
-              secondaryClassName="sarah-contact-secondary"
-              secondary="Leave a message or request a callback. We map the work before anyone prices ongoing help."
-            />
-            <p className="hero-panel-meta">{site.location.full}</p>
-          </aside>
-        </div>
-      </section>
-
-      <section className="section" id="offer">
         <div className="wrap">
-          <div className="section-head">
-            <div>
-              <p className="kicker">Starting at {site.prices.analysisTypical}</p>
-              <h2>
-                <Link href="/opportunity">{site.offer.primaryTitle}</Link>
-              </h2>
-            </div>
-            <p className="lede">
-              {site.offer.primary} {site.offer.later}
-            </p>
+          <div className="hero-home">
+            <h1 className="home-headline">{homeCopy.headline}</h1>
+            <p className="lede">{homeCopy.subhead}</p>
           </div>
         </div>
       </section>
 
-      <section className="section section-tan" id="capacity">
+      <section className="home-proof-strip" aria-label="Hardware">
         <div className="wrap">
-          <div className="section-head">
-            <div>
-              <p className="kicker">Human touch</p>
-              <h2>Humans in the loop.</h2>
-            </div>
-            <p className="lede">{site.offer.capacity}</p>
-          </div>
+          <p>{homeCopy.proof}</p>
+          <a href={HOME_NVIDIA_SPARK_HREF} target="_blank" rel="noopener">
+            {homeCopy.proofLinkLabel}
+          </a>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section home-pillar" id="costs">
         <div className="wrap">
-          <div className="section-head">
-            <div>
-              <p className="kicker">Clients</p>
-              <h2>Selective about clients, not exclusive to an industry.</h2>
-            </div>
-            <div>
-              <p className="lede">
-                Fit is a volume of conversations, a calendar that matters, and an
-                operator who will give us real numbers. The door is open for
-                manufacturing and the right larger project.
-              </p>
-              <div className="pill-row">
-                {verticals.map((item) => (
-                  <span className="pill" key={item}>
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+          <h2>{homeCopy.costTitle}</h2>
+          <p className="lede">{homeCopy.costBody}</p>
         </div>
       </section>
 
-      <section className="section" id="faq" aria-labelledby="faq-heading">
+      <section className="section section-tan home-pillar" id="security">
         <div className="wrap">
-          <p className="kicker">FAQ</p>
-          <h2 id="faq-heading">Common questions.</h2>
-          <div className="site-faq">
-            {siteFaqs.map((item) => (
-              <div className="faq-item" key={item.question}>
-                <h3>{item.question}</h3>
-                <p>{item.answer}</p>
-              </div>
-            ))}
-          </div>
+          <h2>{homeCopy.securityTitle}</h2>
+          <p className="lede">{homeCopy.securityBody}</p>
         </div>
       </section>
 
-      <section className="section section-tan cta-band">
+      <section className="section home-pillar" id="data">
         <div className="wrap">
-          <p className="kicker">Next</p>
-          <h2>Start your AI Opportunity Map, or write us.</h2>
-          <p className="lede" style={{ marginBottom: "1.6rem" }}>
-            Starting at {site.prices.analysisTypical}. It is not a complimentary
-            sales call. Sarah is in the header if you want to talk first.
-          </p>
-          <div className="btn-row">
-            <IntakeLink className="btn">{site.offer.cta}</IntakeLink>
-            <Link className="btn" href="/contact">
-              Write us
-            </Link>
-          </div>
+          <h2>{homeCopy.dataTitle}</h2>
+          <p className="lede">{homeCopy.dataBody}</p>
+        </div>
+      </section>
+
+      <section className="home-productivity" id="productivity">
+        <div className="wrap">
+          <h2>{homeCopy.productivityTitle}</h2>
+          <p>{homeCopy.productivityBody}</p>
+          <p className="home-footnote">{homeCopy.productivityFootnote}</p>
+        </div>
+      </section>
+
+      <section className="section cta-band home-cta">
+        <div className="wrap">
+          <IntakeLink className="btn btn-solid">{homeCopy.cta}</IntakeLink>
         </div>
       </section>
     </>

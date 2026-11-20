@@ -4,8 +4,9 @@ export type SiteFaq = {
 };
 
 /**
- * Homepage FAQ visible copy is the source of truth for FAQPage JSON-LD.
- * Do not invent extra Super Intelligence claims or a market-wide rename.
+ * Shared Super Intelligence Q&A for FAQ helper knowledge and FAQPage JSON-LD
+ * when that Q&A is rendered. Do not invent extra Super Intelligence claims
+ * or a market-wide rename.
  */
 export const siteFaqs = [
   {

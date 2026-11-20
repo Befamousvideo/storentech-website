@@ -1,39 +1,53 @@
+import { HOME_META_DESCRIPTION } from "@/lib/home";
 import { site } from "@/lib/site";
 
-export function JsonLd() {
-  const data = {
-    "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "ProfessionalService"],
-    name: site.name,
-    url: site.url,
-    logo: `${site.url}${site.brand.mark}`,
-    image: `${site.url}/opengraph-image`,
-    description: site.description,
-    areaServed: [{ "@type": "AdministrativeArea", name: "Orange County" }],
-    priceRange: "$$$",
-    openingHours: "Mo-Fr 09:00-17:00",
-    sameAs: ["https://www.linkedin.com/company/storentechai"],
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: site.offer.primaryTitle,
-      itemListElement: [
-        {
-          "@type": "Offer",
+export function JsonLd({ omitPricing = false }: { omitPricing?: boolean } = {}) {
+  const data = omitPricing
+    ? {
+        "@context": "https://schema.org",
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        name: site.name,
+        url: site.url,
+        logo: `${site.url}${site.brand.mark}`,
+        image: `${site.url}/opengraph-image`,
+        description: HOME_META_DESCRIPTION,
+        areaServed: [{ "@type": "AdministrativeArea", name: "Orange County" }],
+        openingHours: "Mo-Fr 09:00-17:00",
+        sameAs: ["https://www.linkedin.com/company/storentechai"],
+      }
+    : {
+        "@context": "https://schema.org",
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        name: site.name,
+        url: site.url,
+        logo: `${site.url}${site.brand.mark}`,
+        image: `${site.url}/opengraph-image`,
+        description: site.description,
+        areaServed: [{ "@type": "AdministrativeArea", name: "Orange County" }],
+        priceRange: "$$$",
+        openingHours: "Mo-Fr 09:00-17:00",
+        sameAs: ["https://www.linkedin.com/company/storentechai"],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
           name: site.offer.primaryTitle,
-          description: site.offer.primary,
-          price: "1000",
-          priceCurrency: "USD",
-          itemOffered: {
-            "@type": "Service",
-            name: site.offer.primaryTitle,
-            alternateName: site.offer.explanatoryName,
-            description: `${site.offer.primary} ${site.offer.later}`,
-            url: `${site.url}/opportunity`,
-          },
+          itemListElement: [
+            {
+              "@type": "Offer",
+              name: site.offer.primaryTitle,
+              description: site.offer.primary,
+              price: "1000",
+              priceCurrency: "USD",
+              itemOffered: {
+                "@type": "Service",
+                name: site.offer.primaryTitle,
+                alternateName: site.offer.explanatoryName,
+                description: `${site.offer.primary} ${site.offer.later}`,
+                url: `${site.url}/opportunity`,
+              },
+            },
+          ],
         },
-      ],
-    },
-  };
+      };
 
   return (
     <script

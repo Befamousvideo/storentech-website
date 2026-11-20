@@ -9,6 +9,7 @@ import { metadata as privacyMetadata } from "@/app/privacy/page";
 import { metadata as termsMetadata } from "@/app/terms/page";
 import { SiteChrome } from "@/components/SiteChrome";
 import { blogJsonLdDate, blogPosts, getPost, postPath, postUrl } from "@/lib/blog";
+import { HOME_META_DESCRIPTION } from "@/lib/home";
 import {
   RELATED_POST_COUNT,
   SITE_FALLBACK_OG_IMAGE,
@@ -76,10 +77,10 @@ describe("SEO-1: homepage canonical and Organization", () => {
     const { container } = render(<HomePage />);
     const blocks = jsonLdBlocks(container);
     const types = topLevelTypes(blocks);
-    expect(types).toEqual(["Organization", "FAQPage"]);
+    expect(types).toEqual(["Organization"]);
     expect(new Set(types).size).toBe(types.length);
     expect(blocks.find((block) => block["@type"] === "Organization")).toEqual(
-      organizationLd(),
+      organizationLd({ description: HOME_META_DESCRIPTION }),
     );
     expect(organizationLd().name).toBe("StorenTech AI");
     expect(organizationLd()).not.toHaveProperty("telephone");
@@ -98,9 +99,10 @@ describe("SEO-1: homepage canonical and Organization", () => {
       "LocalBusiness",
       "ProfessionalService",
       "Organization",
-      "FAQPage",
     ]);
     expect(new Set(types).size).toBe(types.length);
+    expect(JSON.stringify(jsonLdBlocks(container))).not.toMatch(/\$[\d,]+/);
+    expect(JSON.stringify(jsonLdBlocks(container))).not.toContain('"price":"1000"');
   });
 
   it("fills LocalBusiness sameAs and omits address, telephone, and email", () => {

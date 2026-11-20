@@ -24,7 +24,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      {hideJsonLd(pathname) ? null : <JsonLd />}
+      {hideJsonLd(pathname) ? null : <JsonLd omitPricing={pathname === "/"} />}
       <Header quiet={quiet} />
       <main id="main">{children}</main>
       <Footer quiet={quiet} />
