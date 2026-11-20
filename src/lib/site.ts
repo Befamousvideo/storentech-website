@@ -4,10 +4,36 @@ export const BOOKING_CTA_HREF =
 
 const DEFAULT_INTAKE_URL = BOOKING_CTA_HREF;
 const ONB1_INTAKE_URL = "https://onboarding.storentechai.com";
+export const DEFAULT_INTERVIEW_URL =
+  "https://onb1-demo.vercel.app/i/storentech" as const;
+export const INTERVIEW_CTA_ATTR = "onb1-interview" as const;
+export const INTERVIEW_UTM = {
+  utm_source: "storentech-website",
+  utm_medium: "cta",
+  utm_campaign: "onb1-interview",
+} as const;
 
 function resolveIntakeUrl(raw: string | undefined) {
   const candidate = raw?.trim();
   return candidate || DEFAULT_INTAKE_URL;
+}
+
+function resolveAbsoluteUrl(raw: string | undefined, fallback: string) {
+  const candidate = raw?.trim();
+  if (!candidate) return fallback;
+  try {
+    return new URL(candidate).toString();
+  } catch {
+    return fallback;
+  }
+}
+
+export function withInterviewUtm(raw: string) {
+  const url = new URL(resolveAbsoluteUrl(raw, DEFAULT_INTERVIEW_URL));
+  url.searchParams.set("utm_source", INTERVIEW_UTM.utm_source);
+  url.searchParams.set("utm_medium", INTERVIEW_UTM.utm_medium);
+  url.searchParams.set("utm_campaign", INTERVIEW_UTM.utm_campaign);
+  return url.toString();
 }
 
 function resolveSiteUrl(raw: string | undefined) {
@@ -29,6 +55,8 @@ export const offer = {
     "After the map, the Build Plan is how we build what pays. Builds may include voice agents, website chat, operations automation, web apps, mobile apps, and custom-built solutions.",
   cta: "Start your AI Opportunity Map",
   ctaShort: "Start your map",
+  interviewCta: "Start your free AI assessment",
+  interviewCtaShort: "AI assessment",
   capacity:
     "When AI takes the grind, your people get time back for the work that needs a human, so more gets done and the human touch stays where customers feel it.",
   services:
@@ -37,6 +65,13 @@ export const offer = {
 
 // Start-your-map CTA. Calendar booking; set NEXT_PUBLIC_INTAKE_URL to ONB1 when gated live.
 export const intakeUrl = resolveIntakeUrl(process.env.NEXT_PUBLIC_INTAKE_URL);
+
+// Public ONB1 interview. Override with NEXT_PUBLIC_INTERVIEW_URL when it moves to a subdomain.
+export const interviewUrl = resolveAbsoluteUrl(
+  process.env.NEXT_PUBLIC_INTERVIEW_URL,
+  DEFAULT_INTERVIEW_URL,
+);
+export const interviewCtaHref = withInterviewUtm(interviewUrl);
 
 export const site = {
   name: "StorenTech AI",
@@ -83,6 +118,8 @@ export const site = {
   },
   intakeUrl,
   intakeOnb1Url: ONB1_INTAKE_URL,
+  interviewUrl,
+  interviewCtaHref,
 } as const;
 
 export const nav = [

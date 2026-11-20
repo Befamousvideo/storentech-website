@@ -26,7 +26,7 @@ export type FaqHelperResponse = {
   matched: boolean;
 };
 
-const HANDOFF_SENTENCE = `This helper cannot book a time or take a message. To start a paid AI Opportunity Map, use “${site.offer.cta}.”`;
+const HANDOFF_SENTENCE = `This helper cannot book a time or take a message. To start a paid AI Opportunity Map, use “${site.offer.interviewCta}.”`;
 
 const RESPONSES = {
   unknown: `I don't have a reviewed website answer for that. This is FAQ assistance, not live generative AI. ${HANDOFF_SENTENCE}`,

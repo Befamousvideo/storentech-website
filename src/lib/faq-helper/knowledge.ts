@@ -22,8 +22,8 @@ export type FaqKnowledgeEntry = {
 const SI_FAQ = homepageFaqs[0];
 
 export const FAQ_HELPER_HANDOFF = {
-  label: site.offer.cta,
-  hrefFrom: "site.intakeUrl",
+  label: site.offer.interviewCta,
+  hrefFrom: "site.interviewCtaHref",
 } as const;
 
 export const faqKnowledgeEntries = [

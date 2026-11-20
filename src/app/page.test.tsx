@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import HomePage from "@/app/page";
 import { organizationLd } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { INTERVIEW_CTA_ATTR, site } from "@/lib/site";
 import { siteFaqPageLd, siteFaqs } from "@/lib/site-faqs";
 
 const HOMEPAGE_UNDER_HEADLINE =
@@ -35,6 +35,19 @@ describe("Home page hero", () => {
     expect(underHeadline).toHaveClass("lede");
     expect(headline.nextElementSibling).toBe(underHeadline);
     expect(container.querySelectorAll("h1")).toHaveLength(1);
+  });
+
+  it("puts the ONB1 interview first in the hero, with booking as the secondary CTA", () => {
+    const { container } = render(<HomePage />);
+    const hero = container.querySelector("section.hero");
+    const buttons = [...(hero?.querySelectorAll(".btn-row a") ?? [])];
+
+    expect(buttons[0]).toHaveTextContent(site.offer.interviewCta);
+    expect(buttons[0]).toHaveAttribute("href", site.interviewCtaHref);
+    expect(buttons[0]).toHaveAttribute("data-cta", INTERVIEW_CTA_ATTR);
+    expect(buttons[0]).toHaveClass("btn-solid");
+    expect(buttons[1]).toHaveTextContent(site.offer.cta);
+    expect(buttons[1]).toHaveAttribute("href", site.intakeUrl);
   });
 });
 

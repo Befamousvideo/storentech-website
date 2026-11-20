@@ -24,7 +24,7 @@ describe("SiteChrome FAQ helper mount", () => {
 
     expect(screen.getByRole("button", { name: "FAQ help" })).toBeInTheDocument();
     expect(
-      screen.getAllByRole("link", { name: site.offer.ctaShort }).length,
+      screen.getAllByRole("link", { name: site.offer.interviewCtaShort }).length,
     ).toBeGreaterThan(0);
   });
 
@@ -39,7 +39,7 @@ describe("SiteChrome FAQ helper mount", () => {
     await user.click(screen.getByRole("button", { name: "FAQ help" }));
     expect(screen.getByRole("dialog", { name: "FAQ assistance" })).toBeInTheDocument();
     expect(
-      screen.getAllByRole("link", { name: site.offer.ctaShort }).length,
+      screen.getAllByRole("link", { name: site.offer.interviewCtaShort }).length,
     ).toBeGreaterThan(0);
   });
 

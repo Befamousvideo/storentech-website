@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IntakeLink } from "@/components/IntakeLink";
+import { InterviewLink } from "@/components/InterviewLink";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { StructuredData } from "@/components/StructuredData";
 import { siteFallbackOgImages } from "@/lib/seo";
@@ -61,8 +62,11 @@ export default function AiOpportunityMapPage() {
           <hr className="rule" />
           <p className="lede">{site.offer.primary}</p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
+            <InterviewLink className="btn btn-solid">
+              {site.offer.interviewCta}
+            </InterviewLink>
             <IntakeLink
-              className="btn btn-solid"
+              className="btn"
               analyticsEvent="opportunity_cta_click"
             >
               {site.offer.cta}

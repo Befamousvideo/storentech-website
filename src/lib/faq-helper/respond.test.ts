@@ -77,7 +77,7 @@ describe("FAQ helper answers", () => {
     expect(booked.intent).toBe("booking");
     expect(booked.matched).toBe(false);
     expect(booked.text).toMatch(/cannot book/i);
-    expect(booked.text).toContain(site.offer.cta);
+    expect(booked.text).toContain(site.offer.interviewCta);
     expect(booked.showHandoff).toBe(true);
 
     expectUnknownish("Are you available Friday?", "booking");

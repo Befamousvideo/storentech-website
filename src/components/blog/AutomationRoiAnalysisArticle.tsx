@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { IntakeLink } from "@/components/IntakeLink";
+import { InterviewLink } from "@/components/InterviewLink";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { site } from "@/lib/site";
 import type { BlogPost } from "@/lib/blog";
@@ -234,7 +235,10 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
         <section className="blog-cta" aria-labelledby="ready-heading">
           <h2 id="ready-heading">Ready when you are</h2>
           <div className="btn-row">
-            <IntakeLink className="btn btn-solid">
+            <InterviewLink className="btn btn-solid">
+              {site.offer.interviewCta}
+            </InterviewLink>
+            <IntakeLink className="btn">
               Start your AI Opportunity Map
             </IntakeLink>
             <SarahPhoneImage className="sarah-phone" />

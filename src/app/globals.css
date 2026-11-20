@@ -1513,8 +1513,9 @@ select {
   }
 
   .header-actions .btn-solid {
-    padding: 0.75rem 0.85rem;
-    font-size: 0.62rem;
+    padding: 0.75rem 0.7rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
   }
 
   .demo-card {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IntakeLink } from "@/components/IntakeLink";
+import { InterviewLink } from "@/components/InterviewLink";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { retainers, site, workGroups } from "@/lib/site";
 
@@ -88,6 +89,9 @@ export default function WorkPage() {
           <h2>Pay for the map. Then the Build Plan.</h2>
           <div className="btn-row" style={{ marginTop: "1.5rem" }}>
             <SarahPhoneImage className="sarah-phone" />
+            <InterviewLink className="btn btn-solid">
+              {site.offer.interviewCta}
+            </InterviewLink>
             <IntakeLink className="btn">{site.offer.cta}</IntakeLink>
           </div>
         </div>

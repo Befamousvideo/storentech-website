@@ -47,3 +47,7 @@ export function trackGenerateLead() {
 export function trackOpportunityCtaClick() {
   trackEvent("opportunity_cta_click");
 }
+
+export function trackInterviewCtaClick() {
+  trackEvent("interview_cta_click", { cta: "onb1-interview" });
+}

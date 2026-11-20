@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
-import { IntakeLink } from "@/components/IntakeLink";
+import { InterviewLink } from "@/components/InterviewLink";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { LAW_COPY, LAW_CTA_ANCHOR } from "@/lib/law-landing";
 import { nav, offer } from "@/lib/site";
@@ -39,9 +39,9 @@ function HeaderOfferCta({
   }
 
   return (
-    <IntakeLink className={className} onClick={onClick}>
-      {offer.ctaShort}
-    </IntakeLink>
+    <InterviewLink className={className} onClick={onClick}>
+      {compact ? offer.interviewCtaShort : offer.interviewCta}
+    </InterviewLink>
   );
 }
 

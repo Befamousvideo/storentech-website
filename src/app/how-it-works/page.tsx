@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IntakeLink } from "@/components/IntakeLink";
+import { InterviewLink } from "@/components/InterviewLink";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { site } from "@/lib/site";
 
@@ -44,7 +45,10 @@ export default function HowItWorksPage() {
             the map.
           </p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
-            <IntakeLink className="btn btn-solid">{site.offer.cta}</IntakeLink>
+            <InterviewLink className="btn btn-solid">
+              {site.offer.interviewCta}
+            </InterviewLink>
+            <IntakeLink className="btn">{site.offer.cta}</IntakeLink>
             <SarahPhoneImage className="sarah-phone" />
           </div>
         </div>

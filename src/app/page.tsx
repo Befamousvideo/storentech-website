@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { IntakeLink } from "@/components/IntakeLink";
+import { InterviewLink } from "@/components/InterviewLink";
 import { SarahContact } from "@/components/SarahContact";
 import { StructuredData } from "@/components/StructuredData";
 import { organizationLd } from "@/lib/seo";
@@ -20,6 +21,9 @@ export default function HomePage() {
             <hr className="rule" />
             <p className="lede">{site.offer.primary}</p>
             <div className="btn-row">
+              <InterviewLink className="btn btn-solid">
+                {site.offer.interviewCta}
+              </InterviewLink>
               <IntakeLink className="btn">{site.offer.cta}</IntakeLink>
             </div>
             <div className="fine hero-contact">
@@ -117,6 +121,9 @@ export default function HomePage() {
             sales call. Sarah is in the header if you want to talk first.
           </p>
           <div className="btn-row">
+            <InterviewLink className="btn btn-solid">
+              {site.offer.interviewCta}
+            </InterviewLink>
             <IntakeLink className="btn">{site.offer.cta}</IntakeLink>
             <Link className="btn" href="/contact">
               Write us
