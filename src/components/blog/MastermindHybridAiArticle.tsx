@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { MapValueCard } from "@/components/MapValueCard";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { site } from "@/lib/site";
 import type { BlogFaq, BlogPost } from "@/lib/blog";
@@ -327,15 +328,15 @@ export function MastermindHybridAiArticle({ post }: { post: BlogPost }) {
         </ul>
 
         <h2>Soft door: start with the AI Opportunity Map</h2>
+        <MapValueCard showComplex />
         <p>
           Hybrid Mastermind is a <strong>design outcome</strong>, not a cold
           open. StorenTech starts every client with a paid{" "}
-          <strong>AI Opportunity Map</strong> (typically{" "}
-          <strong>$1,000</strong>; <strong>$2,000–$3,000</strong> when
-          complex). That engagement maps your workflows, quantifies leaks with{" "}
-          <em>your</em> numbers, and ranks which AI employee or automation lane
-          to hire first — including whether a local/frontier hybrid (and any
-          on-prem compute) belongs in the roadmap at all.
+          <strong>AI Opportunity Map</strong>. That engagement maps your
+          workflows, quantifies leaks with <em>your</em> numbers, and ranks
+          which AI employee or automation lane to hire first — including
+          whether a local/frontier hybrid (and any on-prem compute) belongs in
+          the roadmap at all.
         </p>
         <p>
           If the math does not hold, you keep the map. If it does, we design

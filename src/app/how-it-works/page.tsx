@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { IntakeLink } from "@/components/IntakeLink";
+import { InterviewLink } from "@/components/InterviewLink";
+import { MapValueCard } from "@/components/MapValueCard";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { site } from "@/lib/site";
 
@@ -16,7 +18,7 @@ const moves = [
   {
     n: "01",
     title: "AI Opportunity Map",
-    body: `Typical fee ${site.prices.analysisTypical}. ${site.prices.analysisComplex} when the operation is complex — multiple locations, a messy stack, or a wider catalog. You get a ranked map: where time and revenue hide, what to fix first, what can wait. This is paid work. It is not a complimentary sales call.`,
+    body: `When the operation is complex — multiple locations, a messy stack, or a wider catalog — the fee is ${site.prices.analysisComplex}. This is paid work. It is not a complimentary sales call.`,
   },
   {
     n: "02",
@@ -44,7 +46,10 @@ export default function HowItWorksPage() {
             the map.
           </p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
-            <IntakeLink className="btn btn-solid">{site.offer.cta}</IntakeLink>
+            <InterviewLink className="btn btn-solid">
+              {site.offer.interviewCta}
+            </InterviewLink>
+            <IntakeLink className="btn">{site.offer.bookingCta}</IntakeLink>
             <SarahPhoneImage className="sarah-phone" />
           </div>
         </div>
@@ -62,6 +67,7 @@ export default function HowItWorksPage() {
                 <div className="n">{move.n}</div>
                 <div>
                   <h3>{move.title}</h3>
+                  {move.n === "01" ? <MapValueCard showComplex /> : null}
                   <p>{move.body}</p>
                 </div>
               </article>

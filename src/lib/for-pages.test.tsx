@@ -344,6 +344,9 @@ describe("company preview /for pages", () => {
     expect(html).not.toContain("Call Sarah");
     expect(html).not.toContain(site.offer.ctaShort);
     expect(html).not.toContain(site.offer.cta);
+    expect(html).not.toContain(site.offer.interviewCtaShort);
+    expect(html).not.toContain(site.offer.interviewCta);
+    expect(html).not.toContain(site.offer.bookingCta);
     expect(container.querySelector(`img[src="${site.phones.sarah.image}"]`)).toBeNull();
     expect(container.querySelector('img[alt="Call Sarah"]')).toBeNull();
     for (const snippet of FORBIDDEN_HTML) {

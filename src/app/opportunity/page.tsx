@@ -1,26 +1,30 @@
 import type { Metadata } from "next";
 import { IntakeLink } from "@/components/IntakeLink";
+import { InterviewLink } from "@/components/InterviewLink";
+import { MapValueCard } from "@/components/MapValueCard";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { StructuredData } from "@/components/StructuredData";
 import { siteFallbackOgImages } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { mapValue, site } from "@/lib/site";
+
+const opportunityDescription = `${mapValue.lede} ${site.offer.priceLine}`;
 
 const ogImages = siteFallbackOgImages();
 
 export const metadata: Metadata = {
   title: "AI Opportunity Map",
-  description: site.offer.primary,
+  description: opportunityDescription,
   alternates: { canonical: "/opportunity" },
   openGraph: {
     title: "AI Opportunity Map · StorenTech AI",
-    description: site.offer.primary,
+    description: opportunityDescription,
     url: "/opportunity",
     images: ogImages,
   },
   twitter: {
     card: "summary_large_image",
     title: "AI Opportunity Map · StorenTech AI",
-    description: site.offer.primary,
+    description: opportunityDescription,
     images: ogImages,
   },
 };
@@ -44,7 +48,7 @@ const serviceLd = {
   offers: {
     "@type": "Offer",
     name: site.offer.primaryTitle,
-    description: site.offer.primary,
+    description: opportunityDescription,
     price: "1000",
     priceCurrency: "USD",
   },
@@ -56,17 +60,19 @@ export default function AiOpportunityMapPage() {
       <StructuredData data={serviceLd} />
       <header className="page-hero">
         <div className="wrap">
-          <p className="kicker">Starting at {site.prices.analysisTypical}</p>
+          <p className="kicker">Paid work</p>
           <h1>{site.offer.primaryTitle}</h1>
           <hr className="rule" />
           <p className="lede">{site.offer.primary}</p>
-          <div className="btn-row" style={{ marginTop: "1.7rem" }}>
-            <IntakeLink
+          <MapValueCard />
+          <div className="btn-row" style={{ marginTop: "0.4rem" }}>
+            <InterviewLink
               className="btn btn-solid"
               analyticsEvent="opportunity_cta_click"
             >
-              {site.offer.cta}
-            </IntakeLink>
+              {site.offer.interviewCta}
+            </InterviewLink>
+            <IntakeLink className="btn">{site.offer.bookingCta}</IntakeLink>
             <SarahPhoneImage className="sarah-phone" />
           </div>
         </div>

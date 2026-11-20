@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { MapValueCard } from "@/components/MapValueCard";
 import type { BlogPost } from "@/lib/blog";
 
 function ExternalLink({
@@ -299,10 +300,7 @@ export function NvidiaAiAgentSafetyArticle({ post }: { post: BlogPost }) {
           includes vendor diligence, so you know which tools deserve your trust
           before you commit. If it makes sense, the next step is a Build Plan.
         </p>
-        <p>
-          The AI Opportunity Map is $1,000, or $2,000 to $3,000 when the work is
-          more complex.
-        </p>
+        <MapValueCard showComplex />
         <p>
           We work with small and mid-size businesses across Orange County.{" "}
           <strong>

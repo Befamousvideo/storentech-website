@@ -1,4 +1,4 @@
-import { site } from "@/lib/site";
+import { mapValue, site } from "@/lib/site";
 
 export function JsonLd() {
   const data = {
@@ -20,7 +20,7 @@ export function JsonLd() {
         {
           "@type": "Offer",
           name: site.offer.primaryTitle,
-          description: site.offer.primary,
+          description: `${mapValue.lede} ${site.offer.priceLine}`,
           price: "1000",
           priceCurrency: "USD",
           itemOffered: {
