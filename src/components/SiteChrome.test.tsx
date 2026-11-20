@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -53,5 +55,15 @@ describe("SiteChrome FAQ helper mount", () => {
 
     expect(screen.queryByRole("button", { name: "FAQ help" })).not.toBeInTheDocument();
     expect(screen.queryByText("FAQ assistance")).not.toBeInTheDocument();
+  });
+});
+
+describe("header layout", () => {
+  it("sizes logo and actions to content so the phone badge cannot cover About", () => {
+    const css = readFileSync(join(process.cwd(), "src/app/globals.css"), "utf8");
+    expect(css).toMatch(
+      /\.header-inner \{[\s\S]*?grid-template-columns: auto minmax\(0, 1fr\) auto/,
+    );
+    expect(css).toMatch(/\.header-actions \{[\s\S]*?min-width: min-content/);
   });
 });

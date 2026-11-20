@@ -55,8 +55,8 @@ export const offer = {
     "After the map, the Build Plan is how we build what pays. Builds may include voice agents, website chat, operations automation, web apps, mobile apps, and custom-built solutions.",
   cta: "Start your AI Opportunity Map",
   ctaShort: "Start your map",
-  interviewCta: "Start AI Opp Map interview",
-  interviewCtaShort: "Opp Map interview",
+  interviewCta: "Start AI Opportunity Map interview",
+  interviewCtaShort: "Start your map",
   bookingCta: "Book a call",
   capacity:
     "When AI takes the grind, your people get time back for the work that needs a human, so more gets done and the human touch stays where customers feel it.",

@@ -74,9 +74,20 @@ describe("intake CTA URL", () => {
     );
     expect(site.offer.cta).toBe("Start your AI Opportunity Map");
     expect(site.offer.ctaShort).toBe("Start your map");
-    expect(site.offer.interviewCta).toBe("Start AI Opp Map interview");
-    expect(site.offer.interviewCtaShort).toBe("Opp Map interview");
+    expect(site.offer.interviewCta).toBe("Start AI Opportunity Map interview");
+    expect(site.offer.interviewCtaShort).toBe("Start your map");
     expect(site.offer.bookingCta).toBe("Book a call");
+  });
+
+  it("does not use Opp shorthand in public source", () => {
+    const files = SCAN_ROOTS.flatMap((root) => collectFiles(root));
+    const banned = new RegExp("\\b" + "Opp" + "\\b");
+
+    for (const file of files) {
+      if (file.endsWith("intake-url.test.ts")) continue;
+      const text = readFileSync(file, "utf8");
+      expect(text, relative(process.cwd(), file)).not.toMatch(banned);
+    }
   });
 
   it("does not use AI assessment wording in public source", () => {

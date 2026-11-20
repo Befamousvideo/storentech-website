@@ -148,7 +148,7 @@ select {
 .header-inner {
   height: var(--header-h);
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 16px;
 }
@@ -197,7 +197,9 @@ select {
 .nav-desktop {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1.65rem;
+  min-width: 0;
 }
 
 .nav-desktop a {
@@ -221,7 +223,7 @@ select {
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
-  min-width: 0;
+  min-width: min-content;
 }
 
 .header-actions .btn {
