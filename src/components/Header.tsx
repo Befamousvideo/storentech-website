@@ -57,6 +57,7 @@ export function Header({
   quiet?: boolean;
 }) {
   const pathname = usePathname() ?? "";
+  const lawHeader = isLawRoot(pathname);
   const [open, setOpen] = useState(false);
   const menuToggleRef = useRef<HTMLButtonElement>(null);
 
@@ -74,7 +75,7 @@ export function Header({
 
   return (
     <header
-      className={`site-header${isLawRoot(pathname) ? " site-header-law" : ""}`}
+      className={`site-header${lawHeader ? " site-header-law" : ""}`}
     >
       <div className={`wrap header-inner${slim ? " header-inner-slim" : ""}`}>
         <Link
@@ -102,16 +103,16 @@ export function Header({
 
         {slim ? null : (
           <div className="header-actions">
-            {quiet ? null : (
+            {lawHeader && !quiet ? (
               <SarahPhoneImage className="sarah-phone header-sarah-phone" />
-            )}
-            {quiet ? null : (
+            ) : null}
+            {lawHeader && !quiet ? (
               <HeaderOfferCta
                 pathname={pathname}
                 className="btn btn-solid"
                 compact
               />
-            )}
+            ) : null}
             <button
               ref={menuToggleRef}
               className="menu-toggle"
@@ -146,7 +147,9 @@ export function Header({
           </nav>
           {quiet ? null : (
             <div className="mobile-actions">
-              <SarahPhoneImage className="sarah-phone header-sarah-phone" />
+              {lawHeader ? (
+                <SarahPhoneImage className="sarah-phone header-sarah-phone" />
+              ) : null}
               <HeaderOfferCta
                 pathname={pathname}
                 className="btn btn-solid"

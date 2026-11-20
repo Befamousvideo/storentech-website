@@ -418,7 +418,7 @@ describe("/law landing page", () => {
     expect(headerSource).toContain("pathname === \"/law\"");
   });
 
-  it("keeps the interview header CTA on / and /contractors", () => {
+  it("keeps interview out of the compact header on / and /contractors", () => {
     pathnameMock.mockReturnValue("/");
     const home = render(
       <SiteChrome>
@@ -426,13 +426,12 @@ describe("/law landing page", () => {
       </SiteChrome>,
     );
     const homeHeader = home.container.querySelector("header.site-header");
-    const homeCtas = within(homeHeader as HTMLElement).getAllByRole("link", {
-      name: site.offer.interviewCtaShort,
-    });
-    expect(homeCtas.length).toBeGreaterThanOrEqual(1);
-    for (const cta of homeCtas) {
-      expect(cta).toHaveAttribute("href", site.interviewCtaHref);
-    }
+    const homeActions = homeHeader?.querySelector(".header-actions");
+    expect(homeActions?.querySelector("a.btn-solid")).toBeNull();
+    expect(homeActions?.querySelector(".header-sarah-phone")).toBeNull();
+    const homeDrawer = homeHeader?.querySelector(".mobile-actions a.btn-solid");
+    expect(homeDrawer).toHaveTextContent(site.offer.interviewCta);
+    expect(homeDrawer).toHaveAttribute("href", site.interviewCtaHref);
     expect(
       within(homeHeader as HTMLElement).queryByRole("link", {
         name: LAW_COPY.headerCtaLabel,
@@ -454,13 +453,14 @@ describe("/law landing page", () => {
     const contractorsHeader = contractors.container.querySelector(
       "header.site-header",
     );
-    const contractorCtas = within(
-      contractorsHeader as HTMLElement,
-    ).getAllByRole("link", { name: site.offer.interviewCtaShort });
-    expect(contractorCtas.length).toBeGreaterThanOrEqual(1);
-    for (const cta of contractorCtas) {
-      expect(cta).toHaveAttribute("href", site.interviewCtaHref);
-    }
+    const contractorActions = contractorsHeader?.querySelector(".header-actions");
+    expect(contractorActions?.querySelector("a.btn-solid")).toBeNull();
+    expect(contractorActions?.querySelector(".header-sarah-phone")).toBeNull();
+    const contractorDrawer = contractorsHeader?.querySelector(
+      ".mobile-actions a.btn-solid",
+    );
+    expect(contractorDrawer).toHaveTextContent(site.offer.interviewCta);
+    expect(contractorDrawer).toHaveAttribute("href", site.interviewCtaHref);
     expect(
       within(contractorsHeader as HTMLElement).queryByRole("link", {
         name: LAW_COPY.headerCtaLabel,
