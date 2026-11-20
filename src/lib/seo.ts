@@ -121,7 +121,7 @@ export function relatedPostsFor(slug: string, count = RELATED_POST_COUNT) {
   return related;
 }
 
-export function organizationLd() {
+export function organizationLd(overrides?: { description?: string }) {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -129,7 +129,7 @@ export function organizationLd() {
     url: site.url,
     logo: `${site.url}${site.brand.mark}`,
     image: `${site.url}${SITE_FALLBACK_OG_IMAGE.url}`,
-    description: site.description,
+    description: overrides?.description ?? site.description,
   };
 }
 

@@ -200,7 +200,6 @@ export const faqKnowledgeEntries = [
     sources: [
       { path: "src/app/about/page.tsx", label: "About" },
       { path: "src/lib/site.ts", label: "Site copy" },
-      { path: "src/app/page.tsx", label: "Home" },
     ],
     matchPhrases: [
       "who do you work with",
@@ -234,8 +233,7 @@ export const faqKnowledgeEntries = [
     question: SI_FAQ.question,
     answer: SI_FAQ.answer,
     sources: [
-      { path: "src/lib/site-faqs.ts", label: "Home FAQ" },
-      { path: "src/app/page.tsx", label: "Home" },
+      { path: "src/lib/site-faqs.ts", label: "Site FAQ" },
     ],
     matchPhrases: [
       "super intelligence",
@@ -257,7 +255,7 @@ export const faqKnowledgeEntries = [
     answer: site.offer.capacity,
     sources: [
       { path: "src/lib/site.ts", label: "Site copy" },
-      { path: "src/app/page.tsx", label: "Home" },
+      { path: "src/app/how-it-works/page.tsx", label: "How it works" },
     ],
     matchPhrases: [
       "human touch",

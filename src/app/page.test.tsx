@@ -1,15 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import HomePage from "@/app/page";
+import HomePage, { metadata } from "@/app/page";
+import {
+  HOME_META_DESCRIPTION,
+  HOME_META_TITLE,
+  HOME_NVIDIA_SPARK_HREF,
+  homeCopy,
+} from "@/lib/home";
 import { organizationLd } from "@/lib/seo";
-import { site } from "@/lib/site";
-import { siteFaqPageLd, siteFaqs } from "@/lib/site-faqs";
-
-const HOMEPAGE_UNDER_HEADLINE =
-  "Whether you call it AI or Super Intelligence (SI), the first step is the same: find where it actually pays in your business.";
-const SI_QUESTION = "Is Super Intelligence (SI) different from AI?";
-const SI_ANSWER =
-  "For a business, it's the same family of tools under a newer name. What matters is where it saves time or brings in revenue, and that's what an AI Opportunity Map shows you.";
+import { BOOKING_CTA_HREF, site } from "@/lib/site";
 
 function homepageLd() {
   const { container } = render(<HomePage />);
@@ -17,78 +16,138 @@ function homepageLd() {
   return scripts.map((script) => JSON.parse(script.textContent ?? "{}"));
 }
 
-function homepageFaqLd() {
-  return homepageLd().find((data) => data["@type"] === "FAQPage");
+function homepageText() {
+  const { container } = render(<HomePage />);
+  return {
+    container,
+    text: container.textContent ?? "",
+    html: container.innerHTML,
+  };
 }
 
-describe("Home page hero", () => {
-  it("renders the SI under-headline immediately below the main headline", () => {
+describe("Home page copy", () => {
+  it("renders the approved headline, subhead, proof strip, pillars, and CTA in order", () => {
     const { container } = render(<HomePage />);
+    const text = container.textContent ?? "";
 
     const headline = screen.getByRole("heading", {
       level: 1,
-      name: site.offer.primaryTitle,
+      name: homeCopy.headline,
     });
-    const underHeadline = screen.getByText(HOMEPAGE_UNDER_HEADLINE);
-
-    expect(headline).toHaveClass("service-title");
-    expect(underHeadline).toHaveClass("lede");
-    expect(headline.nextElementSibling).toBe(underHeadline);
+    expect(headline).toHaveClass("home-headline");
+    expect(headline.nextElementSibling).toHaveTextContent(homeCopy.subhead);
     expect(container.querySelectorAll("h1")).toHaveLength(1);
+
+    const order = [
+      homeCopy.headline,
+      homeCopy.subhead,
+      homeCopy.proof,
+      homeCopy.proofLinkLabel,
+      homeCopy.costTitle,
+      homeCopy.costBody,
+      homeCopy.securityTitle,
+      homeCopy.securityBody,
+      homeCopy.dataTitle,
+      homeCopy.dataBody,
+      homeCopy.productivityTitle,
+      homeCopy.productivityBody,
+      homeCopy.productivityFootnote,
+      homeCopy.cta,
+    ];
+    let cursor = 0;
+    for (const chunk of order) {
+      const index = text.indexOf(chunk, cursor);
+      expect(index, chunk).toBeGreaterThanOrEqual(0);
+      cursor = index + chunk.length;
+    }
+  });
+
+  it("keeps the productivity block visually smaller than the three pillars", () => {
+    const { container } = render(<HomePage />);
+    const productivity = container.querySelector("#productivity");
+    const cost = container.querySelector("#costs");
+
+    expect(productivity).toHaveClass("home-productivity");
+    expect(cost).toHaveClass("home-pillar");
+    expect(productivity?.querySelector("h2")).toHaveTextContent(
+      homeCopy.productivityTitle,
+    );
+    expect(productivity?.querySelector(".home-footnote")).toHaveTextContent(
+      homeCopy.productivityFootnote,
+    );
+  });
+
+  it("links the NVIDIA proof strip in a new tab and the CTA to the existing intake URL", () => {
+    render(<HomePage />);
+
+    const nvidia = screen.getByRole("link", { name: homeCopy.proofLinkLabel });
+    expect(nvidia).toHaveAttribute("href", HOME_NVIDIA_SPARK_HREF);
+    expect(nvidia).toHaveAttribute("target", "_blank");
+    expect(nvidia).toHaveAttribute("rel", "noopener");
+
+    const cta = screen.getByRole("link", { name: homeCopy.cta });
+    expect(cta).toHaveAttribute("href", site.intakeUrl);
+    expect(cta).toHaveAttribute("href", BOOKING_CTA_HREF);
+    expect(cta).toHaveClass("btn", "btn-solid");
+  });
+});
+
+describe("Home page positioning guards", () => {
+  it("does not keep the old hero, prices, FAQ, or banned terms on the homepage", () => {
+    const { text, html } = homepageText();
+
+    expect(text).not.toContain("Whether you call it AI or Super Intelligence");
+    expect(text).not.toContain("Humans in the loop");
+    expect(text).not.toContain("Selective about clients");
+    expect(text).not.toContain("Common questions");
+    expect(text).not.toContain("Talk to Sarah");
+    expect(text).not.toContain("Starting at");
+    expect(text).not.toContain("$1,000");
+    expect(text).not.toContain(site.prices.analysisTypical);
+    expect(text).not.toMatch(/\bROIA\b/);
+    expect(text).not.toMatch(/\bOpp\b/);
+    expect(text.toLowerCase()).not.toMatch(/\bfree\b/);
+    expect(text.toLowerCase()).not.toContain("complimentary");
+    expect(text.toLowerCase()).not.toMatch(/on-?premises/);
+    expect(text).not.toMatch(
+      /\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s+DGX Sparks?\b/i,
+    );
+    expect(html).not.toContain("tel:");
+    expect(html).not.toContain("mailto:");
+  });
+
+  it("sets homepage title and description from the approved copy, with no price", () => {
+    expect(metadata.title).toEqual({ absolute: HOME_META_TITLE });
+    expect(metadata.description).toBe(HOME_META_DESCRIPTION);
+    expect(metadata.openGraph?.title).toBe(HOME_META_TITLE);
+    expect(metadata.openGraph?.description).toBe(HOME_META_DESCRIPTION);
+    expect(HOME_META_TITLE).toContain(homeCopy.headline);
+    expect(HOME_META_DESCRIPTION).toBe(homeCopy.subhead);
+    expect(JSON.stringify(metadata)).not.toMatch(/\$[\d,]+/);
+    expect(JSON.stringify(metadata).toLowerCase()).not.toMatch(/\bfree\b/);
+    expect(JSON.stringify(metadata)).not.toMatch(/\bROIA\b/);
+    expect(JSON.stringify(metadata).toLowerCase()).not.toMatch(/on-?premises/);
+    expect(JSON.stringify(metadata)).not.toMatch(
+      /\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s+DGX Sparks?\b/i,
+    );
   });
 });
 
 describe("Home page SEO", () => {
-  it("emits a single Organization JSON-LD block from approved site fields", () => {
+  it("emits a single Organization JSON-LD block without FAQPage or priced copy", () => {
     const blocks = homepageLd();
     const types = blocks.map((block) => block["@type"]);
-    expect(types).toEqual(["Organization", "FAQPage"]);
-    expect(blocks.find((block) => block["@type"] === "Organization")).toEqual(
-      organizationLd(),
+    expect(types).toEqual(["Organization"]);
+    expect(blocks[0]).toEqual(
+      organizationLd({ description: HOME_META_DESCRIPTION }),
     );
     expect(JSON.stringify(blocks)).not.toContain("tel:");
     expect(JSON.stringify(blocks)).not.toContain("mailto:");
-  });
-});
-
-describe("Home page FAQ", () => {
-  it("renders the exact Super Intelligence Q&A on the homepage FAQ", () => {
-    render(<HomePage />);
-
-    expect(siteFaqs).toEqual([{ question: SI_QUESTION, answer: SI_ANSWER }]);
-    expect(
-      screen.getByRole("heading", { level: 2, name: "Common questions." }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("heading", { level: 3, name: SI_QUESTION }),
-    ).toBeInTheDocument();
-    expect(screen.getByText(SI_ANSWER)).toBeInTheDocument();
-  });
-
-  it("keeps FAQPage JSON-LD in sync with the visible homepage Q&A", () => {
-    const faqLd = homepageFaqLd();
-
-    expect(faqLd).toEqual(siteFaqPageLd());
-    expect(faqLd.mainEntity).toHaveLength(1);
-    expect(faqLd.mainEntity[0]).toEqual({
-      "@type": "Question",
-      name: SI_QUESTION,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: SI_ANSWER,
-      },
-    });
-  });
-
-  it("does not invent extra SI claims or scrapeable contact in the new FAQ copy", () => {
-    const { container } = render(<HomePage />);
-    const faq = container.querySelector("#faq");
-    const text = faq?.textContent ?? "";
-    const html = faq?.innerHTML ?? "";
-
-    expect(text).not.toMatch(/OpenAI|Google|Anthropic|Meta|Nvidia|NVIDIA/i);
-    expect(text).not.toMatch(/renamed|rebrand/i);
-    expect(html).not.toContain("tel:");
-    expect(html).not.toContain("mailto:");
+    expect(JSON.stringify(blocks)).not.toMatch(/\$[\d,]+/);
+    expect(JSON.stringify(blocks)).not.toContain("FAQPage");
+    expect(JSON.stringify(blocks).toLowerCase()).not.toMatch(/on-?premises/);
+    expect(JSON.stringify(blocks)).not.toMatch(
+      /\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s+DGX Sparks?\b/i,
+    );
   });
 });
