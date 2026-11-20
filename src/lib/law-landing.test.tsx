@@ -379,17 +379,22 @@ describe("/law landing page", () => {
     expect(header?.innerHTML).not.toContain("onb1-demo.vercel.app");
     expect(
       within(header as HTMLElement).queryByRole("link", {
-        name: site.offer.ctaShort,
-      }),
-    ).toBeNull();
-    expect(
-      within(header as HTMLElement).queryByRole("link", {
         name: site.offer.interviewCtaShort,
       }),
     ).toBeNull();
     expect(
       within(header as HTMLElement).queryByRole("link", {
         name: site.offer.interviewCta,
+      }),
+    ).toBeNull();
+    expect(
+      within(header as HTMLElement).queryByRole("link", {
+        name: site.offer.ctaShort,
+      }),
+    ).toBeNull();
+    expect(
+      within(header as HTMLElement).queryByRole("link", {
+        name: site.offer.cta,
       }),
     ).toBeNull();
 
@@ -405,10 +410,10 @@ describe("/law landing page", () => {
       name: site.offer.interviewCta,
     });
     expect(footerInterview).toHaveAttribute("href", site.interviewCtaHref);
-    const footerMap = within(footer as HTMLElement).getByRole("link", {
-      name: site.offer.cta,
+    const footerBooking = within(footer as HTMLElement).getByRole("link", {
+      name: site.offer.bookingCta,
     });
-    expect(footerMap).toHaveAttribute("href", BOOKING_CTA_HREF);
+    expect(footerBooking).toHaveAttribute("href", BOOKING_CTA_HREF);
     expect(footerSource).toContain("IntakeLink");
     expect(headerSource).toContain("pathname === \"/law\"");
   });

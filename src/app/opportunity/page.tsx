@@ -62,15 +62,13 @@ export default function AiOpportunityMapPage() {
           <hr className="rule" />
           <p className="lede">{site.offer.primary}</p>
           <div className="btn-row" style={{ marginTop: "1.7rem" }}>
-            <InterviewLink className="btn btn-solid">
-              {site.offer.interviewCta}
-            </InterviewLink>
-            <IntakeLink
-              className="btn"
+            <InterviewLink
+              className="btn btn-solid"
               analyticsEvent="opportunity_cta_click"
             >
-              {site.offer.cta}
-            </IntakeLink>
+              {site.offer.interviewCta}
+            </InterviewLink>
+            <IntakeLink className="btn">{site.offer.bookingCta}</IntakeLink>
             <SarahPhoneImage className="sarah-phone" />
           </div>
         </div>

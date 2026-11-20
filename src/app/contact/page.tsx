@@ -28,7 +28,7 @@ export default function ContactPage() {
             <InterviewLink className="btn btn-solid">
               {site.offer.interviewCta}
             </InterviewLink>
-            <IntakeLink className="btn">{site.offer.cta}</IntakeLink>
+            <IntakeLink className="btn">{site.offer.bookingCta}</IntakeLink>
           </div>
         </div>
       </header>

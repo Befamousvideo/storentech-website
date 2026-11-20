@@ -46,7 +46,7 @@ describe("Home page hero", () => {
     expect(buttons[0]).toHaveAttribute("href", site.interviewCtaHref);
     expect(buttons[0]).toHaveAttribute("data-cta", INTERVIEW_CTA_ATTR);
     expect(buttons[0]).toHaveClass("btn-solid");
-    expect(buttons[1]).toHaveTextContent(site.offer.cta);
+    expect(buttons[1]).toHaveTextContent(site.offer.bookingCta);
     expect(buttons[1]).toHaveAttribute("href", site.intakeUrl);
   });
 });

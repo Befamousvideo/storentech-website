@@ -178,7 +178,7 @@ export function FaqHelper() {
               {offer.interviewCta}
             </InterviewLink>
             <IntakeLink className={`btn ${styles.handoff}`}>
-              {offer.cta}
+              {offer.bookingCta}
             </IntakeLink>
           </div>
         </section>

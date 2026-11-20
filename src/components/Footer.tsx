@@ -25,7 +25,7 @@ export function Footer({ quiet = false }: { quiet?: boolean }) {
             {quiet ? null : (
               <InterviewLink>{offer.interviewCta}</InterviewLink>
             )}
-            {quiet ? null : <IntakeLink>{offer.cta}</IntakeLink>}
+            {quiet ? null : <IntakeLink>{offer.bookingCta}</IntakeLink>}
           </nav>
           <div className="footer-contact">
             <div>{site.location.kicker}</div>

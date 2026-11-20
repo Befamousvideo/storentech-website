@@ -279,7 +279,7 @@ describe("after-hours calls contractors blog post", () => {
     const booking = [...container.querySelectorAll("a.btn")].find(
       (node) => node.getAttribute("href") === BOOKING_CTA_HREF,
     );
-    expect(booking).toHaveTextContent("Book a 15-minute intro call");
+    expect(booking).toHaveTextContent(site.offer.bookingCta);
 
     assertNoClass107ContactOrPay("rendered html", html);
     expect(html).not.toContain("https\\:");

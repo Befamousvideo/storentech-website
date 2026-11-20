@@ -24,7 +24,7 @@ export default function HomePage() {
               <InterviewLink className="btn btn-solid">
                 {site.offer.interviewCta}
               </InterviewLink>
-              <IntakeLink className="btn">{site.offer.cta}</IntakeLink>
+              <IntakeLink className="btn">{site.offer.bookingCta}</IntakeLink>
             </div>
             <div className="fine hero-contact">
               <Link href="/contact">Write us</Link>
@@ -124,7 +124,7 @@ export default function HomePage() {
             <InterviewLink className="btn btn-solid">
               {site.offer.interviewCta}
             </InterviewLink>
-            <IntakeLink className="btn">{site.offer.cta}</IntakeLink>
+            <IntakeLink className="btn">{site.offer.bookingCta}</IntakeLink>
             <Link className="btn" href="/contact">
               Write us
             </Link>

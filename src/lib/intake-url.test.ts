@@ -72,6 +72,26 @@ describe("intake CTA URL", () => {
     expect(readFileSync(join(process.cwd(), ".env.example"), "utf8")).toContain(
       "NEXT_PUBLIC_INTERVIEW_URL=https://onb1-demo.vercel.app/i/storentech",
     );
+    expect(site.offer.cta).toBe("Start your AI Opportunity Map");
+    expect(site.offer.ctaShort).toBe("Start your map");
+    expect(site.offer.interviewCta).toBe("Start AI Opp Map interview");
+    expect(site.offer.interviewCtaShort).toBe("Opp Map interview");
+    expect(site.offer.bookingCta).toBe("Book a call");
+  });
+
+  it("does not use AI assessment wording in public source", () => {
+    const files = SCAN_ROOTS.flatMap((root) => collectFiles(root));
+    const banned = ["AI ass" + "essment", "free AI ass" + "essment"];
+
+    for (const file of files) {
+      if (file.endsWith("intake-url.test.ts")) continue;
+      const text = readFileSync(file, "utf8");
+      for (const phrase of banned) {
+        expect(text, relative(process.cwd(), file)).not.toMatch(
+          new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+        );
+      }
+    }
   });
 
   it("does not reference the retired private Google Form anywhere in the repo", () => {

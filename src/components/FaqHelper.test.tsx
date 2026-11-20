@@ -13,7 +13,7 @@ describe("FaqHelper", () => {
     expect(launcher).toHaveAttribute("aria-expanded", "false");
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(screen.queryByRole("link", { name: site.offer.interviewCta })).not.toBeInTheDocument();
-    expect(screen.queryByRole("link", { name: site.offer.cta })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: site.offer.bookingCta })).not.toBeInTheDocument();
 
     await user.click(launcher);
     expect(screen.getByRole("dialog", { name: "FAQ assistance" })).toBeInTheDocument();
@@ -23,7 +23,7 @@ describe("FaqHelper", () => {
     const handoff = screen.getByRole("link", { name: site.offer.interviewCta });
     expect(handoff).toHaveAttribute("href", site.interviewCtaHref);
     expect(handoff).toHaveAttribute("data-cta", INTERVIEW_CTA_ATTR);
-    const booking = screen.getByRole("link", { name: site.offer.cta });
+    const booking = screen.getByRole("link", { name: site.offer.bookingCta });
     expect(booking).toHaveAttribute("href", BOOKING_CTA_HREF);
   });
 

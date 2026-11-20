@@ -212,9 +212,9 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
             (voice demo): <SarahPhoneImage />
           </li>
           <li>
-            <IntakeLink>
-              <strong>Start your AI Opportunity Map</strong>
-            </IntakeLink>
+            <InterviewLink>
+              <strong>{site.offer.interviewCta}</strong>
+            </InterviewLink>
           </li>
         </ol>
         <p>
@@ -238,9 +238,7 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
             <InterviewLink className="btn btn-solid">
               {site.offer.interviewCta}
             </InterviewLink>
-            <IntakeLink className="btn">
-              Start your AI Opportunity Map
-            </IntakeLink>
+            <IntakeLink className="btn">{site.offer.bookingCta}</IntakeLink>
             <SarahPhoneImage className="sarah-phone" />
             <Link className="btn" href="/how-it-works">
               How it works

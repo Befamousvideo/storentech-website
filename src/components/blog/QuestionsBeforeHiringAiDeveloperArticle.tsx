@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { BlogPost } from "@/lib/blog";
+import { IntakeLink } from "@/components/IntakeLink";
 import { InterviewLink } from "@/components/InterviewLink";
 import { BOOKING_CTA_HREF, site } from "@/lib/site";
 
@@ -245,14 +246,7 @@ export function QuestionsBeforeHiringAiDeveloperArticle({
             <InterviewLink className="btn btn-solid">
               {site.offer.interviewCta}
             </InterviewLink>
-            <a
-              className="btn"
-              href={BOOKING_CTA_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Book a 15-minute intro call
-            </a>
+            <IntakeLink className="btn">{site.offer.bookingCta}</IntakeLink>
           </div>
         </section>
       </div>

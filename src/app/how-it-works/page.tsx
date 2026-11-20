@@ -48,7 +48,7 @@ export default function HowItWorksPage() {
             <InterviewLink className="btn btn-solid">
               {site.offer.interviewCta}
             </InterviewLink>
-            <IntakeLink className="btn">{site.offer.cta}</IntakeLink>
+            <IntakeLink className="btn">{site.offer.bookingCta}</IntakeLink>
             <SarahPhoneImage className="sarah-phone" />
           </div>
         </div>
