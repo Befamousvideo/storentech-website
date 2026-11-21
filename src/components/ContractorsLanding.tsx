@@ -17,9 +17,36 @@ function BookingCta() {
   );
 }
 
+type SecondaryCta = {
+  label: string;
+  href: string;
+  support: string;
+};
+
+function ContractorsCtaPair({ secondary }: { secondary: SecondaryCta }) {
+  return (
+    <div className="contractors-cta-pair">
+      <div className="btn-row contractors-actions">
+        <BookingCta />
+      </div>
+      <p className="contractors-cta-support">{contractorsPage.ctaSupport}</p>
+      <div className="btn-row contractors-actions contractors-secondary-action">
+        <Link className="btn" href={secondary.href}>{secondary.label}</Link>
+      </div>
+      <p className="contractors-cta-support">{secondary.support}</p>
+    </div>
+  );
+}
+
 export function ContractorsLanding() {
   const { problem, agent, grind, start, example, faqs, finalCta } =
     contractorsPage;
+
+  const finalSecondary: SecondaryCta = {
+    label: finalCta.secondaryLabel,
+    href: finalCta.secondaryHref,
+    support: finalCta.secondarySupport,
+  };
 
   return (
     <article className="blog-article">
@@ -28,14 +55,7 @@ export function ContractorsLanding() {
           <h1>{contractorsPage.h1}</h1>
           <hr className="rule" />
           <p className="lede">{contractorsPage.subhead}</p>
-          <div className="btn-row contractors-actions">
-            <BookingCta />
-          </div>
-          <p className="contractors-text-link">
-            <Link href={contractorsPage.heroSecondary.href}>
-              {contractorsPage.heroSecondary.label}
-            </Link>
-          </p>
+          <ContractorsCtaPair secondary={contractorsPage.heroSecondary} />
         </div>
       </header>
 
@@ -122,12 +142,7 @@ export function ContractorsLanding() {
         <section className="blog-cta" aria-labelledby="contractors-final-cta">
           <h2 id="contractors-final-cta">{finalCta.headline}</h2>
           <p>{finalCta.body}</p>
-          <div className="btn-row contractors-actions">
-            <BookingCta />
-          </div>
-          <p className="contractors-text-link">
-            <Link href={finalCta.secondaryHref}>{finalCta.secondaryLabel}</Link>
-          </p>
+          <ContractorsCtaPair secondary={finalSecondary} />
         </section>
 
         <p className="contractors-signoff">{contractorsPage.signoff}</p>
