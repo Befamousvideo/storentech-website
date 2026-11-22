@@ -20,12 +20,27 @@ describe("MapValueCard", () => {
     expect(text).toContain(
       "A typical report identifies major cash and time savings and usually exceeds 40 pages.",
     );
+    expect(screen.getByText(mapValue.keepLine)).toBeInTheDocument();
     expect(text).not.toMatch(/30\+/);
     expect(text).not.toContain("15-page");
     expect(text.indexOf(mapValue.lede)).toBeLessThan(text.indexOf("$1,000"));
+    expect(text.indexOf(mapValue.bullets[2])).toBeLessThan(
+      text.indexOf(mapValue.keepLine),
+    );
+    expect(text.indexOf(mapValue.keepLine)).toBeLessThan(text.indexOf("$1,000"));
     expect(text).not.toMatch(/\bROIA\b/);
     expect(text).not.toMatch(/Leak Map/i);
     expect(text).not.toMatch(/\bOpp\b/);
+    expect(mapValue.keepLine).toContain("StorenTech");
+    expect(mapValue.keepLine).not.toContain("Storentech");
+  });
+
+  it("keeps the keep-the-report line above the price on compact cards", () => {
+    const { container } = render(<MapValueCard compact />);
+    const text = container.textContent ?? "";
+
+    expect(screen.getByText(mapValue.keepLine)).toBeInTheDocument();
+    expect(text.indexOf(mapValue.keepLine)).toBeLessThan(text.indexOf("$1,000"));
   });
 
   it("keeps the homepage price behind the What you get card", () => {

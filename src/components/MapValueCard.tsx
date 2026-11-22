@@ -18,6 +18,7 @@ export function MapValueCard({
           ))}
         </ul>
       )}
+      <p className="map-value-keep">{mapValue.keepLine}</p>
       <p className="price map-value-price">
         {site.offer.priceLine}
         {showComplex

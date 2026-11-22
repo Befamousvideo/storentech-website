@@ -632,6 +632,13 @@ select {
   color: var(--navy);
 }
 
+.map-value-keep {
+  color: var(--navy);
+  font-size: 1.05rem;
+  max-width: 46ch;
+  margin: 0.85rem 0 0;
+}
+
 .map-value-price {
   margin-top: 1.05rem;
 }

@@ -54,6 +54,8 @@ export const mapValue = {
     "Every company that pays gets a detailed report built for its business, and keeps it.",
     "You leave with where time and money are leaking, which automations pay back first, and a clear next-step Build Plan.",
   ],
+  keepLine:
+    "The report is yours to keep. Shop it around, or hire StorenTech to build it. We'll confidently compete for your business.",
 } as const;
 
 export const offer = {
