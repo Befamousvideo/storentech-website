@@ -13,8 +13,8 @@ export function resetRateLimit() {
 
 export function checkRateLimit(
   key: string,
-  windowMs = FREE_MAP_RATE_LIMIT.windowMs,
-  max = FREE_MAP_RATE_LIMIT.max,
+  windowMs: number = FREE_MAP_RATE_LIMIT.windowMs,
+  max: number = FREE_MAP_RATE_LIMIT.max,
 ) {
   const now = Date.now();
   const recent = (buckets.get(key) ?? []).filter((stamp) => now - stamp < windowMs);

@@ -20,7 +20,7 @@ export type FaqHelperResponse = {
   text: string;
   entryId: string | null;
   entryVersion: string | null;
-  knowledgeVersion: typeof FAQ_HELPER_KNOWLEDGE_VERSION;
+  knowledgeVersion: string;
   sources: readonly FaqKnowledgeSource[];
   showHandoff: boolean;
   matched: boolean;
