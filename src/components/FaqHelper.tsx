@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { IntakeLink } from "@/components/IntakeLink";
+import { InterviewLink } from "@/components/InterviewLink";
 import styles from "@/components/FaqHelper.module.css";
 import { answerFaqQuery, type FaqHelperResponse } from "@/lib/faq-helper";
 import { offer } from "@/lib/site";
@@ -173,8 +174,11 @@ export function FaqHelper() {
                 Ask
               </button>
             </form>
-            <IntakeLink className={`btn btn-solid ${styles.handoff}`}>
-              {offer.cta}
+            <InterviewLink className={`btn btn-solid ${styles.handoff}`}>
+              {offer.interviewCta}
+            </InterviewLink>
+            <IntakeLink className={`btn ${styles.handoff}`}>
+              {offer.bookingCta}
             </IntakeLink>
           </div>
         </section>

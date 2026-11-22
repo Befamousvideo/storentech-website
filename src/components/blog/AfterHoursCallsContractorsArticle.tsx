@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { BlogPost } from "@/lib/blog";
-import { BOOKING_CTA_HREF } from "@/lib/site";
+import { IntakeLink } from "@/components/IntakeLink";
+import { InterviewLink } from "@/components/InterviewLink";
+import { BOOKING_CTA_HREF, site } from "@/lib/site";
 
 export function AfterHoursCallsContractorsArticle({
   post,
@@ -248,14 +250,10 @@ export function AfterHoursCallsContractorsArticle({
 
         <section className="blog-cta">
           <div className="btn-row">
-            <a
-              className="btn btn-solid"
-              href={BOOKING_CTA_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Book a 15-minute intro call
-            </a>
+            <InterviewLink className="btn btn-solid">
+              {site.offer.interviewCta}
+            </InterviewLink>
+            <IntakeLink className="btn">{site.offer.bookingCta}</IntakeLink>
           </div>
         </section>
       </div>

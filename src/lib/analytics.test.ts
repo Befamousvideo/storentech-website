@@ -11,6 +11,7 @@ import {
   mayLoadGoogleAnalytics,
   trackEvent,
   trackGenerateLead,
+  trackInterviewCtaClick,
   trackOpportunityCtaClick,
 } from "@/lib/analytics";
 
@@ -70,6 +71,7 @@ describe("GA event helper", () => {
   it("no-ops when gtag is absent", () => {
     expect(() => trackGenerateLead()).not.toThrow();
     expect(() => trackOpportunityCtaClick()).not.toThrow();
+    expect(() => trackInterviewCtaClick()).not.toThrow();
   });
 
   it("sends named events with no PII params", () => {
@@ -78,10 +80,14 @@ describe("GA event helper", () => {
 
     trackGenerateLead();
     trackOpportunityCtaClick();
+    trackInterviewCtaClick();
     trackEvent("generate_lead");
 
     expect(gtag).toHaveBeenCalledWith("event", "generate_lead");
     expect(gtag).toHaveBeenCalledWith("event", "opportunity_cta_click");
+    expect(gtag).toHaveBeenCalledWith("event", "interview_cta_click", {
+      cta: "onb1-interview",
+    });
     for (const args of gtag.mock.calls) {
       expect(JSON.stringify(args)).not.toMatch(/email|phone|name/i);
     }

@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { IntakeLink } from "@/components/IntakeLink";
+import { InterviewLink } from "@/components/InterviewLink";
+import { MapValueCard } from "@/components/MapValueCard";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { site } from "@/lib/site";
 import type { BlogPost } from "@/lib/blog";
@@ -25,10 +27,9 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
             AI Opportunity Map, a
             paid engagement that maps your workflows, quantifies time and revenue
             leaks with your real numbers, and ranks which AI employee to hire
-            first. It typically costs <strong>$1,000</strong> (
-            <strong>$2,000–$3,000</strong> when complex). It is not a
-            complimentary sales call.
+            first. It is not a complimentary sales call.
           </p>
+          <MapValueCard showComplex />
           <p>
             That’s the whole pitch, stripped of the free-audit theater. Hire an
             AI employee <strong>after the math, not before.</strong>
@@ -109,6 +110,7 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
         </p>
 
         <h2>Typical vs complex pricing</h2>
+        <MapValueCard compact showComplex />
         <div className="blog-table-wrap">
           <table className="blog-table">
             <thead>
@@ -211,9 +213,9 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
             (voice demo): <SarahPhoneImage />
           </li>
           <li>
-            <IntakeLink>
-              <strong>Start your AI Opportunity Map</strong>
-            </IntakeLink>
+            <InterviewLink>
+              <strong>{site.offer.interviewCta}</strong>
+            </InterviewLink>
           </li>
         </ol>
         <p>
@@ -234,9 +236,10 @@ export function AutomationRoiAnalysisArticle({ post }: { post: BlogPost }) {
         <section className="blog-cta" aria-labelledby="ready-heading">
           <h2 id="ready-heading">Ready when you are</h2>
           <div className="btn-row">
-            <IntakeLink className="btn btn-solid">
-              Start your AI Opportunity Map
-            </IntakeLink>
+            <InterviewLink className="btn btn-solid">
+              {site.offer.interviewCta}
+            </InterviewLink>
+            <IntakeLink className="btn">{site.offer.bookingCta}</IntakeLink>
             <SarahPhoneImage className="sarah-phone" />
             <Link className="btn" href="/how-it-works">
               How it works

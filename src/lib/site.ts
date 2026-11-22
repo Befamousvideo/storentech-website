@@ -4,10 +4,36 @@ export const BOOKING_CTA_HREF =
 
 const DEFAULT_INTAKE_URL = BOOKING_CTA_HREF;
 const ONB1_INTAKE_URL = "https://onboarding.storentechai.com";
+export const DEFAULT_INTERVIEW_URL =
+  "https://onb1-demo.vercel.app/i/storentech" as const;
+export const INTERVIEW_CTA_ATTR = "onb1-interview" as const;
+export const INTERVIEW_UTM = {
+  utm_source: "storentech-website",
+  utm_medium: "cta",
+  utm_campaign: "onb1-interview",
+} as const;
 
 function resolveIntakeUrl(raw: string | undefined) {
   const candidate = raw?.trim();
   return candidate || DEFAULT_INTAKE_URL;
+}
+
+function resolveAbsoluteUrl(raw: string | undefined, fallback: string) {
+  const candidate = raw?.trim();
+  if (!candidate) return fallback;
+  try {
+    return new URL(candidate).toString();
+  } catch {
+    return fallback;
+  }
+}
+
+export function withInterviewUtm(raw: string) {
+  const url = new URL(resolveAbsoluteUrl(raw, DEFAULT_INTERVIEW_URL));
+  url.searchParams.set("utm_source", INTERVIEW_UTM.utm_source);
+  url.searchParams.set("utm_medium", INTERVIEW_UTM.utm_medium);
+  url.searchParams.set("utm_campaign", INTERVIEW_UTM.utm_campaign);
+  return url.toString();
 }
 
 function resolveSiteUrl(raw: string | undefined) {
@@ -20,23 +46,46 @@ function resolveSiteUrl(raw: string | undefined) {
   }
 }
 
+export const mapValue = {
+  heading: "What you get",
+  lede: "The AI Opportunity Map is a comprehensive deep-dive report on your business — not a quick assessment or a generic checklist.",
+  bullets: [
+    "A typical report identifies major cash and time savings and usually exceeds 40 pages.",
+    "Every company that pays gets a detailed report built for its business, and keeps it.",
+    "You leave with where time and money are leaking, which automations pay back first, and a clear next-step Build Plan.",
+  ],
+  keepLine:
+    "The report is yours to keep. Shop it around, or hire StorenTech to build it. We'll confidently compete for your business.",
+} as const;
+
 export const offer = {
   primaryTitle: "AI Opportunity Map",
   explanatoryName: "Automation ROI Analysis",
   primary:
-    "An AI Opportunity Map shows where time or revenue leaks, and which AI moves pay back first. Starting at $1,000.",
+    "An AI Opportunity Map shows where time or revenue leaks, and which AI moves pay back first.",
   later:
     "After the map, the Build Plan is how we build what pays. Builds may include voice agents, website chat, operations automation, web apps, mobile apps, and custom-built solutions.",
   cta: "Start your AI Opportunity Map",
   ctaShort: "Start your map",
+  interviewCta: "Start AI Opportunity Map interview",
+  interviewCtaShort: "Start your map",
+  bookingCta: "Book a call",
+  priceLine: "Starting at $1,000.",
   capacity:
     "When AI takes the grind, your people get time back for the work that needs a human, so more gets done and the human touch stays where customers feel it.",
   services:
     "Map leaks first. Then the Build Plan — people still in the loop, out front with customers.",
 } as const;
 
-// Start-your-map CTA. Calendar booking; set NEXT_PUBLIC_INTAKE_URL to ONB1 when gated live.
+// Calendar booking. Secondary “Book a call” CTA.
 export const intakeUrl = resolveIntakeUrl(process.env.NEXT_PUBLIC_INTAKE_URL);
+
+// Start-your-map CTA: public ONB1 interview. Override with NEXT_PUBLIC_INTERVIEW_URL when it moves to a subdomain.
+export const interviewUrl = resolveAbsoluteUrl(
+  process.env.NEXT_PUBLIC_INTERVIEW_URL,
+  DEFAULT_INTERVIEW_URL,
+);
+export const interviewCtaHref = withInterviewUtm(interviewUrl);
 
 export const site = {
   name: "StorenTech AI",
@@ -52,7 +101,7 @@ export const site = {
   brandLine:
     "StorenTech AI finds where time or revenue leaks, then fixes what pays — human touch stays. Ask Sarah anything.",
   description:
-    "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays. AI Opportunity Map. An AI Opportunity Map shows where time or revenue leaks, and which AI moves pay back first. Starting at $1,000. Ask Sarah anything.",
+    "Most operators can’t see the leaks until someone maps them. We find where time or revenue hides — then fix what pays. Human touch stays. AI Opportunity Map. The AI Opportunity Map is a comprehensive deep-dive report on your business — not a quick assessment or a generic checklist. Starting at $1,000. Ask Sarah anything.",
   offer,
   founder: {
     name: "Vincent Jackson",
@@ -83,6 +132,8 @@ export const site = {
   },
   intakeUrl,
   intakeOnb1Url: ONB1_INTAKE_URL,
+  interviewUrl,
+  interviewCtaHref,
 } as const;
 
 export const nav = [
@@ -110,7 +161,7 @@ export const offerSteps = [
   {
     n: "01",
     title: site.offer.primaryTitle,
-    body: `${site.prices.analysisTypical}. Written map of time/revenue/risk leaks vs their software, what to fix first. Clarity before spend. Paid. Never complimentary.`,
+    body: `${mapValue.lede} ${mapValue.bullets.join(" ")} Starting at ${site.prices.analysisTypical}. Written map of time/revenue/risk leaks vs their software, what to fix first. Clarity before spend. Paid. Never complimentary.`,
   },
   {
     n: "02",
@@ -160,7 +211,7 @@ export const workGroups: WorkGroup[] = [
     id: "wedge",
     label: "Wedge / front of house",
     title: "The first leak is usually the phone and the inbox.",
-    lede: "Almost every SMB leaks money here. After the map, that grind is a common first build — not the whole firm, and not the $1k product.",
+    lede: "Almost every SMB leaks money here. After the map, that grind is a common first build — not the whole firm, and not the AI Opportunity Map itself.",
     jobs: [
       {
         title: "Speed-to-lead + after-hours closer",

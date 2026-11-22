@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BrandLogo } from "@/components/BrandLogo";
 import { IntakeLink } from "@/components/IntakeLink";
+import { InterviewLink } from "@/components/InterviewLink";
 import { SarahContact } from "@/components/SarahContact";
 import { nav, offer, site } from "@/lib/site";
 
@@ -21,7 +22,10 @@ export function Footer({ quiet = false }: { quiet?: boolean }) {
                 {item.label}
               </Link>
             ))}
-            {quiet ? null : <IntakeLink>{offer.cta}</IntakeLink>}
+            {quiet ? null : (
+              <InterviewLink>{offer.interviewCta}</InterviewLink>
+            )}
+            {quiet ? null : <IntakeLink>{offer.bookingCta}</IntakeLink>}
           </nav>
           <div className="footer-contact">
             <div>{site.location.kicker}</div>

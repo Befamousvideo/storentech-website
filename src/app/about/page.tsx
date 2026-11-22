@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { MapValueCard } from "@/components/MapValueCard";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "StorenTech AI is a principal-led automation firm based in Orange County, California. We start with a $1,000 AI Opportunity Map — a written map of where time or revenue leaks, what to fix first, and how that shows up as lower cost or more revenue.",
+    "StorenTech AI is a principal-led automation firm based in Orange County, California. The AI Opportunity Map is a comprehensive deep-dive report on your business — not a quick assessment or a generic checklist. Starting at $1,000.",
   alternates: { canonical: "/about" },
 };
 
@@ -24,10 +25,11 @@ export default function AboutPage() {
         <div className="wrap-narrow copy">
           <p>
             StorenTech AI is a principal-led automation firm based in Orange
-            County, California. We start with a $1,000 AI Opportunity Map
-            — a written map of where time or revenue leaks, what to fix first,
-            and how that shows up as lower cost or more revenue.
+            County, California. We start every client with an AI Opportunity
+            Map — a written report of where time or revenue leaks, what to
+            fix first, and how that shows up as lower cost or more revenue.
           </p>
+          <MapValueCard />
           <p>
             After the map, we put AI on the grind so your people can stay out
             front where human touch matters. More output. Human touch stays.

@@ -274,8 +274,12 @@ describe("after-hours calls contractors blog post", () => {
     expect(opportunity).toHaveTextContent("AI Opportunity Map");
 
     const cta = container.querySelector("a.btn-solid");
-    expect(cta).toHaveAttribute("href", BOOKING_CTA_HREF);
-    expect(cta).toHaveTextContent("Book a 15-minute intro call");
+    expect(cta).toHaveAttribute("href", site.interviewCtaHref);
+    expect(cta).toHaveTextContent(site.offer.interviewCta);
+    const booking = [...container.querySelectorAll("a.btn")].find(
+      (node) => node.getAttribute("href") === BOOKING_CTA_HREF,
+    );
+    expect(booking).toHaveTextContent(site.offer.bookingCta);
 
     assertNoClass107ContactOrPay("rendered html", html);
     expect(html).not.toContain("https\\:");
