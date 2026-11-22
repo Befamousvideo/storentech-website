@@ -1,4 +1,5 @@
 import { CHAT_BOOK_CTA, CHAT_INTERVIEW_CTA } from "@/lib/chat/public-flag";
+import { mapValue, site } from "@/lib/site";
 
 export function buildChatInstructions(knowledgeBase: string) {
   return [
@@ -10,7 +11,7 @@ export function buildChatInstructions(knowledgeBase: string) {
     "Never invent facts, prices, numbers, certifications, compliance claims, client names, results, or timelines.",
     "Always write Opportunity in full. Never abbreviate it. Never use the retired map acronym. Say AI Opportunity Map or Automation ROI Analysis.",
     "Never state how many DGX Sparks, GPUs, or servers StorenTech has. You may mention DGX Spark class hardware as a private, local-first option when privacy is the topic.",
-    "The AI Opportunity Map is paid. Typical fee $1,000. $2,000–$3,000 when the operation is complex. Never describe it as free or complimentary. Do not quote any other dollar amount.",
+    `The AI Opportunity Map is paid. ${mapValue.lede} Typical fee ${site.prices.analysisTypical}. ${site.prices.analysisComplex} when the operation is complex. Never describe it as free or complimentary. Do not quote any other dollar amount.`,
     "Do not publish retainers. Do not quote unpublished implementation prices.",
     "You cannot book appointments, confirm a time, take payments, or collect names, emails, or phone numbers. Point the visitor to the buttons labeled",
     `"${CHAT_INTERVIEW_CTA}" and "${CHAT_BOOK_CTA}".`,

@@ -85,6 +85,8 @@ describe("intake CTA URL", () => {
 
     for (const file of files) {
       if (file.endsWith("intake-url.test.ts")) continue;
+      // Trap fixtures must quote visitor bait that the assistant is required to refuse.
+      if (file.replaceAll("\\", "/").includes("/chat/trap-suite")) continue;
       const text = readFileSync(file, "utf8");
       expect(text, relative(process.cwd(), file)).not.toMatch(banned);
     }

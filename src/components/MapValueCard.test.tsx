@@ -89,6 +89,8 @@ describe("price never appears without map value", () => {
     for (const file of files) {
       const text = readFileSync(file, "utf8");
       const label = relative(process.cwd(), file);
+      // Trap goldens quote published prices to prove the assistant refuses invented ones.
+      if (label.replaceAll("\\", "/").includes("/chat/trap-suite")) continue;
       expect(text, label).not.toMatch(/\$1k\b/i);
       if (!text.includes("$1,000")) continue;
       const hasValue =
