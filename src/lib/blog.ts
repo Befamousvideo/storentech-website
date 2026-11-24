@@ -912,7 +912,66 @@ export const lawFirmAiDataStorageCheckFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const comparingAiConsultantsWhatYouAreBuyingFaqs = [
+  {
+    question: "What is the difference between an AI audit and an AI pilot?",
+    answer:
+      "An audit usually ends in a report of ideas. A pilot puts AI on one real task in your business so you can see it work on real examples. A pilot produces evidence; an audit produces a plan.",
+  },
+  {
+    question: "How do I compare AI consultant proposals?",
+    answer:
+      "Ask each one the same five questions: what will exist at the end, who owns the accounts and work, which current tools get used first, who approves what goes out, and what happens if you stop.",
+  },
+  {
+    question: "Should my business own the AI accounts a consultant sets up?",
+    answer:
+      "Generally, yes. Ask for accounts, logins, phone numbers and automations to be set up in your business's name so you keep them if the relationship ends.",
+  },
+  {
+    question: "Do I need a monthly AI service?",
+    answer:
+      "Not always. A monthly service makes the most sense after a pilot has shown that a tool helps and someone needs to keep running and adjusting it.",
+  },
+  {
+    question:
+      "Who helps Orange County businesses decide which AI help to buy?",
+    answer:
+      "StorenTech AI builds AI Opportunity Maps for Orange County businesses, ranking where AI can save time or bring in revenue first, based on the business's own numbers and the tools it already uses.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "comparing-ai-consultants-what-you-are-buying",
+    title:
+      "Comparing AI Help? Know Whether You're Buying a Checklist, a Working Pilot or a Monthly Service",
+    metaTitle:
+      "Comparing AI Proposals? Know What You're Buying | StorenTech AI",
+    description:
+      "An AI audit, a working pilot and a monthly service are different things. Five plain questions an Orange County owner can use to compare AI proposals.",
+    datePublished: "2026-11-24",
+    faqs: comparingAiConsultantsWhatYouAreBuyingFaqs,
+    indexCta: "Read the post",
+    hero: {
+      avif: "/blog/comparing-ai-consultants-what-you-are-buying.avif",
+      webp: "/blog/comparing-ai-consultants-what-you-are-buying.webp",
+      width: 1920,
+      height: 1080,
+      alt: "StorenTech AI blog header reading Checklist, working pilot or monthly service, beside three cards showing a checklist, a gear with a play button, and a calendar with refresh arrows under a balance scale.",
+    },
+    ogImage: {
+      src: "/blog/comparing-ai-consultants-what-you-are-buying-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt: "StorenTech AI blog header reading Checklist, working pilot or monthly service, beside three cards showing a checklist, a gear with a play button, and a calendar with refresh arrows under a balance scale.",
+      type: "image/png",
+    },
+  },
   {
     slug: "law-firm-case-status-updates",
     title:

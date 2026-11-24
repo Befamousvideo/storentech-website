@@ -69,7 +69,7 @@ describe("weekly report download rebuild blog post", () => {
     expect(post?.datePublished).toBe("2026-11-18");
     expect(post?.faqs).toEqual(weeklyReportDownloadRebuildFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[1]?.slug).toBe(slug);
+    expect(blogPosts[2]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/weekly-report-download-rebuild");
     expect(post?.hero).toEqual({
       png: "/blog/weekly-report-download-rebuild.png",

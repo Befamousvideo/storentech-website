@@ -69,7 +69,7 @@ describe("law firm AI data storage check blog post", () => {
     expect(post?.datePublished).toBe("2026-11-16");
     expect(post?.faqs).toEqual(lawFirmAiDataStorageCheckFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[2]?.slug).toBe(slug);
+    expect(blogPosts[3]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/law-firm-ai-data-storage-check");
     expect(post?.hero).toEqual({
       png: "/blog/law-firm-ai-data-storage-check.png",
