@@ -348,13 +348,14 @@ describe("/law landing page", () => {
   it("darkens only the header logo AI mark and leaves --gold and the footer mark unchanged", () => {
     expect(cssSource).toMatch(/--gold:\s*#9b7a4b;/);
     expect(cssSource).toMatch(
-      /\.logo-ai \{[\s\S]*?font-size:\s*0\.72rem;[\s\S]*?color:\s*var\(--gold\);/,
+      /\.logo-ai \{[\s\S]*?font-size:\s*var\(--logo-ai\);[\s\S]*?color:\s*var\(--gold\);/,
     );
-    expect(cssSource).toMatch(/\.site-header \.logo-ai \{[\s\S]*?color:\s*#80623a;/);
+    expect(cssSource).toMatch(/\.site-header \.logo-ai \{[\s\S]*?color:\s*#745833;/);
     expect(cssSource).toMatch(
       /\.site-footer \.logo-ai \{[\s\S]*?color:\s*var\(--gold-soft\);/,
     );
-    expect(cssSource).not.toMatch(/--gold:\s*#80623a/);
+    expect(cssSource).not.toMatch(/--gold:\s*#745833/);
+    expect(cssSource).not.toMatch(/\.site-footer \.logo-ai \{[\s\S]*?#745833/);
     expect(cssSource).not.toMatch(/\.site-footer \.logo-ai \{[\s\S]*?#80623a/);
   });
 
