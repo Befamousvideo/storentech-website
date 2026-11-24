@@ -40,7 +40,11 @@ function pageSource() {
 
 describe("/make-the-promotion-stick", () => {
   it("uses v7.1 meta title, noindex, www canonical, and stays off the sitemap and nav", async () => {
+    expect(copy.hero.offerName).toBe("Thrive after your promotion");
     expect(metadata.title).toEqual({ absolute: copy.meta.title });
+    expect(copy.meta.title).toBe(
+      "Thrive after your promotion: a 4-hour, one-on-one AI setup for your new role | StorenTech AI",
+    );
     expect(metadata.description).toBe(copy.meta.description);
     expect(metadata.description).not.toMatch(moneyOrPercent);
     expect(metadata.robots).toEqual({ index: false, follow: false });
@@ -79,8 +83,9 @@ describe("/make-the-promotion-stick", () => {
       screen.getByRole("heading", { level: 1, name: copy.hero.headline }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(copy.hero.offerName, { selector: ".kicker" }),
+      screen.getByText("Thrive after your promotion", { selector: ".kicker" }),
     ).toBeInTheDocument();
+    expect(container.textContent).not.toContain("Make the Promotion Stick");
     expect(screen.getByText(copy.hero.subhead)).toBeInTheDocument();
     expect(screen.getByText(copy.hero.supportingLine)).toBeInTheDocument();
 
@@ -230,6 +235,7 @@ describe("/make-the-promotion-stick", () => {
 
     expect(faqLd).toEqual(promotionStickFaqPageLd());
     expect(serviceLd).toEqual(promotionStickServiceLd());
+    expect(promotionStickServiceLd().name).toBe("Thrive after your promotion");
     expect(promotionStickServiceLd().url).toBe(PROMOTION_STICK_CANONICAL_URL);
     expect(promotionStickServiceLd().provider.url).toBe(PROMOTION_STICK_ORIGIN);
     expect(serviceLd).not.toHaveProperty("offers");
@@ -241,6 +247,8 @@ describe("/make-the-promotion-stick", () => {
     expect(JSON.stringify(faqLd)).toMatch(/\$1,000/);
 
     const corpus = `${container.innerHTML}\n${JSON.stringify(blocks)}\n${pageSource()}`;
+    expect(corpus).toContain("Thrive after your promotion");
+    expect(corpus).not.toContain("Make the Promotion Stick");
     expect(corpus).not.toMatch(/\bROIA\b/);
     expect(corpus).not.toMatch(/DGX Spark/i);
     expect(corpus).not.toMatch(/\bSpark[s]?\b/);
