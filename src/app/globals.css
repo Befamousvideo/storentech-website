@@ -13,7 +13,12 @@
   --font-serif: var(--font-cormorant), "Iowan Old Style", "Palatino Linotype", Palatino, serif;
   --font-sans: var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif;
   --wrap: 1180px;
-  --header-h: 88px;
+  /* Header lockup is 2× the previous desktop size (40px mark / 1.45rem word). */
+  --header-h: 120px;
+  --logo-mark: 80px;
+  --logo-word: 2.9rem;
+  --logo-ai: 1.8rem;
+  --logo-gap: 1.1rem;
 }
 
 *,
@@ -171,24 +176,29 @@ select {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 0.55rem;
+  gap: var(--logo-gap);
   text-decoration: none;
   color: var(--navy);
   min-width: 0;
   overflow: visible;
 }
 
+.site-header .logo {
+  flex: 0 0 auto;
+  min-width: max-content;
+}
+
 .logo-mark {
   display: block;
-  width: 40px;
-  height: 40px;
+  width: var(--logo-mark);
+  height: var(--logo-mark);
   flex: 0 0 auto;
   max-width: none;
 }
 
 .logo-word {
   font-family: var(--font-serif);
-  font-size: 1.45rem;
+  font-size: var(--logo-word);
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -198,9 +208,11 @@ select {
 
 .logo-ai {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  /* Larger relative to the wordmark than the old 0.72rem / 1.45rem pair. */
+  font-size: var(--logo-ai);
   font-weight: 500;
   letter-spacing: 0.18em;
+  line-height: 1;
   text-transform: uppercase;
   color: var(--gold);
   white-space: nowrap;
@@ -208,7 +220,8 @@ select {
 }
 
 .site-header .logo-ai {
-  color: #80623a;
+  /* One step darker than the previous header AI #80623a; gold hue kept. */
+  color: #745833;
 }
 
 .nav-desktop {
@@ -217,6 +230,14 @@ select {
   justify-content: center;
   gap: 1.65rem;
   min-width: 0;
+  flex-wrap: nowrap;
+}
+
+@media (min-width: 981px) and (max-width: 1180px) {
+  .nav-desktop {
+    gap: 1rem;
+    justify-content: flex-end;
+  }
 }
 
 .nav-desktop a {
@@ -296,6 +317,39 @@ select {
 
 .mobile-drawer {
   display: none;
+}
+
+.mobile-drawer.open {
+  display: block;
+  border-top: 1px solid var(--line);
+  padding: 1.1rem 0 1.4rem;
+}
+
+.mobile-drawer.open nav {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.mobile-drawer.open a {
+  text-decoration: none;
+  padding: 0.7rem 0;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.mobile-drawer.open .mobile-actions {
+  --header-action-h: calc(0.88rem * 2 + 0.68rem * 1.65 + 2px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.mobile-drawer.open .mobile-actions .btn {
+  height: var(--header-action-h);
+  box-sizing: border-box;
 }
 
 /* Buttons */
@@ -1464,12 +1518,10 @@ select {
 
 @media (max-width: 980px) {
   :root {
-    --header-h: 76px;
-  }
-
-  .logo-mark {
-    width: 34px;
-    height: 34px;
+    /* 2× the previous mobile lockup (34px mark). Fits beside the 42px menu
+       from ~440px up. */
+    --header-h: 100px;
+    --logo-mark: 68px;
   }
 
   .header-inner:not(.header-inner-slim) {
@@ -1584,6 +1636,17 @@ select {
   .wrap,
   .wrap-narrow {
     width: min(calc(100% - 32px), var(--wrap));
+  }
+
+  /* 2× of the previous mobile lockup is ~345px and does not fit with the
+     42px menu at 390px (300px free) or 360px (270px free). These clamps
+     are the largest lockup that still fits at 360px and scale up toward
+     2× as the viewport widens; 390px lands at about 1.66× the old mobile mark. */
+  :root {
+    --logo-mark: clamp(52px, 14.45vw, 68px);
+    --logo-word: clamp(2.2rem, 9.78vw, 2.9rem);
+    --logo-ai: clamp(1.36rem, 6.05vw, 1.8rem);
+    --logo-gap: clamp(0.72rem, 3.2vw, 1.1rem);
   }
 
   .header-actions .btn-solid {
@@ -2102,10 +2165,16 @@ select {
     grid-template-columns: auto minmax(0, 1fr) auto;
   }
 
+  /* 2× lockup does not leave room for nav + phone + CTA in the 1180px wrap.
+     Keep the phone badge and conversation CTA; primary nav is in the menu. */
   .site-header-law .nav-desktop {
+    display: none;
+  }
+
+  .site-header-law .menu-toggle {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    min-width: 0;
-    gap: 1.25rem;
   }
 }
 
@@ -2128,6 +2197,20 @@ select {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+@media (max-width: 439px) {
+  :root {
+    --header-h: 88px;
+  }
+}
+
+@media (max-width: 599px) {
+  /* Compact law CTA already overlapped the old lockup at 360/390. Hide it
+     from the bar (it remains in the drawer) so the scaled lockup + menu fit. */
+  .site-header-law .header-actions .btn-solid {
+    display: none;
   }
 }
 
