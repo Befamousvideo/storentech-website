@@ -29,6 +29,10 @@ Environment:
 - `DATABASE_URL` — Neon/Postgres URL for `/free-ai-map` leads (`free_map_leads`). If unset, a valid submit still shows the prompt and nothing is stored. Create the table with `npm run migrate:free-map-leads`.
 - Google Search Console verification is hardcoded in the root layout (`google-site-verification`) and is emitted on every page in every environment. `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` is unused for that tag.
 - `NEXT_PUBLIC_BING_SITE_VERIFICATION` — optional. Bing Webmaster Tools token. Emitted as `msvalidate.01` only when set; empty values produce no tag.
+- `AI_CHAT_ENABLED` — preview-only. Set `true` on Vercel Preview to allow the floating FAQ widget to call the model. Forced off when `VERCEL_ENV=production`. If unset, or if no AI Gateway key is present, the widget keeps the scripted FAQ.
+- `NEXT_PUBLIC_AI_CHAT_ENABLED` — preview-only client flag. Set `true` on Preview builds so the widget posts to `/api/chat`. Leave unset in Production.
+- `AI_GATEWAY_API_KEY` — authenticates the AI SDK to Vercel AI Gateway. On Vercel, `VERCEL_OIDC_TOKEN` can stand in. Do not buy a key if one is missing; leave the flags off.
+- `AI_CHAT_MODEL` or `AI_GATEWAY_MODEL` — optional Gateway model id (`provider/model`). Default `openai/gpt-4o-mini`.
 
 ## Pages
 

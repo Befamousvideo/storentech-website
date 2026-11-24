@@ -10,12 +10,14 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "chat:eval": "vitest run src/lib/chat/trap-suite.test.ts src/lib/chat/answer.test.ts",
     "migrate:free-map-leads": "node scripts/migrate-free-map-leads.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
+    "ai": "^7.0.179",
     "next": "15.5.29",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

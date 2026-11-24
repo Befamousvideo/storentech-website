@@ -222,10 +222,22 @@
   outline-offset: 2px;
 }
 
+.handoffs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
+}
+
 .handoff {
   display: inline-flex;
-  margin-top: 0.7rem;
   width: 100%;
+}
+
+.submit:disabled,
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 @media (max-width: 640px) {

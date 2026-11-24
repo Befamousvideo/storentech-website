@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { IntakeLink } from "@/components/IntakeLink";
 import { InterviewLink } from "@/components/InterviewLink";
 import styles from "@/components/FaqHelper.module.css";
+import { PUBLIC_AI_CHAT_ENABLED } from "@/lib/chat/public-flag";
 import { answerFaqQuery, type FaqHelperResponse } from "@/lib/faq-helper";
 import { offer } from "@/lib/site";
 
@@ -17,6 +18,19 @@ type Turn = {
   role: "user" | "helper";
   text: string;
   reply?: FaqHelperResponse;
+  pending?: boolean;
+};
+
+type ChatApiPayload = {
+  ok?: boolean;
+  text?: string;
+  intent?: FaqHelperResponse["intent"] | "ai";
+  entryId?: string | null;
+  knowledgeVersion?: string;
+  sources?: FaqHelperResponse["sources"];
+  matched?: boolean;
+  showHandoff?: boolean;
+  error?: string;
 };
 
 export function FaqHelper() {
@@ -25,6 +39,7 @@ export function FaqHelper() {
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState("");
   const [turns, setTurns] = useState<Turn[]>([]);
+  const [pending, setPending] = useState(false);
   const launcherRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const logRef = useRef<HTMLDivElement>(null);
@@ -68,16 +83,83 @@ export function FaqHelper() {
     if (log) log.scrollTop = log.scrollHeight;
   }, [open, turns]);
 
-  function ask(question: string) {
+  function localReply(question: string): FaqHelperResponse {
+    return answerFaqQuery(question);
+  }
+
+  async function remoteReply(
+    question: string,
+    history: Turn[],
+  ): Promise<FaqHelperResponse> {
+    const messages = [
+      ...history
+        .filter((turn) => !turn.pending)
+        .map((turn) => ({
+          role: turn.role === "user" ? "user" : "assistant",
+          content: turn.text,
+        })),
+      { role: "user", content: question },
+    ];
+
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages }),
+    });
+    const payload = (await response.json()) as ChatApiPayload;
+    if (!response.ok || !payload.ok || !payload.text) {
+      throw new Error(payload.error || "unavailable");
+    }
+    return {
+      intent: payload.intent === "ai" ? "faq" : (payload.intent ?? "unknown"),
+      text: payload.text,
+      entryId: payload.entryId ?? null,
+      entryVersion: null,
+      knowledgeVersion:
+        payload.knowledgeVersion ?? localReply(question).knowledgeVersion,
+      sources: payload.sources ?? [],
+      showHandoff: payload.showHandoff ?? true,
+      matched: payload.matched ?? false,
+    };
+  }
+
+  async function ask(question: string) {
     const text = question.trim();
-    if (!text) return;
-    const reply = answerFaqQuery(text);
+    if (!text || pending) return;
+    setDraft("");
+    const userTurn: Turn = { role: "user", text };
+    setTurns((current) => [...current, userTurn]);
+
+    if (!PUBLIC_AI_CHAT_ENABLED) {
+      const reply = localReply(text);
+      setTurns((current) => [
+        ...current,
+        { role: "helper", text: reply.text, reply },
+      ]);
+      return;
+    }
+
+    setPending(true);
     setTurns((current) => [
       ...current,
-      { role: "user", text },
-      { role: "helper", text: reply.text, reply },
+      { role: "helper", text: "One moment.", pending: true },
     ]);
-    setDraft("");
+    try {
+      const history = turns;
+      const reply = await remoteReply(text, history);
+      setTurns((current) => [
+        ...current.filter((turn) => !turn.pending),
+        { role: "helper", text: reply.text, reply },
+      ]);
+    } catch {
+      const reply = localReply(text);
+      setTurns((current) => [
+        ...current.filter((turn) => !turn.pending),
+        { role: "helper", text: reply.text, reply },
+      ]);
+    } finally {
+      setPending(false);
+    }
   }
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -101,8 +183,9 @@ export function FaqHelper() {
                 FAQ assistance
               </h2>
               <p className={styles.disclaimer}>
-                Reviewed website facts only. Not live generative AI. Cannot book
-                appointments or take payments.
+                {PUBLIC_AI_CHAT_ENABLED
+                  ? "Grounded on reviewed StorenTech website facts. Cannot book appointments or take payments. If it is unknown, it stays unknown."
+                  : "Reviewed website facts only. Not live generative AI. Cannot book appointments or take payments."}
               </p>
             </div>
             <button
@@ -126,6 +209,7 @@ export function FaqHelper() {
                       key={item}
                       className={styles.chip}
                       type="button"
+                      disabled={pending}
                       onClick={() => ask(item)}
                     >
                       {item}
@@ -167,19 +251,22 @@ export function FaqHelper() {
                 value={draft}
                 maxLength={500}
                 autoComplete="off"
+                disabled={pending}
                 onChange={(event) => setDraft(event.target.value)}
                 placeholder="Ask about services or process"
               />
-              <button className={styles.submit} type="submit">
-                Ask
+              <button className={styles.submit} type="submit" disabled={pending}>
+                {pending ? "Sending" : "Ask"}
               </button>
             </form>
-            <InterviewLink className={`btn btn-solid ${styles.handoff}`}>
-              {offer.interviewCta}
-            </InterviewLink>
-            <IntakeLink className={`btn ${styles.handoff}`}>
-              {offer.bookingCta}
-            </IntakeLink>
+            <div className={styles.handoffs}>
+              <InterviewLink className={`btn btn-solid ${styles.handoff}`}>
+                {offer.interviewCta}
+              </InterviewLink>
+              <IntakeLink className={`btn ${styles.handoff}`}>
+                {offer.bookingCta}
+              </IntakeLink>
+            </div>
           </div>
         </section>
       ) : null}
