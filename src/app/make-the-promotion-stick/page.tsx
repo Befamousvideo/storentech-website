@@ -86,7 +86,9 @@ export default function MakeThePromotionStickPage() {
                   <h3>{step.title}</h3>
                   <p>{step.body}</p>
                   {"note" in step ? (
-                    <p className="fine promotion-stick-step-note">{step.note}</p>
+                    <p className="fine promotion-stick-step-note">
+                      <em>{step.note}</em>
+                    </p>
                   ) : null}
                 </div>
               </article>
@@ -131,15 +133,18 @@ export default function MakeThePromotionStickPage() {
         </div>
       </section>
 
-      <section className="section" aria-labelledby="promotion-stick-price-heading">
+      <section className="section" aria-labelledby="promotion-stick-get-heading">
         <div className="wrap-narrow">
           <h2
-            id="promotion-stick-price-heading"
+            id="promotion-stick-get-heading"
             className="promotion-stick-heading"
           >
             {copy.price.heading}
           </h2>
-          <p className="lede">{copy.price.includes}</p>
+          <p className="lede">{copy.price.lead}</p>
+          <p className="lede" style={{ marginTop: "1.15rem" }}>
+            {copy.price.includes}
+          </p>
           <p className="lede" style={{ marginTop: "1.15rem" }}>
             {copy.price.booking}
           </p>

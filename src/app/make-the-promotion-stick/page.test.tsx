@@ -39,7 +39,7 @@ function pageSource() {
 }
 
 describe("/make-the-promotion-stick", () => {
-  it("uses v7 meta title, noindex, www canonical, and stays off the sitemap and nav", async () => {
+  it("uses v7.1 meta title, noindex, www canonical, and stays off the sitemap and nav", async () => {
     expect(metadata.title).toEqual({ absolute: copy.meta.title });
     expect(metadata.description).toBe(copy.meta.description);
     expect(metadata.description).not.toMatch(moneyOrPercent);
@@ -72,7 +72,7 @@ describe("/make-the-promotion-stick", () => {
     ]);
   });
 
-  it("renders the v7 copy, keeps Results vary, and confines prices to the FAQ", () => {
+  it("renders the v7.1 copy, keeps Results vary, and confines prices to the FAQ", () => {
     const { container } = render(<MakeThePromotionStickPage />);
 
     expect(
@@ -102,8 +102,9 @@ describe("/make-the-promotion-stick", () => {
       ).toBeInTheDocument();
       expect(screen.getByText(step.body)).toBeInTheDocument();
       if ("note" in step) {
-        expect(screen.getByText(step.note)).toBeInTheDocument();
-        expect(screen.getByText(step.note)).toHaveClass(
+        const note = screen.getByText(step.note);
+        expect(note.tagName).toBe("EM");
+        expect(note.closest("p")).toHaveClass(
           "fine",
           "promotion-stick-step-note",
         );
@@ -118,8 +119,8 @@ describe("/make-the-promotion-stick", () => {
     expect(
       screen.getByText(
         "* AI agents that draft the work while you approve every important output.",
-      ),
-    ).toBeInTheDocument();
+      ).tagName,
+    ).toBe("EM");
 
     expect(
       screen.getByRole("heading", { level: 2, name: copy.how.heading }),
@@ -136,8 +137,11 @@ describe("/make-the-promotion-stick", () => {
       expect(container.textContent).toContain(`${item.title} ${item.body}`);
     }
     expect(
-      screen.getByRole("heading", { level: 2, name: copy.price.heading }),
+      screen.getByRole("heading", { level: 2, name: "What you get" }),
     ).toBeInTheDocument();
+    expect(screen.getByText(copy.price.lead)).toBeInTheDocument();
+    expect(copy.price.lead).not.toMatch(moneyOrPercent);
+    expect(copy.price.heading).not.toMatch(moneyOrPercent);
     expect(screen.getByText(copy.price.includes)).toBeInTheDocument();
     expect(screen.getAllByText(copy.price.booking)).toHaveLength(2);
 
@@ -179,6 +183,17 @@ describe("/make-the-promotion-stick", () => {
       .map((node) => node.textContent ?? "")
       .join("\n");
     expect(nonFaq).not.toMatch(moneyOrPercent);
+    expect(
+      screen.getByRole("heading", {
+        level: 3,
+        name: "How much does it cost?",
+      }),
+    ).toBeInTheDocument();
+    expect(
+      within(faq as HTMLElement).getByText(
+        "$1,000 for the 4-hour, one-on-one session.",
+      ),
+    ).toBeInTheDocument();
     expect(faq?.textContent).toMatch(/\$1,000/);
     expect(faq?.textContent).toMatch(/\$20/);
     expect(faq?.textContent).toMatch(/50%/);
@@ -219,6 +234,10 @@ describe("/make-the-promotion-stick", () => {
     expect(promotionStickServiceLd().provider.url).toBe(PROMOTION_STICK_ORIGIN);
     expect(serviceLd).not.toHaveProperty("offers");
     expect(JSON.stringify(serviceLd)).not.toMatch(moneyOrPercent);
+    expect(JSON.stringify(faqLd)).toContain("How much does it cost?");
+    expect(JSON.stringify(faqLd)).toContain(
+      "$1,000 for the 4-hour, one-on-one session.",
+    );
     expect(JSON.stringify(faqLd)).toMatch(/\$1,000/);
 
     const corpus = `${container.innerHTML}\n${JSON.stringify(blocks)}\n${pageSource()}`;

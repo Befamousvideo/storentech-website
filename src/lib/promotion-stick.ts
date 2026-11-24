@@ -105,7 +105,8 @@ export const PROMOTION_STICK_COPY = {
     ],
   },
   price: {
-    heading: "Price",
+    heading: "What you get",
+    lead: "Make the Promotion Stick: one 4-hour, one-on-one session.",
     includes:
       "Includes: role mapping, AI setup for your work, hands-on practice on a real task, and your written playbook.",
     booking:
@@ -178,9 +179,8 @@ export const PROMOTION_STICK_COPY = {
         "Reschedule free with more than 24 hours' notice; within 24 hours there's a $20 fee. Cancel at least 24 hours ahead for a full refund. Cancel within 24 hours and we'll refund 50%, or work out what's fair together.",
     },
     {
-      question: "Price",
-      answer:
-        "Make the Promotion Stick: $1,000 for one 4-hour, one-on-one session.",
+      question: "How much does it cost?",
+      answer: "$1,000 for the 4-hour, one-on-one session.",
     },
     {
       question: "How do I pay, and when is my session?",
