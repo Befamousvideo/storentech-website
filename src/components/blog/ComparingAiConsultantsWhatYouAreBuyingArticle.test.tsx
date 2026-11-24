@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
@@ -14,7 +14,6 @@ import {
   postPath,
   postUrl,
 } from "@/lib/blog";
-import { SITE_FALLBACK_OG_IMAGE } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 const slug = "comparing-ai-consultants-what-you-are-buying";
@@ -36,6 +35,19 @@ const title =
   "Comparing AI Help? Know Whether You're Buying a Checklist, a Working Pilot or a Monthly Service";
 const description =
   "An AI audit, a working pilot and a monthly service are different things. Five plain questions an Orange County owner can use to compare AI proposals.";
+const alt =
+  "StorenTech AI blog header reading Checklist, working pilot or monthly service, beside three cards showing a checklist, a gear with a play button, and a calendar with refresh arrows under a balance scale.";
+
+function pngSize(path: string) {
+  const buf = readFileSync(join(process.cwd(), path));
+  expect(
+    buf.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])),
+  ).toBe(true);
+  return {
+    width: buf.readUInt32BE(16),
+    height: buf.readUInt32BE(20),
+  };
+}
 
 function assertNoClass107ContactOrPay(label: string, text: string) {
   expect(text, label).not.toContain("tel:");
@@ -62,9 +74,37 @@ describe("comparing AI consultants what you are buying blog post", () => {
     expect(postPath(slug)).toBe(
       "/blog/comparing-ai-consultants-what-you-are-buying",
     );
-    expect(post?.hero).toBeUndefined();
-    expect(post?.ogImage).toBeUndefined();
+    expect(post?.hero).toEqual({
+      avif: "/blog/comparing-ai-consultants-what-you-are-buying.avif",
+      webp: "/blog/comparing-ai-consultants-what-you-are-buying.webp",
+      width: 1920,
+      height: 1080,
+      alt,
+    });
+    expect(post?.ogImage).toEqual({
+      src: "/blog/comparing-ai-consultants-what-you-are-buying-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt,
+      type: "image/png",
+    });
     expect(post?.indexCta).toBe("Read the post");
+  });
+
+  it("ships the 1920x1080 header in webp and avif and the 1200x630 Open Graph PNG", () => {
+    expect(post?.hero?.width).toBe(1920);
+    expect(post?.hero?.height).toBe(1080);
+    for (const file of [post?.hero?.webp, post?.hero?.avif]) {
+      expect(existsSync(join(process.cwd(), "public", file ?? "missing"))).toBe(
+        true,
+      );
+    }
+    expect(
+      pngSize("public/blog/comparing-ai-consultants-what-you-are-buying-1200x630.png"),
+    ).toEqual({
+      width: 1200,
+      height: 630,
+    });
   });
 
   it("appears on the blog index, in llms.txt, and in the sitemap", () => {
@@ -95,7 +135,7 @@ describe("comparing AI consultants what you are buying blog post", () => {
     expect(entry?.lastModified).toEqual(new Date("2026-11-24"));
   });
 
-  it("sets canonical, title, description, and the site fallback Open Graph image", async () => {
+  it("sets canonical, title, description, and the 1200x630 PNG as the Open Graph image", async () => {
     const metadata = await generateMetadata({
       params: Promise.resolve({ slug }),
     });
@@ -112,11 +152,11 @@ describe("comparing AI consultants what you are buying blog post", () => {
       url: "/blog/comparing-ai-consultants-what-you-are-buying",
       images: [
         {
-          url: SITE_FALLBACK_OG_IMAGE.url,
-          width: SITE_FALLBACK_OG_IMAGE.width,
-          height: SITE_FALLBACK_OG_IMAGE.height,
-          alt: SITE_FALLBACK_OG_IMAGE.alt,
-          type: SITE_FALLBACK_OG_IMAGE.type,
+          url: "/blog/comparing-ai-consultants-what-you-are-buying-1200x630.png",
+          width: 1200,
+          height: 630,
+          alt,
+          type: "image/png",
         },
       ],
     });
@@ -126,7 +166,7 @@ describe("comparing AI consultants what you are buying blog post", () => {
       description,
       images: [
         {
-          url: SITE_FALLBACK_OG_IMAGE.url,
+          url: "/blog/comparing-ai-consultants-what-you-are-buying-1200x630.png",
         },
       ],
     });
@@ -158,9 +198,9 @@ describe("comparing AI consultants what you are buying blog post", () => {
       dateModified: blogJsonLdDate("2026-11-24"),
       image: {
         "@type": "ImageObject",
-        url: `${site.url}${SITE_FALLBACK_OG_IMAGE.url}`,
-        width: SITE_FALLBACK_OG_IMAGE.width,
-        height: SITE_FALLBACK_OG_IMAGE.height,
+        url: `${site.url}/blog/comparing-ai-consultants-what-you-are-buying.webp`,
+        width: 1920,
+        height: 1080,
       },
       mainEntityOfPage: {
         "@type": "WebPage",
@@ -219,7 +259,14 @@ describe("comparing AI consultants what you are buying blog post", () => {
     const text = (container.textContent ?? "").replace(/\s+/g, " ");
 
     expect(getByRole("heading", { level: 1, name: title })).toBeInTheDocument();
-    expect(container.querySelector(".blog-hero-media img")).toBeNull();
+    const image = container.querySelector(".blog-hero-media img");
+    expect(image).toHaveAttribute(
+      "src",
+      "/blog/comparing-ai-consultants-what-you-are-buying.webp",
+    );
+    expect(image).toHaveAttribute("alt", alt);
+    expect(image).toHaveAttribute("width", "1920");
+    expect(image).toHaveAttribute("height", "1080");
 
     expect(text).toContain(
       "When an owner lines up AI proposals side by side, they are often comparing three different things",

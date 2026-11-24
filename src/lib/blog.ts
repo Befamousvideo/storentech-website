@@ -957,6 +957,20 @@ export const blogPosts: readonly BlogPost[] = [
     datePublished: "2026-11-24",
     faqs: comparingAiConsultantsWhatYouAreBuyingFaqs,
     indexCta: "Read the post",
+    hero: {
+      avif: "/blog/comparing-ai-consultants-what-you-are-buying.avif",
+      webp: "/blog/comparing-ai-consultants-what-you-are-buying.webp",
+      width: 1920,
+      height: 1080,
+      alt: "StorenTech AI blog header reading Checklist, working pilot or monthly service, beside three cards showing a checklist, a gear with a play button, and a calendar with refresh arrows under a balance scale.",
+    },
+    ogImage: {
+      src: "/blog/comparing-ai-consultants-what-you-are-buying-1200x630.png",
+      width: 1200,
+      height: 630,
+      alt: "StorenTech AI blog header reading Checklist, working pilot or monthly service, beside three cards showing a checklist, a gear with a play button, and a calendar with refresh arrows under a balance scale.",
+      type: "image/png",
+    },
   },
   {
     slug: "law-firm-case-status-updates",

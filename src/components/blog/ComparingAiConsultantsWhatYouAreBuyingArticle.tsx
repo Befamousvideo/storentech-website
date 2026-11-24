@@ -18,15 +18,19 @@ export function ComparingAiConsultantsWhatYouAreBuyingArticle({
           <h1>{post.title}</h1>
           <hr className="rule" />
         </div>
-        {hero?.png ? (
+        {hero ? (
           <figure className="blog-hero-media">
-            <img
-              src={hero.png}
-              alt={hero.alt}
-              width={hero.width}
-              height={hero.height}
-              fetchPriority="high"
-            />
+            <picture>
+              <source srcSet={hero.avif} type="image/avif" />
+              <source srcSet={hero.webp} type="image/webp" />
+              <img
+                src={hero.webp}
+                alt={hero.alt}
+                width={hero.width}
+                height={hero.height}
+                fetchPriority="high"
+              />
+            </picture>
           </figure>
         ) : null}
       </header>
