@@ -300,7 +300,7 @@ export function NvidiaAiAgentSafetyArticle({ post }: { post: BlogPost }) {
           includes vendor diligence, so you know which tools deserve your trust
           before you commit. If it makes sense, the next step is a Build Plan.
         </p>
-        <MapValueCard showComplex />
+        <MapValueCard showComplex leakTooltip />
         <p>
           We work with small and mid-size businesses across Orange County.{" "}
           <strong>

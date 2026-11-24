@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LeakMention } from "@/components/LeakTooltip";
 import { MapValueCard } from "@/components/MapValueCard";
 
 export const metadata: Metadata = {
@@ -24,10 +25,11 @@ export default function AboutPage() {
       <section className="section" style={{ paddingTop: "1.5rem" }}>
         <div className="wrap-narrow copy">
           <p>
-            StorenTech AI is a principal-led automation firm based in Orange
-            County, California. We start every client with an AI Opportunity
-            Map — a written report of where time or revenue leaks, what to
-            fix first, and how that shows up as lower cost or more revenue.
+            <LeakMention>
+              {
+                "StorenTech AI is a principal-led automation firm based in Orange County, California. We start every client with an AI Opportunity Map — a written report of where time or revenue leaks, what to fix first, and how that shows up as lower cost or more revenue."
+              }
+            </LeakMention>
           </p>
           <MapValueCard />
           <p>

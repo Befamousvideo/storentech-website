@@ -225,7 +225,7 @@ export function AiAgentCostControlsArticle({ post }: { post: BlogPost }) {
         </p>
 
         <h2>Where to start: the AI Opportunity Map</h2>
-        <MapValueCard showComplex />
+        <MapValueCard showComplex leakTooltip />
         <p>
           Every StorenTech client starts with a paid{" "}
           <strong>AI Opportunity Map</strong>. It&apos;s never a free sales

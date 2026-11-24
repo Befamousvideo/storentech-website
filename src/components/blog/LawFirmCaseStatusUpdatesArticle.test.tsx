@@ -70,7 +70,7 @@ describe("law firm case status updates blog post", () => {
     expect(post?.datePublished).toBe("2026-11-20");
     expect(post?.faqs).toEqual(lawFirmCaseStatusUpdatesFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[1]?.slug).toBe(slug);
+    expect(blogPosts[2]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/law-firm-case-status-updates");
     expect(post?.hero).toEqual({
       png: "/blog/law-firm-case-status-updates.png",

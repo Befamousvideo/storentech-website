@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { MoneyTimeRiskLeaksArticle } from "@/components/blog/MoneyTimeRiskLeaksArticle";
 import { ComparingAiConsultantsWhatYouAreBuyingArticle } from "@/components/blog/ComparingAiConsultantsWhatYouAreBuyingArticle";
 import { LawFirmCaseStatusUpdatesArticle } from "@/components/blog/LawFirmCaseStatusUpdatesArticle";
 import { WeeklyReportDownloadRebuildArticle } from "@/components/blog/WeeklyReportDownloadRebuildArticle";
@@ -45,6 +46,8 @@ import { site } from "@/lib/site";
 
 function BlogArticle({ post }: { post: BlogPost }) {
   switch (post.slug) {
+    case "money-time-risk-leaks":
+      return <MoneyTimeRiskLeaksArticle post={post} />;
     case "comparing-ai-consultants-what-you-are-buying":
       return <ComparingAiConsultantsWhatYouAreBuyingArticle post={post} />;
     case "law-firm-case-status-updates":
@@ -122,6 +125,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: post.description,
     authors: [{ name: site.founder.name }],
     alternates: { canonical: postPath(post.slug) },
+    ...(post.index === false
+      ? { robots: { index: false, follow: false } }
+      : {}),
     openGraph: {
       type: "article",
       title: post.metaTitle,

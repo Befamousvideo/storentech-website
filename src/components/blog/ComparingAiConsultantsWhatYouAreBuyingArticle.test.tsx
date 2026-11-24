@@ -70,7 +70,7 @@ describe("comparing AI consultants what you are buying blog post", () => {
     expect(post?.datePublished).toBe("2026-11-24");
     expect(post?.faqs).toEqual(comparingAiConsultantsWhatYouAreBuyingFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[0]?.slug).toBe(slug);
+    expect(blogPosts[1]?.slug).toBe(slug);
     expect(postPath(slug)).toBe(
       "/blog/comparing-ai-consultants-what-you-are-buying",
     );

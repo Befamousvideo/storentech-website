@@ -342,7 +342,7 @@ export function AiSecurityForAiEmployeesArticle({ post }: { post: BlogPost }) {
           6. Vendor / model security diligence is part of the AI Opportunity
           Map
         </h3>
-        <MapValueCard showComplex />
+        <MapValueCard showComplex leakTooltip />
         <p>
           Every StorenTech client starts with a paid{" "}
           <strong>AI Opportunity Map</strong>. The analysis is not only hours,

@@ -1,12 +1,25 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { IntakeLink } from "@/components/IntakeLink";
 import { InterviewLink } from "@/components/InterviewLink";
+import { LeakMention } from "@/components/LeakTooltip";
 import { MapValueCard } from "@/components/MapValueCard";
 import { SarahContact } from "@/components/SarahContact";
 import { StructuredData } from "@/components/StructuredData";
+import { homepageMetaDescription } from "@/lib/leak-copy";
 import { organizationLd } from "@/lib/seo";
 import { site, verticals } from "@/lib/site";
 import { siteFaqPageLd, siteFaqs } from "@/lib/site-faqs";
+
+export const metadata: Metadata = {
+  description: homepageMetaDescription,
+  openGraph: {
+    description: homepageMetaDescription,
+  },
+  twitter: {
+    description: homepageMetaDescription,
+  },
+};
 
 export default function HomePage() {
   return (
@@ -20,7 +33,9 @@ export default function HomePage() {
             <h1 className="service-title">{site.offer.primaryTitle}</h1>
             <p className="lede">Whether you call it AI or Super Intelligence (SI), the first step is the same: find where it actually pays in your business.</p>
             <hr className="rule" />
-            <p className="lede">{site.offer.primary}</p>
+            <p className="lede">
+              <LeakMention>{site.offer.primary}</LeakMention>
+            </p>
             <MapValueCard />
             <div className="btn-row">
               <InterviewLink className="btn btn-solid">

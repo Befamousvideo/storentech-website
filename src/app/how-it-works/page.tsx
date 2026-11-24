@@ -1,17 +1,24 @@
 import type { Metadata } from "next";
 import { IntakeLink } from "@/components/IntakeLink";
 import { InterviewLink } from "@/components/InterviewLink";
+import { LeakMention } from "@/components/LeakTooltip";
 import { MapValueCard } from "@/components/MapValueCard";
 import { SarahPhoneImage } from "@/components/SarahContact";
+import { howItWorksMetaDescription } from "@/lib/leak-copy";
 import { site } from "@/lib/site";
 
 // Mary locked Step 03 verbatim (Partner after the map). Do not rewrite that step.
 
 export const metadata: Metadata = {
   title: "How it works",
-  description:
-    "Paid AI Opportunity Map first: an AI Opportunity Map of time, revenue, and risk leaks. Map leaks first. Then the Build Plan — people still in the loop, out front with customers.",
+  description: howItWorksMetaDescription,
   alternates: { canonical: "/how-it-works" },
+  openGraph: {
+    description: howItWorksMetaDescription,
+  },
+  twitter: {
+    description: howItWorksMetaDescription,
+  },
 };
 
 const moves = [
@@ -41,7 +48,8 @@ export default function HowItWorksPage() {
           <h1>Pay for the map. Then the Build Plan.</h1>
           <hr className="rule" />
           <p className="lede">
-            The door is a paid AI Opportunity Map. {site.offer.services}{" "}
+            The door is a paid AI Opportunity Map.{" "}
+            <LeakMention>{site.offer.services}</LeakMention>{" "}
             {site.offer.capacity} Call Sarah if you want to talk before you buy
             the map.
           </p>
