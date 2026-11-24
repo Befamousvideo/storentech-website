@@ -912,7 +912,48 @@ export const lawFirmAiDataStorageCheckFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the four on-page Q&As word for word.
+ */
+export const aiOutboundCallbacksWhatToSettleFirstFaqs = [
+  {
+    question: "Can AI make outbound calls for a small business?",
+    answer:
+      "Yes. AI voice tools can now place outbound calls through a business's existing phone provider. Whether your office should use them depends on who approves the call list, what the AI may say, and how you test it first.",
+  },
+  {
+    question:
+      "Should an AI call my clients without a person approving the list?",
+    answer:
+      "We wouldn't suggest it. A person should approve every call list, and the AI should hand off anything it isn't sure about.",
+  },
+  {
+    question: "Can an AI callback be recorded in California?",
+    answer:
+      "California has its own call-recording rules, and they can apply to calls your business places. Check with your attorney before turning on recording or transcripts.",
+  },
+  {
+    question:
+      "Who helps Orange County firms and contractors decide whether AI should make callbacks?",
+    answer:
+      "StorenTech AI looks at how calls and callbacks work today as part of its AI Opportunity Map, and recommends whether a person-approved callback list or an outbound AI call is the right first step.",
+  },
+] as const satisfies readonly BlogFaq[];
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "ai-outbound-callbacks-what-to-settle-first",
+    title:
+      "Should AI Call Your Clients Back? What to Settle Before It Dials",
+    metaTitle:
+      "Should AI Call Your Clients Back? Settle This First | StorenTech AI",
+    description:
+      "AI can now place outbound calls through your existing phone line. What an Orange County firm or contractor should settle before letting AI call anyone.",
+    datePublished: "2026-11-29",
+    faqs: aiOutboundCallbacksWhatToSettleFirstFaqs,
+    indexCta: "Read the post",
+  },
   {
     slug: "law-firm-case-status-updates",
     title:
