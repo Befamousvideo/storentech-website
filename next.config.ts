@@ -19,11 +19,11 @@ const nextConfig: NextConfig = {
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
       {
-        source: "/make-the-promotion-stick",
+        source: "/thrive-after-your-promotion",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
       {
-        source: "/make-the-promotion-stick/",
+        source: "/thrive-after-your-promotion/",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
       ...(LAW_ROOT_INDEX.sendNoindexHeader
@@ -81,6 +81,16 @@ const nextConfig: NextConfig = {
       {
         source: "/roia/",
         destination: "/opportunity",
+        statusCode: 301,
+      },
+      {
+        source: "/make-the-promotion-stick",
+        destination: "/thrive-after-your-promotion",
+        statusCode: 301,
+      },
+      {
+        source: "/make-the-promotion-stick/",
+        destination: "/thrive-after-your-promotion",
         statusCode: 301,
       },
       // Retired interview and /redo routes first so they beat pay-host catch-alls.

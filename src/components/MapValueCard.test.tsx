@@ -95,7 +95,7 @@ describe("price never appears without map value", () => {
         text.includes("MapValueCard") ||
         text.includes("mapValue") ||
         text.includes("comprehensive deep-dive report") ||
-        text.includes("Thrive after your promotion");
+        text.includes("Thrive After Your Promotion");
       expect(hasValue, label).toBe(true);
     }
   });

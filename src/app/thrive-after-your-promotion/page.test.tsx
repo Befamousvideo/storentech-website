@@ -1,29 +1,30 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import nextConfig from "../../../next.config";
-import MakeThePromotionStickPage, {
+import ThriveAfterYourPromotionPage, {
   metadata,
-} from "@/app/make-the-promotion-stick/page";
+} from "@/app/thrive-after-your-promotion/page";
 import sitemap from "@/app/sitemap";
 import {
-  PROMOTION_STICK_CANONICAL_URL,
-  PROMOTION_STICK_COPY as copy,
-  PROMOTION_STICK_ORIGIN,
-  PROMOTION_STICK_PATH,
-  promotionStickFaqPageLd,
-  promotionStickServiceLd,
-} from "@/lib/promotion-stick";
+  THRIVE_CANONICAL_URL,
+  THRIVE_COPY as copy,
+  THRIVE_LEGACY_PATH,
+  THRIVE_ORIGIN,
+  THRIVE_PATH,
+  thriveFaqPageLd,
+  thriveServiceLd,
+} from "@/lib/thrive-after-your-promotion";
 import { nav } from "@/lib/site";
 
 const phonePattern = /\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/;
 const emailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
 const moneyOrPercent = /\$[\d,]+|\d+(?:\.\d+)?%/;
 const SOURCE_FILES = [
-  "src/app/make-the-promotion-stick/page.tsx",
+  "src/app/thrive-after-your-promotion/page.tsx",
   "src/components/PromotionStickBookCta.tsx",
-  "src/lib/promotion-stick.ts",
+  "src/lib/thrive-after-your-promotion.ts",
 ];
 
 function jsonLdBlocks(container: HTMLElement) {
@@ -38,52 +39,76 @@ function pageSource() {
   ).join("\n");
 }
 
-describe("/make-the-promotion-stick", () => {
-  it("uses v7.1 meta title, noindex, www canonical, and stays off the sitemap and nav", async () => {
-    expect(copy.hero.offerName).toBe("Thrive after your promotion");
+describe("/thrive-after-your-promotion", () => {
+  it("uses v7.2 meta title, noindex, www canonical, and stays off the sitemap and nav", async () => {
+    expect(copy.hero.offerName).toBe("Thrive After Your Promotion");
     expect(metadata.title).toEqual({ absolute: copy.meta.title });
     expect(copy.meta.title).toBe(
-      "Thrive after your promotion: a 4-hour, one-on-one AI setup for your new role | StorenTech AI",
+      "Thrive After Your Promotion: a 4-hour, one-on-one AI setup for your new role | StorenTech AI",
     );
     expect(metadata.description).toBe(copy.meta.description);
     expect(metadata.description).not.toMatch(moneyOrPercent);
     expect(metadata.robots).toEqual({ index: false, follow: false });
-    expect(metadata.alternates?.canonical).toBe(PROMOTION_STICK_CANONICAL_URL);
-    expect(PROMOTION_STICK_CANONICAL_URL).toBe(
-      "https://www.storentechai.com/make-the-promotion-stick",
+    expect(metadata.alternates?.canonical).toBe(THRIVE_CANONICAL_URL);
+    expect(THRIVE_CANONICAL_URL).toBe(
+      "https://www.storentechai.com/thrive-after-your-promotion",
     );
     expect(metadata.openGraph?.title).toBe(copy.meta.title);
     expect(metadata.openGraph?.description).toBe(copy.meta.description);
-    expect(metadata.openGraph?.url).toBe(PROMOTION_STICK_CANONICAL_URL);
+    expect(metadata.openGraph?.url).toBe(THRIVE_CANONICAL_URL);
     expect(metadata.twitter?.title).toBe(copy.meta.title);
     expect(String(metadata.openGraph?.description)).not.toMatch(moneyOrPercent);
     expect(String(metadata.twitter?.description)).not.toMatch(moneyOrPercent);
 
-    expect(sitemap().some((entry) => entry.url.endsWith(PROMOTION_STICK_PATH))).toBe(
+    expect(sitemap().some((entry) => entry.url.endsWith(THRIVE_PATH))).toBe(
+      false,
+    );
+    expect(sitemap().some((entry) => entry.url.endsWith(THRIVE_LEGACY_PATH))).toBe(
       false,
     );
     const hrefs: string[] = nav.map((item) => item.href);
-    expect(hrefs).not.toContain(PROMOTION_STICK_PATH);
+    expect(hrefs).not.toContain(THRIVE_PATH);
+    expect(hrefs).not.toContain(THRIVE_LEGACY_PATH);
 
     const headers = await nextConfig.headers?.();
     const robotsFor = (source: string) =>
       (headers ?? []).find((rule) => rule.source === source)?.headers;
-    expect(robotsFor(PROMOTION_STICK_PATH)).toEqual([
+    expect(robotsFor(THRIVE_PATH)).toEqual([
       { key: "X-Robots-Tag", value: "noindex, nofollow" },
     ]);
-    expect(robotsFor(`${PROMOTION_STICK_PATH}/`)).toEqual([
+    expect(robotsFor(`${THRIVE_PATH}/`)).toEqual([
       { key: "X-Robots-Tag", value: "noindex, nofollow" },
     ]);
   });
 
-  it("renders the v7.1 copy, keeps Results vary, and confines prices to the FAQ", () => {
-    const { container } = render(<MakeThePromotionStickPage />);
+  it("permanently redirects the legacy path to /thrive-after-your-promotion", async () => {
+    const redirects = (await nextConfig.redirects?.()) ?? [];
+    const legacy = [THRIVE_LEGACY_PATH, `${THRIVE_LEGACY_PATH}/`];
+    for (const source of legacy) {
+      expect(
+        redirects.find((rule) => rule.source === source),
+      ).toEqual({
+        source,
+        destination: THRIVE_PATH,
+        statusCode: 301,
+      });
+    }
+    expect(
+      existsSync(join(process.cwd(), "src/app/make-the-promotion-stick/page.tsx")),
+    ).toBe(false);
+    expect(
+      existsSync(join(process.cwd(), "src/app/thrive-after-your-promotion/page.tsx")),
+    ).toBe(true);
+  });
+
+  it("renders the v7.2 copy, keeps Results vary, and confines prices to the FAQ", () => {
+    const { container } = render(<ThriveAfterYourPromotionPage />);
 
     expect(
       screen.getByRole("heading", { level: 1, name: copy.hero.headline }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("Thrive after your promotion", { selector: ".kicker" }),
+      screen.getByText("Thrive After Your Promotion", { selector: ".kicker" }),
     ).toBeInTheDocument();
     expect(container.textContent).not.toContain("Make the Promotion Stick");
     expect(screen.getByText(copy.hero.subhead)).toBeInTheDocument();
@@ -205,7 +230,7 @@ describe("/make-the-promotion-stick", () => {
   });
 
   it("keeps Book your 4 hours as a disabled placeholder with no booking URL", () => {
-    const { container } = render(<MakeThePromotionStickPage />);
+    const { container } = render(<ThriveAfterYourPromotionPage />);
     const buttons = screen.getAllByRole("button", { name: copy.hero.cta });
 
     expect(buttons).toHaveLength(3);
@@ -228,16 +253,16 @@ describe("/make-the-promotion-stick", () => {
   });
 
   it("keeps FAQPage JSON-LD in sync, uses the www host, and omits prices from Service JSON-LD", () => {
-    const { container } = render(<MakeThePromotionStickPage />);
+    const { container } = render(<ThriveAfterYourPromotionPage />);
     const blocks = jsonLdBlocks(container);
     const faqLd = blocks.find((block) => block["@type"] === "FAQPage");
     const serviceLd = blocks.find((block) => block["@type"] === "Service");
 
-    expect(faqLd).toEqual(promotionStickFaqPageLd());
-    expect(serviceLd).toEqual(promotionStickServiceLd());
-    expect(promotionStickServiceLd().name).toBe("Thrive after your promotion");
-    expect(promotionStickServiceLd().url).toBe(PROMOTION_STICK_CANONICAL_URL);
-    expect(promotionStickServiceLd().provider.url).toBe(PROMOTION_STICK_ORIGIN);
+    expect(faqLd).toEqual(thriveFaqPageLd());
+    expect(serviceLd).toEqual(thriveServiceLd());
+    expect(thriveServiceLd().name).toBe("Thrive After Your Promotion");
+    expect(thriveServiceLd().url).toBe(THRIVE_CANONICAL_URL);
+    expect(thriveServiceLd().provider.url).toBe(THRIVE_ORIGIN);
     expect(serviceLd).not.toHaveProperty("offers");
     expect(JSON.stringify(serviceLd)).not.toMatch(moneyOrPercent);
     expect(JSON.stringify(faqLd)).toContain("How much does it cost?");
@@ -247,7 +272,8 @@ describe("/make-the-promotion-stick", () => {
     expect(JSON.stringify(faqLd)).toMatch(/\$1,000/);
 
     const corpus = `${container.innerHTML}\n${JSON.stringify(blocks)}\n${pageSource()}`;
-    expect(corpus).toContain("Thrive after your promotion");
+    expect(corpus).toContain("Thrive After Your Promotion");
+    expect(corpus).not.toContain("Thrive after your promotion");
     expect(corpus).not.toContain("Make the Promotion Stick");
     expect(corpus).not.toMatch(/\bROIA\b/);
     expect(corpus).not.toMatch(/DGX Spark/i);

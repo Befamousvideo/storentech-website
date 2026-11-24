@@ -2,25 +2,25 @@ import type { Metadata } from "next";
 import { PromotionStickBookCta } from "@/components/PromotionStickBookCta";
 import { StructuredData } from "@/components/StructuredData";
 import {
-  PROMOTION_STICK_CANONICAL_URL,
-  PROMOTION_STICK_COPY,
-  promotionStickFaqPageLd,
-  promotionStickServiceLd,
-} from "@/lib/promotion-stick";
+  THRIVE_CANONICAL_URL,
+  THRIVE_COPY,
+  thriveFaqPageLd,
+  thriveServiceLd,
+} from "@/lib/thrive-after-your-promotion";
 import { siteFallbackOgImages } from "@/lib/seo";
 
-const copy = PROMOTION_STICK_COPY;
+const copy = THRIVE_COPY;
 const ogImages = siteFallbackOgImages();
 
 export const metadata: Metadata = {
   title: { absolute: copy.meta.title },
   description: copy.meta.description,
   robots: { index: false, follow: false },
-  alternates: { canonical: PROMOTION_STICK_CANONICAL_URL },
+  alternates: { canonical: THRIVE_CANONICAL_URL },
   openGraph: {
     title: copy.meta.title,
     description: copy.meta.description,
-    url: PROMOTION_STICK_CANONICAL_URL,
+    url: THRIVE_CANONICAL_URL,
     images: ogImages,
   },
   twitter: {
@@ -31,11 +31,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function MakeThePromotionStickPage() {
+export default function ThriveAfterYourPromotionPage() {
   return (
     <article className="promotion-stick">
-      <StructuredData data={promotionStickServiceLd()} />
-      <StructuredData data={promotionStickFaqPageLd()} />
+      <StructuredData data={thriveServiceLd()} />
+      <StructuredData data={thriveFaqPageLd()} />
 
       <header className="page-hero">
         <div className="wrap">

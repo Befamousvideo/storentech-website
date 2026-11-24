@@ -1,4 +1,4 @@
-import { PROMOTION_STICK_COPY } from "@/lib/promotion-stick";
+import { THRIVE_COPY } from "@/lib/thrive-after-your-promotion";
 
 /** Placeholder until checkout exists. No booking, payment, or calendar URL. */
 export function PromotionStickBookCta() {
@@ -9,7 +9,7 @@ export function PromotionStickBookCta() {
       aria-disabled="true"
       data-placeholder="booking-checkout-not-built"
     >
-      {PROMOTION_STICK_COPY.hero.cta}
+      {THRIVE_COPY.hero.cta}
     </button>
   );
 }

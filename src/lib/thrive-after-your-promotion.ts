@@ -1,20 +1,21 @@
 import { siteFaqPageLd, type SiteFaq } from "@/lib/site-faqs";
 import { site } from "@/lib/site";
 
-export const PROMOTION_STICK_PATH = "/make-the-promotion-stick" as const;
-export const PROMOTION_STICK_ORIGIN = "https://www.storentechai.com" as const;
-export const PROMOTION_STICK_CANONICAL_URL =
-  `${PROMOTION_STICK_ORIGIN}${PROMOTION_STICK_PATH}` as const;
+export const THRIVE_PATH = "/thrive-after-your-promotion" as const;
+export const THRIVE_LEGACY_PATH = "/make-the-promotion-stick" as const;
+export const THRIVE_ORIGIN = "https://www.storentechai.com" as const;
+export const THRIVE_CANONICAL_URL =
+  `${THRIVE_ORIGIN}${THRIVE_PATH}` as const;
 
-export const PROMOTION_STICK_COPY = {
+export const THRIVE_COPY = {
   meta: {
     title:
-      "Thrive after your promotion: a 4-hour, one-on-one AI setup for your new role | StorenTech AI",
+      "Thrive After Your Promotion: a 4-hour, one-on-one AI setup for your new role | StorenTech AI",
     description:
       "Just stepped into a bigger job? In one 4-hour, one-on-one session, StorenTech AI sets up AI around the real work of your new role. You review and approve everything.",
   },
   hero: {
-    offerName: "Thrive after your promotion",
+    offerName: "Thrive After Your Promotion",
     headline: "Hit the ground ready.",
     subhead:
       "You earned the role. In 4 hours, we set up AI for the work your new seat demands, with less stress and you approving every important output.",
@@ -23,7 +24,7 @@ export const PROMOTION_STICK_COPY = {
   },
   who: {
     heading: "For people who just took on more",
-    intro: "Thrive after your promotion is for you if:",
+    intro: "Thrive After Your Promotion is for you if:",
     bullets: [
       "You were recently promoted or took on a role you are still learning.",
       "There is more on your plate, more people counting on you, and plenty you are still figuring out.",
@@ -100,13 +101,13 @@ export const PROMOTION_STICK_COPY = {
       },
       {
         title: "Not the AI Opportunity Map.",
-        body: "The AI Opportunity Map is our business diagnostic for owners and operators. It looks at a whole company. Thrive after your promotion is for one person and one role: yours. If you run a business and want the company-level view, see the AI Opportunity Map.",
+        body: "The AI Opportunity Map is our business diagnostic for owners and operators. It looks at a whole company. Thrive After Your Promotion is for one person and one role: yours. If you run a business and want the company-level view, see the AI Opportunity Map.",
       },
     ],
   },
   price: {
     heading: "What you get",
-    lead: "Thrive after your promotion: one 4-hour, one-on-one session.",
+    lead: "Thrive After Your Promotion: one 4-hour, one-on-one session.",
     includes:
       "Includes: role mapping, AI setup for your work, hands-on practice on a real task, and your written playbook.",
     booking:
@@ -115,7 +116,7 @@ export const PROMOTION_STICK_COPY = {
   next: {
     heading: "After your session",
     intro:
-      "Your Thrive after your promotion playbook is yours to keep and use on your own. If you want to keep going, here's an easy next step:",
+      "Your Thrive After Your Promotion playbook is yours to keep and use on your own. If you want to keep going, here's an easy next step:",
     point: {
       title: "When your company is ready.",
       body: "If your team or company wants the bigger picture, the AI Opportunity Map is the place to start.",
@@ -156,7 +157,7 @@ export const PROMOTION_STICK_COPY = {
     {
       question: "Is this the same as the AI Opportunity Map?",
       answer:
-        "No. The AI Opportunity Map is a business diagnostic for owners and operators. Thrive after your promotion is a one-on-one session for an individual in a new role.",
+        "No. The AI Opportunity Map is a business diagnostic for owners and operators. Thrive After Your Promotion is a one-on-one session for an individual in a new role.",
     },
     {
       question: "Will I get faster at my job?",
@@ -190,21 +191,21 @@ export const PROMOTION_STICK_COPY = {
   ] as const satisfies readonly SiteFaq[],
 } as const;
 
-export function promotionStickFaqPageLd() {
-  return siteFaqPageLd(PROMOTION_STICK_COPY.faqs);
+export function thriveFaqPageLd() {
+  return siteFaqPageLd(THRIVE_COPY.faqs);
 }
 
-export function promotionStickServiceLd() {
+export function thriveServiceLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: PROMOTION_STICK_COPY.hero.offerName,
-    description: PROMOTION_STICK_COPY.meta.description,
-    url: PROMOTION_STICK_CANONICAL_URL,
+    name: THRIVE_COPY.hero.offerName,
+    description: THRIVE_COPY.meta.description,
+    url: THRIVE_CANONICAL_URL,
     provider: {
       "@type": "Organization",
       name: site.name,
-      url: PROMOTION_STICK_ORIGIN,
+      url: THRIVE_ORIGIN,
     },
     areaServed: {
       "@type": "AdministrativeArea",

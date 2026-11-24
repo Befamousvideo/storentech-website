@@ -38,6 +38,9 @@ describe("robots disallow list", () => {
     expect(urls).not.toContain(
       `${CANONICAL_ORIGIN}/make-the-promotion-stick`,
     );
+    expect(urls).not.toContain(
+      `${CANONICAL_ORIGIN}/thrive-after-your-promotion`,
+    );
   });
 
   it("does not disallow /for and does not list /for pages in the sitemap", () => {
