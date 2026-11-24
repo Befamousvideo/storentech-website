@@ -2,20 +2,23 @@ import { siteFaqPageLd, type SiteFaq } from "@/lib/site-faqs";
 import { site } from "@/lib/site";
 
 export const PROMOTION_STICK_PATH = "/make-the-promotion-stick" as const;
+export const PROMOTION_STICK_ORIGIN = "https://www.storentechai.com" as const;
+export const PROMOTION_STICK_CANONICAL_URL =
+  `${PROMOTION_STICK_ORIGIN}${PROMOTION_STICK_PATH}` as const;
 
 export const PROMOTION_STICK_COPY = {
   meta: {
     title:
       "Make the Promotion Stick: a 4-hour, one-on-one AI setup for your new role | StorenTech AI",
     description:
-      "Just stepped into a bigger job? In one 4-hour, one-on-one session, StorenTech AI sets up AI around the real work of your new role. You review and approve everything. $1,000.",
+      "Just stepped into a bigger job? In one 4-hour, one-on-one session, StorenTech AI sets up AI around the real work of your new role. You review and approve everything.",
   },
   hero: {
     offerName: "Make the Promotion Stick",
     headline: "Hit the ground ready.",
     subhead:
       "You earned the role. In 4 hours, we set up AI for the work your new seat demands, with less stress and you approving every important output.",
-    supportingLine: "$1,000 · 4 hours · one-on-one · you approve everything",
+    supportingLine: "4 hours · one-on-one · you approve everything",
     cta: "Book your 4 hours",
   },
   who: {
@@ -41,8 +44,9 @@ export const PROMOTION_STICK_COPY = {
       },
       {
         n: "2",
-        title: "Set up AI around that work.",
+        title: "Set up Agentic* AI around that work.",
         body: "We set up AI and agents for the tasks that matter in your role, using the tools you already have wherever we can. No generic tour.",
+        note: "* AI agents that draft the work while you approve every important output.",
       },
       {
         n: "3",
@@ -102,9 +106,6 @@ export const PROMOTION_STICK_COPY = {
   },
   price: {
     heading: "Price",
-    lead: "Make the Promotion Stick:",
-    amount: "$1,000",
-    rest: "for one 4-hour, one-on-one session.",
     includes:
       "Includes: role mapping, AI setup for your work, hands-on practice on a real task, and your written playbook.",
     booking:
@@ -177,14 +178,17 @@ export const PROMOTION_STICK_COPY = {
         "Reschedule free with more than 24 hours' notice; within 24 hours there's a $20 fee. Cancel at least 24 hours ahead for a full refund. Cancel within 24 hours and we'll refund 50%, or work out what's fair together.",
     },
     {
+      question: "Price",
+      answer:
+        "Make the Promotion Stick: $1,000 for one 4-hour, one-on-one session.",
+    },
+    {
       question: "How do I pay, and when is my session?",
       answer:
         "After you book, we start a short onboarding so your session is set up around your new role. Pay when you book, or choose to pay at your session. Your first session is usually scheduled 2–4 days after you book.",
     },
   ] as const satisfies readonly SiteFaq[],
 } as const;
-
-export const PROMOTION_STICK_PRICE_LINE = `${PROMOTION_STICK_COPY.price.lead} ${PROMOTION_STICK_COPY.price.amount} ${PROMOTION_STICK_COPY.price.rest}`;
 
 export function promotionStickFaqPageLd() {
   return siteFaqPageLd(PROMOTION_STICK_COPY.faqs);
@@ -196,22 +200,15 @@ export function promotionStickServiceLd() {
     "@type": "Service",
     name: PROMOTION_STICK_COPY.hero.offerName,
     description: PROMOTION_STICK_COPY.meta.description,
-    url: `${site.url}${PROMOTION_STICK_PATH}`,
+    url: PROMOTION_STICK_CANONICAL_URL,
     provider: {
       "@type": "Organization",
       name: site.name,
-      url: site.url,
+      url: PROMOTION_STICK_ORIGIN,
     },
     areaServed: {
       "@type": "AdministrativeArea",
       name: "Orange County",
-    },
-    offers: {
-      "@type": "Offer",
-      name: PROMOTION_STICK_COPY.hero.offerName,
-      description: PROMOTION_STICK_COPY.meta.description,
-      price: "1000",
-      priceCurrency: "USD",
     },
   };
 }

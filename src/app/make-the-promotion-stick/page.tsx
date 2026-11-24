@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { PromotionStickBookCta } from "@/components/PromotionStickBookCta";
 import { StructuredData } from "@/components/StructuredData";
 import {
+  PROMOTION_STICK_CANONICAL_URL,
   PROMOTION_STICK_COPY,
-  PROMOTION_STICK_PATH,
   promotionStickFaqPageLd,
   promotionStickServiceLd,
 } from "@/lib/promotion-stick";
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   title: { absolute: copy.meta.title },
   description: copy.meta.description,
   robots: { index: false, follow: false },
-  alternates: { canonical: PROMOTION_STICK_PATH },
+  alternates: { canonical: PROMOTION_STICK_CANONICAL_URL },
   openGraph: {
     title: copy.meta.title,
     description: copy.meta.description,
-    url: PROMOTION_STICK_PATH,
+    url: PROMOTION_STICK_CANONICAL_URL,
     images: ogImages,
   },
   twitter: {
@@ -85,6 +85,9 @@ export default function MakeThePromotionStickPage() {
                 <div>
                   <h3>{step.title}</h3>
                   <p>{step.body}</p>
+                  {"note" in step ? (
+                    <p className="fine promotion-stick-step-note">{step.note}</p>
+                  ) : null}
                 </div>
               </article>
             ))}
@@ -136,12 +139,7 @@ export default function MakeThePromotionStickPage() {
           >
             {copy.price.heading}
           </h2>
-          <p className="price">
-            {copy.price.lead} <strong>{copy.price.amount}</strong> {copy.price.rest}
-          </p>
-          <p className="lede" style={{ marginTop: "1.15rem" }}>
-            {copy.price.includes}
-          </p>
+          <p className="lede">{copy.price.includes}</p>
           <p className="lede" style={{ marginTop: "1.15rem" }}>
             {copy.price.booking}
           </p>

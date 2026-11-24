@@ -8,16 +8,18 @@ import MakeThePromotionStickPage, {
 } from "@/app/make-the-promotion-stick/page";
 import sitemap from "@/app/sitemap";
 import {
+  PROMOTION_STICK_CANONICAL_URL,
   PROMOTION_STICK_COPY as copy,
+  PROMOTION_STICK_ORIGIN,
   PROMOTION_STICK_PATH,
-  PROMOTION_STICK_PRICE_LINE,
   promotionStickFaqPageLd,
   promotionStickServiceLd,
 } from "@/lib/promotion-stick";
-import { nav, site } from "@/lib/site";
+import { nav } from "@/lib/site";
 
 const phonePattern = /\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/;
 const emailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
+const moneyOrPercent = /\$[\d,]+|\d+(?:\.\d+)?%/;
 const SOURCE_FILES = [
   "src/app/make-the-promotion-stick/page.tsx",
   "src/components/PromotionStickBookCta.tsx",
@@ -37,14 +39,21 @@ function pageSource() {
 }
 
 describe("/make-the-promotion-stick", () => {
-  it("uses v7 meta title and description, noindex, and stays off the sitemap and nav", async () => {
+  it("uses v7 meta title, noindex, www canonical, and stays off the sitemap and nav", async () => {
     expect(metadata.title).toEqual({ absolute: copy.meta.title });
     expect(metadata.description).toBe(copy.meta.description);
+    expect(metadata.description).not.toMatch(moneyOrPercent);
     expect(metadata.robots).toEqual({ index: false, follow: false });
-    expect(metadata.alternates?.canonical).toBe(PROMOTION_STICK_PATH);
+    expect(metadata.alternates?.canonical).toBe(PROMOTION_STICK_CANONICAL_URL);
+    expect(PROMOTION_STICK_CANONICAL_URL).toBe(
+      "https://www.storentechai.com/make-the-promotion-stick",
+    );
     expect(metadata.openGraph?.title).toBe(copy.meta.title);
     expect(metadata.openGraph?.description).toBe(copy.meta.description);
+    expect(metadata.openGraph?.url).toBe(PROMOTION_STICK_CANONICAL_URL);
     expect(metadata.twitter?.title).toBe(copy.meta.title);
+    expect(String(metadata.openGraph?.description)).not.toMatch(moneyOrPercent);
+    expect(String(metadata.twitter?.description)).not.toMatch(moneyOrPercent);
 
     expect(sitemap().some((entry) => entry.url.endsWith(PROMOTION_STICK_PATH))).toBe(
       false,
@@ -63,7 +72,7 @@ describe("/make-the-promotion-stick", () => {
     ]);
   });
 
-  it("renders the v7 copy verbatim, including Results vary", () => {
+  it("renders the v7 copy, keeps Results vary, and confines prices to the FAQ", () => {
     const { container } = render(<MakeThePromotionStickPage />);
 
     expect(
@@ -92,7 +101,25 @@ describe("/make-the-promotion-stick", () => {
         screen.getByRole("heading", { level: 3, name: step.title }),
       ).toBeInTheDocument();
       expect(screen.getByText(step.body)).toBeInTheDocument();
+      if ("note" in step) {
+        expect(screen.getByText(step.note)).toBeInTheDocument();
+        expect(screen.getByText(step.note)).toHaveClass(
+          "fine",
+          "promotion-stick-step-note",
+        );
+      }
     }
+    expect(
+      screen.getByRole("heading", {
+        level: 3,
+        name: "Set up Agentic* AI around that work.",
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "* AI agents that draft the work while you approve every important output.",
+      ),
+    ).toBeInTheDocument();
 
     expect(
       screen.getByRole("heading", { level: 2, name: copy.how.heading }),
@@ -111,7 +138,6 @@ describe("/make-the-promotion-stick", () => {
     expect(
       screen.getByRole("heading", { level: 2, name: copy.price.heading }),
     ).toBeInTheDocument();
-    expect(container.textContent).toContain(PROMOTION_STICK_PRICE_LINE);
     expect(screen.getByText(copy.price.includes)).toBeInTheDocument();
     expect(screen.getAllByText(copy.price.booking)).toHaveLength(2);
 
@@ -148,6 +174,14 @@ describe("/make-the-promotion-stick", () => {
       .join("\n");
     expect(visible.match(/Results vary/g)).toHaveLength(2);
     expect(container.querySelectorAll("h1")).toHaveLength(1);
+
+    const nonFaq = [...container.querySelectorAll("header, section:not(#faq)")]
+      .map((node) => node.textContent ?? "")
+      .join("\n");
+    expect(nonFaq).not.toMatch(moneyOrPercent);
+    expect(faq?.textContent).toMatch(/\$1,000/);
+    expect(faq?.textContent).toMatch(/\$20/);
+    expect(faq?.textContent).toMatch(/50%/);
   });
 
   it("keeps Book your 4 hours as a disabled placeholder with no booking URL", () => {
@@ -173,7 +207,7 @@ describe("/make-the-promotion-stick", () => {
     );
   });
 
-  it("keeps FAQPage JSON-LD in sync with the visible Q&A and omits banned terms", () => {
+  it("keeps FAQPage JSON-LD in sync, uses the www host, and omits prices from Service JSON-LD", () => {
     const { container } = render(<MakeThePromotionStickPage />);
     const blocks = jsonLdBlocks(container);
     const faqLd = blocks.find((block) => block["@type"] === "FAQPage");
@@ -181,7 +215,11 @@ describe("/make-the-promotion-stick", () => {
 
     expect(faqLd).toEqual(promotionStickFaqPageLd());
     expect(serviceLd).toEqual(promotionStickServiceLd());
-    expect(promotionStickServiceLd().url).toBe(`${site.url}${PROMOTION_STICK_PATH}`);
+    expect(promotionStickServiceLd().url).toBe(PROMOTION_STICK_CANONICAL_URL);
+    expect(promotionStickServiceLd().provider.url).toBe(PROMOTION_STICK_ORIGIN);
+    expect(serviceLd).not.toHaveProperty("offers");
+    expect(JSON.stringify(serviceLd)).not.toMatch(moneyOrPercent);
+    expect(JSON.stringify(faqLd)).toMatch(/\$1,000/);
 
     const corpus = `${container.innerHTML}\n${JSON.stringify(blocks)}\n${pageSource()}`;
     expect(corpus).not.toMatch(/\bROIA\b/);

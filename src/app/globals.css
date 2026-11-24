@@ -730,6 +730,11 @@ select {
   max-width: 46rem;
 }
 
+.promotion-stick-step-note {
+  margin-top: 0.7rem;
+  max-width: 46rem;
+}
+
 /* Split */
 .split {
   display: grid;
