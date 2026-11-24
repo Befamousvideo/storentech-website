@@ -36,6 +36,16 @@
       "statusCode": 301
     },
     {
+      "source": "/make-the-promotion-stick",
+      "destination": "/thrive-after-your-promotion",
+      "statusCode": 301
+    },
+    {
+      "source": "/make-the-promotion-stick/",
+      "destination": "/thrive-after-your-promotion",
+      "statusCode": 301
+    },
+    {
       "source": "/ceo",
       "destination": "https://www.storentechai.com/",
       "permanent": true

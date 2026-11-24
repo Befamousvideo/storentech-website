@@ -25,6 +25,11 @@ const OPPORTUNITY_SOURCES = [
   "/roia/",
 ] as const;
 const OPPORTUNITY_DESTINATION = "/opportunity";
+const THRIVE_LEGACY_SOURCES = [
+  "/make-the-promotion-stick",
+  "/make-the-promotion-stick/",
+] as const;
+const THRIVE_DESTINATION = "/thrive-after-your-promotion";
 
 type RedirectRule = {
   source: string;
@@ -161,6 +166,28 @@ describe("legacy interview, /redo, and /pay redirects", () => {
     }
   });
 
+  it("permanently moves /make-the-promotion-stick to /thrive-after-your-promotion", async () => {
+    const vercel = loadVercelRedirects();
+    const nextRedirects = (await nextConfig.redirects?.()) as RedirectRule[];
+
+    for (const [label, redirects] of [
+      ["vercel.json", vercel],
+      ["next.config.ts", nextRedirects],
+    ] as const) {
+      for (const source of THRIVE_LEGACY_SOURCES) {
+        expect(findRule(redirects, source), `${label} ${source}`).toEqual({
+          source,
+          destination: THRIVE_DESTINATION,
+          statusCode: 301,
+        });
+      }
+      expect(
+        redirects.some((rule) => rule.destination === "/make-the-promotion-stick"),
+        `${label} has no hop through /make-the-promotion-stick`,
+      ).toBe(false);
+    }
+  });
+
   it("permanently sends /ceo /cfo /ops and /redo to the www homepage before /pay", async () => {
     const vercel = loadVercelRedirects();
     const nextRedirects = (await nextConfig.redirects?.()) as RedirectRule[];
@@ -195,6 +222,9 @@ describe("legacy interview, /redo, and /pay redirects", () => {
         if (
           OPPORTUNITY_SOURCES.includes(
             rule.source as (typeof OPPORTUNITY_SOURCES)[number],
+          ) ||
+          THRIVE_LEGACY_SOURCES.includes(
+            rule.source as (typeof THRIVE_LEGACY_SOURCES)[number],
           )
         ) {
           continue;

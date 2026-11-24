@@ -336,6 +336,25 @@ select {
   border-color: var(--navy-soft);
 }
 
+.btn[aria-disabled="true"],
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-solid[aria-disabled="true"]:hover,
+.btn-solid[aria-disabled="true"]:focus-visible,
+.btn-solid[aria-disabled="true"]:active,
+.btn-solid:disabled:hover,
+.btn-solid:disabled:focus-visible,
+.btn-solid:disabled:active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--cream);
+  opacity: 0.55;
+}
+
 .btn-gold {
   border-color: var(--gold);
   color: var(--gold);
@@ -711,6 +730,11 @@ select {
   max-width: 46rem;
 }
 
+.promotion-stick-step-note {
+  margin-top: 0.7rem;
+  max-width: 46rem;
+}
+
 /* Split */
 .split {
   display: grid;
@@ -976,8 +1000,32 @@ select {
   max-width: 22ch;
 }
 
+.page-hero h1.promotion-stick-title {
+  max-width: 12ch;
+}
+
+.promotion-stick-heading {
+  font-size: clamp(2rem, 4vw, 3.15rem);
+  margin: 0 0 2.2rem;
+  max-width: 18ch;
+}
+
+.promotion-stick .page-hero .fine {
+  margin-top: 0.9rem;
+}
+
+.promotion-stick .cta-band h2 {
+  max-width: 18ch;
+}
+
+.promotion-stick .copy-points strong {
+  color: var(--navy);
+  font-weight: 600;
+}
+
 .free-map-points,
-.free-map-steps {
+.free-map-steps,
+.copy-points {
   margin: 1.2rem 0 0;
   padding-left: 1.2rem;
   color: var(--muted);
@@ -985,7 +1033,8 @@ select {
 }
 
 .free-map-points li + li,
-.free-map-steps li + li {
+.free-map-steps li + li,
+.copy-points li + li {
   margin-top: 0.55rem;
 }
 
