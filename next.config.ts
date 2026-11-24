@@ -18,6 +18,14 @@ const nextConfig: NextConfig = {
         source: "/for/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
+      {
+        source: "/make-the-promotion-stick",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
+        source: "/make-the-promotion-stick/",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
       ...(LAW_ROOT_INDEX.sendNoindexHeader
         ? [
             {

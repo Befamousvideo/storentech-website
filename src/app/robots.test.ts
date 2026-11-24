@@ -35,6 +35,9 @@ describe("robots disallow list", () => {
     expect(urls).toContain(`${CANONICAL_ORIGIN}/opportunity`);
     expect(urls).toContain(`${CANONICAL_ORIGIN}/free-ai-map`);
     expect(urls).not.toContain(`${CANONICAL_ORIGIN}/law`);
+    expect(urls).not.toContain(
+      `${CANONICAL_ORIGIN}/make-the-promotion-stick`,
+    );
   });
 
   it("does not disallow /for and does not list /for pages in the sitemap", () => {
