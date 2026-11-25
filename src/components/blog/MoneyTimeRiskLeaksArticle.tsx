@@ -21,10 +21,10 @@ export function MoneyTimeRiskLeaksArticle({ post }: { post: BlogPost }) {
             should keep. There are three kinds. <strong>Money leaks</strong>{" "}
             are revenue that walks out the door, like a missed call or a quote
             nobody followed up on. <strong>Time leaks</strong> are staff hours
-            lost to busywork. <strong>Risk leaks</strong> are gaps that
-            haven&apos;t cost you yet but could, like an ex-employee&apos;s
-            login that still works. Most owners can feel all three but
-            can&apos;t point to them until someone maps them.
+            lost to busywork. <strong>Risk leaks</strong> are security and
+            control gaps that haven&apos;t cost you yet but could, like an
+            ex-employee&apos;s login that still works. Most owners can feel all
+            three but can&apos;t point to them until someone maps them.
           </p>
           <p>The good news: most leaks are ordinary, fixable problems.</p>
         </div>
@@ -88,19 +88,24 @@ export function MoneyTimeRiskLeaksArticle({ post }: { post: BlogPost }) {
 
         <h2>What is a risk leak?</h2>
         <p>
-          A risk leak is exposure that can cost the business later. Nothing
-          looks broken today, which is exactly why it&apos;s easy to miss.
+          A risk leak is a security or control gap that can cost the business
+          later. Nothing looks broken today, which is exactly why it&apos;s
+          easy to miss.
         </p>
         <p>
           Risk leaks don&apos;t show up on a monthly report. They show up all
           at once, on a bad day: a former employee still has access, a key
           person is out sick and nobody else knows the process, or customer
-          information turns up somewhere it shouldn&apos;t be.
+          information turns up somewhere it shouldn&apos;t be. Security gaps
+          are often the plainest ones: weak or reused passwords, logins several
+          people share, and no regular check of who can get into what.
         </p>
         <p>
-          <strong>Common spots:</strong> customer data sitting in a tool nobody
-          controls, ex-employee logins still active, work that depends on one
-          person, and AI tools that someone signed up for and nobody checks.
+          <strong>Common spots:</strong> weak or reused passwords, shared
+          logins, ex-employee accounts still active, customer data sitting in a
+          tool nobody controls, no regular check of who has access, work that
+          depends on one person, and AI tools that someone signed up for and
+          nobody checks.
         </p>
         <p>
           <strong>An Orange County example.</strong> Imagine a small law firm

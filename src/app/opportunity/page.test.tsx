@@ -34,6 +34,12 @@ describe("/opportunity leak cards and FAQ", () => {
     }
     expect(container.textContent).toContain(LEAK_CARDS_CAPTION);
     expect(container.textContent).toContain("Common spots:");
+    expect(container.textContent).toContain(
+      "A security or control gap that hasn't cost you yet but could later. Nothing looks broken today, which is why it's easy to miss.",
+    );
+    expect(container.textContent).toContain(
+      "weak or reused passwords, shared logins, ex-employee accounts still active, customer data sitting in a tool nobody controls, no regular check of who has access, work that depends on one person, AI tools nobody owns or checks.",
+    );
   });
 
   it("keeps visible FAQ copy in sync with a single FAQPage JSON-LD block", () => {
@@ -49,5 +55,8 @@ describe("/opportunity leak cards and FAQ", () => {
       ).toBeInTheDocument();
       expect(screen.getByText(item.answer)).toBeInTheDocument();
     }
+    expect(screen.getByText(
+      "A risk leak is a security or control gap that hasn't cost the business anything yet but could later. Common examples are weak or reused passwords, shared logins, former employees who can still log in, customer data in a tool nobody controls, and work that only one person knows how to do.",
+    )).toBeInTheDocument();
   });
 });

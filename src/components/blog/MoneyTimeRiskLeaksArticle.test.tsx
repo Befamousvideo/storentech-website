@@ -46,6 +46,9 @@ describe("money, time and risk leaks blog post", () => {
     expect(post?.datePublished).toBe("2026-11-24");
     expect(post?.faqs).toEqual(moneyTimeRiskLeaksFaqs);
     expect(post?.faqs).toHaveLength(5);
+    expect(post?.faqs[3]?.answer).toBe(
+      "A risk leak is a security or control gap that hasn't cost the business anything yet but could later, like weak or reused passwords, shared logins, former employees who can still log in, customer data in a tool nobody controls, or work only one person knows how to do.",
+    );
     expect(post?.index).toBe(false);
     expect(blogPosts[0]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/money-time-risk-leaks");
@@ -226,6 +229,18 @@ describe("money, time and risk leaks blog post", () => {
       "the weekly report your office still downloads and rebuilds by hand",
     );
     expect(text).toContain("What is a risk leak?");
+    expect(text).toContain(
+      "Risk leaks are security and control gaps that haven't cost you yet but could, like an ex-employee's login that still works.",
+    );
+    expect(text).toContain(
+      "A risk leak is a security or control gap that can cost the business later.",
+    );
+    expect(text).toContain(
+      "Security gaps are often the plainest ones: weak or reused passwords, logins several people share, and no regular check of who can get into what.",
+    );
+    expect(text).toContain(
+      "weak or reused passwords, shared logins, ex-employee accounts still active, customer data sitting in a tool nobody controls, no regular check of who has access, work that depends on one person, and AI tools that someone signed up for and nobody checks.",
+    );
     expect(text).toContain("AI tool cleanup checklist");
     expect(text).toContain("Why do leaks stay hidden?");
     expect(text).toContain("How do you find the leaks in your business?");

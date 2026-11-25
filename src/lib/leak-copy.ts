@@ -1,5 +1,5 @@
 export const LEAK_TOOLTIP_TEXT =
-  "A leak is where your business quietly loses something. Money leaks: revenue that slips away. Time leaks: staff hours lost to busywork. Risk leaks: gaps that can cost you later.";
+  "A leak is where your business quietly loses something. Money leaks: revenue that slips away. Time leaks: staff hours lost to busywork. Risk leaks: security and control gaps that can cost you later.";
 
 export const LEAK_TOOLTIP_LINK_LABEL = "More on leaks →";
 
@@ -28,9 +28,9 @@ export const leakCards = [
   {
     title: "Risk leak",
     definition:
-      "A gap that hasn't cost you yet but could later. Nothing looks broken today, which is why it's easy to miss.",
+      "A security or control gap that hasn't cost you yet but could later. Nothing looks broken today, which is why it's easy to miss.",
     spots:
-      "customer data sitting in a tool nobody controls, ex-employee logins still active, work that depends on one person, AI tools nobody owns or checks.",
+      "weak or reused passwords, shared logins, ex-employee accounts still active, customer data sitting in a tool nobody controls, no regular check of who has access, work that depends on one person, AI tools nobody owns or checks.",
   },
 ] as const;
 
@@ -54,7 +54,7 @@ export const opportunityLeakFaqs = [
   {
     question: "What is a risk leak?",
     answer:
-      "A risk leak is a gap that hasn't cost the business anything yet but could later. Common examples are customer data in a tool nobody controls, former employees who can still log in, and work that only one person knows how to do.",
+      "A risk leak is a security or control gap that hasn't cost the business anything yet but could later. Common examples are weak or reused passwords, shared logins, former employees who can still log in, customer data in a tool nobody controls, and work that only one person knows how to do.",
   },
   {
     question: "How does StorenTech find leaks in my business?",

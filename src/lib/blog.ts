@@ -970,7 +970,7 @@ export const moneyTimeRiskLeaksFaqs = [
   {
     question: "What is a risk leak?",
     answer:
-      "A risk leak is a gap that hasn't cost the business anything yet but could later, like customer data in a tool nobody controls, former employees who can still log in, or work only one person knows how to do.",
+      "A risk leak is a security or control gap that hasn't cost the business anything yet but could later, like weak or reused passwords, shared logins, former employees who can still log in, customer data in a tool nobody controls, or work only one person knows how to do.",
   },
   {
     question:

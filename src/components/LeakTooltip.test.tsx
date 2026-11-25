@@ -41,6 +41,12 @@ function assertOneBusinessLeakTooltip(container: HTMLElement) {
 }
 
 describe("LeakTooltip", () => {
+  it("uses the approved 33-word tooltip, including security in risk leaks", () => {
+    expect(LEAK_TOOLTIP_TEXT).toBe(
+      "A leak is where your business quietly loses something. Money leaks: revenue that slips away. Time leaks: staff hours lost to busywork. Risk leaks: security and control gaps that can cost you later.",
+    );
+  });
+
   it("keeps the tooltip copy in the server-rendered HTML", () => {
     const html = renderToStaticMarkup(
       <LeakMention>{"An AI Opportunity Map shows where time or revenue leaks."}</LeakMention>,
