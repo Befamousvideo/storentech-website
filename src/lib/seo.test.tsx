@@ -8,7 +8,14 @@ import { metadata as opportunityMetadata } from "@/app/opportunity/page";
 import { metadata as privacyMetadata } from "@/app/privacy/page";
 import { metadata as termsMetadata } from "@/app/terms/page";
 import { SiteChrome } from "@/components/SiteChrome";
-import { blogJsonLdDate, blogPosts, getPost, postPath, postUrl } from "@/lib/blog";
+import {
+  blogJsonLdDate,
+  blogPosts,
+  getPost,
+  isIndexedBlogPost,
+  postPath,
+  postUrl,
+} from "@/lib/blog";
 import {
   RELATED_POST_COUNT,
   SITE_FALLBACK_OG_IMAGE,
@@ -217,6 +224,7 @@ describe("SEO-1: blog Article JSON-LD, og:image, and related posts", () => {
         expect(blogPosts.some((live) => live.slug === item.slug), item.slug).toBe(
           true,
         );
+        expect(isIndexedBlogPost(item), item.slug).toBe(true);
         expect(SCHEDULED_UNMERGED_SLUGS, item.slug).not.toContain(item.slug);
       }
 
@@ -251,7 +259,10 @@ describe("SEO-1: blog Article JSON-LD, og:image, and related posts", () => {
     const last = blogPosts[blogPosts.length - 1];
     const related = relatedPostsFor(last.slug);
     expect(related.map((post) => post.slug)).toEqual(
-      blogPosts.slice(0, RELATED_POST_COUNT).map((post) => post.slug),
+      blogPosts
+        .filter(isIndexedBlogPost)
+        .slice(0, RELATED_POST_COUNT)
+        .map((post) => post.slug),
     );
   });
 });

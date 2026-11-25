@@ -36,6 +36,10 @@ const nextConfig: NextConfig = {
         source: "/contractors/:path+",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
+      {
+        source: "/blog/money-time-risk-leaks",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
     ];
   },
   async redirects() {

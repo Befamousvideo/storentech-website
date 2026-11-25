@@ -1,5 +1,5 @@
 import type { BlogPost } from "@/lib/blog";
-import { blogPosts } from "@/lib/blog";
+import { blogPosts, isIndexedBlogPost } from "@/lib/blog";
 import {
   CONTRACTORS_CANONICAL_URL,
   contractorsPage,
@@ -115,6 +115,7 @@ export function relatedPostsFor(slug: string, count = RELATED_POST_COUNT) {
   for (let step = 1; step < blogPosts.length && related.length < count; step += 1) {
     const candidate = blogPosts[(index + step) % blogPosts.length];
     if (!candidate || candidate.slug === slug) continue;
+    if (!isIndexedBlogPost(candidate)) continue;
     if (related.some((post) => post.slug === candidate.slug)) continue;
     related.push(candidate);
   }

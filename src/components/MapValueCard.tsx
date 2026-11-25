@@ -1,11 +1,14 @@
+import { LeakMention } from "@/components/LeakTooltip";
 import { mapValue, site } from "@/lib/site";
 
 export function MapValueCard({
   compact = false,
   showComplex = false,
+  leakTooltip = false,
 }: {
   compact?: boolean;
   showComplex?: boolean;
+  leakTooltip?: boolean;
 }) {
   return (
     <aside className={`card map-value${compact ? " map-value-compact" : ""}`}>
@@ -14,7 +17,9 @@ export function MapValueCard({
       {compact ? null : (
         <ul>
           {mapValue.bullets.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item}>
+              {leakTooltip ? <LeakMention>{item}</LeakMention> : item}
+            </li>
           ))}
         </ul>
       )}

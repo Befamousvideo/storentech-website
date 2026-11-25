@@ -70,7 +70,7 @@ describe("office procedures as AI instructions blog post", () => {
     expect(post?.datePublished).toBe("2026-11-13");
     expect(post?.faqs).toEqual(officeProceduresAiInstructionsFaqs);
     expect(post?.faqs).toHaveLength(5);
-    expect(blogPosts[4]?.slug).toBe(slug);
+    expect(blogPosts[5]?.slug).toBe(slug);
     expect(postPath(slug)).toBe("/blog/office-procedures-ai-instructions");
     expect(post?.hero).toEqual({
       png: "/blog/office-procedures-ai-instructions-1200x630.png",

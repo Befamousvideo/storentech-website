@@ -651,6 +651,98 @@ select {
   margin: 0;
 }
 
+.leak-tooltip {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.leak-tooltip-trigger {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  cursor: help;
+}
+
+.leak-tooltip-term {
+  border-bottom: 1px dotted currentColor;
+}
+
+.leak-tooltip-hint {
+  font-size: 0.72em;
+  font-weight: 600;
+  color: var(--gold);
+  margin-left: 0.12em;
+}
+
+.leak-tooltip-panel {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.55rem);
+  z-index: 30;
+  width: min(22.5rem, calc(100vw - 1.5rem));
+  padding: 0.95rem 2.2rem 1rem 1.05rem;
+  background: var(--navy);
+  color: var(--cream);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  box-shadow: 0 12px 32px rgba(14, 28, 47, 0.22);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.leak-tooltip-panel.is-open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.leak-tooltip-text {
+  display: block;
+}
+
+.leak-tooltip-close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--cream);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.leak-tooltip-link {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: var(--cream);
+  font-weight: 600;
+}
+
+.leak-cards-heading {
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  margin: 0 0 1.6rem;
+}
+
+.leak-cards-caption {
+  margin-top: 1.35rem;
+  max-width: 42rem;
+}
+
 /* Work groups */
 .work-group + .work-group {
   margin-top: 4.5rem;

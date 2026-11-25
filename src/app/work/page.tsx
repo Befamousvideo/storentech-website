@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IntakeLink } from "@/components/IntakeLink";
 import { InterviewLink } from "@/components/InterviewLink";
+import { LeakMention } from "@/components/LeakTooltip";
 import { SarahPhoneImage } from "@/components/SarahContact";
 import { retainers, site, workGroups } from "@/lib/site";
 
@@ -23,7 +24,7 @@ export default function WorkPage() {
           </h1>
           <hr className="rule" />
           <p className="lede">
-            {site.offer.services} {site.offer.capacity}
+            <LeakMention>{site.offer.services}</LeakMention> {site.offer.capacity}
           </p>
         </div>
       </header>

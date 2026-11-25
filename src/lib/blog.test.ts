@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { blogJsonLdDate, blogPosts, getPost } from "@/lib/blog";
+import { blogJsonLdDate, blogPosts, getPost, isIndexedBlogPost } from "@/lib/blog";
 import sitemap from "@/app/sitemap";
 
 describe("live blog post dates", () => {
@@ -10,6 +10,10 @@ describe("live blog post dates", () => {
         datePublished: post.datePublished,
       })),
     ).toEqual([
+      {
+        slug: "money-time-risk-leaks",
+        datePublished: "2026-11-24",
+      },
       {
         slug: "comparing-ai-consultants-what-you-are-buying",
         datePublished: "2026-11-24",
@@ -128,9 +132,13 @@ describe("live blog post dates", () => {
     const posts = sitemap().filter((entry) =>
       entry.url.includes("/blog/"),
     );
-    expect(posts).toHaveLength(blogPosts.length);
+    const indexed = blogPosts.filter(isIndexedBlogPost);
+    expect(posts).toHaveLength(indexed.length);
+    expect(posts.some((entry) => entry.url.endsWith("/blog/money-time-risk-leaks"))).toBe(
+      false,
+    );
 
-    for (const post of blogPosts) {
+    for (const post of indexed) {
       const entry = posts.find((item) => item.url.endsWith(`/blog/${post.slug}`));
       expect(entry, post.slug).toBeTruthy();
       expect(entry?.lastModified).toEqual(new Date(post.datePublished));

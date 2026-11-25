@@ -16,6 +16,12 @@ describe("llms.txt", () => {
     expect(text).toContain("## Pages");
     expect(text).toContain("## Blog");
     expect(text).toContain(
+      "- [Money, Time and Risk Leaks: Where Small Businesses Lose Revenue and Hours](https://www.storentechai.com/blog/money-time-risk-leaks): What money, time and risk leaks are, where Orange County small businesses lose revenue and hours, and how to find and rank the leaks in your own business.",
+    );
+    expect(text.indexOf("money-time-risk-leaks")).toBeLessThan(
+      text.indexOf("comparing-ai-consultants-what-you-are-buying"),
+    );
+    expect(text).toContain(
       "- [Comparing AI Help? Know Whether You're Buying a Checklist, a Working Pilot or a Monthly Service](https://www.storentechai.com/blog/comparing-ai-consultants-what-you-are-buying): An AI audit, a working pilot and a monthly service are different things. Five plain questions an Orange County owner can use to compare AI proposals.",
     );
     expect(text.indexOf("comparing-ai-consultants-what-you-are-buying")).toBeLessThan(

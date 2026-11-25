@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LeakMention } from "@/components/LeakTooltip";
 import {
   contractorsPage,
   contractorsVideo,
@@ -92,7 +93,12 @@ export function ContractorsLanding() {
         <ol>
           {start.steps.map((item) => (
             <li key={item.lead}>
-              <strong>{item.lead}</strong> {item.rest}
+              <strong>{item.lead}</strong>{" "}
+              {item.lead === "Get your AI Opportunity Map." ? (
+                <LeakMention>{item.rest}</LeakMention>
+              ) : (
+                item.rest
+              )}
             </li>
           ))}
         </ol>

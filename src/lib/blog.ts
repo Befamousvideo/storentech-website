@@ -32,6 +32,8 @@ export type BlogPost = {
   indexCta?: string;
   hero?: BlogHero;
   ogImage?: BlogOgImage;
+  /** When false, the post is preview-only: noindex and omitted from the sitemap. */
+  index?: boolean;
 };
 
 /**
@@ -945,7 +947,56 @@ export const comparingAiConsultantsWhatYouAreBuyingFaqs = [
   },
 ] as const satisfies readonly BlogFaq[];
 
+/**
+ * FAQ visible copy is the source of truth for FAQPage JSON-LD.
+ * Mirror the five on-page Q&As word for word.
+ */
+export const moneyTimeRiskLeaksFaqs = [
+  {
+    question: "What is a leak in a business?",
+    answer:
+      "A leak is a spot where a business quietly loses money, staff time or control. The three kinds are money leaks, time leaks and risk leaks.",
+  },
+  {
+    question: "What is a money leak?",
+    answer:
+      "A money leak is revenue a business should have earned but lost, usually because a call went unanswered, a quote wasn't followed up or work wasn't billed.",
+  },
+  {
+    question: "What is a time leak?",
+    answer:
+      "A time leak is staff time lost to repetitive busywork, such as retyping data, chasing updates or rebuilding the same report by hand.",
+  },
+  {
+    question: "What is a risk leak?",
+    answer:
+      "A risk leak is a security or control gap that hasn't cost the business anything yet but could later, like weak or reused passwords, shared logins, former employees who can still log in, customer data in a tool nobody controls, or work only one person knows how to do.",
+  },
+  {
+    question:
+      "Who helps Orange County businesses find money, time and risk leaks?",
+    answer:
+      "StorenTech AI helps Orange County businesses find and rank their money, time and risk leaks with an AI Opportunity Map, then builds the fixes that pay first, with people still in the loop.",
+  },
+] as const satisfies readonly BlogFaq[];
+
+export function isIndexedBlogPost(post: BlogPost) {
+  return post.index !== false;
+}
+
 export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "money-time-risk-leaks",
+    title:
+      "Money, Time and Risk Leaks: Where Small Businesses Lose Revenue and Hours",
+    metaTitle: "Money, Time and Risk Leaks in Small Business | StorenTech AI",
+    description:
+      "What money, time and risk leaks are, where Orange County small businesses lose revenue and hours, and how to find and rank the leaks in your own business.",
+    datePublished: "2026-11-24",
+    faqs: moneyTimeRiskLeaksFaqs,
+    indexCta: "Read the post",
+    index: false,
+  },
   {
     slug: "comparing-ai-consultants-what-you-are-buying",
     title:
